@@ -12,13 +12,19 @@ body{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;
 	#header{height:50px; margin : 0 auto; max-width: 1280px; position: relative;}
 	#logo{background: url("resources/images/main/pikicast_white.png") no-repeat 0px 10px; float:left;
 			background-size: 90% auto; height : 50px; width : 115px; margin : auto 30px;}
-	#search{float:left; background-color: #3cb5fc; position:absolute; top : 10px; width: auto;}
+	#search{float:left; background-color: #3cb5fc; position:relative; top : 10px; width: auto; left:10%;}
 	#search_input{width : 310px; border : medium none;  line-height: 25px; float:left; background-color: rgba(60,181,252,0.5); color:white;}
 	#search_btn{width:36px; height:28px; cursor: pointer; background:url("resources/images/main/search_btn_skyblue.png") no-repeat; 
 					   background-size : 100% auto; position:absolute;}
-	#login_info{position:relative; top:10px; height : 30px; line-height: 30px; float:right; right:300px;}
-	#prifile_img	{width: 30px; height: 30px; border-radius:15px;}
-	#login_nickname{color:white; width:120px; height:28px; line-height:28px; vertical-align: top; font-size: 13px; margin-left: 5px;}
+	#profile_icons{position:relative; float:right; display:inline-block;}
+	#login_info{position:absolute; top:10px; right : 110px; height : 30px; width:240px; border-right: 1px solid #80d3ef; display:inline-block; }
+	#profile_img{width: 30px; height: 30px; border-radius:15px; float:left;}
+	#login_nickname{color:white; float:left;width:120px; height:28px; line-height:28px; vertical-align: top; font-size: 13px; margin-left: 5px;}
+	#notice_bell{width:28px; height:30px; background:url("resources/images/main/bell_white.png") no-repeat 0 3px; 
+						background-size : 80% auto; float:right; vertical-align:middle; margin-right:7px; }
+	#icons{float:right; height:40px; width:100px; position:relative; margin-left:10px; top : 8px;}
+	#write_icon{width:28px; height:28px; background:url("resources/images/main/write-icon.png") no-repeat 0 0; display:inline-block; background-size : 100% auto;}
+	#menu_icon{width:28px; height:28px; background:url("resources/images/main/menu.png") no-repeat 0 3px; display:inline-block; background-size : 80% auto; margin-left:5px;}
 	
 	
 </style>
@@ -28,9 +34,6 @@ body{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;
 		$('#logo').click(function(){
 			alert("clicked");
 		});
-		$('#profile_img').css('width','30px');
-		$('#profile_img').css('height','30px');
-		$('#profile_img').css('border-radius', '15px');
 	});
 </script>
 <body>
@@ -42,11 +45,17 @@ body{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;
 				<input id="search_input" type="text" placeholder="검색하기"/>
 				<span id="search_btn"></span>
 			</span>
-			<span id="login_info">
-				<img src="resources/images/main/kangdongwon.jpg" alt="my profile" id="profile_img">
-				<span id="login_nickname">블라블라</span>
+			<span id="profile_icons">
+				<span id="login_info">
+					<img src="resources/images/main/kangdongwon.jpg" alt="my profile" id="profile_img">
+					<span id="login_nickname">블라블라</span>
+					<span id="notice_bell"></span>
+				</span>
+				<span id="icons">
+					<span id="write_icon"></span>
+					<span id="menu_icon"></span>
+				</span>
 			</span>
-			
 		</div>
 	</div>
 </header>
