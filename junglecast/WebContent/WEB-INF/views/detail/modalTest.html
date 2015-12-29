@@ -85,18 +85,6 @@
   margin-right: 270px;
 }
 
-header {
-  background-color: #5cb85c;
-  font-size: 25px;
-  color: white;
-}
-
-footer {
-  background-color: #5cb85c;
-  font-size: 20px;
-  color: white;
-}
-
 .right{
 	background-color: #6a6e71; width:270px; height: 100%; position:absolute; right:0px; 
 }
@@ -115,7 +103,7 @@ footer {
 	width: 100%;
 }
 
-#articleInfo{
+#articleTitle{
 	margin: 25px;
 }
 
@@ -132,7 +120,7 @@ footer {
 }
 
 #replyWrite a{
-	background-color: #2aa8e0; color: #fff; 
+	height: 43%; background-color: #2aa8e0; color: #fff; 
 }
 
 #replyList{
@@ -148,7 +136,23 @@ footer {
 }
 
 #editorImg{
-	width: 100px; height: 100px; border-radius:50px; vertical-align: middle;
+	width: 100px; height: 100px; border-radius:50px; margin-top:75px; margin-left:58px; margin-right:58px;
+}
+
+#articleInfo{
+	position: fixed; padding:15px;
+}
+
+#articleInfo h4{
+	color: #00a6de; text-align: center;
+}
+
+#articleInfo p{
+	font-size: 13px; color: #fff;
+}
+
+#articleInfo span{
+	text-align: right;
 }
 
 </style>
@@ -160,13 +164,24 @@ footer {
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	     <div class="right">
+	     	<div id="articleInfo">
 	     	  <a href="#" class="closebtn">×</a>
 	     	  <img id="editorImg" src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+	     	  <h4>레아</h4>
+	     	  <hr/>
+	     	  <p><label>조회수</label><span>2.6만</span></p>
+	     	  <p><label>좋아요</label><span>405</span></p>
+	     	  <p><label>댓글</label><span>71</span></p>
+	     	  <p><label>공유</label><span>3</span></p>
+	     	  <hr/>
+	     	  <!-- 페이스북 좋아요 -->
+	     	  <hr/>
+	     	</div>  
 	     </div>
 	      <div class="container">
 	      	
 	      	<!-- 제목, 날짜 -->
-	      	<div id="articleInfo">
+	      	<div id="articleTitle">
 		      	<h2>Contents Title</h2>
 		        <p>Contents Subtitle</p>
 		        <p id="articleDate">2015.12.29. 09:30</p>
