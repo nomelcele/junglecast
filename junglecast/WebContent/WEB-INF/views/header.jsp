@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <style type="text/css">
-body{float:left; margin : auto;}
+body{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
 	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff none repeat 0 0 scroll; position : fixed;}
 	#header{height:50px; margin : 0 auto; max-width: 1280px; position: relative;}
 	#logo{background: url("resources/images/main/pikicast_white.png") no-repeat 0px 10px; float:left;
@@ -16,8 +16,9 @@ body{float:left; margin : auto;}
 	#search_input{width : 310px; border : medium none;  line-height: 25px; float:left; background-color: rgba(60,181,252,0.5); color:white;}
 	#search_btn{width:36px; height:28px; cursor: pointer; background:url("resources/images/main/search_btn_skyblue.png") no-repeat; 
 					   background-size : 100% auto; position:absolute;}
-	#login_info{position:relative; top:10px; height : 30px; line-height: 30px; left:300px;}
+	#login_info{position:relative; top:10px; height : 30px; line-height: 30px; float:right; right:300px;}
 	#prifile_img	{width: 30px; height: 30px; border-radius:15px;}
+	#login_nickname{color:white; width:120px; height:28px; line-height:28px; vertical-align: top; font-size: 13px; margin-left: 5px;}
 	
 	
 </style>
@@ -42,7 +43,8 @@ body{float:left; margin : auto;}
 				<span id="search_btn"></span>
 			</span>
 			<span id="login_info">
-				<img src="resources/images/main/kangdongwon.jpg" alt="my profile" class="circular" id="profile_img">
+				<img src="resources/images/main/kangdongwon.jpg" alt="my profile" id="profile_img">
+				<span id="login_nickname">블라블라</span>
 			</span>
 			
 		</div>
