@@ -1,7 +1,9 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
 /* Add animation (Chrome, Safari, Opera) */
@@ -139,7 +141,7 @@ ul {
 }
 
 #articleInfo li span{
-	float: left; font-size: 13px; color: #B6BDC1; 
+	float: left; font-size: 13px; color: #B6BDC1; padding-left:30px; padding-bottom:5px;
 }
 
 #replyList ul{
@@ -188,8 +190,9 @@ ul {
 }
 
 .rereplyWrite a{
-	background-color: #A7AEB3; color: #414548; margin-top:27px; margin-bottom:27px;
-	font-size:14px; padding: 25px 25px 8px 8px;
+ 	background-color: #A7AEB3; color: #414548; 
+/*margin-top:27px; margin-bottom:27px; */
+	font-size:14px; padding: 25px 10px 8px 8px;
 }
 
 #articleHits{
@@ -197,12 +200,15 @@ ul {
 }
 
 #articleLikes{
+	background: url(resources/images/detailIcons/articleLikes.png) no-repeat;
 }
 
 #articleReplies{
+	background: url(resources/images/detailIcons/articleReplies.png) no-repeat;
 }
 
 #articleShares{
+	background: url(resources/images/detailIcons/articleShares.png) no-repeat;
 }
 </style>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -229,9 +235,9 @@ ul {
 </script>
 </head>
 <body>
-	<a href="#id01">Open Modal</a>
+	<a href="#detail">글 읽기</a>
 	
-	<div id="id01" class="modal">
+	<div id="detail" class="modal">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	     <div class="right">

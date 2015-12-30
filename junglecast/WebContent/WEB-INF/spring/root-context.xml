@@ -17,7 +17,7 @@
 	<mvc:default-servlet-handler/>
 	
 	<!-- javascript, jQuery, css, image 사용 -->
-	<context:component-scan base-package="or.junglecast.aop"/>
+<!-- 	<context:component-scan base-package="or.junglecast.aop"/> -->
 	<context:component-scan base-package="or.junglecast.mvc"/>
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
 
