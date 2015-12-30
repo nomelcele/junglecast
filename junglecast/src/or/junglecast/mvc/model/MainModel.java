@@ -11,4 +11,9 @@ public class MainModel {
 	public ModelAndView gotoMain(){
 		return new ModelAndView("main");
 	}
+	
+	@RequestMapping("slider")
+	public ModelAndView gotoSlider(){
+		return new ModelAndView("bootstrap-slider");
+	}
 }
