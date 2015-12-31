@@ -7,24 +7,24 @@
 <title>Insert title here</title>
 </head>
 <style type="text/css">
-body{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
-	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff none repeat 0 0 scroll; position : fixed;}
+#headerBody{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
+	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff none repeat 0 0 scroll; position : fixed; z-index: 500;}
 	#header{height:50px; margin : 0 auto; max-width: 1280px; position: relative;}
-	#logo{background: url("resources/images/main/pikicast_white.png") no-repeat 0px 10px; float:left;
+	#logo{background: url("resources/images/topbarImg/pikicast_white.png") no-repeat 0px 10px; float:left;
 			background-size: 90% auto; height : 50px; width : 115px; margin : auto 30px;}
 	#search{float:left; background-color: #3cb5fc; position:relative; top : 10px; width: auto; left:10%;}
 	#search_input{width : 310px; border : medium none;  line-height: 25px; float:left; background-color: rgba(60,181,252,0.5); color:white;}
-	#search_btn{width:36px; height:28px; cursor: pointer; background:url("resources/images/main/search_btn_skyblue.png") no-repeat; 
+	#search_btn{width:36px; height:28px; cursor: pointer; background:url("resources/images/topbarImg/search_btn_skyblue.png") no-repeat; 
 					   background-size : 100% auto; position:absolute;}
 	#profile_icons{position:relative; float:right; display:inline-block;}
 	#login_info{position:absolute; top:10px; right : 110px; height : 30px; width:240px; border-right: 1px solid #80d3ef; display:inline-block; }
 	#profile_img{width: 30px; height: 30px; border-radius:15px; float:left;}
 	#login_nickname{color:white; float:left;width:120px; height:28px; line-height:28px; vertical-align: top; font-size: 13px; margin-left: 5px;}
-	#notice_bell{width:28px; height:30px; background:url("resources/images/main/bell_white.png") no-repeat 0 3px; 
+	#notice_bell{width:28px; height:30px; background:url("resources/images/topbarImg/bell_white.png") no-repeat 0 3px; 
 						background-size : 80% auto; float:right; vertical-align:middle; margin-right:7px; }
 	#icons{float:right; height:40px; width:100px; position:relative; margin-left:10px; top : 8px;}
-	#write_icon{width:28px; height:28px; background:url("resources/images/main/write-icon.png") no-repeat 0 0; display:inline-block; background-size : 100% auto;}
-	#menu_icon{width:28px; height:28px; background:url("resources/images/main/menu.png") no-repeat 0 3px; display:inline-block; background-size : 80% auto; margin-left:5px;}
+	#write_icon{cursor:pointer; width:28px; height:28px; background:url("resources/images/topbarImg/write-icon.png") no-repeat 0 0; display:inline-block; background-size : 100% auto;}
+	#menu_icon{cursor:pointer; width:28px; height:28px; background:url("resources/images/topbarImg/menu.png") no-repeat 0 3px; display:inline-block; background-size : 80% auto; margin-left:5px;}
 	
 	
 </style>
@@ -34,11 +34,17 @@ body{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;
 		$('#logo').click(function(){
 			alert("clicked");
 		});
+		$('#write_icon').click(function(){
+			alert("clicked");
+		});
+		$('#menu_icon').click(function(){
+			alert("clicked");
+		});
 	});
 </script>
-<body>
+<body id="headerBody">
 <header>
-	<div id="wrapper">
+	<div id="wrapper"> 
 		<div id="header">
 			<span id="logo"></span>
 			<span id="search">
