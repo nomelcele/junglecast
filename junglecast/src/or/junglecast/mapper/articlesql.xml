@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="article">
+  <select id="articleContent" parameterType="int" resultType="arvo">
+  	select * from article where article_id=#{article_id}
+  </select>
+  <select id="editorInfo" parameterType="int" resultType="prvo">
+  	select m_id, m_nickname, m_pic, m_introduce from profile where m_id=#{m_id}
+  </select>
+  <select id="replyList" parameterType="int" resultType="revo">
+  	select * from reply where article_id=#{article_id}
+  </select>
+  <select id="rereplyList" parameterType="int" resultType="rrvo">
+  	select * from re_reply where reply_id=#{reply_id}
+  </select>
+  <insert id="writeReply" parameterType="revo">
+  	insert into reply values(reply_id_seq.nextVal,#{m_id},null,#{article_id},0,#{reply_text},sysdate)
+  </insert>
+  <insert id="writeRereply" parameterType="rrvo">
+  	insert into re_reply values(rereply_id_seq.nextVal,#{m_id},#{reply_id},#{rereply_text},sysdate)
+  </insert>
+  <update id="likeReply" parameterType="int">
+  	update reply set reply_like=(select reply_like from reply where reply_id=#{reply_id})+1 
+  	where reply_id=#{reply_id}
+  </update>
+  </mapper>

@@ -4,6 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   <configuration>
   	<typeAliases>
+  		<typeAlias type="or.junglecast.vo.AccountVO" alias="acvo"/>
+  		<typeAlias type="or.junglecast.vo.ArticleVO" alias="arvo"/>
+  		<typeAlias type="or.junglecast.vo.CategoryVO" alias="cvo"/>
+  		<typeAlias type="or.junglecast.vo.PictureVO" alias="pivo"/>
+  		<typeAlias type="or.junglecast.vo.ProfileVO" alias="prvo"/>
+  		<typeAlias type="or.junglecast.vo.Re_replyVO" alias="rrvo"/>
+  		<typeAlias type="or.junglecast.vo.ReplyVO" alias="revo"/>
   	</typeAliases>
   </configuration>
   

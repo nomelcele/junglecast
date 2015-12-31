@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ArticleModel {
-	@RequestMapping(value="/articleDetail")
+	@RequestMapping(value="articleDetail")
 	public String articleDetail(){
 		return "detail/articleDetail";
 	}
