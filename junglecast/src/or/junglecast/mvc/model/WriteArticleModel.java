@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MainModel {
-	
-	@RequestMapping("main")
-	public ModelAndView gotoMain(){
-		return new ModelAndView("main");
-	}
+public class WriteArticleModel {
 
+	@RequestMapping("writeArticle")
+	public ModelAndView gotoMain(){
+		return new ModelAndView("writeArticle");
+	}
 }

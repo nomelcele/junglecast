@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+
 <style type="text/css">
 #main_body{background:#f1f1f2; margin:0 auto; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
 	a{text-decoration:none;}
@@ -34,8 +35,7 @@
 			#categories{color: #a0a0a0; font-size:16px; font-weight: bold; }
 	#articles_area{width:990px; height: 100%; float:left; left:288px; top:50px; position: relative; z-index:100;}
 		#article_img_container{height:288px; width:630px; float: left; border:1px solid #e6e7e8; margin:8px 1px; cursor: pointer;}
-		#article_imgs{height: 288px; width: 100%;/* background:url("http://cdnb.pikicast.com/300/2015/12/30/300_171360_1451479540.jpg"); */}
-			.article_img{height: 100%; width: 100%; float:left;}
+		#article_imgs{height: 288px; width: 100%; overflow: hidden; }
 		#rank_article_area{height:288px; width:346px; float:right; background: #fff; border:1px solid #e6e7e8; margin:8px 1px;}
 			#rank_top{height:30px; line-height:30px; width:310px; margin:4px auto; padding: 2px 8px 0 8px; border-bottom: 1px solid #00a1ff;}
 			#rank_text{color:#00a1ff; font-weight: bolder; font-size: 14px; float:left;}
@@ -56,17 +56,54 @@
 			.aCard_txt{width:90%; height: 20%; overflow: hidden; z-index: 50; color:#202021; font-size: 14px; padding:10px;}
 	#scroll_up{position:fixed; bottom:10px; width:50px; left:50%; margin-left:640px; height: 50px; display: block; background:#747474; text-align: center; line-height: 22px; color:white; font-size: 14px; cursor: pointer; z-index:500;}	
 
+.skdslider{width:100%; position: relative; display: block; overflow:hidden;}
+.skdslider:after {content: '';padding-top: 50%; display: block;}
+.skdslider ul.slides{ margin:0; padding:0; list-style-type:none;}
+.skdslider ul.slides li{display: none;}
+.skdslider ul.slides li img{width: 100%; height:288px; border:0;}
+.skdslider ul.slide-navs {bottom: 50px; left: 50%; position: absolute; list-style-type: none; margin: 0; padding: 0;}
+.skdslider ul.slide-navs li {
+    float: left; background: url("resources/images/main/imageSlider_icons/slide-bg.png") no-repeat scroll 0 0 transparent;
+	height:12px; width:12px; margin-right:4px; cursor:pointer;
+}
+.skdslider ul.slide-navs li.current-slide {
+  background: url("resources/images/main/imageSlider_icons/slide-bg-active.png") no-repeat scroll 0 0 transparent;
+}
+.skdslider .slide-desc {
+    background: url("resources/images/main/imageSlider_icons/slide_desc.png") repeat scroll 0 0 transparent;
+    left: 0; padding: 0 15px 0 15px; position: absolute; bottom: 15%; max-width: 85%; display:inline-block;
+}
+.skdslider a.prev{
+    background:url("resources/images/main/imageSlider_icons/left.png") no-repeat scroll 0 0 transparent;
+	width:35px; height:35px; display:block; cursor:pointer; position:absolute; top:50%; left:2%; margin-top:-17px;
+}
+.skdslider a.next{
+    background: url("resources/images/main/imageSlider_icons/right.png") no-repeat scroll 0 0 transparent;
+	width:35px; height:35px; display:block; cursor:pointer; position:absolute; top:50%; right:2%; margin-top:-17px;
+}
 </style>	
 <script src="js/jquery-1.11.3.min.js"></script>
-<script src="js/stalker.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
+	//이미지 슬라이더
+	$('#demo2').skdslider({
+		'delay' : 3000,
+		'animationSpeed' : 1000,
+		'showNextPrev' : true,
+		'showPlayButton' : false,
+		'autoSlide' : true,
+		'animationType' : 'sliding'
+	});
+	$('#responsive').change(function() {
+		$('#responsive_wrapper').width(jQuery(this).val());
+	});
+	
     var count = $('#rank-list li').length;
     var height = $('#rank-list li').height();
-    
     step(1);
     
+    //베스트 게시물 애니메이션
     function step(index) {
         $('#rank-list ol').delay(2000).animate({
         	top: -height * index,
@@ -79,30 +116,30 @@ $(document).ready(function(){
             step((index) % count);
         });
     }
-    
-    //$('.article_img').hide();
-    //$('.article_img:first-child').show();
-	function imgSlide(){
-		
-	}
-	
-	//$('#scroll_up').css('top', $(document).height()-60+'px');
-	//scroll event로 글 더 불러오기
+
+    //스크롤 이벤트 캐치하는 함수
 	$(window).scroll(function(){
 		if($(window).scrollTop() == $(document).height()-$(window).height()){
 			loadMore();
 		}
 	});
 	
+	//Top 버튼
 	$('#scroll_up').click(function(){
 		$("html,body").stop().animate({'scrollTop' :0}, 400);
 	});
 	
+	$('.aCard').click(function(){
+		var articleNum = $(this).find('input').val();
+		location.href="articleDetail";
+	});
+	
 });
 
+//스크롤 이벤트시 콘텐츠카드 더 로드하는 함수
 function loadMore(){
 	var card='<div class="aCard"><div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic2.jpeg"></div>';
-	card += '<div class="aCard_txt">미리 보는 12월 30일, <br>내일의 별자리 운세</div></div>'
+	card += '<input type="hidden" value=""><div class="aCard_txt">미리 보는 12월 30일, <br>내일의 별자리 운세</div></div>'
 	$('#contents_cards_area').append(card);$('#contents_cards_area').append(card);$('#contents_cards_area').append(card);$('#contents_cards_area').append(card);
 	$('#contents_cards_area').append(card);$('#contents_cards_area').append(card);$('#contents_cards_area').append(card);$('#contents_cards_area').append(card);
 }
@@ -125,7 +162,7 @@ function loadMore(){
 			<div id="my_introduce">
 				내소개다
 			</div>
-			<div id="go_write_page"><a href="">포스팅하기</a></div>
+			<div id="go_write_page"><a href="writeArticle">포스팅하기</a></div>
 			<div id="mypage_icons">
 				<a id="go_mypage_storage">보관함</a>
 				<a id="go_mypage_record">기록</a>
@@ -152,13 +189,16 @@ function loadMore(){
 				</div>
 		</div>
 	</aside>
+	<script src="js/skdslider.min.js"></script>
 	<section id="articles_area">
 		<div id="article_img_container">			
 			<div id="article_imgs">
-				<img class="article_img" src="resources/images/main/slider1.jpg">
-				<img class="article_img" src="resources/images/main/slider2.jpg">
-				<img class="article_img" src="resources/images/main/slider3.jpg">
-				<img class="article_img" src="resources/images/main/slider4.jpg">
+				<ul id="demo2">
+					<li><img src="resources/images/main/slider1.jpg"></li>
+					<li><img src="resources/images/main/slider2.jpg"></li>
+					<li><img src="resources/images/main/slider3.jpg"></li>
+					<li><img src="resources/images/main/slider4.jpg"></li>
+				</ul>
 			</div>
 		</div>
 		<div id="rank_article_area">
@@ -195,6 +235,7 @@ function loadMore(){
 		<div id="contents_cards_area">
 			<div class="aCard">
 				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic1.png"></div>
+				<input type="hidden" value="1">
 				<div class="aCard_txt">미리 보는 12월 30일, <br>내일의 별자리 운세</div>
 			</div>
 			<div class="aCard"> 

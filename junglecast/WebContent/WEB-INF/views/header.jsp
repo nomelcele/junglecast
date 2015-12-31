@@ -32,13 +32,13 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#logo').click(function(){
-			alert("clicked");
+
 		});
 		$('#write_icon').click(function(){
-			alert("clicked");
+			location.href="writeArticle";
 		});
 		$('#menu_icon').click(function(){
-			alert("clicked");
+
 		});
 	});
 </script>
