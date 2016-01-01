@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <style type="text/css">
 #headerBody{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
-	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff none repeat 0 0 scroll; position : fixed; z-index: 500;}
+	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff none repeat 0 0 scroll; position : fixed; z-index:500;}
 	#header{height:50px; margin : 0 auto; max-width: 1280px; position: relative;}
 	#logo{background: url("resources/images/topbarImg/pikicast_white.png") no-repeat 0px 10px; float:left;
 			background-size: 90% auto; height : 50px; width : 115px; margin : auto 30px;}
@@ -27,6 +28,13 @@
 	#menu_icon{cursor:pointer; width:28px; height:28px; background:url("resources/images/topbarImg/menu.png") no-repeat 0 3px; display:inline-block; background-size : 80% auto; margin-left:5px;}
 	
 	
+@media only screen and (min-width:1024px) and (max-width:1279px){
+	#header{margin-left : 218px; max-width: none;}
+		#search{float:right; right:20%;}
+		#search_input{width : 204px; }
+		
+		#profile_icons, #icons{display:none;}
+}
 </style>
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -11,8 +12,8 @@
 <style type="text/css">
 #main_body{background:#f1f1f2; margin:0 auto; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
 	a{text-decoration:none;}
-	#content_area{position: relative; margin : 0 auto; height:100%; width:auto; max-width:1280px; display:block; z-index:200;}
-	#left_area{position:fixed; width: 284px; height:100%; z-index:190; top:50px;}
+	#content_area{position: relative; margin : 0 auto; height:100%; width:auto; max-width:1280px;}
+	#left_area{position:fixed; width: 284px; height:100%; z-index:700; top:50px;}
 		#profile_card{width:282px; height: 287px; background:#fff; border:1px solid #e6e7e8; display:block; margin:8px 0; text-align: center;}
 			#goto_profile{width:18px; height: 18px; position: absolute; left: 256px; top:16px; cursor: pointer;}
 			#profile_card_img{width: 100px; height:100px; border-radius:50px; display: block; margin:28px auto 20px; }
@@ -35,7 +36,7 @@
 			#left_menu_categories>ul>li>a:HOVER{color: #00a6de;}
 			.catogory_icon{width:20px; height:20px; display: inline-block; line-height: 20px;}
 			#categories{color: #a0a0a0; font-size:16px; font-weight: bold; }
-	#articles_area{width:990px; height: 100%; float:left; left:288px; top:50px; position: relative; z-index:100;}
+	#articles_area{position: relative; width:990px; height: 100%; float:left; margin-left:288px; top:50px; z-index:200;}
 		#article_img_container{height:288px; width:630px; float: left; border:1px solid #e6e7e8; margin:8px 1px; cursor: pointer;}
 		#article_imgs{height: 288px; width: 100%; overflow: hidden; }
 		#rank_article_area{height:288px; width:346px; float:right; background: #fff; border:1px solid #e6e7e8; margin:8px 1px;}
@@ -51,14 +52,14 @@
 			#rank-list ol {position: absolute; top: -30px; left: 0; margin: 0; padding: 0; list-style-type: none;}
 			#rank-list li {height: 30px;line-height: 30px;}
 			.rank_num{color:#00a1ff; font-size:15px; width:16px; display:inline-block; margin-right:16px; font-weight: bold; text-align: right;}
-		#contents_cards_area{width:100%; height:100%; float:left; left:288px; }
+		#contents_cards_area{width:100%; height:100%; float:left; }
 			.aCard{width:24%; float:left; background:#fff; height: 230px; overflow:hidden; margin:4px 3px 4px 4px; border:1px solid #e6e7e8;}
 			.aCard_img_div{width:100%; height: 160px; overflow:hidden;}
 			.aCard_img{width:100%; height:auto; z-index: 20;}
 			.aCard_txt{width:90%; height: 20%; overflow: hidden; z-index: 50; color:#202021; font-size: 14px; padding:10px;}
 	#scroll_up{position:fixed; bottom:10px; width:50px; left:50%; margin-left:640px; height: 50px; display: block; background:#747474; text-align: center; line-height: 22px; color:white; font-size: 14px; cursor: pointer; z-index:500;}	
 
-.skdslider{width:100%; position: relative; display: block; overflow:hidden;}
+.skdslider{width:100%; position: relative; display: block; overflow:hidden; height: 100%;}
 .skdslider:after {content: '';padding-top: 50%; display: block;}
 .skdslider ul.slides{ margin:0; padding:0; list-style-type:none;}
 .skdslider ul.slides li{display: none;}
@@ -83,11 +84,53 @@
     background: url("resources/images/main/imageSlider_icons/right.png") no-repeat scroll 0 0 transparent;
 	width:35px; height:35px; display:block; cursor:pointer; position:absolute; top:50%; right:2%; margin-top:-17px;
 }
+
+@media only screen and (min-width:1024px) and (max-width:1279px){
+#content_area{position: none; margin : 0 0; width:79%; max-width: none;}
+#left_area{position:fixed; width:220px; z-index:700; top:0px;}
+	#profile_card{width:218px; height: 138px; margin:0; padding: 38px 0 4px;}
+		#goto_profile{visibility: hidden;}
+		#profile_card_img{width: 50px; height:50px; border-radius:25px; margin:0 auto; }
+  		#my_nickname{width:216px; line-height: 15px; color:#6d6e71; font-size: 13px; margin:10px 0 0;}
+  		#my_introduce{display: none;}
+  		#go_write_page{margin:14px 64px 4px; background:url("resources/images/main/icons/write-icon-blue.png") no-repeat 2px 0; background-size : auto 90%; text-align:center; 
+								display:block; width:110px; height:15px; line-height: 15px; border:none; padding:0;}
+		#go_write_page a:HOVER{font-weight: bold;}
+	#left_menu{top:182px; bottom:0px; width:218px; margin:0 0;  z-index:1000; }
+	#left_menu_inner{position:relative; margin:4px auto; height:90%; width:250px; }
+		#left_menu_home{font-size: 15px; margin:12px 0 8px 16px; font-weight: bold;}
+		#left_menu_categories{padding: 12px 0 12px 16px; font-size: 15px;}
+			#categories{font-size:15px; color:black;}
+			#left_menu_categories>ul>li{ margin : 6px 0 6px -22px;}
+#articles_area{width:100%; margin-left:220px;}
+	#article_img_container{width:64.5%; margin:0px 0px; border: none;}
+	#article_imgs{height: 100%;}
+	.skdslider ul.slides li img{width: 100%; height:100%; border:0;}
+	#rank_article_area{width:35%; float:right; margin:0px 0px;}
+		#rank_top{width:90%;}
+	#contents_cards_area{}
+		.aCard{width:24%; height: auto; margin:3px 2px 3px 2px;}
+		.aCard_img_div{ height: 160px;}
+		.aCard_img{height:auto;}
+#scroll_up{margin-left:0;}	
+}
+
 </style>	
 <script src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 
 $(document).ready(function(){
+	//반응형 자바스크립트
+	if (matchMedia("screen and (min-width:1024px) and (max-width:1279px)").matches) {
+			$(window).resize(function(){
+				var width=$(window).width();
+				$('#content_area').css("width", width-220+'px');
+			});
+		} else {
+
+		}
+
+	
 	//이미지 슬라이더
 	$('#demo2').skdslider({
 		'delay' : 3000,
