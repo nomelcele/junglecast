@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,15 +24,16 @@
 			#mypage_icons{color:#939597; font-size:13px;}
 			#go_mypage_storage{background:url("resources/images/main/icons/storagebox_icon.png") no-repeat 0 0; background-size : auto 90%; width:60px; display:inline-block; line-height: 15px; text-align:right; }
 			#go_mypage_record{background:url("resources/images/main/icons/Clock_icon.png") no-repeat 0 0; background-size : auto 90%; width:50px; display:inline-block; line-height: 15px; text-align:right; margin-left : 10px;}
-		#left_menu{width:282px; background:#fff; border:1px solid #e6e7e8; display:block; margin:8px 0; height: 80%;}
-		#left_menu_inner{width:100%; height:80%;/*  -ms-overflow-style: none;  */}
+		#left_menu{position:fixed; top:350px; bottom:2px; width:282px; background:#fff; border:1px solid #e6e7e8; display:block; margin:8px 0; overflow:hidden;}
+		#left_menu_inner{position:relative; margin:4px auto; height:90%; width:340px; overflow-y:scroll;/*  -ms-overflow-style: none;  */}
 			#left_menu_home{font-size: 16px; margin:14px 0 12px 10px; font-weight: bold;}
 				#left_menu_home a{color:#404041;}
 				#left_menu_home a:HOVER{color: #00a6de;}
 			#left_menu_categories{background:#fbfbfb; padding: 14px 0 14px 10px;}
-			#left_menu_categories>ul>li{list-style: none; margin : 8px 0 8px -4px;}
-			#left_menu_categories>ul>li>a{color:#4b4b4b; font-size: 14px;}
+			#left_menu_categories>ul>li{list-style: none; margin : 8px 0 8px -12px;}
+			#left_menu_categories>ul>li>a{color:#4b4b4b; font-size: 14px; margin-left:12px;}
 			#left_menu_categories>ul>li>a:HOVER{color: #00a6de;}
+			.catogory_icon{width:20px; height:20px; display: inline-block; line-height: 20px;}
 			#categories{color: #a0a0a0; font-size:16px; font-weight: bold; }
 	#articles_area{width:990px; height: 100%; float:left; left:288px; top:50px; position: relative; z-index:100;}
 		#article_img_container{height:288px; width:630px; float: left; border:1px solid #e6e7e8; margin:8px 1px; cursor: pointer;}
@@ -123,7 +125,7 @@ $(document).ready(function(){
 			loadMore();
 		}
 	});
-	
+
 	//Top 버튼
 	$('#scroll_up').click(function(){
 		$("html,body").stop().animate({'scrollTop' :0}, 400);
@@ -174,16 +176,9 @@ function loadMore(){
 				<div id="left_menu_categories">
 					<div id="categories">골라보기</div>
 					<ul>
-						<li><a href="">테스트1</a></li>
-						<li><a href="">테스트2</a></li>
-						<li><a href="">테스트3</a></li>
-						<li><a href="">테스트4</a></li>
-						<li><a href="">테스트5</a></li>
-						<li><a href="">테스트6</a></li>
-						<li><a href="">테스트7</a></li>
-						<li><a href="">테스트8</a></li>
-						<li><a href="">테스트9</a></li>
-						<li><a href="">테스트10</a></li>
+						<c:forEach var="aRow" items="${categories }">
+							<li><span class="catogory_icon" style="background-image: url('resources/images/main/icons/${aRow.category_icon}'); background-size:100% 100%;"></span><a href="">${aRow.category_name }</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 				</div>

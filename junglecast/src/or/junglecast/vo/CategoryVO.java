@@ -2,8 +2,14 @@ package or.junglecast.vo;
 
 public class CategoryVO {
 	private int category_id;
-	private String category_name;
+	private String category_name, category_icon;
 	
+	public String getCategory_icon() {
+		return category_icon;
+	}
+	public void setCategory_icon(String category_icon) {
+		this.category_icon = category_icon;
+	}
 	public int getCategory_id() {
 		return category_id;
 	}

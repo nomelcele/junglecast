@@ -4,4 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="main">
 
+	<select id="categoryList" resultType="cvo">
+		SELECT * FROM CATEGORY
+	</select>
+
   </mapper>
