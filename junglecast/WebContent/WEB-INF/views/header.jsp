@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<link href="resources/css/article.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 #headerBody{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
 	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff none repeat 0 0 scroll; position : fixed; z-index:500;}
@@ -37,6 +38,7 @@
 }
 </style>
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/article.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#logo').click(function(){

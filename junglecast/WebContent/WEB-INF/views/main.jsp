@@ -176,7 +176,7 @@ $(document).ready(function(){
 	
 	$('.aCard').click(function(){
 		var articleNum = $(this).find('input').val();
-		location.href="articleDetail";
+		location.href="#detail";
 	});
 	
 });
@@ -193,6 +193,7 @@ function loadMore(){
 
 <body id="main_body">
 <jsp:include page="./header.jsp"></jsp:include>
+<jsp:include page="detail/articleDetail.jsp"></jsp:include>
 <div id="content_area">
 	<aside id="left_area">
 		<div class="hidden">
