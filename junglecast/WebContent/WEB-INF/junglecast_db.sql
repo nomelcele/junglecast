@@ -1,5 +1,5 @@
--- ������� �����ؾ� ���� �ȳ���!
-
+--순서대로 생성해야 에러 안나요!
+--CATEGORY TABLE 다시 만들어주세요! PLEAZE remake CATEGORY table!
 
 CREATE TABLE ACCOUNT(	
   m_id NUMBER(5) PRIMARY KEY,
@@ -24,7 +24,8 @@ CREATE TABLE PROFILE(
 
 CREATE TABLE CATEGORY(
   category_id NUMBER(5) PRIMARY KEY,
-  category_name VARCHAR2(50)
+  category_name VARCHAR2(50),
+  category_icon VARCHAR2(50)
 );
 
 CREATE TABLE ARTICLE(
@@ -79,3 +80,33 @@ CREATE SEQUENCE reply_id_seq;
 CREATE SEQUENCE rereply_id_seq;
 
 
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'세상 모든 이슈', category_id_seq.NEXTVAL, 'newspaper_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'별의 별 스타', category_id_seq.NEXTVAL, 'star_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'먹킷리스트', category_id_seq.NEXTVAL, 'food_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'꿀팁의 전당', category_id_seq.NEXTVAL, 'honey_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'두뇌의 섹시화', category_id_seq.NEXTVAL, 'light_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'썸에서 결혼까지', category_id_seq.NEXTVAL, 'heart_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'오구오구 우쭈쭈', category_id_seq.NEXTVAL, 'footprint_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'남자들만 드루와', category_id_seq.NEXTVAL, 'man_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'여자들은 일루와', category_id_seq.NEXTVAL, 'lip_icon.png'
+);
+INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
+	'새벽 1시 다락방', category_id_seq.NEXTVAL, 'moon_icon.png'
+);
