@@ -9,26 +9,6 @@
 <!-- <link href="resources/css/article.css" rel="stylesheet" type="text/css"/> -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script>
-	function showRereply(num){
-		// 답글 보여주기
-		$("#rereplyList"+num).toggle();
-	}
-	
-	function likeArticle(num){
-		alert(num);
-// 		$.ajax({
-// 			type: "POST",
-// 			url: "likeArticle",
-// 			data: {
-				
-// 			},
-// 			success: function(){
-				
-// 			}
-// 		});
-	}
-</script>
 </head>
 <body>
 	<a href="#detail">글 읽기</a>
@@ -68,8 +48,8 @@
 	        <div id="articleShare">
 	        	<a id="likeBtn"><span class="invisible">like</span><em>405</em></a>
 	        	<a id="saveBtn"><span class="invisible">share</span><em>248</em></a>
-	        	<a id="fbBtn"><span class="invisible">fb</span></a>
-	        	<a id="twBtn"><span class="invisible">tw</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" id="fbBtn" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" id="twBtn" target="_blank"><span class="invisible">tw</span></a>
 	        	<a id="linkBtn"><span class="invisible">link</span></a>
 	        </div>
 	        
@@ -179,5 +159,13 @@
 	  </div>
 	</div>
 
+	<div id="linkArea" class="modal link">
+		<div class="modal-dialog">
+	    	<div class="modal-content link-content">
+	    		<div class="container">
+	    		</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

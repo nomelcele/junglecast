@@ -1,7 +1,8 @@
 package or.junglecast.vo;
 
 public class ReplyVO {
-	private int reply_id, m_id, pic_id, article_id, reply_like;
+	private int reply_id, m_id, pic_id, article_id, reply_like,
+	rereply_count;
 	private String reply_text, reply_date;
 	
 	public int getReply_id() {
@@ -45,6 +46,12 @@ public class ReplyVO {
 	}
 	public void setReply_date(String reply_date) {
 		this.reply_date = reply_date;
+	}
+	public int getRereply_count() {
+		return rereply_count;
+	}
+	public void setRereply_count(int rereply_count) {
+		this.rereply_count = rereply_count;
 	}
 	
 	

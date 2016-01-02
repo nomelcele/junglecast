@@ -9,8 +9,17 @@
   <select id="editorInfo" parameterType="int" resultType="prvo">
   	select m_id, m_nickname, m_pic, m_introduce from profile where m_id=#{m_id}
   </select>
+  <update id="likeArticle" parameterType="int">
+  	update article set article_like=(select article_like from article where article_id=#{article_id})+1 
+  	where article_id=#{article_id}
+  </update>
+  <update id="shareArticle" parameterType="int">
+  	update article set article_share=(select article_share from article where article_id=#{article_id})+1 
+  	where article_id=#{article_id}
+  </update>
   <select id="replyList" parameterType="int" resultType="revo">
-  	select * from reply where article_id=#{article_id}
+  	select re.reply_id, re.m_id, re.pic_id, re.article_id, re.reply_like, re.reply_text, re.reply_date, 
+  	(select count(*) from re_reply rr where rr.reply_id=re.reply_id) rereply_count from reply re where article_id=#{article_id}
   </select>
   <select id="rereplyList" parameterType="int" resultType="rrvo">
   	select * from re_reply where reply_id=#{reply_id}
@@ -18,11 +27,23 @@
   <insert id="writeReply" parameterType="revo">
   	insert into reply values(reply_id_seq.nextVal,#{m_id},null,#{article_id},0,#{reply_text},sysdate)
   </insert>
+  <update id="updateReply" parameterType="int">
+  	update article set article_reply=(select article_reply from article where article_id=#{article_id})+1 
+  	where article_id=#{article_id}  
+  </update>
   <insert id="writeRereply" parameterType="rrvo">
   	insert into re_reply values(rereply_id_seq.nextVal,#{m_id},#{reply_id},#{rereply_text},sysdate)
   </insert>
   <update id="likeReply" parameterType="int">
   	update reply set reply_like=(select reply_like from reply where reply_id=#{reply_id})+1 
   	where reply_id=#{reply_id}
+  </update>
+  <select id="bestReplyList" parameterType="int" resultType="revo">
+  	select * from reply where article_id=#{article_id} and 
+  	rownum <![CDATA[<=]]> 5 order by reply_like desc
+  </select>
+  <update id="updateView" parameterType="int">
+  	update article set article_view=(select article_view from article where article_id=#{article_id})+1 
+  	where article_id=#{article_id}  
   </update>
   </mapper>

@@ -18,6 +18,10 @@ ul {
   background-color: rgba(0, 0, 0, 0.4); padding-top: 50px; padding-bottom: 50px; z-index: 800;
 }
 
+.link {
+	z-index: 900;
+}
+
 /* Display the modal when targeted */
 .modal:target {
   display: table; /* table*/ position: absolute;
@@ -36,6 +40,10 @@ ul {
   /* Add animation */
   -webkit-animation-name: example; /* Chrome, Safari, Opera */ -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */
   animation-name: example; animation-duration: 0.5s; 
+}
+
+.link-content{
+	width: 30%;
 }
 
 /* The button used to close the modal */
