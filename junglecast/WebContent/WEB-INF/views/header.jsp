@@ -36,6 +36,26 @@
 		
 		#profile_icons, #icons{display:none;}
 }
+@media only screen and (min-width:768px) and (max-width:1023px){
+	#header{margin-left : 50px; max-width: none;}
+		#search{float:right; right:20%;}
+		#search_input{width : 204px; }
+		
+		#profile_icons{display:none;}
+}
+@media only screen and (max-width:767px){
+	#header{max-width: none;}
+		#search{position:fixed; right:40px; left:auto; float: none;}
+		#search_input,#login_info{display:none; }
+		#search_btn{background:url("resources/images/topbarImg/search_btn.png") no-repeat; 
+					   background-size : 70% auto; display:block;}
+		#logo{float:none; margin : 0 auto; display:block;}
+		#icons{float:none; height:40px; width:64px; position:fixed; margin-left:0; top : 8px; display:block; left:4px;}
+			#write_icon{float:right; position:relative; display:block;}
+			#menu_icon{float:left; position:relative; display:block;}
+	
+
+}
 </style>
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/article.js"></script>
