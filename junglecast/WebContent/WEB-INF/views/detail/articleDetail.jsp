@@ -1,16 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>        
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
-<!-- <html> -->
-<!-- <head> -->
-<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
-<!-- <title>Insert title here</title> -->
-<!-- <link href="resources/css/article.css" rel="stylesheet" type="text/css"/> -->
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-</head>
-<body>
 	<a href="#detail">글 읽기</a>
 	
 	<div id="detail" class="modal">
@@ -74,7 +66,7 @@
 		       <div id="replyWrite">
 		       	<img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
 		       	<textarea placeholder="내용을 입력해 주세요."></textarea>
-		       	<a>댓글 등록</a>
+		       	<a id="writeReplyBtn">댓글 등록</a>
 		       </div>
 	       
 	       <!-- 댓글 목록 -->
@@ -159,13 +151,16 @@
 	  </div>
 	</div>
 
-	<div id="linkArea" class="modal link">
+	<div id="copyLink" class="modal link">
 		<div class="modal-dialog">
 	    	<div class="modal-content link-content">
-	    		<div class="container">
+	    		<div class="link-container">
+	    			<div id="linkArea">
+			     		<a id="linkCloseBtn">×</a>
+			     		<p>아래의 URL을 복사(Ctrl+C)하여 원하는 곳에 붙여넣기(Ctrl+V)하세요.</p>
+			     		<input id="articleLink" type="text">
+	    			</div>
 	    		</div>
 			</div>
 		</div>
 	</div>
-</body>
-</html>

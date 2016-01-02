@@ -287,8 +287,10 @@ $(document).ready(function(){
 	
 	//콘텐츠 카드 클릭 버튼
 	$('.aCard').click(function(){
+		// 게시물 보기
 		var articleNum = $(this).find('input').val();
 		location.href="#detail";
+		$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
 	});
 	
 });

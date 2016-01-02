@@ -1,7 +1,8 @@
-/**
- * 
- */
 $(function(){
+	$(".closebtn").click(function(){
+		$("#articles_area").css("position","relative");
+	});
+	
 	$("#likeBtn").click(function(){
 		// 게시물 좋아요
 		$.ajax({
@@ -37,7 +38,25 @@ $(function(){
 	
 	$("#linkBtn").click(function(){
 		// 링크 복사
-		$("#linkArea").css('display','table').css('position','absolute');
+		$("#copyLink").css('display','table').css('position','absolute');
+		$("#articleLink").attr("value",window.location.href);
+	});
+	
+	$("#linkCloseBtn").click(function(){
+		// 링크 복사 모달 닫기
+		$("#copyLink").css('display','none');
+	});
+	
+	$("#writeReplyBtn").click(function(){
+		// 댓글 작성
+		$.ajax({
+			type: "POST",
+			url: "shareArticle",
+			data: {
+				article_id: $("#article_id").val()
+			}
+		});		
+
 	});
 });
 
