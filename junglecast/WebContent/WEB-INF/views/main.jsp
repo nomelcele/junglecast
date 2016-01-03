@@ -59,10 +59,10 @@
 			#rank-list li {height: 30px;line-height: 30px;}
 			.rank_num{color:#00a1ff; font-size:15px; width:16px; display:inline-block; margin-right:16px; font-weight: bold; text-align: right;}
 		#contents_cards_area{width:100%; height:100%; float:left; }
-			.aCard{width:24%; float:left; background:#fff; height: 230px; overflow:hidden; margin:4px 3px 4px 4px; border:1px solid #e6e7e8;}
+			.aCard{width:24%; height:230px; float:left; background:#fff; overflow:hidden; margin:4px 3px 4px 4px; border:1px solid #e6e7e8;}
 			.aCard_img_div{width:100%; height: 160px; overflow:hidden;}
 			.aCard_img{width:100%; height:auto; z-index: 20;}
-			.aCard_txt{width:90%; height: 20%; overflow: hidden; z-index: 50; color:#202021; font-size: 14px; padding:10px;}
+			.aCard_txt{width:90%; height: 66px; overflow: hidden; z-index: 50; color:#202021; font-size: 14px; padding:10px;}
 	#scroll_up{position:fixed; bottom:10px; width:50px; left:50%; margin-left:640px; height: 50px; display: block; background:rgba(18,18,18,0.8); text-align: center; line-height: 22px; color:white; font-size: 14px; cursor: pointer; z-index:500;}	
 
 /*이미지 슬라이더 관련 css*/
@@ -119,8 +119,9 @@
 		#rank_top{width:90%;}
 	#contents_cards_area{}
 		.aCard{width:24%; height: auto; margin:3px 0.3% 3px 0.3%;}
-		.aCard_img_div{ height: 160px;}
+		.aCard_img_div{ height: 60%; }
 		.aCard_img{height:auto;}
+
 #scroll_up{bottom:2px; left:auto; right:2px; margin-left:0; }
 }
 
@@ -158,8 +159,8 @@
 	#rank_article_area{width:35%; height:230px; float:right; margin:0px 0px; overflow:hidden;}
 		#rank_top{width:90%;}
 		
-		.aCard{width:32.4%; height: auto; margin:3px 0.2% 3px 0.2%;}
-		.aCard_img_div{ height: 160px;}
+		.aCard{width:32.4%; height:auto; margin:3px 0.2% 3px 0.2%;}
+		.aCard_img_div{ height: 65%;}
 		.aCard_img{height:auto;}
 #scroll_up{bottom:2px; left:auto; right:2px; margin-left:0; }
 }
@@ -198,11 +199,13 @@
 	.skdslider ul.slides li img{width: 100%; height:100%; border:0;}
 	#rank_article_area{display:none;}
 
-		.aCard{width:48.8%; height: auto; margin:3px 0.4% 3px 0.2%;}
-		.aCard_img_div{ height: 160px; }
+		.aCard{width:48.5%; height:auto;margin:3px 0.3% 3px 0.3%;}
+		.aCard_img_div{ height: 65%; }
 		.aCard_img{height:auto;}
+		.aCard_txt{padding:5px;}
 #scroll_up{bottom:2px; left:auto; right:2px; margin-left:0; }
 }
+
 </style>	
 <script src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
@@ -210,8 +213,10 @@
 $(document).ready(function(){
 	//반응형 자바스크립트
 	$(window).resize(function(){
-		left_area_positioning();
+		resizingEvent();
 	});
+	
+	aCardSizingEvent();
 	
 	//상단바 메뉴 아이콘 클릭시
 	$('#menu_icon').click(function(){
@@ -295,18 +300,43 @@ $(document).ready(function(){
 	
 });
 
-//반응형 - 사이즈별 left_area show/hide 설정 함수
-function left_area_positioning(){
+//반응형 - 화면크기 바뀔때마다 호출되는 함수
+function resizingEvent(){
+	left_area_positioning();
+	aCardSizingEvent();
+};
+function left_area_positioning(display_how){
+	var aCard_width = $('.aCard').css("width");
+	var aCard_height= Number(aCard_width.replace(/[^\d]/g,"")); 
+	if(matchMedia("only screen and (min-width:1280px)").matches){ //대형화면
+		$('#left_area').css("display", "block");
+	}else if (matchMedia("only screen and (min-width:1024px) and (max-width:1279px)").matches) {//일반 PC 모니터 크기
+		$('#left_area').css("display", "block");
+	} else if(matchMedia("only screen and (min-width:768px) and (max-width:1023px)").matches){//태블릿 화면
+		$('#left_area').css("display", "none");
+	}else if(matchMedia("only screen and (max-width:767px)").matches){ //모바일 화면
+		$('#left_area').css("display", "none");
+	}
+}
+
+function aCardSizingEvent(){
+	var aCard_width = $('.aCard').css("width");
+	var aCard_height= Number(aCard_width.replace(/[^\d]/g,""));
 	if(matchMedia("only screen and (min-width:1280px)").matches){ //대형화면
 		$('#left_area').css("display","block");
-	}else if (matchMedia("only screen and (min-width:1024px) and (max-width:1279px)").matches) {//일반 PC 모니터 크기
-		$('#left_area').css("display","block");
-	} else if(matchMedia("only screen and (min-width:768px) and (max-width:1023px)").matches){//태블릿 화면
-		$('#left_area').css("display","none");
-	}else if(matchMedia("only screen and (max-width:767px)").matches){ //모바일 화면
-		$('#left_area').css("display","none");
+	}else if (matchMedia("only screen and (min-width:768px) and (max-width:1279px)").matches) {//일반 PC 모니터 크기 + 태블릿화면
+		$('.aCard').css("height", aCard_height);
+	}else if(matchMedia("only screen and (min-width:371px) and (max-width:767px)").matches){ //큰 모바일 화면
+		$('.aCard').css("height", aCard_height*0.9);
+		$('.aCard_img_div').css("height", "65%");
+	}else if(matchMedia("only screen and (max-width:370px)").matches){ //작은모바일 화면
+		$('.aCard').css("height", aCard_height*1.2);
+		$('.aCard_img_div').css("height", "58%");
+		
 	}
-};
+}
+
+
 //메뉴 아이콘 클릭했을 때 left_area show/hide 함수
 function menu_icon_clicked_left_area_showing(){
 	$('#left_area').css("display", "block");

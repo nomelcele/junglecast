@@ -9,13 +9,13 @@
 </head>
 <link href="resources/css/article.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
-#headerBody{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
-	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff none repeat 0 0 scroll; position : fixed; z-index:500;}
+#headerBody{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif; width:100%; height:auto;}
+	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff; position : fixed; z-index:500;}
 	#header{height:50px; margin : 0 auto; max-width: 1280px; position: relative;}
 	#logo{background: url("resources/images/topbarImg/pikicast_white.png") no-repeat 0px 10px; float:left;
 			background-size: 90% auto; height : 50px; width : 115px; margin : auto 30px;}
 	#search{float:left; background-color: #3cb5fc; position:relative; top : 10px; width: auto; left:10%;}
-	#search_input{width : 310px; border : medium none;  line-height: 25px; float:left; background-color: rgba(60,181,252,0.5); color:white;}
+	#search_input{width : 310px; border : medium none; height:25px; line-height: 25px; float:left; background-color: rgba(60,181,252,0.5); color:white;}
 	#search_btn{width:36px; height:28px; cursor: pointer; background:url("resources/images/topbarImg/search_btn_skyblue.png") no-repeat; 
 					   background-size : 100% auto; position:absolute;}
 	#profile_icons{position:relative; float:right; display:inline-block;}
@@ -31,16 +31,16 @@
 	
 @media only screen and (min-width:1024px) and (max-width:1279px){
 	#header{margin-left : 218px; max-width: none;}
-		#search{float:right; right:20%;}
-		#search_input{width : 204px; }
-		
+		#search{float:none; background-color: inherit; position:fixed; top : 10px; width: 260px; left:auto; right:20px;}
+		#search_input{width : 204px;  position:relative;}
+		#search_btn{ position:relative; background:url("resources/images/topbarImg/search_btn.png") no-repeat; background-size : 70% auto; display:block; float:right;}
 		#profile_icons, #icons{display:none;}
 }
 @media only screen and (min-width:768px) and (max-width:1023px){
 	#header{margin-left : 50px; max-width: none;}
-		#search{float:right; right:20%;}
-		#search_input{width : 204px; }
-		
+		#search{float:none; background-color: inherit; position:fixed; top : 10px; width: 260px;; left:auto; right:20px;}
+		#search_input{width : 204px; position:relative;}
+		#search_btn{ position:relative; background:url("resources/images/topbarImg/search_btn.png") no-repeat; background-size : 70% auto; display:block; float:right;}
 		#profile_icons{display:none;}
 }
 @media only screen and (max-width:767px){
