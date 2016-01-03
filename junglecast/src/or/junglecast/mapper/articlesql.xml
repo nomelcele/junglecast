@@ -19,7 +19,10 @@
   </update>
   <select id="replyList" parameterType="int" resultType="revo">
   	select re.reply_id, re.m_id, re.pic_id, re.article_id, re.reply_like, re.reply_text, re.reply_date, 
-  	(select count(*) from re_reply rr where rr.reply_id=re.reply_id) rereply_count from reply re where article_id=#{article_id}
+  	(select count(*) from re_reply rr where rr.reply_id=re.reply_id) rereply_count, 
+  	p.m_pic replyWriterPic, ac.m_id replyWriterId, p.m_nickname replyWriterName
+  	from reply re, account ac, profile p 
+  	where article_id=#{article_id} and re.m_id=ac.m_id and ac.m_id=p.m_id
   </select>
   <select id="rereplyList" parameterType="int" resultType="rrvo">
   	select * from re_reply where reply_id=#{reply_id}

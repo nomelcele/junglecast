@@ -38,22 +38,28 @@ $(function(){
 	
 	$("#linkBtn").click(function(){
 		// 링크 복사
-		$("#copyLink").css('display','table').css('position','absolute');
+		$("#copyLink").css('display','table');
+		$("#main_body").css("overflow","hidden");
 		$("#articleLink").attr("value",window.location.href);
 	});
 	
 	$("#linkCloseBtn").click(function(){
 		// 링크 복사 모달 닫기
 		$("#copyLink").css('display','none');
+		$("#main_body").css("overflow","visible");
 	});
 	
 	$("#writeReplyBtn").click(function(){
 		// 댓글 작성
 		$.ajax({
 			type: "POST",
-			url: "shareArticle",
+			url: "writeReply",
 			data: {
-				article_id: $("#article_id").val()
+				article_id: $("#article_id").val(),
+				reply_text: $("#reply_text").val()
+			}, 
+			success: function(result){
+				$("#replyList").html(result);
 			}
 		});		
 

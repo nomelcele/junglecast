@@ -3,8 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>        
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<a href="#detail">글 읽기</a>
-	
 	<div id="detail" class="modal">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -64,8 +62,8 @@
 	       
 	      <!-- 댓글 작성 -->
 		       <div id="replyWrite">
-		       	<img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
-		       	<textarea placeholder="내용을 입력해 주세요."></textarea>
+		       	<img src="resources/memberImg/gildong.jpg">
+		       	<textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
 		       	<a id="writeReplyBtn">댓글 등록</a>
 		       </div>
 	       
@@ -74,20 +72,20 @@
 	       	<ul>
 	       		<li>
 		       		<div class="replyContent">
-   				       	<img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+   				       	<img src="resources/memberImg/gildong.jpg">
 			       		<div class="replyDetail">
-			       			<span class="writerName">홍길동</span>
+			       			<span class="best writerName">홍길동</span>
 			       			<p class="replyText">댓글 내용입니다.</p>
 			       			<span class="replyDate">2015.12.30. 10:46</span>
 				       		<div class="replySubDetail">
-			       				<a href="javascript:likeArticle(0);">좋아요 30개</a>
-			       				<a href="javascript:showRereply(0);">답글 23개</a>
+			       				<a class="likeReplyBtn" href="javascript:likeArticle(0);">좋아요 30개</a>
+			       				<a class="rereplyBtn" href="javascript:showRereply(0);">답글 23개</a>
 			       			</div>			       			
 			       		</div>
 		       			<div class="rereplyList" id="rereplyList0">
 		       				<ul>
 		       					<li>
-		       					    <img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+		       					    <img src="resources/memberImg/gildong.jpg">
 		       						<div class="replyDetail rereply">
 		       							<span class="writerName">홍길동</span>
 		       							<p class="replyText">답글 내용입니다.</p>
@@ -96,29 +94,29 @@
 		       					</li>
 		       				</ul>	
 		       				<div class="rereplyWrite">
-		       					    <img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
-		       					    <input type="text" placeholder="내용을 입력해 주세요.">
-		       					    <a>답글 등록</a>
+		       					    <img src="resources/memberImg/gildong.jpg">
+			       					<input type="text" placeholder="내용을 입력해 주세요.">
+			       					<a>답글 등록</a>
 		       				</div>	       			
 		       			</div>			       		
 		       		</div>
 	       		</li>
 	       		<li>
 	       			<div class="replyContent">
-   				       	<img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+   				       	<img src="resources/memberImg/gildong.jpg">
 		       			<div class="replyDetail">
 			       			<span class="writerName">홍길동</span>
 			       			<p class="replyText">댓글 내용입니다.</p>
 			       			<span class="replyDate">2015.12.30. 10:46</span>
 				       		<div class="replySubDetail">
-			       				<a href="javascript:likeArticle(1);">좋아요 30개</a>
-			       				<a href="javascript:showRereply(1);">답글 23개</a>
+			       				<a class="likeReplyBtn" href="javascript:likeArticle(1);">좋아요 30개</a>
+			       				<a class="rereplyBtn" href="javascript:showRereply(1);">답글 23개</a>
 			       			</div>
 		       			</div>
 		       			<div class="rereplyList" id="rereplyList1">
 		       				<ul>
 		       					<li>
-		       					    <img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+		       					    <img src="resources/memberImg/gildong.jpg">
 		       						<div class="replyDetail rereply">
 		       							<span class="writerName">홍길동</span>
 		       							<p class="replyText">답글 내용입니다.</p>
@@ -126,7 +124,7 @@
 		       						</div>
 		       					</li>
 		       					<li>
-		       					    <img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+		       					    <img src="resources/memberImg/gildong.jpg">
 		       						<div class="replyDetail rereply">
 		       							<span class="writerName">홍길동</span>
 		       							<p class="replyText">답글 내용입니다.</p>
@@ -135,7 +133,7 @@
 		       					</li>	
 		       				</ul>
 		       				<div class="rereplyWrite">
-		       					    <img src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+		       					    <img src="resources/memberImg/gildong.jpg">
 		       					    <input type="text" placeholder="내용을 입력해 주세요.">
 		       					    <a>답글 등록</a>
 		       				</div>

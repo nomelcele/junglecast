@@ -62,24 +62,27 @@ ul {padding:0;}
 #replyWrite{background-color: #e4e4e4; width: 100%; height: 130px;}
 #replyWrite img{width: 45px; height: 45px; padding: 22px 12px 22px 50px;}
 #replyWrite textarea{width: 70%; height: 49%; resize: none; border:none;}
-#replyWrite a{background-color: #2aa8e0; color: #fff; position:absolute; margin-top:21px; margin-bottom:27px; font-size:14px; padding: 25px 8px 25px 8px;}
+#replyWrite a{background-color: #2aa8e0; color: #fff; position:absolute; margin-top:21px; margin-bottom:27px; font-size:14px; padding: 25px 8px 28px 8px;}
 #replyList{width: 100%; margin: 0; }
 #replyList li{list-style-type: none;}
 .replyContent{border-bottom: 1px solid #B6BDC1; padding: 13px 0px 13px 50px;}
 .replyContent img{width: 45px; height: 45px; position:absolute;}
+.best{background:url(../images/detailIcons/best.png) no-repeat 0 4px; padding:3px 40px;}
 .writerName{font-size: 15px; color: #414548; font-weight: bold;}
 .replyText{font-size:13px; margin-top:8px; margin-bottom:5px;}
-.replyDate{color: #B6BDC1; font-size:12px;}
+.replyDate{background:url(../images/detailIcons/date.png) no-repeat 0; color: #B6BDC1; font-size:12px; padding:4px 20px 3px; background-size:13px;}
 .replyDetail{display:inline-block; margin-left:70px;}
 .replySubDetail{margin-top:20px; margin-bottom:10px;}
 .replySubDetail a{padding-right: 40px; color:#6F7375; font-size:12px; text-decoration: none;}
+.likeReplyBtn{background:url(../images/detailIcons/likeReply.png) no-repeat 0; background-size:15px; padding:0px 20px;}
+.rereplyBtn{background:url(../images/detailIcons/rereplyBtn.png) no-repeat 0; background-size:5px; padding:0px 11px;}
 
 /* 답글 영역 */
 .rereplyList{background-color: #ECEEF1; width:79%; height:auto; display:none; padding-left:60px; padding-right:50px; padding-top:13px; margin-top:10px;}
-.rereplyWrite{width: 100%; margin-top:30px; border-top:1px solid #A7AEB3;}
+.rereplyWrite{width: 100%; margin-top:30px; border-top:1px solid #A7AEB3; padding:15px 0; display:inline-block;}
 .rereplyWrite img{width:30px; height:30px; padding-left:10px;}
-.rereplyWrite input[type=text] {border:none; position:absolute; margin-left: 50px; width:40%; font-size:13px; padding: 8px 8px 8px 8px;}
-.rereplyWrite a{background-color: #A7AEB3; color: #414548; font-size:14px; padding: 25px 10px 8px 8px;}
+.rereplyWrite input[type=text] {border:none; position:absolute; margin-left: 50px; width:40%; font-size:13px; padding: 8px;}
+.rereplyWrite a{background-color: #A7AEB3; color: #414548; font-size:14px; padding: 8px 10px 8px 8px; float:right;}
 .rereply{padding: 10px;}
 .rereplyList li img{padding:10px;}
 /*///////////////////////////////////////////////*/
@@ -94,7 +97,7 @@ ul {padding:0;}
 #editorIntro{font-size:12px; color: #B6BDC1; margin-top:7px; margin-bottom:40px; }
 
 /* 콘텐츠 통계 */
-#articleInfo{position: fixed; padding-left:15px; padding-right:15px; width:240px;}
+#articleInfo{position: fixed; padding-left:15px; padding-right:15px; width:17.5%;}
 #articleInfo li{list-style-type: none; text-align:right; color: #E4E1E1; padding-top:5px; padding-bottom:5px; padding-left:12px; padding-right:12px;}
 #articleInfo li span{float: left; font-size: 13px; color: #B6BDC1; padding-left:30px; padding-bottom:5px; padding-top:3px;}
 #articleHits{background: url(../images/detailIcons/articleHits.png) no-repeat 0;}
