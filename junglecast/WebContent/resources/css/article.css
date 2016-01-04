@@ -6,6 +6,7 @@
 /* Add animation (Standard syntax) */
 @keyframes example {from {top:-100px;opacity: 0;} to {top:0px;opacity:1;}}
 ul {padding:0;}
+li{list-style-type: none;}
 /*///////////////////////////////////////////////*/
  
  
@@ -25,6 +26,7 @@ ul {padding:0;}
 /* The button used to close the modal */
 .closebtn {text-decoration: none; float: right; font-size: 30px; color: #B6BDC1;}
 .closebtn:hover, .closebtn:focus {color: #000; text-decoration: none;  cursor: pointer;}
+.mobileCloseBtn{display:none;}
 /*///////////////////////////////////////////////*/
 
 
@@ -42,11 +44,13 @@ ul {padding:0;}
 #articleLink{padding:2px 4px 2px 4px; width:80%;}
 
 /* 콘텐츠 기본 정보 */
-#articleDate{margin-top: 40px; color: #6a6e71; font-size: 13px;}
 #articleContent{padding: 100px;}
 #articleContent p{font-size: 14px; margin-top: 50px; margin-bottom: 50px;}
 #articleContent img{width: 100%;}
 #articleTitle{margin: 25px; border-bottom: 1px solid #B6BDC1;}
+#articleTitle h2{color:#404041;}
+#articleSubTitle{font-size:14px; color:#404041;}
+#articleDate{margin-top: 40px; color: #6a6e71; font-size: 12px;}
 
 /* 콘텐츠 공유 영역 */
 .likeBtn{background: #00a6de url(../images/detailIcons/likeBtn.png) no-repeat 12px; display:inline-block; width:90px; height:40px;}
@@ -99,23 +103,22 @@ ul {padding:0;}
 /*///////////////////////////////////////////////*/
 /* 작성자 정보 표시 영역 */
 .rightMenu{background-color: #414548; width:25%; height: 100%; position:absolute; right:0px; border-top-right-radius:10px; border-bottom-right-radius:10px;}
-#editorImg{width: 100px; height: 100px; border-radius:50px;}
+.editorImg{width: 100px; height: 100px; border-radius:50px;}
 #editorInfo{text-align: center; border-bottom:1px solid #909599; padding-top:50px;}
 #editorInfo h4{color: #00a6de; margin-top:17px; margin-bottom:8px;}
-#editorIntro{font-size:12px; color: #B6BDC1; margin-top:7px; margin-bottom:40px; }
+.editorIntro{font-size:12px; color: #B6BDC1; margin-top:7px; margin-bottom:40px; }
+#mobileEditorInfo{display:none;}
 
 /* 콘텐츠 통계 */
 #articleInfo{position: fixed; padding:12px; width:222px;}
 #articleInfo li{list-style-type: none; text-align:right; color: #E4E1E1; padding-top:5px; padding-bottom:5px; padding-left:12px; padding-right:12px;}
 #articleInfo li span{float: left; font-size: 13px; color: #B6BDC1; padding-left:30px; padding-bottom:5px; padding-top:3px;}
-#articleHits{background: url(../images/detailIcons/articleHits.png) no-repeat 0;}
-#articleLikes{background: url(../images/detailIcons/articleLikes.png) no-repeat 0;}
-#articleReplies{background: url(../images/detailIcons/articleReplies.png) no-repeat 0;}
-#articleShares{background: url(../images/detailIcons/articleShares.png) no-repeat 0;}
+.articleHits{background: url(../images/detailIcons/articleHits.png) no-repeat 0;}
+.articleLikes{background: url(../images/detailIcons/articleLikes.png) no-repeat 0;}
+.articleReplies{background: url(../images/detailIcons/articleReplies.png) no-repeat 0;}
+.articleShares{background: url(../images/detailIcons/articleShares.png) no-repeat 0;}
 #articleShare{margin: 50px 25px 0 25px; text-align:center;}
 #articleShare a{text-decoration: none; color: #fff;}
-
-/* 콘텐츠 통계 (모바일) */
 #mobileArticleInfo{display:none;}
 /*///////////////////////////////////////////////*/
 
@@ -145,13 +148,25 @@ ul {padding:0;}
 
 @media only screen and (max-width:767px){
 	.modal{padding:0;}
-	.modal-dialog .modal-content{width:100%; min-width:300px; margin:0;}
+	.modal-dialog .modal-content{width:100%; margin:0; border-radius:0;}
 	.container{float:none; width:100%;}
 	.rightMenu{display:none;}
 	
+	#articleTitle{border-bottom:0;}
+	
 	#mobileArticleInfo{display:block;}
 	#mobileArticleInfo ul{overflow:hidden;}
-	#mobileArticleInfo ul li{float:left; color:#fff; width:25%; text-align:center; font-size:17px; padding:5px 0 7px; position:relative;}
+	#mobileArticleInfo ul li{float:left; width:25%; color:#414548; text-align:center; font-size:17px; padding:5px 0 7px; position:relative;}
+	#mobileArticleInfo ul li span{float:none;}
+	
+	#mobileEditorInfo{display:block; background:#414548; padding:13px 22px 1px; color:#fff;}
+	.mobileCloseBtn{display:inline-block; font-size:26px; position:absolute; top:15px; right:15px;}
+	#editorProfile{padding:0; border:none; overflow:hidden; margin-bottom:12px;}
+	#editorImgBox{margin:0; float:left;}
+	.editorImg{width:60px; height:60px;}
+	#editorNameIntro{float:left; margin:0 0 0 13px; padding-top:14px; text-align:left;}
+	.editorName{display:block; color:#00a6de; font-size:14px; font-weight:bold; margin-bottom:4px;}
+	.editorIntro{display:block; font-size:12px; margin:0 0 14px 0;}
 }
 /*///////////////////////////////////////////////*/
 

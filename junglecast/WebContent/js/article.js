@@ -4,10 +4,6 @@ $(function(){
 		$("#articles_area").css("position","relative");
 	});
 	
-	$(window).scroll(function(){
-		// 스크롤 내리면 좌측에 공유 영역 나타남
-	});
-	
 	$(".likeBtn").click(function(){
 		// 게시물 좋아요
 		$.ajax({
@@ -78,7 +74,7 @@ $(function(){
 	
 	$(window).scroll(function(){
 		// 스크롤 시 좌측 공유 영역 보이기/숨기기
-		if($(window).scrollTop()>225){
+		if($(window).scrollTop()>300){ // 225
 			$("#verticalShare").css("display","block");
 		} else {
 			$("#verticalShare").css("display","none");

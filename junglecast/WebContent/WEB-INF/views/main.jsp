@@ -295,7 +295,9 @@ $(document).ready(function(){
 		// 게시물 보기
 		var articleNum = $(this).find('input').val();
 		location.href="#detail";
-		$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
+		if(matchMedia("only screen and (min-width:1280px)").matches){
+			$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
+		}
 	});
 	
 });

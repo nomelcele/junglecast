@@ -11,16 +11,16 @@
 	     	<div id="articleInfo">
 		     		<a href="#" class="closebtn">×</a>
 		     		<div id="editorInfo">
-			     	  <img id="editorImg" src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+			     	  <img class="editorImg" src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
 			     	  <h4>레아</h4>
-			     	  <p id="editorIntro">에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개</p>
+			     	  <p class="editorIntro">에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개</p>
 		     	  	</div>
 		     	  	<div id="articleStats">
 			     	  <ul>
-				     	  <li><span id="articleHits">조회수</span>2.6만</li>
-				     	  <li><span id="articleLikes">좋아요</span>405</li>
-				     	  <li><span id="articleReplies">댓글</span>71</li>
-				     	  <li><span id="articleShares">공유</span>3</li>
+				     	  <li><span class="articleHits">조회수</span>2.6만</li>
+				     	  <li><span class="articleLikes">좋아요</span>405</li>
+				     	  <li><span class="articleReplies">댓글</span>71</li>
+				     	  <li><span class="articleShares">공유</span>3</li>
 				      </ul>
 			      </div>
 	     	  <!-- 페이스북 좋아요 -->
@@ -32,19 +32,33 @@
 	      <div class="container">
 	      	<!-- 제목, 날짜 -->
 	      	<div id="articleTitle">
-		      	<h2>Contents Title</h2>
-		        <p>Contents Subtitle</p>
+		      	<h2>일본에서 더 인기 있다는<br/> 독일의 디저트 바움쿠헨</h2>
+		        <p id="articleSubTitle">콘텐츠 부연 설명 콘텐츠 부연 설명 콘텐츠 부연 설명 콘텐츠 부연 설명</p>
 		        <p id="articleDate">2015.12.29. 09:30</p>
 	        </div>
 	        
 	        <!-- 콘텐츠 통계(모바일) -->
 	        <div id="mobileArticleInfo">
 	        	<ul>
-	        		<li></li>
-	        		<li></li>
-	        		<li></li>
-	        		<li></li>
+	        		<li><span class="articleHits">2.6만</span></li>
+	        		<li><span class="articleLikes">405</span></li>
+	        		<li><span class="articleReplies">71</span></li>
+	        		<li><span class="articleShares">3</span></li>
 	        	</ul>
+	        </div>
+	        
+	        <!-- 작성자 프로필(모바일) -->
+	        <div id="mobileEditorInfo">
+	        	<a class="closebtn mobileCloseBtn">x</a>
+	        	<div id="editorProfile">
+	        		<div id="editorImgBox">
+	        			<img class="editorImg" src="https://s-media-cache-ak0.pinimg.com/736x/a9/82/69/a982694f692b517178779dd0b5e35f17.jpg">
+	        		</div>
+	        		<p id="editorNameIntro">
+	        			<span class="editorName">레아</span>
+	        			<span class="editorIntro">에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개 에디터 자기 소개</span>
+	        		</p>
+	        	</div>
 	        </div>
 	        
 	        
