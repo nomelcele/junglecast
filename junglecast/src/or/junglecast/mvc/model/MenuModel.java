@@ -15,4 +15,9 @@ public class MenuModel {
 	public ModelAndView gotoPassword(){
 		return new ModelAndView("/menu/password");
 	}
+	
+	@RequestMapping("/menu=join")
+	public ModelAndView gotoJoin(){
+		return new ModelAndView("/menu/join");
+	}
 }
