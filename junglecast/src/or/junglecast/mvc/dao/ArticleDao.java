@@ -17,62 +17,62 @@ public class ArticleDao {
 	private SqlSessionTemplate st;
 	
 	public ArticleVO articleContent(int article_id){
-		// °Ô½Ã¹° ³»¿ë
+		// ê²Œì‹œë¬¼ ë‚´ìš©
 		return st.selectOne("article.articleContent", article_id);
 	}
 	
 	public ProfileVO editorInfo(int m_id){
-		// °Ô½Ã¹° ÀÛ¼ºÀÚ(¿¡µğÅÍ) ÇÁ·ÎÇÊ
+		// ê²Œì‹œë¬¼ ì‘ì„±ì(ì—ë””í„°) í”„ë¡œí•„
 		return st.selectOne("article.editorInfo", m_id);
 	}
 	
 	public void likeArticle(int article_id){
-		// °Ô½Ã¹° ÁÁ¾Æ¿ä ÇßÀ» ¶§ ÁÁ¾Æ¿ä ¼ö Áõ°¡
+		// ê²Œì‹œë¬¼ ì¢‹ì•„ìš” í–ˆì„ ë•Œ ì¢‹ì•„ìš” ìˆ˜ ì¦ê°€
 		st.update("article.likeArticle", article_id);
 	}
 	
 	public void shareArticle(int article_id){
-		// °Ô½Ã¹° sns¿¡ °øÀ¯ÇßÀ» ¶§ °øÀ¯ ¼ö Áõ°¡
+		// ê²Œì‹œë¬¼ snsì— ê³µìœ í–ˆì„ ë•Œ ê³µìœ  ìˆ˜ ì¦ê°€
 		st.update("article.shareArticle", article_id);
 	}
 	
 	public List<ReplyVO> replyList(int article_id){
-		// °Ô½Ã¹°¿¡ ´Ş¸° ´ñ±Û ¸ñ·Ï
+		// ê²Œì‹œë¬¼ì— ë‹¬ë¦° ëŒ“ê¸€ ëª©ë¡
 		return st.selectList("article.replyList", article_id);
 	}
 	
 	public List<Re_replyVO> rereplyList(int reply_id){
-		// ´ñ±Û¿¡ ´Ş¸° ´ä±Û ¸ñ·Ï
+		// ëŒ“ê¸€ì— ë‹¬ë¦° ë‹µê¸€ ëª©ë¡
 		return st.selectList("article.rereplyList", reply_id);
 	}
 	
 	public void writeReply(ReplyVO revo){
-		// ´ñ±Û ÀÛ¼º
+		// ëŒ“ê¸€ ì‘ì„±
 		st.insert("article.writeReply", revo);
 	}
 	
 	public void updateReply(int article_id){
-		// ´ñ±Û ÀÛ¼º ½Ã ´ñ±Û ¼ö Áõ°¡
+		// ëŒ“ê¸€ ì‘ì„± ì‹œ ëŒ“ê¸€ ìˆ˜ ì¦ê°€
 		st.update("article.updateReply", article_id);
 	}
 	
 	public void writeRereply(Re_replyVO rrvo){
-		// ´ñ±Û¿¡ ´ä±Û ÀÛ¼º
+		// ëŒ“ê¸€ì— ë‹µê¸€ ì‘ì„±
 		st.insert("article.writeRereply", rrvo);
 	}
 	
 	public void likeReply(int reply_id){
-		// ´ñ±Û ÁÁ¾Æ¿ä ÇßÀ» ¶§ ÁÁ¾Æ¿ä ¼ö Áõ°¡
+		// ëŒ“ê¸€ ì¢‹ì•„ìš” í–ˆì„ ë•Œ ì¢‹ì•„ìš” ìˆ˜ ì¦ê°€
 		st.update("article.likeReply", reply_id);
 	}
 	
 	public List<ReplyVO> bestReplyList(int article_id){
-		// º£½ºÆ® ´ñ±Û(ÁÁ¾Æ¿ä ¼ö »óÀ§ 5À§ ¾È¿¡ µå´Â ´ñ±Û)
+		// ë² ìŠ¤íŠ¸ ëŒ“ê¸€(ì¢‹ì•„ìš” ìˆ˜ ìƒìœ„ 5ìœ„ ì•ˆì— ë“œëŠ” ëŒ“ê¸€)
 		return st.selectList("article.bestReplyList", article_id);
 	}
 
 	public void updateView(int article_id){
-		// Á¶È¸¼ö Áõ°¡
+		// ì¡°íšŒìˆ˜ ì¦ê°€
 		st.update("article.updateView", article_id);
 	}
 }

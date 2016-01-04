@@ -22,51 +22,51 @@ public class ArticleModel {
 	
 	@RequestMapping(value="articleDetail")
 	public String articleDetail(int article_id, Model model){
-		// °Ô½Ã¹° ºÒ·¯¿À±â
-		adao.updateView(article_id); // Á¶È¸¼ö Áõ°¡
+		// ê²Œì‹œë¬¼ ë¶ˆëŸ¬ì˜¤ê¸°
+		adao.updateView(article_id); // ì¡°íšŒìˆ˜ ì¦ê°€
 		ArticleVO arvo = adao.articleContent(article_id);
-		model.addAttribute("articleContent", arvo); // °Ô½Ã¹° ³»¿ë
-		model.addAttribute("editorInfo", adao.editorInfo(arvo.getM_id())); // ÀÛ¼ºÀÚ ÇÁ·ÎÇÊ
-		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // º£½ºÆ® ´ñ±Û ¸ñ·Ï
-		model.addAttribute("replyList", adao.replyList(article_id)); // ´ñ±Û ¸ñ·Ï
+		model.addAttribute("articleContent", arvo); // ê²Œì‹œë¬¼ ë‚´ìš©
+		model.addAttribute("editorInfo", adao.editorInfo(arvo.getM_id())); // ì‘ì„±ì í”„ë¡œí•„
+		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // ë² ìŠ¤íŠ¸ ëŒ“ê¸€ ëª©ë¡
+		model.addAttribute("replyList", adao.replyList(article_id)); // ëŒ“ê¸€ ëª©ë¡
 		
 		return "detail/articleDetail";
 	}
 
 	@RequestMapping(value="likeArticle")
 	public void likeArticle(int article_id){
-		// °Ô½Ã¹° ÁÁ¾Æ¿ä
+		// ê²Œì‹œë¬¼ ì¢‹ì•„ìš”
 		adao.likeArticle(article_id);
 	}
 	
 	@RequestMapping(value="shareArticle")
 	public void shareArticle(int article_id){
-		// °Ô½Ã¹° sns °øÀ¯
+		// ê²Œì‹œë¬¼ sns ê³µìœ 
 		adao.shareArticle(article_id);
 	}
 	
 	@RequestMapping(value="writeReply")
 	public String writeReply(ReplyVO revo, HttpSession session, Model model){
-		// ´ñ±Û ÀÛ¼º
+		// ëŒ“ê¸€ ì‘ì„±
 		int article_id = revo.getArticle_id();
-		revo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // ÇöÀç Á¢¼ÓÇÑ »ç¿ëÀÚÀÇ ¹øÈ£
-		adao.writeReply(revo); // ´ñ±Û ÀÛ¼º
-		adao.updateReply(article_id); // ´ñ±Û °¹¼ö Áõ°¡
-		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // º£½ºÆ® ´ñ±Û ¸ñ·Ï
-		model.addAttribute("replyList", adao.replyList(article_id)); // ´ñ±Û ¸ñ·Ï
+		revo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // í˜„ì¬ ì ‘ì†í•œ ì‚¬ìš©ìì˜ ë²ˆí˜¸
+		adao.writeReply(revo); // ëŒ“ê¸€ ì‘ì„±
+		adao.updateReply(article_id); // ëŒ“ê¸€ ê°¯ìˆ˜ ì¦ê°€
+		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // ë² ìŠ¤íŠ¸ ëŒ“ê¸€ ëª©ë¡
+		model.addAttribute("replyList", adao.replyList(article_id)); // ëŒ“ê¸€ ëª©ë¡
 		return "detail/replyList";
 	}
 	
 	@RequestMapping(value="likeReply")
 	public String likeReply(int reply_id){
-		// ´ñ±Û ÁÁ¾Æ¿ä
+		// ëŒ“ê¸€ ì¢‹ì•„ìš”
 		adao.likeReply(reply_id);
 		return "";
 	}
 	
 	@RequestMapping(value="rereplyList")
 	public String rereplyList(int reply_id, Model model){
-		// ´ä±Û ºÒ·¯¿À±â
+		// ë‹µê¸€ ë¶ˆëŸ¬ì˜¤ê¸°
 		model.addAttribute("rereplyList", adao.rereplyList(reply_id));
 		model.addAttribute("reply_id", reply_id);
 		return "detail/rereplyList";
@@ -74,8 +74,8 @@ public class ArticleModel {
 	
 	@RequestMapping(value="writeRereply")
 	public String writeRereply(Re_replyVO rrvo, HttpSession session){
-		// ´ä±Û ÀÛ¼º
-		rrvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // ÇöÀç Á¢¼ÓÇÑ »ç¿ëÀÚÀÇ ¹øÈ£
+		// ë‹µê¸€ ì‘ì„±
+		rrvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // í˜„ì¬ ì ‘ì†í•œ ì‚¬ìš©ìì˜ ë²ˆí˜¸
 		adao.writeRereply(rrvo);
 		return "redirect:rereplyList?reply_id="+rrvo.getReply_id();
 	}
