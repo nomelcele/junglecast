@@ -2,6 +2,7 @@ package or.junglecast.mvc.model;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequestWrapper;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -36,7 +38,7 @@ public class WriteArticleModel {
 		return mav;
 	}
 
-	@RequestMapping(value = "uploadArticle", method = RequestMethod.POST)
+	@RequestMapping(value = "insertArticle", method = RequestMethod.POST)
 	public ModelAndView insertArticle(ArticleVO aVo){
 		ModelAndView mav = new ModelAndView("jsonView");
 		System.out.println(aVo.getArticle_title()+", " + aVo.getArticle_subtitle() + " , " + aVo.getCategory_id());
@@ -48,36 +50,40 @@ public class WriteArticleModel {
 	
 	@RequestMapping(value = "uploadImgs", method = RequestMethod.POST)
 	@ResponseBody
-	 public ModelAndView uploadImgs(Model model, MultipartHttpServletRequest multipartRequest) throws IOException{
-	 
- 
-	  MultipartFile file = multipartRequest.getFile("pic_url");   //뷰에서 form으로 넘어올 때 name에 적어준 이름입니다.
-	  System.out.println(model.toString());
-	  
-	  int article_id = Integer(multipartRequest.getAttribute("article_id"));
-	  String pic_text = multipartRequest.getAttribute("pic_text").toString();
-	  int pic_order = Integer(multipartRequest.getAttribute("pic_order"));
-	  System.out.println("article id, pic_text, pic_order" + article_id +", " + pic_text + ", " + pic_order);
-	  
-	  Calendar cal = Calendar.getInstance();
-	  String fileName = file.getOriginalFilename();
-	  String fileType = fileName.substring(fileName.lastIndexOf("."), fileName.length());
-	  String replaceName = cal.getTimeInMillis() + fileType;  //파일 이름의 중복을 막기 위해서 이름을 재설정합니다.
+	 public ModelAndView uploadImgs(MultipartHttpServletRequest multipartRequest) throws IOException{
+	  List<MultipartFile> file = multipartRequest.getFiles("pic_url");   //뷰에서 form으로 넘어올 때 name에 적어준 이름입니다.
 
+	 
+	  Calendar cal=null;
+	  String fileName, fileType, replaceName;
 	  String path =  new HttpServletRequestWrapper(multipartRequest).getSession().getServletContext().getRealPath("resources/articleContents");
 	  System.out.println("경로 : " + path);
-	  FileUpload.fileUpload(file, path, replaceName);
 	  
-	  PictureVO pvo = new PictureVO(article_id, pic_order, replaceName, pic_text) ;
+	  String imgNames="";
+	  
+	  for(int i=0; i<file.size(); i++){
+		  cal = Calendar.getInstance();
+		  fileName = file.get(i).getOriginalFilename();
+		  fileType = fileName.substring(fileName.lastIndexOf("."), fileName.length());
+		  replaceName = cal.getTimeInMillis() + fileType;  //파일 이름의 중복을 막기 위해서 이름을 재설정합니다.
+		  FileUpload.fileUpload(file.get(i), path, replaceName);
+		  imgNames += replaceName;
+		  if(i < file.size()-1) imgNames += "*";
+		  
+	  }
 	  ModelAndView mav = new ModelAndView("jsonView");
-	  //mav.addObject("pic_name", replaceName); //이미지 파일 정보 db에 업로드하고 pic_id를 받아옴
-	  mav.addObject("pic_id", waDao.insertPicture(pvo));
-	  return new ModelAndView("jsonView");
+	  System.out.println(imgNames);
+	  mav.addObject("pic_names", imgNames);
+	  return mav;
 
 	 }
-
-	private int Integer(Object attribute) {
-		// TODO Auto-generated method stub
-		return 0;
+	@RequestMapping(value = "insertPicture", method = RequestMethod.POST)
+	public ModelAndView insertPicture(@RequestParam("pic_url") String pic_url, @RequestParam("pic_text") String pic_text,
+			@RequestParam("article_id") int article_id, @RequestParam("pic_order") int pic_order){
+		ModelAndView mav = new ModelAndView("jsonView");
+		PictureVO pvo = new PictureVO(article_id, pic_order, pic_url, pic_text);
+		System.out.println(pic_text + " , " + pic_url);
+		mav.addObject("pic_id" , waDao.insertPicture(pvo));
+		return mav;
 	}
 }

@@ -20,7 +20,7 @@ textarea, input, select{font-family: 'Dotum', Arial, sans-serif; border:none; fo
 			#subtitle_textarea_div{width:90%; height:100px; margin: 12px auto 0; float:left;}
 				#subtitle_textarea_div textarea{width:100%; height:100%;}
 		#imgCard_wrapper{width:80%; height:180px; margin:0 auto; display:block;}
-		.an_imgCard_div{height:180px; width:90%; float:left; margin:0 auto; border:1px solid #00a1ff; margin:10px auto; overflow: hidden; background:white; display:block;}
+		.an_imgCard_form{height:180px; width:90%; float:left; margin:0 auto; border:1px solid #00a1ff; margin:10px auto; overflow: hidden; background:white; display:block;}
 			.add_img_btn{width:40px; height:40px; background:#00a1ff; margin:0; float:left; cursor: pointer; z-index:100; margin-left:-390px;}
 			.add_img_btn img{width:60%; height:60%; margin:7px 7px;}
 			.img_preview_div{width:390px; height:100%; float:left; margin:0; text-align: center; color:#888888; line-height:150px; overflow: hidden; z-index:10;}
@@ -53,42 +53,72 @@ $(document).ready(function(){
 
 	
 	$('#ok_btn').click(function(){                            //업로드할 파일을 선택 할 경우 동작을 일으킵니다.
-		//var form = $('#uploadForm');
 		if($('select[name=category_id]').val() == "0"){
 			alert("카테고리를 지정하십시오.");
 		}else{
+			var form = new FormData($('#insertArticle')[0]);
+			alert("else");
 			$.ajax({
-				url: "uploadArticle",
-				data: new FormData(document.getElementById('uploadArticle')),
+				url: "insertArticle",
+				data: form,
 				dataType: 'JSON',
 				processData: false,
 				contentType: false,
 				type: 'POST',
 				success: function (data) {
-					var img_ids = '';
 					$('.anImg_article_id').val(data.article_id);
 					var img_num =$('.input_file').length;
+					var img_form = new FormData();
 					
-					for(i=1; i<img_num+1; i++){
-						alert('form'+i);
-						var img_form = new FormData(document.getElementById('form'+i));
-						$.ajax({
-							url: "uploadImgs",
-							data: img_form, 
-							dataType: 'JSON',
-							processData: false,
-							contentType: false,
-							type: 'POST',
-							success: function (data) {
-								img_ids += data.pic_id;
-								if(i != img_num) img_ids += ",";
-							}
-						});//이미지 업로드 ajax 끝
-					}//for문 끝 */				
-					alert("img_ids : " + img_ids);
+					for(i=0; i<img_num; i++){
+						img_form.append("pic_url",$("input[name=pic_url]")[i].files[0]);
+					}//for문 끝 */
+					$.ajax({
+						url: "uploadImgs",
+						data: img_form,
+						dataType: 'JSON',
+						processData: false,
+						contentType: false,
+						type: 'POST',
+						success: function(data2) {
+							$('.input_file').attr("type","hidden");
+							var imgs =data2.pic_names;
+							alert(imgs);
+							var imgArr = imgs.split('*');
+							var pic_ids;
+							//var form2;
+							for(j=0; j<imgArr.length; j++){
+								alert(imgArr[j]);
+								$('.input_file').eq(j).val(imgArr[j]);
+								//form2 = new FormData($('.an_imgCard_form').eq(j));
+								//new FormData(document.getElementById("picUploadForm"))
+								$.ajax({
+									url: "insertPicture",
+									data: {
+										pic_url : imgArr[j],
+										pic_text : pic_order,
+										article_id : data.article_id,
+										pic_order : j
+									},
+									dataType: 'JSON',
+									processData: false,
+									contentType: false,
+									type: 'POST',
+									success: function (data3) {
+										alert("성공");
+										pic_ids += data3.pic_id;
+										if(j<imgArr.length-1) pic_ids += ",";
+									}
+								});//이미지 업로드 ajax 끝
+							}//for문 끝
+							alert(pic_ids);
+
+						}
+					});//이미지 업로드 ajax 끝
+					
 				}
 			});//글 전체 업로드 ajax 끝
-		}
+		}//else 끝
 
 
 	});//click함수 끝
@@ -96,7 +126,7 @@ $(document).ready(function(){
 /*----------------------------------------------------------------------*/
 var imgSeq = 1;
 function add_imgCard(){
-	var aCard = '    <form class="an_imgCard_div" id="form'+ ++imgSeq +'" method="post">';
+	var aCard = '    <form class="an_imgCard_form" id="form'+ ++imgSeq +'" method="post">';
 	aCard += '			  <div class="img_preview_div">이미지 미리보기...</div>';
 	aCard += '			  <div class="add_img_btn"><img src="resources/images/writeArticleIcons/camera_icon.png"/></div>';
 	aCard += '			  <input type="file" class="input_file" name="pic_url">';
@@ -124,7 +154,7 @@ function readURL(input) {
 <body>
 <section id="writeArticle_wrapper">
 	<div id="writingArea_wrapper">
-	<form action="" method="post" id="uploadArticle">
+	<form action="" method="post" id="insertArticle">
 		<div id="title_wrapper">
 			<div id="category_select_div">
 				<select name="category_id">
@@ -139,7 +169,7 @@ function readURL(input) {
 		</div>
 	</form>
 		<div id="imgCard_wrapper">
-			<form class="an_imgCard_div" id="form1" method="post">
+			<form class="an_imgCard_form" id="form1" method="post">
 				<div class="img_preview_div">이미지 미리보기...</div>
 				<div class="add_img_btn"><img src="resources/images/writeArticleIcons/camera_icon.png"/></div>
 				<input type="file" class="input_file" name="pic_url">
