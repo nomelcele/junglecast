@@ -53,11 +53,11 @@
 			margin-bottom:13px; width: 336px; height:29px; border-bottom:2px solid #C4C5C4;
 		}
 		#id{
-			border:none; font-size:15px; color:#828180; background-color: transparent;
+			border:none; font-size:15px; color:#828180; background-color: transparent; width:100%;
 			
 		}
 		#pw{
-			border:none; font-size:15px; color:#828180; background-color: transparent;
+			border:none; font-size:15px; color:#828180; background-color: transparent; width:100%;
 		}
 		#emailsave{
 			margin-bottom:13px;
@@ -110,10 +110,10 @@
 			<div id = "c_board">
 				<form action = "" method="post">
 					<div id = "b_id">
-						<input type = "text" name="id" size = 38px width = 38px placeholder = "이메일을 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'" id = "id"/>
+						<input type = "text" name="id" placeholder = "이메일을 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'" id = "id"/>
 					</div>
 					<div id = "b_pw">	
-						<input type = "password" name="pw" size = 38px width = 38px placeholder = "비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요.'" id = "pw"/>
+						<input type = "password" name="pw" placeholder = "비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요.'" id = "pw"/>
 					</div>
 				</form>
 				<div id = "emailsave" style="line-height:16px;">
