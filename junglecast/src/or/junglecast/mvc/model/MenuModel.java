@@ -7,7 +7,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class MenuModel {
 	@RequestMapping("/menu=login")
-	public ModelAndView gotoMain(){
+	public ModelAndView gotoLogin(){
 		return new ModelAndView("/menu/login");
+	}
+	
+	@RequestMapping("/menu=password")
+	public ModelAndView gotoPassword(){
+		return new ModelAndView("/menu/password");
 	}
 }
