@@ -2,9 +2,9 @@ package or.junglecast.vo;
 
 public class ReplyVO {
 	private int reply_id, m_id, pic_id, article_id, reply_like,
-	rereply_count, replyWriterPic, replyWriterId;
+	rereply_count, replyWriterId;
 	private String reply_text, reply_date,
-	replyWriterName;
+	replyWriterPic, replyWriterName;
 	
 	public int getReply_id() {
 		return reply_id;
@@ -54,10 +54,10 @@ public class ReplyVO {
 	public void setRereply_count(int rereply_count) {
 		this.rereply_count = rereply_count;
 	}
-	public int getReplyWriterPic() {
+	public String getReplyWriterPic() {
 		return replyWriterPic;
 	}
-	public void setReplyWriterPic(int replyWriterPic) {
+	public void setReplyWriterPic(String replyWriterPic) {
 		this.replyWriterPic = replyWriterPic;
 	}
 	public int getReplyWriterId() {

@@ -71,16 +71,18 @@
 	       <div id="replyList">
 	       	<ul>
 	       		<li>
-		       		<div class="replyContent">
-   				       	<img src="resources/memberImg/gildong.jpg">
-			       		<div class="replyDetail">
-			       			<span class="best writerName">홍길동</span>
-			       			<p class="replyText">댓글 내용입니다.</p>
-			       			<span class="replyDate">2015.12.30. 10:46</span>
-				       		<div class="replySubDetail">
-			       				<a class="likeReplyBtn" href="javascript:likeArticle(0);">좋아요 30개</a>
-			       				<a class="rereplyBtn" href="javascript:showRereply(0);">답글 23개</a>
-			       			</div>			       			
+		       		<div class="replyContentBox">
+		       			<div class="replyContent">
+	   				       	<img src="resources/memberImg/gildong.jpg">
+				       		<div class="replyDetail">
+				       			<span class="best writerName">홍길동</span>
+				       			<p class="replyText">댓글 내용입니다.</p>
+				       			<span class="replyDate">2015.12.30. 10:46</span>
+					       		<div class="replySubDetail">
+				       				<a class="likeReplyBtn" href="javascript:likeReply(0);">좋아요 30개</a>
+				       				<a class="rereplyBtn" href="javascript:rereplyList(0);">답글 23개</a>
+				       			</div>			       			
+				       		</div>
 			       		</div>
 		       			<div class="rereplyList" id="rereplyList0">
 		       				<ul>
@@ -102,15 +104,17 @@
 		       		</div>
 	       		</li>
 	       		<li>
-	       			<div class="replyContent">
-   				       	<img src="resources/memberImg/gildong.jpg">
-		       			<div class="replyDetail">
-			       			<span class="writerName">홍길동</span>
-			       			<p class="replyText">댓글 내용입니다.</p>
-			       			<span class="replyDate">2015.12.30. 10:46</span>
-				       		<div class="replySubDetail">
-			       				<a class="likeReplyBtn" href="javascript:likeArticle(1);">좋아요 30개</a>
-			       				<a class="rereplyBtn" href="javascript:showRereply(1);">답글 23개</a>
+	       			<div class="replyContentBox">
+	       				<div class="replyContent">
+	   				       	<img src="resources/memberImg/gildong.jpg">
+			       			<div class="replyDetail">
+				       			<span class="writerName">홍길동</span>
+				       			<p class="replyText">댓글 내용입니다.</p>
+				       			<span class="replyDate">2015.12.30. 10:46</span>
+					       		<div class="replySubDetail">
+				       				<a class="likeReplyBtn" href="javascript:likeArticle(1);">좋아요 30개</a>
+				       				<a class="rereplyBtn" href="javascript:rereplyList(1);">답글 23개</a>
+				       			</div>
 			       			</div>
 		       			</div>
 		       			<div class="rereplyList" id="rereplyList1">

@@ -1,8 +1,10 @@
 package or.junglecast.vo;
 
 public class Re_replyVO {
-	private int rereply_id, m_id, reply_id;
-	private String rereply_text, rereply_date;
+	private int rereply_id, m_id, reply_id,
+	rereplyWriterId;
+	private String rereply_text, rereply_date,
+	rereplyWriterPic, rereplyWriterName;
 	
 	public int getRereply_id() {
 		return rereply_id;
@@ -34,7 +36,23 @@ public class Re_replyVO {
 	public void setRereply_date(String rereply_date) {
 		this.rereply_date = rereply_date;
 	}
+	public int getRereplyWriterId() {
+		return rereplyWriterId;
+	}
+	public void setRereplyWriterId(int rereplyWriterId) {
+		this.rereplyWriterId = rereplyWriterId;
+	}
+	public String getRereplyWriterPic() {
+		return rereplyWriterPic;
+	}
+	public void setRereplyWriterPic(String rereplyWriterPic) {
+		this.rereplyWriterPic = rereplyWriterPic;
+	}
+	public String getRereplyWriterName() {
+		return rereplyWriterName;
+	}
+	public void setRereplyWriterName(String rereplyWriterName) {
+		this.rereplyWriterName = rereplyWriterName;
+	}
 	
-	
-
 }

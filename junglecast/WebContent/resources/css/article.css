@@ -29,6 +29,16 @@ ul {padding:0;}
 
 
 /*///////////////////////////////////////////////*/
+/* 반응형 설정 */
+@media only screen and (max-width:1279px) and (min-width:1024px){
+	.modal{padding:0;}
+	.modal-dialog .modal-content{width:100%;}
+	#articleInfo{position:fixed; padding:12px; width:23%;}
+}
+/*///////////////////////////////////////////////*/
+
+
+/*///////////////////////////////////////////////*/
 /* 콘텐츠 표시 영역 */
 .container {width:75%;}
 
@@ -55,8 +65,8 @@ ul {padding:0;}
 #twBtn{background: #61ABC4 url(../images/detailIcons/twBtn.png) no-repeat 10px; display:inline-block; width:40px; height:40px;}
 #linkBtn{background: #FCB040 url(../images/detailIcons/linkBtn.png) no-repeat 10px; display:inline-block; width:40px; height:40px;}
 .invisible{visibility: hidden;}
-#saveBtn em{font-style: normal; position:relative; top:8px; left:-5px;}
-#likeBtn em{font-style: normal; position:relative; top:8px; left:5px;}
+#saveBtn em{font-style: normal; position:relative; top:11px; left:-5px;}
+#likeBtn em{font-style: normal; position:relative; top:11px; left:5px;}
 
 /* 댓글 영역 */
 #replyWrite{background-color: #e4e4e4; width: 100%; height: 130px;}
@@ -65,26 +75,27 @@ ul {padding:0;}
 #replyWrite a{background-color: #2aa8e0; color: #fff; position:absolute; margin-top:21px; margin-bottom:27px; font-size:14px; padding: 25px 8px 28px 8px;}
 #replyList{width: 100%; margin: 0; }
 #replyList li{list-style-type: none;}
-.replyContent{border-bottom: 1px solid #B6BDC1; padding: 13px 0px 13px 50px;}
-.replyContent img{width: 45px; height: 45px; position:absolute;}
+.replyContentBox{padding: 13px 50px;}
+.replyContentBox img{width: 45px; height: 45px; position:absolute;}
+.replyContent{border-bottom: 1px solid #ECEEF1; padding-bottom:10px;}
 .best{background:url(../images/detailIcons/best.png) no-repeat 0 4px; padding:3px 40px;}
 .writerName{font-size: 15px; color: #414548; font-weight: bold;}
 .replyText{font-size:13px; margin-top:8px; margin-bottom:5px;}
 .replyDate{background:url(../images/detailIcons/date.png) no-repeat 0; color: #B6BDC1; font-size:12px; padding:4px 20px 3px; background-size:13px;}
-.replyDetail{display:inline-block; margin-left:70px;}
+.replyDetail{display:inline-block; margin-left:65px;}
 .replySubDetail{margin-top:20px; margin-bottom:10px;}
 .replySubDetail a{padding-right: 40px; color:#6F7375; font-size:12px; text-decoration: none;}
 .likeReplyBtn{background:url(../images/detailIcons/likeReply.png) no-repeat 0; background-size:15px; padding:0px 20px;}
 .rereplyBtn{background:url(../images/detailIcons/rereplyBtn.png) no-repeat 0; background-size:5px; padding:0px 11px;}
 
 /* 답글 영역 */
-.rereplyList{background-color: #ECEEF1; width:79%; height:auto; display:none; padding-left:60px; padding-right:50px; padding-top:13px; margin-top:10px;}
-.rereplyWrite{width: 100%; margin-top:30px; border-top:1px solid #A7AEB3; padding:15px 0; display:inline-block;}
-.rereplyWrite img{width:30px; height:30px; padding-left:10px;}
-.rereplyWrite input[type=text] {border:none; position:absolute; margin-left: 50px; width:40%; font-size:13px; padding: 8px;}
-.rereplyWrite a{background-color: #A7AEB3; color: #414548; font-size:14px; padding: 8px 10px 8px 8px; float:right; margin-right:5px;}
-.rereply{padding: 10px;}
-.rereplyList li img{padding:10px;}
+.rereplyList{background-color: #ECEEF1; height:auto; display:none; padding:13px 63px 0 63px;}
+.rereplyWrite{width: 100%; margin:27px 8px 0px 0px; border-top:1px solid #A7AEB3; padding:15px 0; display:inline-block;}
+.rereplyWrite img{width:30px; height:30px;}
+.rereplyWrite input[type=text] {border:none; position:absolute; margin-left: 40px; width:39%; font-size:12px; padding: 8px;}
+.rereplyWrite a{background-color: #A7AEB3; color: #414548; font-size:13px; padding:7px 8px; float:right;}
+.rereply{padding: 10px 0px;}
+.rereplyList li img{padding:10px 0px;}
 /*///////////////////////////////////////////////*/
 
 

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import or.junglecast.mvc.dao.ArticleDao;
 import or.junglecast.vo.AccountVO;
 import or.junglecast.vo.ArticleVO;
+import or.junglecast.vo.Re_replyVO;
 import or.junglecast.vo.ReplyVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class ArticleModel {
 	
 	@RequestMapping(value="articleDetail")
 	public String articleDetail(int article_id, Model model){
-		// 게시물 보기
+		// 게시물 불러오기
 		adao.updateView(article_id); // 조회수 증가
 		ArticleVO arvo = adao.articleContent(article_id);
 		model.addAttribute("articleContent", arvo); // 게시물 내용
@@ -51,8 +52,32 @@ public class ArticleModel {
 		revo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
 		adao.writeReply(revo); // 댓글 작성
 		adao.updateReply(article_id); // 댓글 갯수 증가
+		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // 베스트 댓글 목록
 		model.addAttribute("replyList", adao.replyList(article_id)); // 댓글 목록
 		return "detail/replyList";
+	}
+	
+	@RequestMapping(value="likeReply")
+	public String likeReply(int reply_id){
+		// 댓글 좋아요
+		adao.likeReply(reply_id);
+		return "";
+	}
+	
+	@RequestMapping(value="rereplyList")
+	public String rereplyList(int reply_id, Model model){
+		// 답글 불러오기
+		model.addAttribute("rereplyList", adao.rereplyList(reply_id));
+		model.addAttribute("reply_id", reply_id);
+		return "detail/rereplyList";
+	}
+	
+	@RequestMapping(value="writeRereply")
+	public String writeRereply(Re_replyVO rrvo, HttpSession session){
+		// 답글 작성
+		rrvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
+		adao.writeRereply(rrvo);
+		return "redirect:rereplyList?reply_id="+rrvo.getReply_id();
 	}
 	
 }
