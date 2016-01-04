@@ -4,12 +4,12 @@
 
 <script type="text/javascript">
 
-function clearText(field)
+/* function clearText(field)
  {
    if(field.defaultValue==field.value)
     field.value="";
    else if (field.value == '') field.value = field.defaultValue;
- }
+ } */
 
 </script>
 
@@ -42,11 +42,11 @@ function clearText(field)
 			margin-bottom:13px; width: 336px; height:29px; border-bottom:2px solid #C4C5C4;
 		}
 		#id{
-			border:none; font-size:15px; color:#828180; background-color: 'red';
+			border:none; font-size:15px; color:#828180; background-color: transparent;
 			
 		}
 		#pw{
-			border:none; font-size:15px; color:#828180;
+			border:none; font-size:15px; color:#828180; background-color: transparent;
 		}
 		#emailsave{
 			margin-bottom:13px;
@@ -93,10 +93,10 @@ function clearText(field)
 			<div id = "c_board">
 				<form action = "" method="post">
 					<div id = "b_id">
-						<input type = "text" name="id" size = 38px width = 38px value = "이메일을 입력하세요." onFocus = "clearText(this)" onFocusout = "clearText(this)" id = "id"/>
+						<input type = "text" name="id" size = 38px width = 38px placeholder = "이메일을 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'" id = "id"/>
 					</div>
 					<div id = "b_pw">	
-						<input type = "password" name="pw" size = 38px width = 38px value = "비밀번호를 입력하세요." onFocus = "clearText(this)" onFocusout = "clearText(this)" id = "pw"/>
+						<input type = "password" name="pw" size = 38px width = 38px placeholder = "비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요.'" id = "pw"/>
 					</div>
 				</form>
 				<div id = "emailsave" style="line-height:16px;">
@@ -116,8 +116,8 @@ function clearText(field)
 					<input type = "submit" value = "카카오톡 로그인">
 				</div>
 				<div id = "other">
-					<div id = "join"><a href = "/menu=join" target = "_self">회원가입</a></div>
-					<div id = "password"><a href = "/menu=password" target = "_self">비밀번호 찾기</a></div>
+					<div id = "join"><a href = "/junglecast/menu=join" target = "_self">회원가입</a></div>
+					<div id = "password"><a href = "/junglecast/menu=password" target = "_self">비밀번호 찾기</a></div>
 				</div>
 				
 			</div>
