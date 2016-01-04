@@ -42,7 +42,7 @@
 			.catogory_icon{width:20px; height:20px; display: inline-block; line-height: 20px;}
 			#categories{color: #a0a0a0; font-size:16px; font-weight: bold; }
 	#tablet_left_area{display:none;}
-	#articles_area{position: relative; width:990px; height: 100%; float:left; margin:31px 0 0 288px; z-index:200;}
+	#articles_area{position: relative; width:990px; height: 100%; float:left; margin:50px 0 0 288px; z-index:200;}
 		#article_img_container{height:288px; width:630px; float: left; border:1px solid #e6e7e8; margin:8px 1px; cursor: pointer;}
 		#article_imgs{height: 288px; width: 100%; overflow: hidden; }
 		#rank_article_area{height:288px; width:346px; float:right; background: #fff; border:1px solid #e6e7e8; margin:8px 1px;}
@@ -311,11 +311,26 @@ function left_area_positioning(display_how){
 	if(matchMedia("only screen and (min-width:1280px)").matches){ //대형화면
 		$('#left_area').css("display", "block");
 	}else if (matchMedia("only screen and (min-width:1024px) and (max-width:1279px)").matches) {//일반 PC 모니터 크기
-		$('#left_area').css("display", "block");
+		if($('#main_body_cover').css("display")=="block"){
+			$('#main_body_cover').css("display", "none");
+			$('#left_area').css("display", "none");
+		}else{
+			$('#left_area').css("display", "block");
+		}
+		
 	} else if(matchMedia("only screen and (min-width:768px) and (max-width:1023px)").matches){//태블릿 화면
-		$('#left_area').css("display", "none");
+		if($('#main_body_cover').css("display")=="block"){
+			$('#left_area').css("display", "block");
+		}else{
+			$('#left_area').css("display", "none");
+		}
 	}else if(matchMedia("only screen and (max-width:767px)").matches){ //모바일 화면
-		$('#left_area').css("display", "none");
+		if($('#main_body_cover').css("display")=="block"){
+			$('#left_area').css("display", "block");
+		}else{
+			$('#left_area').css("display", "none");
+		}
+		
 	}
 }
 

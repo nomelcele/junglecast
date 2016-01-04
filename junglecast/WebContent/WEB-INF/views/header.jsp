@@ -13,7 +13,7 @@
 	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff; position : fixed; z-index:500;}
 	#header{height:50px; margin : 0 auto; max-width: 1280px; position: relative;}
 	#logo{background: url("resources/images/topbarImg/pikicast_white.png") no-repeat 0px 10px; float:left;
-			background-size: 90% auto; height : 50px; width : 115px; margin : auto 30px;}
+			background-size: 90% auto; height : 50px; width : 115px; margin : auto 30px; cursor: pointer;}
 	#search{float:left; background-color: #3cb5fc; position:relative; top : 10px; width: auto; left:10%;}
 	#search_input{width : 310px; border : medium none; height:25px; line-height: 25px; float:left; background-color: rgba(60,181,252,0.5); color:white;}
 	#search_btn{width:36px; height:28px; cursor: pointer; background:url("resources/images/topbarImg/search_btn_skyblue.png") no-repeat; 
@@ -62,7 +62,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#logo').click(function(){
-
+			location.href="main";
 		});
 		$('#write_icon').click(function(){
 			location.href="writeArticle";

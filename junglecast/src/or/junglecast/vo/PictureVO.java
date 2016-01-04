@@ -4,6 +4,18 @@ public class PictureVO {
 	private int pic_id, article_id, pic_order;
 	private String pic_url, pic_text;
 	
+	
+	public PictureVO() {}
+
+	public PictureVO(int article_id, int pic_order, String pic_url,
+			String pic_text) {
+		super();
+		this.article_id = article_id;
+		this.pic_order = pic_order;
+		this.pic_url = pic_url;
+		this.pic_text = pic_text;
+	}
+	
 	public int getPic_id() {
 		return pic_id;
 	}
@@ -16,6 +28,7 @@ public class PictureVO {
 	public void setArticle_id(int article_id) {
 		this.article_id = article_id;
 	}
+
 	public int getPic_order() {
 		return pic_order;
 	}

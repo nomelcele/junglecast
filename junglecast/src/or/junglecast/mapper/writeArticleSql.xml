@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="wa">
+
+	<insert id="insertArticle" parameterType="arvo" >
+		INSERT INTO ARTICLE VALUES(ARTICLE_ID_SEQ.NEXTVAL, 1, #{article_title}, #{article_subtitle}, 0, 0, 0, 0, NULL, #{category_id}, sysdate)
+	</insert>
+	
+	<select id="selectLatestKey" resultType="int">
+		SELECT MAX(article_id) FROM ARTICLE 
+	</select>
+	
+	<insert id="insertPicture" parameterType="pivo">
+		INSERT INTO PICTURE VALUES(PIC_ID_SEQ.NEXTVAL, #{article_id}, #{pic_url}, #{pic_text}, #{pic_order})
+	</insert>
+	
+	<select id="selectPic_ids" resultType="int">
+		SELECT MAX(pic_id) FROM PICTURE
+	</select>
+  </mapper>
