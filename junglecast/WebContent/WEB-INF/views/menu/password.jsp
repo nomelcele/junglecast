@@ -21,9 +21,7 @@
 		:-ms-input-placeholder {  
    			color: white;  
 		}
-		.backimg{
-			background:url("resources/images/loginImg/login_1.jpg");
-		}
+
 		.container{
 			position:relative; margin-top:150px; 
 		}
@@ -58,7 +56,13 @@
 		.cancel a {color:#FFFFFF; font-size:9pt; font-family:"돋움체";}
 </style>
 </head>
-<body class = "backimg">
+<body>
+<script type="text/javascript">
+ var bgImg = ['resources/images/loginImg/login_1.jpg','resources/images/loginImg/login_2.jpg','resources/images/loginImg/login_3.jpg',
+              'resources/images/loginImg/login_4.jpg','resources/images/loginImg/login_5.jpg','resources/images/loginImg/login_6.jpg']
+  var ran = Math.floor(bgImg.length*Math.random())
+ document.body.style.backgroundImage = 'url('+bgImg[ran]+')';
+</script>
 	<div class = "container">
 		<div class = "contents">
 			<div class = "header">

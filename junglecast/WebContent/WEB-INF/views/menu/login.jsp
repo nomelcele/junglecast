@@ -10,7 +10,6 @@
     field.value="";
    else if (field.value == '') field.value = field.defaultValue;
  } */
-
 </script>
 
 <html>
@@ -18,8 +17,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 	<style>
-		#backimg{
-			background:url("resources/images/loginImg/login_1.jpg");
+		::-webkit-input-placeholder {
+   			color:#828180;
+		}
+
+		:-moz-placeholder { /* Firefox 18- */
+   			color:#828180;  
+		}
+
+		::-moz-placeholder {  /* Firefox 19+ */
+   			color:#828180; 
+		}
+
+		:-ms-input-placeholder {  
+   			color:#828180;  
 		}
 		.header{
 			padding-top:140px;
@@ -79,7 +90,13 @@
 		#password a {color:#626262;}
 	</style>
 </head>
-<body id="backimg">
+<body>
+<script type="text/javascript">
+ var bgImg = ['resources/images/loginImg/login_1.jpg','resources/images/loginImg/login_2.jpg','resources/images/loginImg/login_3.jpg',
+              'resources/images/loginImg/login_4.jpg','resources/images/loginImg/login_5.jpg','resources/images/loginImg/login_6.jpg']
+  var ran = Math.floor(bgImg.length*Math.random())
+ document.body.style.backgroundImage = 'url('+bgImg[ran]+')';
+</script>
 <div class="container">
 	<div class = "header">
 	</div>
