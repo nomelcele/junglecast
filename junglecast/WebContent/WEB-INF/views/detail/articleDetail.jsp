@@ -6,6 +6,7 @@
 	<div id="detail" class="modal">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
+	    <!-- 우측 메뉴 (S) -->
 	     <div class="rightMenu">
 	     	<div id="articleInfo">
 		     		<a href="#" class="closebtn">×</a>
@@ -25,8 +26,10 @@
 	     	  <!-- 페이스북 좋아요 -->
 	     	</div>  
 	     </div>
+	     <!-- 우측 메뉴 (E) -->
+	     
+	     <!-- 좌측 콘텐츠 (S) -->
 	      <div class="container">
-	      	
 	      	<!-- 제목, 날짜 -->
 	      	<div id="articleTitle">
 		      	<h2>Contents Title</h2>
@@ -34,13 +37,34 @@
 		        <p id="articleDate">2015.12.29. 09:30</p>
 	        </div>
 	        
+	        <!-- 콘텐츠 통계(모바일) -->
+	        <div id="mobileArticleInfo">
+	        	<ul>
+	        		<li></li>
+	        		<li></li>
+	        		<li></li>
+	        		<li></li>
+	        	</ul>
+	        </div>
+	        
+	        
   	        <!-- sns 공유 버튼 -->
 	        <div id="articleShare">
-	        	<a id="likeBtn"><span class="invisible">like</span><em>405</em></a>
-	        	<a id="saveBtn"><span class="invisible">share</span><em>248</em></a>
-	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" id="fbBtn" target="_blank"><span class="invisible">fb</span></a>
-	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" id="twBtn" target="_blank"><span class="invisible">tw</span></a>
-	        	<a id="linkBtn"><span class="invisible">link</span></a>
+	        	<a class="likeBtn"><span class="invisible">like</span><em>405</em></a>
+	        	<a class="saveBtn"><span class="invisible">share</span><em>248</em></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
+	        	<a class="linkBtn"><span class="invisible">link</span></a>
+	        </div>
+	        
+	        <!-- 좌측 공유 버튼 -->
+	        <div id="verticalShare">
+	        	<a class="likeBtn verticalBtn"><span class="invisible">like</span></a>
+	        	<a class="saveBtn verticalBtn"><span class="invisible">share</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn verticalBtn" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn verticalBtn" target="_blank"><span class="invisible">tw</span></a>
+	        	<a class="linkBtn verticalBtn"><span class="invisible">link</span></a>
+	        	<a class="topBtn verticalBtn"><em>TOP</em></a>
 	        </div>
 	        
 	        <!-- 내용 -->
@@ -63,7 +87,7 @@
 	      <!-- 댓글 작성 -->
 		       <div id="replyWrite">
 		       	<img src="resources/memberImg/gildong.jpg">
-		       	<textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
+			    <textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
 		       	<a id="writeReplyBtn">댓글 등록</a>
 		       </div>
 	       
@@ -149,6 +173,7 @@
 	       </div>
 	       
 	      </div>
+	      <!-- 좌측 콘텐츠 (E) -->
 	    </div>
 	  </div>
 	</div>
@@ -166,3 +191,5 @@
 			</div>
 		</div>
 	</div>
+	     
+	

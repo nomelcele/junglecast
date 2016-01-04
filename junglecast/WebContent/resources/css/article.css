@@ -18,7 +18,7 @@ ul {padding:0;}
 /* The modal box */
 .modal-dialog {display: table-cell; vertical-align: middle;}
 /* The modal's content */
-.modal-dialog .modal-content {margin: auto; background-color: #f3f3f3; position: relative; padding: 0; outline: 0; border: 1px #777 solid; text-align: justify; width:985px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+.modal-dialog .modal-content {margin: auto; background-color: #f3f3f3; position: relative; padding: 0; outline: 0; border: 1px #777 solid; text-align: justify; width:985px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:10px; 
   /* Add animation */
   -webkit-animation-name: example; /* Chrome, Safari, Opera */ -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */ animation-name: example; animation-duration: 0.5s; }
 .modal-dialog .link-content{width:35%;}
@@ -29,21 +29,11 @@ ul {padding:0;}
 
 
 /*///////////////////////////////////////////////*/
-/* 반응형 설정 */
-@media only screen and (max-width:1279px) and (min-width:1024px){
-	.modal{padding:0;}
-	.modal-dialog .modal-content{width:100%;}
-	#articleInfo{position:fixed; padding:12px; width:23%;}
-}
-/*///////////////////////////////////////////////*/
-
-
-/*///////////////////////////////////////////////*/
 /* 콘텐츠 표시 영역 */
 .container {width:75%;}
 
 /* 링크 복사 모달 */
-#linkArea{height:175px;}
+#linkArea{height:175px; border-radius:10px;}
 .link {z-index: 900;}
 .link-container{width:100%;}
 #linkArea{text-align:center;}
@@ -59,14 +49,21 @@ ul {padding:0;}
 #articleTitle{margin: 25px; border-bottom: 1px solid #B6BDC1;}
 
 /* 콘텐츠 공유 영역 */
-#likeBtn{background: #00a6de url(../images/detailIcons/likeBtn.png) no-repeat 12px; display:inline-block; width:90px; height:40px;}
-#saveBtn{background: #414548 url(../images/detailIcons/saveBtn.png) no-repeat 12px; display:inline-block; width:90px; height:40px;}
-#fbBtn{background: #4E6888 url(../images/detailIcons/fbBtn.png) no-repeat 15px; display:inline-block; width:40px; height:40px;}
-#twBtn{background: #61ABC4 url(../images/detailIcons/twBtn.png) no-repeat 10px; display:inline-block; width:40px; height:40px;}
-#linkBtn{background: #FCB040 url(../images/detailIcons/linkBtn.png) no-repeat 10px; display:inline-block; width:40px; height:40px;}
+.likeBtn{background: #00a6de url(../images/detailIcons/likeBtn.png) no-repeat 12px; display:inline-block; width:90px; height:40px;}
+.saveBtn{background: #414548 url(../images/detailIcons/saveBtn.png) no-repeat 12px; display:inline-block; width:90px; height:40px;}
+.fbBtn{background: #4E6888 url(../images/detailIcons/fbBtn.png) no-repeat 15px; display:inline-block; width:40px; height:40px;}
+.twBtn{background: #61ABC4 url(../images/detailIcons/twBtn.png) no-repeat 10px; display:inline-block; width:40px; height:40px;}
+.linkBtn{background: #FCB040 url(../images/detailIcons/linkBtn.png) no-repeat 10px; display:inline-block; width:40px; height:40px;}
 .invisible{visibility: hidden;}
-#saveBtn em{font-style: normal; position:relative; top:11px; left:-5px;}
-#likeBtn em{font-style: normal; position:relative; top:11px; left:5px;}
+.saveBtn em{font-style: normal; position:relative; top:11px; left:-5px;}
+.likeBtn em{font-style: normal; position:relative; top:11px; left:5px;}
+
+/* 콘텐츠 공유 영역 (좌측) */
+#verticalShare{width:50px; position:fixed; top:40%; margin-left:-64px; display:none;}
+.verticalBtn{margin:2px; width:40px;}
+.likeBtn.verticalBtn{background:#00a6de url(../images/detailIcons/likeBtn.png) no-repeat 8px; width:40px;}
+.topBtn{background:url(../images/detailIcons/topBtn.png) no-repeat -4px; display:inline-block; width:40px; height:40px; color:#fff; font-size:13px; text-align:center; margin-top:35px;}
+.topBtn em{font-style:normal; position:relative; top:50%;}
 
 /* 댓글 영역 */
 #replyWrite{background-color: #e4e4e4; width: 100%; height: 130px;}
@@ -101,7 +98,7 @@ ul {padding:0;}
 
 /*///////////////////////////////////////////////*/
 /* 작성자 정보 표시 영역 */
-.rightMenu{background-color: #414548; width:25%; height: 100%; position:absolute; right:0px;}
+.rightMenu{background-color: #414548; width:25%; height: 100%; position:absolute; right:0px; border-top-right-radius:10px; border-bottom-right-radius:10px;}
 #editorImg{width: 100px; height: 100px; border-radius:50px;}
 #editorInfo{text-align: center; border-bottom:1px solid #909599; padding-top:50px;}
 #editorInfo h4{color: #00a6de; margin-top:17px; margin-bottom:8px;}
@@ -117,5 +114,44 @@ ul {padding:0;}
 #articleShares{background: url(../images/detailIcons/articleShares.png) no-repeat 0;}
 #articleShare{margin: 50px 25px 0 25px; text-align:center;}
 #articleShare a{text-decoration: none; color: #fff;}
+
+/* 콘텐츠 통계 (모바일) */
+#mobileArticleInfo{display:none;}
+/*///////////////////////////////////////////////*/
+
+
+/*///////////////////////////////////////////////*/
+/* 반응형 설정 */
+@media only screen and (max-width:1279px) and (min-width:1024px){
+	.modal{padding:0;}
+	.modal-dialog .modal-content{width:100%; border-radius:0;}
+	.rightMenu{border-radius:0;}
+	
+	#articleInfo{width:23%;}
+	#articleContent{padding:100px 200px;}
+	
+	#verticalShare{margin-left:0; display:none;}
+}
+
+@media only screen and (max-width:1023px) and (min-width:768px){
+	.modal{padding:0;}
+	.modal-dialog .modal-content{width:100%; border-radius:0;}
+	.rightMenu{border-radius:0;}
+	
+	#articleInfo{width:23%; padding:10px;}
+	
+	#verticalShare{margin-left:0; display:none; left:76%;}
+}
+
+@media only screen and (max-width:767px){
+	.modal{padding:0;}
+	.modal-dialog .modal-content{width:100%; min-width:300px; margin:0;}
+	.container{float:none; width:100%;}
+	.rightMenu{display:none;}
+	
+	#mobileArticleInfo{display:block;}
+	#mobileArticleInfo ul{overflow:hidden;}
+	#mobileArticleInfo ul li{float:left; color:#fff; width:25%; text-align:center; font-size:17px; padding:5px 0 7px; position:relative;}
+}
 /*///////////////////////////////////////////////*/
 

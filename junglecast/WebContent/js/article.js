@@ -1,9 +1,14 @@
 $(function(){
 	$(".closebtn").click(function(){
+		// 모달 닫을 때
 		$("#articles_area").css("position","relative");
 	});
 	
-	$("#likeBtn").click(function(){
+	$(window).scroll(function(){
+		// 스크롤 내리면 좌측에 공유 영역 나타남
+	});
+	
+	$(".likeBtn").click(function(){
 		// 게시물 좋아요
 		$.ajax({
 			type: "POST",
@@ -14,7 +19,7 @@ $(function(){
 		});		
 	});
 	
-	$("#fbBtn").click(function(){
+	$(".fbBtn").click(function(){
 		// 페이스북 공유
 		$.ajax({
 			type: "POST",
@@ -25,7 +30,7 @@ $(function(){
 		});		
 	});
 	
-	$("#twBtn").click(function(){
+	$(".twBtn").click(function(){
 		// 트위터 공유
 		$.ajax({
 			type: "POST",
@@ -36,7 +41,7 @@ $(function(){
 		});		
 	});
 	
-	$("#linkBtn").click(function(){
+	$(".linkBtn").click(function(){
 		// 링크 복사
 		$("#copyLink").css('display','table');
 		$("#main_body").css("overflow","hidden");
@@ -63,6 +68,25 @@ $(function(){
 			}
 		});		
 
+	});
+	
+	$(".topBtn").click(function(){
+		// 스크롤 맨 위로 이동
+		$("html, body").stop().animate({scrollTop:0}, '500', 'swing', function() { 
+		});
+	});
+	
+	$(window).scroll(function(){
+		// 스크롤 시 좌측 공유 영역 보이기/숨기기
+		if($(window).scrollTop()>225){
+			$("#verticalShare").css("display","block");
+		} else {
+			$("#verticalShare").css("display","none");
+		}
+	});
+	
+	$("#reply_text").keyup(function(){
+			  console.log($(this).val().length);
 	});
 	
 });
