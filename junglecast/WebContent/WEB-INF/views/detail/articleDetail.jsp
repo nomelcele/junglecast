@@ -73,11 +73,11 @@
 	        
 	        <!-- 좌측 공유 버튼 -->
 	        <div id="verticalShare">
-	        	<a class="likeBtn verticalBtn"><span class="invisible">like</span></a>
-	        	<a class="saveBtn verticalBtn"><span class="invisible">share</span></a>
-	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn verticalBtn" target="_blank"><span class="invisible">fb</span></a>
-	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn verticalBtn" target="_blank"><span class="invisible">tw</span></a>
-	        	<a class="linkBtn verticalBtn"><span class="invisible">link</span></a>
+	        	<a class="likeBtn verticalBtn mobileNone"><span class="invisible">like</span></a>
+	        	<a class="saveBtn verticalBtn mobileNone"><span class="invisible">share</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
+	        	<a class="linkBtn verticalBtn mobileNone"><span class="invisible">link</span></a>
 	        	<a class="topBtn verticalBtn"><em>TOP</em></a>
 	        </div>
 	        
