@@ -9,6 +9,19 @@
 <title>Insert title here</title>
 		<script>
 		$(function(){
+			$('.emailbutton_1').on('click',function(){
+				jQuery('.container_1').hide();
+				jQuery('.layer_2').show();
+			});
+			$('.button_1').on('click',function(){
+				jQuery('.layer_2').hide();
+				jQuery('.container_1').show();
+			});
+			$('.button_2').on('click',function(){
+				jQuery('.contents_2').hide();
+				jQuery('.contents_3').show();
+			});
+			
 			$('.checkImg').on('click',function(){
 /* 				if((this).attr('src')!=('.checkImg').attr('src')){
 					$('.checkImg').attr('src','resources/images/joinImg/choice_1.png');
@@ -33,6 +46,22 @@
 					$(this).attr('src','resources/images/joinImg/choice_1.png');
 				}
 			});
+			$('.button_1').hover(
+				function(){
+					$(this).css("backgroundColor","#7B7B7B"); 
+				},
+				function(){
+					$(this).css("backgroundColor","#A5A5A5"); 
+				}
+			);
+			$('.button_2').hover(
+				function(){
+					$(this).css("backgroundColor","#0090C0");
+				},
+				function(){
+					$(this).css("backgroundColor","#00A1FF");
+				}
+			);
 		});
 		</script>
 		
@@ -63,7 +92,7 @@
 		.emailbutton{
 			padding-bottom:10px;
 		}
-		.emailbutton input{
+		.emailbutton_1 {
 			width:337px; height:48px; background-color:#00A1FF; color:#FFFFFF; font-size:16px; border:none; cursor:pointer;
 			border-radius: 0px 0px 0px 0px; margin:0 auto; font-family:"돋움";
 		}
@@ -85,6 +114,9 @@
 			text-align:center; padding-top:24px;
 		}
 		/*가입 2--------------------------------------------------------------------------------------------------------------------*/
+		.layer_2{
+			display:none;
+		}
 		.container_2{
 			position:relative; margin-top:97px; padding-bottom:65px; border-bottom:3px solid #00A6DE;
 		}
@@ -155,7 +187,16 @@
 		}
 		/*가입 2-2세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_3{
+			display:none; position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:960px; margin-bottom:0px;
+		}
+		.midcontents_3{
 			width:660px; margin:0 auto; padding-top:65px;
+		}
+		.c_contents_3{
+		
+		}
+		.c_midcontents_3{
+			position:relative; background-color:#FFFFFF;  width:100%; height:505px; margin:0 auto;
 		}
 		
 </style>
@@ -168,7 +209,6 @@
  document.body.style.backgroundImage = 'url('+bgImg[ran]+')';
  document.body.style.backgroundAttachment="fixed";
 </script>
-<!--  
 <div class="container_1">
 	<div class = "header_1">
 		<div class = "c_header_1">
@@ -184,7 +224,7 @@
 					<span><font style = "font-size: 18px; font-weight: bold; color: #707070; font-family: '돋움';">원하시는 가입 유형을 선택해주세요.</font></span>
 				</div>
 				<div class = "emailbutton">
-					<input type = "submit" value = "이메일 계정 만들기">
+					<input type = "submit" value = "이메일 계정 만들기" class="emailbutton_1">
 				</div>
 				<div class = "fbbutton">
 					<input type = "submit" value = "페이스북 계정 만들기">
@@ -211,7 +251,7 @@
 			</div>
 		</div>
 	</div>
-	<!--
+
 	<div class = "contents_2">
 		<div class = "midcontents_2">
 			<div class = "c_contents_2">
@@ -434,10 +474,21 @@
 			</div>
 		</div>
 	</div>
-	-->
+
 	<div class = "contents_3">
-		
+		<div class = "midcontents_3">
+			<div class = "c_contents_3">
+				<img src = "resources/images/joinImg/join_2.png" width = 100% height = 115px style="padding-bottom:20px;">
+			</div>
+			<div class = "c_midcontents_3">
+				<div class = "c2_midcontents_1">
+					<h3>이메일*&nbsp</h3>
+					
+				</div>
+			</div>
+		</div>
 	</div>
+	
 </div>
 
 </body>

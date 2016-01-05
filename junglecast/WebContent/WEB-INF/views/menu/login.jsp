@@ -33,10 +33,10 @@
    			color:#828180;  
 		}
 		.header{
-			padding-top:140px;
+			padding-top:140px; position:relative;
 		}
 		#mid_top{
-			position:relative; margin-left:-115px;left:50%;text-align=center;
+			margin:0 auto;
 		}
 		#mid_contents{
 			position:relative; margin-left:-210px;left:50%;width:430px;height:480px;background-color:#FFFFFF;
@@ -99,11 +99,9 @@
 </script>
 <div class="container">
 	<div class = "header">
-	</div>
-	<div class = "mid">
 		<div id = "mid_top">
 			<a href = "/junglecast" target = "_self">
-				<img src="resources/images/loginImg/pikicast_logo.png" width = 212px height = 78px>
+				<img src="resources/images/loginImg/pikicast_logo.png" width=212px height=78px>
 			</a>
 		</div>
 		<div id = "mid_contents">
