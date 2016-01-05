@@ -76,6 +76,11 @@ $(function(){
 	});
 	
 	$(window).scroll(function(){
+		if($(window).scrollTop()>60){
+			$("#articleInfo").css("margin-top","-60px");
+		} else {
+			$("#articleInfo").css("margin-top","0");
+		}
 		// 스크롤 시 좌측 공유 영역 보이기/숨기기
 		if($(window).scrollTop()>300){ // 225
 			$("#verticalShare").css("display","block");
