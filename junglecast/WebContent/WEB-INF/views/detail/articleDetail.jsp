@@ -99,13 +99,13 @@
 	       </div>
 	       
 	      <!-- 댓글 작성 -->
-		       <div id="replyWriteBox">
-		       		<div id="replyWrite">
+		       <div class="replyWriteBox">
+		       		<div class="replyWrite">
 		       			<div class="imgBox">
 				       		<img src="resources/memberImg/gildong.jpg">
 					    </div>
 					    <div class="replyTextBox">
-					    	<div class="textareaBox">
+					    	<div class="replyInput">
 					    		<textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
 				       		</div>
 				       		<p class="charNumBox"><span id="currentCharNum">0</span>/140자</p>
@@ -119,76 +119,128 @@
 	       	<ul>
 	       		<li>
 		       		<div class="replyContentBox">
-		       			<div class="replyContent">
+		       			<div class="replyImgBox">
 	   				       	<img src="resources/memberImg/gildong.jpg">
-				       		<div class="replyDetail">
+	   				    </div>
+				       	<div class="replyDetail">
 				       			<span class="best writerName">홍길동</span>
-				       			<p class="replyText">댓글 내용입니다.</p>
-				       			<span class="replyDate">2015.12.30. 10:46</span>
+				       			<div class="replyTextArea">
+					       			<span class="replyText">댓글 내용입니다.</span>
+					       			<span class="replyDate">2015.12.30. 10:46</span>
+					       		</div>
 					       		<div class="replySubDetail">
 				       				<a class="likeReplyBtn" href="javascript:likeReply(0);">좋아요 30개</a>
 				       				<a class="rereplyBtn" href="javascript:rereplyList(0);">답글 23개</a>
 				       			</div>			       			
-				       		</div>
-			       		</div>
+				       	</div>
+				    </div>
 		       			<div class="rereplyList" id="rereplyList0">
 		       				<ul>
 		       					<li>
-		       					    <img src="resources/memberImg/gildong.jpg">
-		       						<div class="replyDetail rereply">
-		       							<span class="writerName">홍길동</span>
-		       							<p class="replyText">답글 내용입니다.</p>
-		       							<span class="replyDate">2015.12.30. 11:31</span>
+		       						<div class="rereplyBox">
+		       							<div class="replyImgBox">
+			       					    	<img src="resources/memberImg/gildong.jpg">
+			       						</div>
+			       						<div class="replyDetail">
+			       							<span class="writerName">홍길동</span>
+			       							<div class="replyTextArea">
+				       							<p class="replyText">답글 내용입니다.</p>
+				       							<span class="replyDate">2015.12.30. 11:31</span>
+			       							</div>
+			       						</div>
 		       						</div>
 		       					</li>
+		       					<li>
+									<div class="rereplyBox">
+		       							<div class="replyImgBox">
+			       					    	<img src="resources/memberImg/gildong.jpg">
+			       						</div>
+			       						<div class="replyDetail">
+			       							<span class="writerName">홍길동</span>
+			       							<div class="replyTextArea">
+				       							<p class="replyText">답글 내용입니다.</p>
+				       							<span class="replyDate">2015.12.30. 11:31</span>
+			       							</div>
+			       						</div>
+		       						</div>
+		       					</li>		       					
 		       				</ul>	
-		       				<div class="rereplyWrite">
-		       					    <img src="resources/memberImg/gildong.jpg">
-			       					<input type="text" placeholder="내용을 입력해 주세요.">
+		       				<div class="replyWriteBox">
+		       					<div class="replyWrite">
+		       						<div class="imgBox">
+		       					    	<img src="resources/memberImg/gildong.jpg">
+			       					</div>
+			       					<div class="replyTextBox">
+			       						<div class="replyInput">
+			       							<input type="text" placeholder="내용을 입력해 주세요.">
+			       						</div>
+			       					</div>
 			       					<a>답글 등록</a>
+			       				</div>
 		       				</div>	       			
-		       			</div>			       		
 		       		</div>
 	       		</li>
 	       		<li>
-	       			<div class="replyContentBox">
-	       				<div class="replyContent">
+		       		<div class="replyContentBox">
+		       			<div class="replyImgBox">
 	   				       	<img src="resources/memberImg/gildong.jpg">
-			       			<div class="replyDetail">
+	   				    </div>
+				       	<div class="replyDetail">
 				       			<span class="writerName">홍길동</span>
-				       			<p class="replyText">댓글 내용입니다. 댓글 내용입니다. 댓글 내용입니다. 댓글 내용입니다.</p>
-				       			<span class="replyDate">2015.12.30. 10:46</span>
+				       			<div class="replyTextArea">
+					       			<span class="replyText">댓글 내용입니다.</span>
+					       			<span class="replyDate">2015.12.30. 10:46</span>
+					       		</div>
 					       		<div class="replySubDetail">
-				       				<a class="likeReplyBtn" href="javascript:likeArticle(1);">좋아요 30개</a>
+				       				<a class="likeReplyBtn" href="javascript:likeReply(1);">좋아요 30개</a>
 				       				<a class="rereplyBtn" href="javascript:rereplyList(1);">답글 23개</a>
-				       			</div>
-			       			</div>
-		       			</div>
+				       			</div>			       			
+				       	</div>
+				    </div>
 		       			<div class="rereplyList" id="rereplyList1">
 		       				<ul>
 		       					<li>
-		       					    <img src="resources/memberImg/gildong.jpg">
-		       						<div class="replyDetail rereply">
-		       							<span class="writerName">홍길동</span>
-		       							<p class="replyText">답글 내용입니다.</p>
-		       							<span class="replyDate">2015.12.30. 11:31</span>
+		       						<div class="rereplyBox">
+		       							<div class="replyImgBox">
+			       					    	<img src="resources/memberImg/gildong.jpg">
+			       						</div>
+			       						<div class="replyDetail">
+			       							<span class="writerName">홍길동</span>
+			       							<div class="replyTextArea">
+				       							<p class="replyText">답글 내용입니다.</p>
+				       							<span class="replyDate">2015.12.30. 11:31</span>
+			       							</div>
+			       						</div>
 		       						</div>
 		       					</li>
 		       					<li>
-		       					    <img src="resources/memberImg/gildong.jpg">
-		       						<div class="replyDetail rereply">
-		       							<span class="writerName">홍길동</span>
-		       							<p class="replyText">답글 내용입니다. 답글 내용입니다. 답글 내용입니다.</p>
-		       							<span class="replyDate">2015.12.30. 11:31</span>
+									<div class="rereplyBox">
+		       							<div class="replyImgBox">
+			       					    	<img src="resources/memberImg/gildong.jpg">
+			       						</div>
+			       						<div class="replyDetail">
+			       							<span class="writerName">홍길동</span>
+			       							<div class="replyTextArea">
+				       							<p class="replyText">답글 내용입니다.</p>
+				       							<span class="replyDate">2015.12.30. 11:31</span>
+			       							</div>
+			       						</div>
 		       						</div>
-		       					</li>	
-		       				</ul>
-		       				<div class="rereplyWrite">
-		       					    <img src="resources/memberImg/gildong.jpg">
-		       					    <input type="text" placeholder="내용을 입력해 주세요.">
-		       					    <a>답글 등록</a>
-		       				</div>
-		       			</div>
+		       					</li>		       					
+		       				</ul>	
+		       				<div class="replyWriteBox">
+		       					<div class="replyWrite">
+		       						<div class="imgBox">
+		       					    	<img src="resources/memberImg/gildong.jpg">
+			       					</div>
+			       					<div class="replyTextBox">
+			       						<div class="replyInput">
+			       							<input type="text" placeholder="내용을 입력해 주세요.">
+			       						</div>
+			       					</div>
+			       					<a>답글 등록</a>
+			       				</div>
+		       				</div>	       			
 		       		</div>
 	       		</li>
 	       		
