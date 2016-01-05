@@ -37,8 +37,8 @@
 				#left_menu_home a:HOVER{color: #00a6de;}
 			#left_menu_categories{background:#fbfbfb; padding: 14px 0 14px 10px;}
 			#left_menu_categories>ul>li{list-style: none; margin : 8px 0 8px 0;}
-			#left_menu_categories>ul>li>a{color:#4b4b4b; font-size: 14px; margin-left:12px;}
-			#left_menu_categories>ul>li>a:HOVER{color: #00a6de;}
+			#left_menu_categories>ul>li>span{color:#4b4b4b; font-size: 14px; margin-left:12px; cursor: pointer;}
+			#left_menu_categories>ul>li>span:HOVER{color: #00a6de;}
 			.catogory_icon{width:20px; height:20px; display: inline-block; line-height: 20px;}
 			#categories{color: #a0a0a0; font-size:16px; font-weight: bold; }
 	#tablet_left_area{display:none;}
@@ -210,6 +210,30 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 
+window.onload = function(){
+    $('html body').on('click', '.aCategory span', function(){
+    	var getCategoryId = $(this).parent().find('.leftmenu_category_id').val();
+    	$.ajax({
+			url: "selectThisCategory",
+			data: {categoryId : getCategoryId},
+			dataType: 'JSON',
+			type: 'POST',
+			async:false,
+			success: function (data) {
+				$('#contents_cards_area').empty();
+				var aCard='';
+				$.each(data.result, function(index, entry){
+					aCard += '<div class="aCard"><div class="aCard_img_div">';
+					aCard += '<img class="aCard_img" src="resources/articleContents/'+ entry.pic_url +'"></div>';
+					aCard += '<input type="hidden" value="'+ entry.article_id +'">';
+					aCard += '<div class="aCard_txt">'+entry.article_title+'</div></div>';
+				});
+				$('#contents_cards_area').append(aCard);
+			}
+    	});
+    });
+};
+
 $(document).ready(function(){
 	//반응형 자바스크립트
 	$(window).resize(function(){
@@ -245,7 +269,8 @@ $(document).ready(function(){
 			}    
 		});
 	});
-	
+
+    
 	//이미지 슬라이더
 	$('#demo2').skdslider({
 		'delay' : 3000,
@@ -408,7 +433,7 @@ function loadMore(){
 					<div id="categories">골라보기</div>
 					<ul>
 						<c:forEach var="aRow" items="${categories }">
-							<li><span class="catogory_icon" style="background-image: url('resources/images/main/icons/${aRow.category_icon}'); background-size:100% 100%;"></span><a href="">${aRow.category_name }</a></li>
+							<li class="aCategory"><input type="hidden" value="${aRow.category_id }" class="leftmenu_category_id"><span class="catogory_icon" style="background-image: url('resources/images/main/icons/${aRow.category_icon}'); background-size:100% 100%;"></span><span>${aRow.category_name }</span></li>
 						</c:forEach>
 					</ul>
 				</div>
