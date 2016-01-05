@@ -99,10 +99,19 @@
 	       </div>
 	       
 	      <!-- 댓글 작성 -->
-		       <div id="replyWrite">
-		       	<img src="resources/memberImg/gildong.jpg">
-			    <textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
-		       	<a id="writeReplyBtn">댓글 등록</a>
+		       <div id="replyWriteBox">
+		       		<div id="replyWrite">
+		       			<div class="imgBox">
+				       		<img src="resources/memberImg/gildong.jpg">
+					    </div>
+					    <div class="replyTextBox">
+					    	<div class="textareaBox">
+					    		<textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
+				       		</div>
+				       		<p class="charNumBox"><span id="currentCharNum">0</span>/140자</p>
+				       	</div>
+				       	<a id="writeReplyBtn">댓글 등록</a>
+		       		</div>
 		       </div>
 	       
 	       <!-- 댓글 목록 -->
@@ -147,7 +156,7 @@
 	   				       	<img src="resources/memberImg/gildong.jpg">
 			       			<div class="replyDetail">
 				       			<span class="writerName">홍길동</span>
-				       			<p class="replyText">댓글 내용입니다.</p>
+				       			<p class="replyText">댓글 내용입니다. 댓글 내용입니다. 댓글 내용입니다. 댓글 내용입니다.</p>
 				       			<span class="replyDate">2015.12.30. 10:46</span>
 					       		<div class="replySubDetail">
 				       				<a class="likeReplyBtn" href="javascript:likeArticle(1);">좋아요 30개</a>
@@ -169,7 +178,7 @@
 		       					    <img src="resources/memberImg/gildong.jpg">
 		       						<div class="replyDetail rereply">
 		       							<span class="writerName">홍길동</span>
-		       							<p class="replyText">답글 내용입니다.</p>
+		       							<p class="replyText">답글 내용입니다. 답글 내용입니다. 답글 내용입니다.</p>
 		       							<span class="replyDate">2015.12.30. 11:31</span>
 		       						</div>
 		       					</li>	
