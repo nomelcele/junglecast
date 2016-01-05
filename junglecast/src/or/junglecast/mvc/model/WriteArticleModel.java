@@ -55,7 +55,7 @@ public class WriteArticleModel {
 	 
 	  Calendar cal=null;
 	  String fileName, fileType, replaceName;
-	  String path =  new HttpServletRequestWrapper(multipartRequest).getSession().getServletContext().getRealPath("resources/articleContents");
+	  String path =  new HttpServletRequestWrapper(multipartRequest).getSession().getServletContext().getRealPath("/resources/articleContents");
 	  System.out.println("경로 : " + path);
 	  
 	  String imgNames="";

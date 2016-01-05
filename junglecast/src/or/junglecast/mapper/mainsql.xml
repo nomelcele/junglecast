@@ -8,4 +8,13 @@
 		SELECT * FROM CATEGORY
 	</select>
 
+	<select id="articleList" resultType ="mavo">
+		SELECT ROWNUM, alias.*
+			FROM(
+				SELECT a.article_id, a.article_title, a.pic_id, a.category_id, p.pic_url FROM ARTICLE a, PICTURE p WHERE a.pic_id = p.pic_id ORDER BY article_id DESC
+			)alias
+		WHERE ROWNUM <![CDATA[<=]]> 20
+	</select>
   </mapper>
+
+  

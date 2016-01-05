@@ -11,6 +11,7 @@
   		<typeAlias type="or.junglecast.vo.ProfileVO" alias="prvo"/>
   		<typeAlias type="or.junglecast.vo.Re_replyVO" alias="rrvo"/>
   		<typeAlias type="or.junglecast.vo.ReplyVO" alias="revo"/>
+  		<typeAlias type="or.junglecast.vo.MainArticleVO" alias="mavo"/>
   	</typeAliases>
   </configuration>
   

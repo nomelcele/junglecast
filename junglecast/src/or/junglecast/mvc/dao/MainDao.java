@@ -2,6 +2,7 @@ package or.junglecast.mvc.dao;
 
 import java.util.List;
 
+import or.junglecast.vo.ArticleVO;
 import or.junglecast.vo.CategoryVO;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -16,5 +17,9 @@ public class MainDao {
 	
 	public List<CategoryVO> selectCategoryLists(){
 		return sqlSession.selectList("main.categoryList");
+	}
+	
+	public List<ArticleVO> selectArticleLists(){
+		return sqlSession.selectList("main.articleList");
 	}
 }

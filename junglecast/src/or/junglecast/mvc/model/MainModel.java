@@ -17,6 +17,7 @@ public class MainModel {
 	public ModelAndView gotoMain(){
 		ModelAndView mav = new ModelAndView("main");
 		mav.addObject("categories", dao.selectCategoryLists());
+		mav.addObject("contents", dao.selectArticleLists());
 		return mav;
 	}
 

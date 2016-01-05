@@ -470,55 +470,13 @@ function loadMore(){
         	</div>
 		</div>
 		<div id="contents_cards_area">
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic1.png"></div>
-				<input type="hidden" value="1">
-				<div class="aCard_txt">미리 보는 12월 30일, <br>내일의 별자리 운세</div>
-			</div>
-			<div class="aCard"> 
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic2.jpeg"></div>
-				<div class="aCard_txt">아름다운 우주가 담겨 있는 <br>NASA 인스타그램</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic3.jpg"></div>
-				<div class="aCard_txt">아직 준비가 안됐는데 <br>자꾸 재촉하는 남자</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic1.png"></div>
-				<div class="aCard_txt">2015년 한 해 가장 많이<br>불법 다운로드된 영화 10</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic2.jpeg"></div>
-				<div class="aCard_txt">곧 성인되는 진구오빠<br>유정이랑 썸 타던 시절</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic3.jpg"></div>
-				<div class="aCard_txt">------------------------------------------------------------!--------------------------------</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic1.png"></div>
-				<div class="aCard_txt">------------------------------------------------------------</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic2.jpeg"></div>
-				<div class="aCard_txt">------------------------------------------------------------</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic3.jpg"></div>
-				<div class="aCard_txt">------------------------------------------------------------</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic1.png"></div>
-				<div class="aCard_txt">------------------------------------------------------------</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic2.jpeg"></div>
-				<div class="aCard_txt">------------------------------------------------------------</div>
-			</div>
-			<div class="aCard">
-				<div class="aCard_img_div"><img class="aCard_img" src="resources/images/main/testpic3.jpg"></div>
-				<div class="aCard_txt">------------------------------------------------------------</div>
-			</div>
+			<c:forEach var="aRow" items="${contents }">
+				<div class="aCard"> 
+					<div class="aCard_img_div"><img class="aCard_img" src="resources/articleContents/${aRow.pic_url }"></div>
+					<input type="hidden" value="${aRow.article_id }">
+					<div class="aCard_txt">${aRow.article_title }</div>
+				</div>
+			</c:forEach>
 		</div>
 		<div id="scroll_up">▲<br>TOP</div>		
 	</section>
