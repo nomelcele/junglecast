@@ -19,4 +19,8 @@
 	<select id="selectPic_ids" resultType="int">
 		SELECT MAX(pic_id) FROM PICTURE
 	</select>
+	
+	<update id="updateArticlePicID" parameterType = "java.util.Map">
+		UPDATE ARTICLE SET pic_id = #{pic_id} WHERE article_id = #{article_id}
+	</update>
   </mapper>

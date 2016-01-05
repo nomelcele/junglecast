@@ -14,7 +14,6 @@ import or.junglecast.vo.PictureVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,12 +77,21 @@ public class WriteArticleModel {
 
 	 }
 	@RequestMapping(value = "insertPicture", method = RequestMethod.POST)
-	public ModelAndView insertPicture(@RequestParam("pic_url") String pic_url, @RequestParam("pic_text") String pic_text,
-			@RequestParam("article_id") int article_id, @RequestParam("pic_order") int pic_order){
+	public ModelAndView insertPicture(PictureVO pvo){
 		ModelAndView mav = new ModelAndView("jsonView");
-		PictureVO pvo = new PictureVO(article_id, pic_order, pic_url, pic_text);
-		System.out.println(pic_text + " , " + pic_url);
-		mav.addObject("pic_id" , waDao.insertPicture(pvo));
+		System.out.println(pvo.getArticle_id() +", " + pvo.getPic_text() + ", " + pvo.getPic_url());
+		int result = waDao.insertPicture(pvo);
+		System.out.println("결과값 : " + result);
+		mav.addObject("pic_id" , result);
+		return mav;
+	}
+	
+	@RequestMapping("updateArticlePicID")
+	public ModelAndView updateArticlePicID(@RequestParam("pic_id") String p_id, @RequestParam("article_id") String a_id){
+		ModelAndView mav = new ModelAndView("jsonView");
+		int pic_id = Integer.parseInt(p_id);
+		int article_id = Integer.parseInt(a_id);
+		waDao.updateArticlePicID(pic_id, article_id);
 		return mav;
 	}
 }
