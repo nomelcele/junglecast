@@ -32,19 +32,21 @@
 		:-ms-input-placeholder {  
    			color:#828180;  
 		}
-		.header{
-			padding-top:140px; position:relative;
+		.container{
+			position:relative; margin-top:148px;
 		}
-		#mid_top{
-			margin:0 auto;
+		.header_1{
+			width:230px; height:78px; margin:0 auto; padding-bottom:70px; 
+		}
+		.c_header{
+			float:left;
 		}
 		#mid_contents{
-			position:relative; margin-left:-210px;left:50%;width:430px;height:480px;background-color:#FFFFFF;
-			margin-top:70px; background-color: rgba( 255, 255, 255, 0.7 ); border-radius: 7px 7px 7px 7px;
+			position:relative; margin:0 auto; width:430px;height:480px;background-color:#FFFFFF;
+			background-color: rgba( 255, 255, 255, 0.7 ); border-radius: 7px 7px 7px 7px;
 		}
 		#c_board{
-			position:relative; margin-left:-170px;left:50%;
-			margin-top:70px; padding-top:65px;
+			width:336px; margin:0 auto; padding-top:65px;
 		}
 		#b_id{
 			margin-bottom:18px; width: 336px; height:29px; border-bottom:2px solid #C4C5C4;
@@ -98,43 +100,42 @@
  document.body.style.backgroundImage = 'url('+bgImg[ran]+')';
 </script>
 <div class="container">
-	<div class = "header">
-		<div id = "mid_top">
+	<div class = "header_1">
+		<div class = "c_header">
 			<a href = "/junglecast" target = "_self">
 				<img src="resources/images/loginImg/pikicast_logo.png" width=212px height=78px>
 			</a>
 		</div>
-		<div id = "mid_contents">
-			<div id = "c_board">
-				<form action = "" method="post">
-					<div id = "b_id">
-						<input type = "text" name="id" placeholder = "이메일을 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'" id = "id"/>
-					</div>
-					<div id = "b_pw">	
-						<input type = "password" name="pw" placeholder = "비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요.'" id = "pw"/>
-					</div>
-				</form>
-				<div id = "emailsave" style="line-height:16px;">
-					<label><input type = "checkbox" name ="emailsave">
-					<span style="font-size:15px; vertical-align:top;">이메일 저장</span></label>
+	</div>
+	<div id = "mid_contents">
+		<div id = "c_board">
+			<form action = "" method="post">
+				<div id = "b_id">
+					<input type = "text" name="id" placeholder = "이메일을 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'" id = "id"/>
 				</div>
-				<div id = "loginbotton">
-					<input type = "submit" value = "로그인">
+				<div id = "b_pw">	
+					<input type = "password" name="pw" placeholder = "비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요.'" id = "pw"/>
 				</div>
-				<div id = "warning">
-					<span style = "font-size:10pt; color:red;">가나다라마바사</span>
-				</div>
-				<div id = "fblogin">
-					<input type = "submit" value = "페이스북 로그인">
-				</div>
-				<div id = "kakaologin">
-					<input type = "submit" value = "카카오톡 로그인">
-				</div>
-				<div id = "other">
-					<div id = "join"><a href = "/junglecast/menu=join" target = "_self">회원가입</a></div>
-					<div id = "password"><a href = "/junglecast/menu=password" target = "_self">비밀번호 찾기</a></div>
-				</div>
-				
+			</form>
+			<div id = "emailsave" style="line-height:16px;">
+				<label><input type = "checkbox" name ="emailsave">
+				<span style="font-size:15px; vertical-align:top;">이메일 저장</span></label>
+			</div>
+			<div id = "loginbotton">
+				<input type = "submit" value = "로그인">
+			</div>
+			<div id = "warning">
+				<span style = "font-size:10pt; color:red;">가나다라마바사</span>
+			</div>
+			<div id = "fblogin">
+				<input type = "submit" value = "페이스북 로그인">
+			</div>
+			<div id = "kakaologin">
+				<input type = "submit" value = "카카오톡 로그인">
+			</div>
+			<div id = "other">
+				<div id = "join"><a href = "/junglecast/menu=join" target = "_self">회원가입</a></div>
+				<div id = "password"><a href = "/junglecast/menu=password" target = "_self">비밀번호 찾기</a></div>
 			</div>
 		</div>
 	</div>
