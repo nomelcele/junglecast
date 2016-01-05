@@ -10,16 +10,17 @@
 		<script>
 		$(function(){
 			$('.emailbutton_1').on('click',function(){
-				jQuery('.container_1').hide();
+				jQuery('.container').hide();
 				jQuery('.layer_2').show();
 			});
 			$('.button_1').on('click',function(){
 				jQuery('.layer_2').hide();
-				jQuery('.container_1').show();
+				jQuery('.container').show();
 			});
 			$('.button_2').on('click',function(){
 				jQuery('.contents_2').hide();
 				jQuery('.contents_3').show();
+				$('html,body').scrollTop(0);
 			});
 			
 			$('.checkImg').on('click',function(){
@@ -67,13 +68,13 @@
 		
 <style>	
 		/*가입 1--------------------------------------------------------------------------------------------------------------------*/
-		.container_1{
+		.container{
 			position:relative; margin-top:148px; 
 		}
-		.header_1{
+		.header{
 			width:230px; height:78px; margin:0 auto; padding-bottom:70px;
 		}
-		.c_header_1{
+		.c_header{
 			float:left
 		}
 		.contents{
@@ -115,7 +116,7 @@
 		}
 		/*가입 2--------------------------------------------------------------------------------------------------------------------*/
 		.layer_2{
-			display:none;
+			/* display:none; */
 		}
 		.container_2{
 			position:relative; margin-top:97px; padding-bottom:65px; border-bottom:3px solid #00A6DE;
@@ -187,7 +188,7 @@
 		}
 		/*가입 2-2세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_3{
-			display:none; position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:960px; margin-bottom:0px;
+			/* display:none; */ position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:960px; margin-bottom:0px;
 		}
 		.midcontents_3{
 			width:660px; margin:0 auto; padding-top:65px;
@@ -198,7 +199,46 @@
 		.c_midcontents_3{
 			position:relative; background-color:#FFFFFF;  width:100%; height:505px; margin:0 auto;
 		}
-		
+		.c3_midcontents{
+			width:90%; margin:0 auto; padding-top:10px;
+		}
+		.c3_line_1{
+			margin:0; padding:0; border:0;
+		}
+		.id{
+			display:inline-block;width:40%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+		}
+		.id input{
+			width:100%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+		}
+		.adress{
+			display:inline-block;width:40%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+		}
+		.adress input{
+			width:100%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+		}
+		.doublebutton{
+			width:75px; height:31px; background-color:#C9C9C9; color:#FFFFFF; font-size:14px; border:none; cursor:pointer;
+			border-radius: 0px 0px 0px 0px;
+		}
+		.c3_warning{
+			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
+		}
+		.password{
+			display:inline-block; width:100%; padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #C4C5C4; 
+		}
+		.password input{
+			width:53%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+		}
+		.passwordcorrect{
+			display:inline-block; width:100%; margin-top:3px;padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #C4C5C4; 
+		}
+		.passwordcorrect input{
+			width:53%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+		}
+		.c3_pw_warning{
+			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
+		}
 </style>
 </head>
 <body style="margin:0 0 0 0;" >
@@ -209,9 +249,10 @@
  document.body.style.backgroundImage = 'url('+bgImg[ran]+')';
  document.body.style.backgroundAttachment="fixed";
 </script>
-<div class="container_1">
-	<div class = "header_1">
-		<div class = "c_header_1">
+<!-- 
+<div class="container">
+	<div class = "header">
+		<div class = "c_header">
 			<a href = "/junglecast" target = "_self">
 				<img src="resources/images/loginImg/pikicast_logo.png" width = 212px height = 78px>
 			</a>
@@ -240,7 +281,7 @@
 		</div>
 	</div>
 </div>
--->
+ -->
 <div class = "layer_2">
 	<div class = "container_2">
 		<div class = "header_2">
@@ -251,7 +292,7 @@
 			</div>
 		</div>
 	</div>
-
+<!--
 	<div class = "contents_2">
 		<div class = "midcontents_2">
 			<div class = "c_contents_2">
@@ -474,16 +515,48 @@
 			</div>
 		</div>
 	</div>
-
+  -->
 	<div class = "contents_3">
 		<div class = "midcontents_3">
 			<div class = "c_contents_3">
 				<img src = "resources/images/joinImg/join_2.png" width = 100% height = 115px style="padding-bottom:20px;">
 			</div>
 			<div class = "c_midcontents_3">
-				<div class = "c2_midcontents_1">
-					<h3>이메일*&nbsp</h3>
-					
+				<div class = "c3_midcontents">
+					<h3 style = "margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">이메일*&nbsp</h3>
+						<span class = "c3_line_1">
+							<span class = "id">
+								<input type = "text" name="id" placeholder = "이메일을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력해주세요.'">
+							</span> 
+							<span style = "font-family:'돋움'; font-size:16px; color:#828180; vertical-align:bottom; margin-left:4px; margin-right:4px;">@</span>
+							<span class = "adress">
+								<input type = "text" name="adress">
+							</span>
+							<span class = "double">
+								<input type = "submit" value = "중복확인" class = "doublebutton">
+							</span>
+							 
+						</span>
+						<div class = "c3_warning">
+							이메일은(는) 필수 입력 항목입니다.
+						</div>
+					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">비밀번호*&nbsp</h3>
+						<span class= "c3_line_2">
+							<span class = "password">
+								<input type = "password" name="pw" placeholder = "비밀번호를 입력해주세요.(4자 이상)" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력해주세요.(4자 이상)'">
+								<img src = "resources/images/joinImg/choice_1.png" class = "pwImg_1" style = "width:20px; height:20px; vertical-align:middle; float:right">
+							</span>
+							<span class = "passwordcorrect">
+								<input type = "password" name="pw_c" placeholder = "비밀번호를 한번 더 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 한번 더 입력해주세요.'">
+								<img src = "resources/images/joinImg/choice_1.png" class = "pwImg_2" style = "width:20px; height:20px; vertical-align:middle; float:right">
+							</span>
+						</span>
+						<div class = "c3_pw_warning">
+							조금만 더 써주세요!비밀번호는 4자리이상 입력해야 하거든요.
+						</div>
+					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">생년월일*&nbsp
+					<a href="" style="font-size:12px; color:#00A1FF; font-weight:normal;text-decoration:none; letter-spacing:-1px;"><em style="font-style:normal; text-decoration:underline;">생년월일,</em> 왜 입력하는 거죠?</a></h3>
+						
 				</div>
 			</div>
 		</div>
