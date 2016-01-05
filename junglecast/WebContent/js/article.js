@@ -52,18 +52,21 @@ $(function(){
 	
 	$("#writeReplyBtn").click(function(){
 		// 댓글 작성
-		$.ajax({
-			type: "POST",
-			url: "writeReply",
-			data: {
-				article_id: $("#article_id").val(),
-				reply_text: $("#reply_text").val()
-			}, 
-			success: function(result){
-				$("#replyList").html(result);
-			}
-		});		
-
+		if($("#reply_text").val().length > 160){
+			alert("댓글은 160자를 초과할 수 없습니다.");
+		} else {
+			$.ajax({
+				type: "POST",
+				url: "writeReply",
+				data: {
+					article_id: $("#article_id").val(),
+					reply_text: $("#reply_text").val()
+				}, 
+				success: function(result){
+					$("#replyList").html(result);
+				}
+			});		
+		}
 	});
 	
 	$(".topBtn").click(function(){
@@ -82,7 +85,14 @@ $(function(){
 	});
 	
 	$("#reply_text").keyup(function(){
-			  console.log($(this).val().length);
+		// 댓글 글자수 표시
+		$("#currentCharNum").html($(this).val().length);
+		if(parseInt($("#currentCharNum").html()) > 160){
+			// 160자를 넘었을 경우 글자수 빨간색으로 표시
+			$("#currentCharNum").css('color','#DE0027');
+		} else {
+			$("#currentCharNum").css('color','#00a6de');
+		}
 	});
 	
 });

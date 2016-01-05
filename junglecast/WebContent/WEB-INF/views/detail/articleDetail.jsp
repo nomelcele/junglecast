@@ -108,7 +108,7 @@
 					    	<div class="replyInput">
 					    		<textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
 				       		</div>
-				       		<p class="charNumBox"><span id="currentCharNum">0</span>/140자</p>
+				       		<p class="charNumBox"><span id="currentCharNum">0</span>/160자</p>
 				       	</div>
 				       	<a id="writeReplyBtn">댓글 등록</a>
 		       		</div>
