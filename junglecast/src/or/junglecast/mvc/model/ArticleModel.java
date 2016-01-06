@@ -1,7 +1,10 @@
 package or.junglecast.mvc.model;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import or.junglecast.mvc.dao.ArticleDao;
@@ -35,9 +38,24 @@ public class ArticleModel {
 	}
 
 	@RequestMapping(value="likeArticle")
-	public void likeArticle(int article_id){
+	public void likeArticle(int article_id, String currentUrl, HttpServletResponse response) throws IOException{
 		// 게시물 좋아요
 		adao.likeArticle(article_id);
+		int article_like = adao.articleContent(article_id).getArticle_like(); // 게시물 좋아요 수 
+		
+		StringBuffer sb = new StringBuffer();
+		sb.append("<a class='likeBtn'><span class='invisible'>like</span><em>")
+		.append(article_like).append("</em></a>");
+		sb.append("<a href='http://www.facebook.com/sharer/sharer.php?u=")
+		.append(currentUrl).append("' class='fbBtn' target='_blank'><span class='invisible'>fb</span></a>");
+		sb.append("<a href='https://twitter.com/intent/tweet?text=TEXT&url=")
+		.append(currentUrl).append("'class='twBtn' target='_blank'><span class='invisible'>tw</span></a>"); 
+		sb.append("<a class='linkBtn'><span class='invisible'>link</span></a>");
+		
+		PrintWriter pw = response.getWriter();
+		pw.write(sb.toString());
+		pw.flush();
+		pw.close();
 	}
 	
 	@RequestMapping(value="shareArticle")

@@ -65,7 +65,7 @@
   	        <!-- sns 공유 버튼 -->
 	        <div id="articleShare">
 	        	<a class="likeBtn"><span class="invisible">like</span><em>${articleContent.article_like}</em></a>
-	        	<a class="saveBtn"><span class="invisible">share</span><em>248</em></a>
+<!-- 	        	<a class="saveBtn"><span class="invisible">share</span><em>0</em></a> -->
 	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
 	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn"><span class="invisible">link</span></a>
@@ -74,7 +74,7 @@
 	        <!-- 좌측 공유 버튼 -->
 	        <div id="verticalShare">
 	        	<a class="likeBtn verticalBtn mobileNone"><span class="invisible">like</span></a>
-	        	<a class="saveBtn verticalBtn mobileNone"><span class="invisible">share</span></a>
+<!-- 	        	<a class="saveBtn verticalBtn mobileNone"><span class="invisible">share</span></a> -->
 	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
 	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn verticalBtn mobileNone"><span class="invisible">link</span></a>

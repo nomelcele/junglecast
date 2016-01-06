@@ -10,7 +10,12 @@ $(function(){
 			type: "POST",
 			url: "likeArticle",
 			data: {
-				article_id: $("#article_id").val()
+				article_id: $("#article_id").val(),
+				currentUrl: window.location.href
+			},
+			dataType: "html",
+			success: function(jdata){
+				$("#articleShare").html(jdata);
 			}
 		});		
 	});
@@ -77,11 +82,14 @@ $(function(){
 	
 	$(window).scroll(function(){
 		if(matchMedia("only screen and (min-width:1280px)").matches){
+//			$("#articleInfo").css("margin-top","-60px");
 			if($(window).scrollTop()>60){
 				$("#articleInfo").css("margin-top","-60px");
 			} else {
 				$("#articleInfo").css("margin-top","0");
 			}
+		} else {
+			$("#articleInfo").css("margin-top","0px");
 		}
 		// 스크롤 시 좌측 공유 영역 보이기/숨기기
 		if($(window).scrollTop()>300){ // 225

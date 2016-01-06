@@ -150,7 +150,7 @@ li{list-style-type: none;}
 	#copyLink .modal-content.link-content{width:40%; border-radius:10px;}
 	
 	#articleInfo{width:23%;}
-	#articleContent{padding:100px 200px;}
+	#articleContentBox{padding:100px 110px;}
 	
 	#verticalShare{margin-left:0; display:none;}
 }
@@ -163,6 +163,7 @@ li{list-style-type: none;}
 	#copyLink .modal-content.link-content{width:40%; border-radius:10px;}
 	
 	#articleInfo{width:23%; padding:10px;}
+	#articleContentBox{padding:100px 110px;}
 	
 	#verticalShare{margin-left:0; display:none; left:76%;}
 }
@@ -192,7 +193,7 @@ li{list-style-type: none;}
 	.editorName{display:block; color:#00a6de; font-size:14px; font-weight:bold; margin-bottom:4px;}
 	.editorIntro{display:block; font-size:12px; margin:0 0 14px 0;}
 	
-	#articleContent{padding:30px 11px;}
+	#articleContentBox{padding:30px 11px;}
 	
 	#verticalShare{text-align:center; margin:0; height:auto; right:0; z-index:10; top:53%;}
 	.mobileNone{visibility:hidden;}
