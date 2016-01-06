@@ -3,6 +3,7 @@ package or.junglecast.mvc.dao;
 import java.util.List;
 
 import or.junglecast.vo.ArticleVO;
+import or.junglecast.vo.PictureVO;
 import or.junglecast.vo.ProfileVO;
 import or.junglecast.vo.Re_replyVO;
 import or.junglecast.vo.ReplyVO;
@@ -19,6 +20,10 @@ public class ArticleDao {
 	public ArticleVO articleContent(int article_id){
 		// 게시물 내용
 		return st.selectOne("article.articleContent", article_id);
+	}
+	
+	public List<PictureVO> articlePicture(int article_id){
+		return st.selectList("article.articlePicture", article_id);
 	}
 	
 	public ProfileVO editorInfo(int m_id){
@@ -75,4 +80,14 @@ public class ArticleDao {
 		// 조회수 증가
 		st.update("article.updateView", article_id);
 	}
+	
+	public void deleteReply(int reply_id){
+		// 댓글 삭제
+		st.delete("article.deleteReply", reply_id);
+	}
+	
+	public void deleteRereply(int rereply_id){
+		// 답글 삭제
+		st.delete("article.deleteRereply", rereply_id);
+	}	
 }

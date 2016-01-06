@@ -26,6 +26,7 @@ public class ArticleModel {
 		adao.updateView(article_id); // 조회수 증가
 		ArticleVO arvo = adao.articleContent(article_id);
 		model.addAttribute("articleContent", arvo); // 게시물 내용
+		model.addAttribute("articlePicture", adao.articlePicture(article_id)); // 게시물 이미지
 		model.addAttribute("editorInfo", adao.editorInfo(arvo.getM_id())); // 작성자 프로필
 		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // 베스트 댓글 목록
 		model.addAttribute("replyList", adao.replyList(article_id)); // 댓글 목록
@@ -49,7 +50,7 @@ public class ArticleModel {
 	public String writeReply(ReplyVO revo, HttpSession session, Model model){
 		// 댓글 작성
 		int article_id = revo.getArticle_id();
-		revo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
+//		revo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
 		adao.writeReply(revo); // 댓글 작성
 		adao.updateReply(article_id); // 댓글 갯수 증가
 		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // 베스트 댓글 목록
@@ -75,9 +76,23 @@ public class ArticleModel {
 	@RequestMapping(value="writeRereply")
 	public String writeRereply(Re_replyVO rrvo, HttpSession session){
 		// 답글 작성
-		rrvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
+//		rrvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
 		adao.writeRereply(rrvo);
 		return "redirect:rereplyList?reply_id="+rrvo.getReply_id();
+	}
+	
+	@RequestMapping(value="deleteReply")
+	public String deleteReply(int reply_id){
+		// 댓글 삭제
+		adao.deleteReply(reply_id);
+		return "detail/replyList";
+	}
+	
+	@RequestMapping(value="deleteRereply")
+	public String deleteRereply(int rereply_id){
+		// 답글 삭제
+		adao.deleteRereply(rereply_id);
+		return "detail/rereplyList";
 	}
 	
 }

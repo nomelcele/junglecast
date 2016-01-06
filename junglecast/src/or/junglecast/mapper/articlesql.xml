@@ -6,6 +6,9 @@
   <select id="articleContent" parameterType="int" resultType="arvo">
   	select * from article where article_id=#{article_id}
   </select>
+  <select id="articlePicture" parameterType="int" resultType="pivo">
+  	select * from picture where article_id=#{article_id} order by pic_order asc
+  </select>
   <select id="editorInfo" parameterType="int" resultType="prvo">
   	select m_id, m_nickname, m_pic, m_introduce from profile where m_id=#{m_id}
   </select>
@@ -18,42 +21,48 @@
   	where article_id=#{article_id}
   </update>
   <select id="replyList" parameterType="int" resultType="revo">
-  	select re.reply_id, re.m_id, re.pic_id, re.article_id, re.reply_like, re.reply_text, re.reply_date, 
+  	select re.reply_id, re.m_id, re.article_id, re.reply_like, re.reply_text, re.reply_date, 
   	(select count(*) from re_reply rr where rr.reply_id=re.reply_id) rereply_count, 
   	p.m_pic replyWriterPic, ac.m_id replyWriterId, p.m_nickname replyWriterName
   	from reply re, account ac, profile p 
   	where article_id=#{article_id} and re.m_id=ac.m_id and ac.m_id=p.m_id
   </select>
   <select id="rereplyList" parameterType="int" resultType="rrvo">
-  	select rr.rereply_id, rr.m_id, rr.reply_id, rr.rereplyWriterId, rr.rereply_text, 
-  	rr.rereply_date, rr.rereplyWriterPic, rr.rereplyWriterName 
-  	from re_reply rr, account ac, profile p
+  	select rr.rereply_id, rr.m_id, rr.reply_id, rr.rereply_text, rr.rereply_date, 
+  	p.m_pic rereplyWriterPic, ac.m_id rereplyWriterId, p.m_nickname rereplyWriterName 
+  	from re_reply rr, account ac, profile p 
   	where reply_id=#{reply_id} and rr.m_id=ac.m_id and ac.m_id=p.m_id
   </select>
   <insert id="writeReply" parameterType="revo">
-  	insert into reply values(reply_id_seq.nextVal,#{m_id},null,#{article_id},0,#{reply_text},sysdate)
+  	insert into reply values(reply_id_seq.nextVal,2,#{article_id},0,#{reply_text},sysdate)
   </insert>
   <update id="updateReply" parameterType="int">
   	update article set article_reply=(select article_reply from article where article_id=#{article_id})+1 
   	where article_id=#{article_id}  
   </update>
   <insert id="writeRereply" parameterType="rrvo">
-  	insert into re_reply values(rereply_id_seq.nextVal,#{m_id},#{reply_id},#{rereply_text},sysdate)
+  	insert into re_reply values(rereply_id_seq.nextVal,2,#{reply_id},#{rereply_text},sysdate)
   </insert>
   <update id="likeReply" parameterType="int">
   	update reply set reply_like=(select reply_like from reply where reply_id=#{reply_id})+1 
   	where reply_id=#{reply_id}
   </update>
   <select id="bestReplyList" parameterType="int" resultType="revo">
-  	select re.reply_id, re.m_id, re.pic_id, re.article_id, re.reply_like, re.reply_text, re.reply_date, 
+  	select re.reply_id, re.m_id, re.article_id, re.reply_like, re.reply_text, re.reply_date, 
   	(select count(*) from re_reply rr where rr.reply_id=re.reply_id) rereply_count, 
   	p.m_pic replyWriterPic, ac.m_id replyWriterId, p.m_nickname replyWriterName
   	from reply re, account ac, profile p
-  	where article_id=#{article_id} and re.m_id=ac.m_id and ac.m_id=p.m_id 
-  	rownum <![CDATA[<=]]> 5 order by reply_like desc
+  	where article_id=#{article_id} and re.m_id=ac.m_id and ac.m_id=p.m_id and 
+  	rownum <![CDATA[<=]]> 5 and re.reply_like <![CDATA[>=]]> 1 order by reply_like desc
   </select>
   <update id="updateView" parameterType="int">
   	update article set article_view=(select article_view from article where article_id=#{article_id})+1 
   	where article_id=#{article_id}  
   </update>
+  <delete id="deleteReply" parameterType="int">
+  	delete from reply where reply_id=#{reply_id}
+  </delete>
+  <delete id="deleteRereply" parameterType="int">
+  	delete from re_reply where rereply_id=#{rereply_id}
+  </delete>
   </mapper>

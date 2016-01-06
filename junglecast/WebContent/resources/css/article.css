@@ -44,9 +44,10 @@ li{list-style-type: none;}
 #articleLink{padding:2px 4px 2px 4px; width:80%;}
 
 /* 콘텐츠 기본 정보 */
-#articleContent{padding: 100px;}
-#articleContent p{font-size: 14px; margin-top: 50px; margin-bottom: 50px;}
-#articleContent img{width: 100%;}
+#articleContentBox{padding: 100px;}
+.articleContent{font-size: 14px; margin-top: 50px; margin-bottom: 80px;}
+.articleText{margin:30px 0;}
+#articleContentBox img{width: 100%;}
 #articleTitle{margin: 25px; border-bottom: 1px solid #B6BDC1;}
 #articleTitle h2{color:#404041;}
 #articleSubTitle{font-size:14px; color:#404041;}
@@ -54,7 +55,7 @@ li{list-style-type: none;}
 
 /* 콘텐츠 공유 영역 */
 .likeBtn{background: #00a6de url(../images/detailIcons/likeBtn.png) no-repeat 12px; display:inline-block; width:90px; height:40px;}
-.saveBtn{background: #414548 url(../images/detailIcons/saveBtn.png) no-repeat 12px; display:inline-block; width:90px; height:40px;}
+.saveBtn{background: #f1592a url(../images/detailIcons/saveBtn.png) no-repeat 12px; display:inline-block; width:90px; height:40px;}
 .fbBtn{background: #4E6888 url(../images/detailIcons/fbBtn.png) no-repeat 15px; display:inline-block; width:40px; height:40px;}
 .twBtn{background: #61ABC4 url(../images/detailIcons/twBtn.png) no-repeat 10px; display:inline-block; width:40px; height:40px;}
 .linkBtn{background: #FCB040 url(../images/detailIcons/linkBtn.png) no-repeat 10px; display:inline-block; width:40px; height:40px;}

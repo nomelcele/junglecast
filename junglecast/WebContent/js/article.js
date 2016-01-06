@@ -118,18 +118,17 @@ function likeReply(reply_id){
 
 function rereplyList(reply_id){
 	// 답글 보여주기
-//	$.ajax({
-//		type: "POST",
-//		url: "rereplyList",
-//		data: {
-//			reply_id: reply_id
-//		}, 
-//		success: function(result){
-//			$("#rereplyList"+reply_id).html(result);
-//			$("#rereplyList"+reply_id).toggle();
-//		}
-//	});
-	$("#rereplyList"+reply_id).toggle();
+	$.ajax({
+		type: "POST",
+		url: "rereplyList",
+		data: {
+			reply_id: reply_id
+		}, 
+		success: function(result){
+			$("#rereplyList"+reply_id).html(result);
+			$("#rereplyList"+reply_id).toggle();
+		}
+	});
 }
 
 function writeRereply(reply_id){

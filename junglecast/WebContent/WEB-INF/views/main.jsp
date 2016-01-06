@@ -318,11 +318,22 @@ $(document).ready(function(){
 	//콘텐츠 카드 클릭 버튼
 	$('.aCard').click(function(){
 		// 게시물 보기
-		var articleNum = $(this).find('input').val();
-		location.href="#detail";
-		if(matchMedia("only screen and (min-width:1280px)").matches){
-			$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
-		}
+		var articleNum = $(this).find('input').val(); // 게시물 번호
+		$.ajax({
+			type: "POST",
+			url: "articleDetail",
+			data: {
+				article_id: articleNum
+			},
+			success: function(result){
+				$("#modalBox").html(result);
+				$("#article_id").attr("value",articleNum);
+				location.href="#detail";
+				if(matchMedia("only screen and (min-width:1280px)").matches){
+					$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
+				}
+			}
+		});
 	});
 	
 });
@@ -404,7 +415,7 @@ function loadMore(){
 <body id="main_body">
 <div id="main_body_cover"></div>
 <jsp:include page="./header.jsp"></jsp:include>
-<jsp:include page="detail/articleDetail.jsp"/>
+<div id="modalBox"></div>
 <div id="content_area">
 	<aside id="left_area">
 		<div class="hidden">
