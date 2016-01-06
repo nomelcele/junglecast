@@ -22,6 +22,16 @@
 				jQuery('.contents_3').show();
 				$('html,body').scrollTop(0);
 			});
+			$('.c3_button_1').on('click',function(){
+				jQuery('.contents_3').hide();
+				jQuery('.contents_2').show();
+				$('html,body').scrollTop(0);
+			});
+			$('.c3_button_2').on('click',function(){
+				jQuery('.contents_3').hide();
+				jQuery('.contents_4').show();
+				$('html,body').scrollTop(0);
+			});
 			
 			$('.checkImg').on('click',function(){
 /* 				if((this).attr('src')!=('.checkImg').attr('src')){
@@ -63,7 +73,43 @@
 					$(this).css("backgroundColor","#00A1FF");
 				}
 			);
+			$('.c3_button_1').hover(
+					function(){
+						$(this).css("backgroundColor","#7B7B7B"); 
+					},
+					function(){
+						$(this).css("backgroundColor","#A5A5A5"); 
+					}
+				);
+			$('.c3_button_2').hover(
+					function(){
+						$(this).css("backgroundColor","#0090C0");
+					},
+					function(){
+						$(this).css("backgroundColor","#00A1FF");
+					}
+				);
+			$('.input_year').keypress(function (event) {
+
+		        if (event.which && (event.which <= 47 || event.which >= 58) && event.which != 8) {
+
+		            event.preventDefault();
+
+		        }
+		    });
+			function readURL(input){
+				if(input.files&&input.files[0]){
+					var reader = new FileReader();
+					reader.onload=function(e){
+					$('.defaultImg').attr('src',e.target.result);
+					}
+					reader.readAsDateURL(input.files[0]);
+				}
+			}
+			
 		});
+
+
 		</script>
 		
 <style>	
@@ -228,7 +274,7 @@
 			display:inline-block; width:100%; padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #C4C5C4; 
 		}
 		.password input{
-			width:53%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+			width:53%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle; float:right;
 		}
 		.passwordcorrect{
 			display:inline-block; width:100%; margin-top:3px;padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #C4C5C4; 
@@ -239,6 +285,86 @@
 		.c3_pw_warning{
 			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
 		}
+		.year{
+			display:inline-block; width:25%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+		}
+		.year input{
+			width:87%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle; text-align:right;
+		}
+		.month{
+			display:inline-block; width:23%; padding-top:5px; padding-bottom:5px; border-bottom: 2px solid #C4C5C4; margin-left:10px;
+		}
+		.month select{
+			width:100%; border:none;  font-size:12px; background-color: transparent; font-family:'돋움체'; vertical-align:middle; text-align:right;
+		}
+		.day{
+			display:inline-block; width:23%; padding-top:5px; padding-bottom:5px; border-bottom: 2px solid #C4C5C4; margin-left:10px;
+		}
+		.day select{
+			width:100%; border:none;  font-size:12px; background-color: transparent; font-family:'돋움체'; vertical-align:middle; text-align:right;
+		}
+		.c3_year_warning{
+			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
+		}
+		.c3_buttons{
+			position:relative; width:100%; margin-top:10px;
+		}
+		
+		.c3_button_1{
+			width:140px; height:45px; background-color:#A5A5A5; color:#FFFFFF; font-size:16px; border:none; cursor:pointer;
+			border-radius: 0px 0px 0px 0px; float:left;
+		}
+			
+		.c3_button_2{
+			width:140px; height:45px; background-color:#00A1FF; color:#FFFFFF; font-size:16px; border:none; cursor:pointer;
+			border-radius: 0px 0px 0px 0px; float:right;
+		}
+		input[type=radio] {
+    		display:none; 
+    		margin:10px;
+		}
+		input[type=radio] + label {
+    		display:inline-block;
+    		background-color: #F2F2F2;
+    		border-color: #ddd;
+    		color:#B1B1B1;
+    		width:130px;
+    		padding-top:10px;
+    		padding-bottom:10px;
+    		text-align:center;
+    		vertical-align:middle;
+    		cursor:pointer;
+    		line-height: 20px;
+    		font-size:14px;
+    		font-family:'돋움';
+		}
+
+		input[type=radio]:checked + label { 
+   			background-image: none;
+    		background-color:#00A1FF;
+    		color:white;
+		}
+		/*가입 2-3세부--------------------------------------------------------------------------------------------------------------------*/
+		.contents_4{
+			/* display:none; */ position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:1010px; margin-bottom:0px;
+		}
+		.midcontents_4{
+			width:660px; margin:0 auto; padding-top:65px;
+		}
+		.c_midcontents_4{
+			position:relative; background-color:#FFFFFF;  width:100%; height:550px; margin:0 auto;
+		}
+		.c4_midcontents{
+			width:90%; margin:0 auto;
+		}
+		.c4_midtop{
+			height:120px; padding-top:94px; padding-bottom:55px;
+		}
+		.defaultImg{
+			display:block; width:110px; height:110px; border-radius:60px; margin:0 auto;
+		}
+		
+		
 </style>
 </head>
 <body style="margin:0 0 0 0;" >
@@ -516,6 +642,7 @@
 		</div>
 	</div>
   -->
+  <!-- 
 	<div class = "contents_3">
 		<div class = "midcontents_3">
 			<div class = "c_contents_3">
@@ -543,11 +670,11 @@
 					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">비밀번호*&nbsp</h3>
 						<span class= "c3_line_2">
 							<span class = "password">
-								<input type = "password" name="pw" placeholder = "비밀번호를 입력해주세요.(4자 이상)" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력해주세요.(4자 이상)'">
+								<input type = "password" name="pw" placeholder = "비밀번호를 입력해주세요.(4자 이상)" onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력해주세요.(4자 이상)'" style="float:left">
 								<img src = "resources/images/joinImg/choice_1.png" class = "pwImg_1" style = "width:20px; height:20px; vertical-align:middle; float:right">
 							</span>
 							<span class = "passwordcorrect">
-								<input type = "password" name="pw_c" placeholder = "비밀번호를 한번 더 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 한번 더 입력해주세요.'">
+								<input type = "password" name="pw_c" placeholder = "비밀번호를 한번 더 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 한번 더 입력해주세요.'" style="float:left">
 								<img src = "resources/images/joinImg/choice_1.png" class = "pwImg_2" style = "width:20px; height:20px; vertical-align:middle; float:right">
 							</span>
 						</span>
@@ -556,12 +683,98 @@
 						</div>
 					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">생년월일*&nbsp
 					<a href="" style="font-size:12px; color:#00A1FF; font-weight:normal;text-decoration:none; letter-spacing:-1px;"><em style="font-style:normal; text-decoration:underline;">생년월일,</em> 왜 입력하는 거죠?</a></h3>
+						<span class="c3_line_3">
+							<span class = "year">
+								<input type = "text" name="year" class="input_year" maxlength="4" placeholder = "출생" onfocus="this.placeholder = ''" onblur="this.placeholder = '출생'">
+								<span style = "font-size:12px; font-family:'돋움'; ">년</span>
+							</span>
+							<span class="month">
+								<select name='month_sel'>
+									<option value="0" selected="selected">출생월</option>	
+									<option value="1">01월</option>
+									<option value="2">02월</option>
+									<option value="3">03월</option>
+									<option value="4">04월</option>
+									<option value="5">05월</option>
+									<option value="6">06월</option>
+									<option value="7">07월</option>
+									<option value="8">08월</option>
+									<option value="9">09월</option>
+									<option value="10">10월</option>
+									<option value="11">11월</option>
+									<option value="12">12월</option>
+								</select>
+							</span>
+							<span class="day">
+								<select name='day_sel'>
+									<option value="0" selected="selected">출생일</option>	
+									<option value="1">01일</option>
+									<option value="2">02일</option>
+									<option value="3">03일</option>
+									<option value="4">04일</option>
+									<option value="5">05일</option>
+									<option value="6">06일</option>
+									<option value="7">07일</option>
+									<option value="8">08일</option>
+									<option value="9">09일</option>
+									<option value="10">10일</option>
+									<option value="11">11일</option>
+									<option value="12">12일</option>
+									<option value="13">13일</option>
+									<option value="14">14일</option>
+									<option value="15">15일</option>
+									<option value="16">16일</option>
+									<option value="17">17일</option>
+									<option value="18">18일</option>
+									<option value="19">19일</option>
+									<option value="20">20일</option>
+									<option value="21">21일</option>
+									<option value="22">22일</option>
+									<option value="23">23일</option>
+									<option value="24">24일</option>
+									<option value="25">25일</option>
+									<option value="26">26일</option>
+									<option value="27">27일</option>
+									<option value="28">28일</option>
+									<option value="29">29일</option>
+									<option value="30">30일</option>
+									<option value="31">31일</option>
+								</select>
+							</span>
+						</span>
+						<div class = "c3_year_warning">
+							슈우우웅, 미래에서오신건가요?!!!
+						</div>
+					<h3 style = "margin-top:20px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">성별*&nbsp</h3>
 						
+						<input type="radio" id="radio1" name="radios" value="male">
+  							<label for="radio1">남자</label>
+						<input type="radio" id="radio2" name="radios"value="female">
+   							<label for="radio2">여자</label>
+				</div>
+			</div>
+			<div class = "c3_buttons">
+				<input type = "submit" value = "이전" class = "c3_button_1">
+				<input type = "submit" value = "다음" class = "c3_button_2">
+			</div>
+		</div>
+	</div>
+	 -->
+	<div class = "contents_4">
+		<div class = "midcontents_4">
+			<div class = "c_contents_4">
+				<img src = "resources/images/joinImg/join_3.png" width = 100% height = 115px style="padding-bottom:20px;">
+			</div>
+			<div class = "c_midcontents_4">
+				<div class = "c4_midcontents">
+					<div class = "c4_midtop">
+						<img src = "resources/images/joinImg/default_avatar.png" class="defaultImg" onerror="resources/images/joinImg/default_avatar.png">
+						<input type ='file' onchange="readURL(this);" style="background-image:url("resources/images/joinImg/camera.png");"/>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
 </div>
 
 </body>
