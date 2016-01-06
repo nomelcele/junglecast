@@ -1,5 +1,13 @@
 --순서대로 생성해야 에러 안나요!
 --CATEGORY TABLE 다시 만들어주세요! PLEAZE remake CATEGORY table!
+--SEARCH table 및 search_id_seq 시퀀스 추가했습니다!
+
+CREATE TABLE SEARCH(
+	search_id NUMBER(5) PRIMARY KEY,
+	search_txt VARCHAR2(50),
+	search_date DATE
+);
+CREATE SEQUENCE search_id_seq;
 
 CREATE TABLE ACCOUNT(	
   m_id NUMBER(5) PRIMARY KEY,

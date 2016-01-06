@@ -21,7 +21,7 @@
 			#my_nickname{width:282px; line-height: 15px; color:#2ba9e0; font-size: 14px; margin:5px 0; font-weight: bold;}
 			#my_introduce{width:282px; line-height: 15px; color:#a5a4a4; font-size: 13px; margin:0 0 10px;}
 			#go_write_page{margin:18px auto 10px; background:url("resources/images/main/icons/write-icon-blue.png") no-repeat 5px 5px; background-size : auto 70%; text-align:right; 
-								display:block; width:100px; height:26px; line-height: 26px; border:1px solid #00a1ff; padding:2px; border-radius:10px;}
+								display:block; width:100px; height:26px; line-height: 26px; border:1px solid #00a1ff; padding:2px; border-radius:10px; cursor:pointer;}
 			#go_write_page a{color:#00a1ff;  font-size:13px;}
 			#mypage_icons{color:#939597; font-size:13px;}
 				#notice_bell_icon{display:none;}
@@ -33,12 +33,10 @@
 		#left_menu{position:fixed; top:350px; bottom:2px; width:282px; background:#fff; border:1px solid #e6e7e8; display:block; margin:8px 0; overflow:hidden;}
 		#left_menu_inner{position:relative; margin:4px auto; height:90%; width:340px; overflow-y:scroll;/*  -ms-overflow-style: none;  */}
 			#left_menu_home{font-size: 16px; margin:14px 0 12px 10px; font-weight: bold;}
-				#left_menu_home a{color:#404041;}
-				#left_menu_home a:HOVER{color: #00a6de;}
+				#left_menu_home a{color:#00a6de;}
 			#left_menu_categories{background:#fbfbfb; padding: 14px 0 14px 10px;}
 			#left_menu_categories>ul>li{list-style: none; margin : 8px 0 8px 0;}
 			#left_menu_categories>ul>li>span{color:#4b4b4b; font-size: 14px; margin-left:12px; cursor: pointer;}
-			#left_menu_categories>ul>li>span:HOVER{color: #00a6de;}
 			.catogory_icon{width:20px; height:20px; display: inline-block; line-height: 20px;}
 			#categories{color: #a0a0a0; font-size:16px; font-weight: bold; }
 	#tablet_left_area{display:none;}
@@ -210,30 +208,6 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 
-window.onload = function(){
-    $('html body').on('click', '.aCategory span', function(){
-    	var getCategoryId = $(this).parent().find('.leftmenu_category_id').val();
-    	$.ajax({
-			url: "selectThisCategory",
-			data: {categoryId : getCategoryId},
-			dataType: 'JSON',
-			type: 'POST',
-			async:false,
-			success: function (data) {
-				$('#contents_cards_area').empty();
-				var aCard='';
-				$.each(data.result, function(index, entry){
-					aCard += '<div class="aCard"><div class="aCard_img_div">';
-					aCard += '<img class="aCard_img" src="resources/articleContents/'+ entry.pic_url +'"></div>';
-					aCard += '<input type="hidden" value="'+ entry.article_id +'">';
-					aCard += '<div class="aCard_txt">'+entry.article_title+'</div></div>';
-				});
-				$('#contents_cards_area').append(aCard);
-			}
-    	});
-    });
-};
-
 $(document).ready(function(){
 	//반응형 자바스크립트
 	$(window).resize(function(){
@@ -252,7 +226,7 @@ $(document).ready(function(){
 				if(($('#main_body_cover').css("display") == "block") && (e.pageX>clientWidth*0.75)){
 					//left_area 숨길 함수 호출
 					menu_icon_clicked_left_area_hiding();
-				}    
+				}
 			});
 		}
 	});
@@ -270,6 +244,43 @@ $(document).ready(function(){
 		});
 	});
 
+    //좌측 메뉴 포스팅하기 버튼
+    $('#go_write_page').click(function(){
+    	location.href="writeArticle";
+    });
+    
+    //좌측 메뉴 홈 눌렀을 때 css
+    $('#left_menu_home a').click(function(){
+    	$('#left_menu_home a').css("color", "#00a6de");
+    });;
+    
+    //카테고리 목록 눌렀을 때 해당 카테고리 콘텐츠 카드 새로 받아옴
+    $('html body').on('click', '.aCategory span', function(){
+    	$('#left_menu_home a').css("color", "#404041"); //홈버튼 클릭해제
+    	$('.aCategory').find('span').css("color", "#4b4b4b");
+    	$(this).parent().find('span').css("color", "#00a6de");
+    	var getCategoryId = $(this).parent().find('.leftmenu_category_id').val();
+    	$.ajax({
+			url: "selectThisCategory",
+			data: {categoryId : getCategoryId},
+			dataType: 'JSON',
+			type: 'POST',
+			async:false,
+			success: function (data) {
+				$('#contents_cards_area').empty();
+				var aCard='';
+				$.each(data.result, function(index, entry){
+					aCard += '<div class="aCard"><div class="aCard_img_div">';
+					aCard += '<img class="aCard_img" src="resources/articleContents/'+ entry.pic_url +'"></div>';
+					aCard += '<input type="hidden" value="'+ entry.article_id +'">';
+					aCard += '<div class="aCard_txt">'+entry.article_title+'</div></div>';
+				});
+				$('#contents_cards_area').append(aCard);
+				cardClickEvent(); //뒤늦게 받아온 콘텐츠 카드이므로 클릭 이벤트 다시 붙여줌
+			}
+    	})
+    });
+    
     
 	//이미지 슬라이더
 	$('#demo2').skdslider({
@@ -316,6 +327,11 @@ $(document).ready(function(){
 	});
 	
 	//콘텐츠 카드 클릭 버튼
+	cardClickEvent();
+
+});
+//콘텐츠 카드 클릭 함수
+function cardClickEvent() {
 	$('.aCard').click(function(){
 		// 게시물 보기
 		var articleNum = $(this).find('input').val(); // 게시물 번호
@@ -334,9 +350,8 @@ $(document).ready(function(){
 				}
 			}
 		});
-	});
-	
-});
+	});	
+}
 
 //반응형 - 화면크기 바뀔때마다 호출되는 함수
 function resizingEvent(){
@@ -439,7 +454,7 @@ function loadMore(){
 		</div>
 		<div id="left_menu">
 			<div id="left_menu_inner">
-				<div id="left_menu_home"><a href="#">홈</a></div>
+				<div id="left_menu_home"><a href="main">홈</a></div>
 				<div id="left_menu_categories">
 					<div id="categories">골라보기</div>
 					<ul>
