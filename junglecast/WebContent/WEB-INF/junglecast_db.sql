@@ -111,5 +111,5 @@ INSERT INTO CATEGORY(category_name, category_id, category_icon) VALUES(
 	'새벽 1시 다락방', category_id_seq.NEXTVAL, 'moon_icon.png'
 );
 
--- 01 06 컬럼 삭제
+-- 01/06 컬럼 삭제
 alter table reply drop(pic_id);

@@ -26,7 +26,7 @@
 			</div>
 			<div class="replyTextBox">
 				<div class="replyInput">
-					<input id="rereply_text" type="text" placeholder="내용을 입력해 주세요.">
+					<input id="rereply_text${reply_id}" type="text" placeholder="내용을 입력해 주세요.">
 				</div>
 			</div>
 			<a href="javascript:writeRereply(${reply_id});">답글 등록</a>

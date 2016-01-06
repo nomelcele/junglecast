@@ -47,7 +47,7 @@ public class ArticleModel {
 	}
 	
 	@RequestMapping(value="writeReply")
-	public String writeReply(ReplyVO revo, HttpSession session, Model model){
+	public String writeReply(ReplyVO revo, Model model){
 		// 댓글 작성
 		int article_id = revo.getArticle_id();
 //		revo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
@@ -74,7 +74,7 @@ public class ArticleModel {
 	}
 	
 	@RequestMapping(value="writeRereply")
-	public String writeRereply(Re_replyVO rrvo, HttpSession session){
+	public String writeRereply(Re_replyVO rrvo){
 		// 답글 작성
 //		rrvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
 		adao.writeRereply(rrvo);

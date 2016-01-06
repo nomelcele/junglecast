@@ -25,13 +25,13 @@
   	(select count(*) from re_reply rr where rr.reply_id=re.reply_id) rereply_count, 
   	p.m_pic replyWriterPic, ac.m_id replyWriterId, p.m_nickname replyWriterName
   	from reply re, account ac, profile p 
-  	where article_id=#{article_id} and re.m_id=ac.m_id and ac.m_id=p.m_id
+  	where article_id=#{article_id} and re.m_id=ac.m_id and ac.m_id=p.m_id order by reply_date desc
   </select>
   <select id="rereplyList" parameterType="int" resultType="rrvo">
   	select rr.rereply_id, rr.m_id, rr.reply_id, rr.rereply_text, rr.rereply_date, 
   	p.m_pic rereplyWriterPic, ac.m_id rereplyWriterId, p.m_nickname rereplyWriterName 
   	from re_reply rr, account ac, profile p 
-  	where reply_id=#{reply_id} and rr.m_id=ac.m_id and ac.m_id=p.m_id
+  	where reply_id=#{reply_id} and rr.m_id=ac.m_id and ac.m_id=p.m_id order by rereply_date desc
   </select>
   <insert id="writeReply" parameterType="revo">
   	insert into reply values(reply_id_seq.nextVal,2,#{article_id},0,#{reply_text},sysdate)

@@ -76,10 +76,12 @@ $(function(){
 	});
 	
 	$(window).scroll(function(){
-		if($(window).scrollTop()>60){
-			$("#articleInfo").css("margin-top","-60px");
-		} else {
-			$("#articleInfo").css("margin-top","0");
+		if(matchMedia("only screen and (min-width:1280px)").matches){
+			if($(window).scrollTop()>60){
+				$("#articleInfo").css("margin-top","-60px");
+			} else {
+				$("#articleInfo").css("margin-top","0");
+			}
 		}
 		// 스크롤 시 좌측 공유 영역 보이기/숨기기
 		if($(window).scrollTop()>300){ // 225
@@ -116,7 +118,7 @@ function likeReply(reply_id){
 	});
 }
 
-function rereplyList(reply_id){
+function rereplyList(reply_id,type){
 	// 답글 보여주기
 	$.ajax({
 		type: "POST",
@@ -125,23 +127,30 @@ function rereplyList(reply_id){
 			reply_id: reply_id
 		}, 
 		success: function(result){
-			$("#rereplyList"+reply_id).html(result);
-			$("#rereplyList"+reply_id).toggle();
+			if(type == 'best'){
+				$("#rereplyList"+reply_id+"b").html(result);
+				$("#rereplyList"+reply_id+"b").toggle();
+			} else {
+				$("#rereplyList"+reply_id).html(result);
+				$("#rereplyList"+reply_id).toggle();
+			}
 		}
 	});
 }
 
 function writeRereply(reply_id){
 	// 답글 작성
+	alert($("#rereply_text"+reply_id).val());
 	$.ajax({
 		type: "POST",
 		url: "writeRereply",
 		data: {
 			reply_id: reply_id,
-			rereply_text: $("#rereply_text").val()
+			rereply_text: $("#rereply_text"+reply_id).val()
 		}, 
 		success: function(result){
 			$("#rereplyList"+reply_id).html(result);
+			$("#rereplyList"+reply_id+"b").html(result);
 		}
 	});
 }

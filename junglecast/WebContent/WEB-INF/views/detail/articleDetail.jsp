@@ -132,11 +132,11 @@
 						       		</div>
 						       		<div class="replySubDetail">
 					       				<a class="likeReplyBtn" href="javascript:likeReply(${bestReplyList.reply_id});">좋아요 ${bestReplyList.reply_like}개</a>
-					       				<a class="rereplyBtn" href="javascript:rereplyList(${bestReplyList.reply_id});">답글 ${bestReplyList.rereply_count}개</a>
+					       				<a class="rereplyBtn" href="javascript:rereplyList(${bestReplyList.reply_id},'best');">답글 ${bestReplyList.rereply_count}개</a>
 					       			</div>			       			
 					       	</div>
 					    </div>
-			       		<div class="rereplyList" id="rereplyList${bestReplyList.reply_id}">
+			       		<div class="rereplyList" id="rereplyList${bestReplyList.reply_id}b">
 			       		</div>
 		       		</li>
 		       	</c:forEach>
@@ -154,7 +154,7 @@
 						       		</div>
 						       		<div class="replySubDetail">
 					       				<a class="likeReplyBtn" href="javascript:likeReply(${replyList.reply_id});">좋아요 ${replyList.reply_like}개</a>
-					       				<a class="rereplyBtn" href="javascript:rereplyList(${replyList.reply_id});">답글 ${replyList.rereply_count}개</a>
+					       				<a class="rereplyBtn" href="javascript:rereplyList(${replyList.reply_id},'normal');">답글 ${replyList.rereply_count}개</a>
 					       			</div>			       			
 					       	</div>
 					    </div>

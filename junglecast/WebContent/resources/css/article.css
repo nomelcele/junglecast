@@ -44,8 +44,8 @@ li{list-style-type: none;}
 #articleLink{padding:2px 4px 2px 4px; width:80%;}
 
 /* 콘텐츠 기본 정보 */
-#articleContentBox{padding: 100px;}
-.articleContent{font-size: 14px; margin-top: 50px; margin-bottom: 80px;}
+#articleContentBox{padding: 100px 100px 40px 100px;}
+.articleContent{font-size: 14px; margin-top: 30px; margin-bottom: 100px;}
 .articleText{margin:30px 0;}
 #articleContentBox img{width: 100%;}
 #articleTitle{margin: 25px; border-bottom: 1px solid #B6BDC1;}
