@@ -32,6 +32,16 @@
 				jQuery('.contents_4').show();
 				$('html,body').scrollTop(0);
 			});
+			$('.c4_button_1').on('click',function(){
+				jQuery('.contents_4').hide();
+				jQuery('.contents_3').show();
+				$('html,body').scrollTop(0);
+			});
+			$('.c4_button_2').on('click',function(){
+				jQuery('.contents_4').hide();
+				jQuery('.contents_5').show();
+				$('html,body').scrollTop(0);
+			});
 			
 			$('.checkImg').on('click',function(){
 /* 				if((this).attr('src')!=('.checkImg').attr('src')){
@@ -90,24 +100,23 @@
 					}
 				);
 			$('.input_year').keypress(function (event) {
-
 		        if (event.which && (event.which <= 47 || event.which >= 58) && event.which != 8) {
-
 		            event.preventDefault();
-
 		        }
 		    });
-			function readURL(input){
-				if(input.files&&input.files[0]){
-					var reader = new FileReader();
-					reader.onload=function(e){
-					$('.defaultImg').attr('src',e.target.result);
-					}
-					reader.readAsDateURL(input.files[0]);
-				}
-			}
-			
+			$('.nickname input').keyup(function (e){
+		          var content = $(this).val();
+		          $('.inputCnt').html(content.length + '/14');
+		      });
+		      $('.nickname input').keyup();
+		      
+			$('.myintro input').keyup(function (e){
+			      var content = $(this).val();
+		          $('.intro_inputCnt').html(content.length + '/17');
+		      });
+		      $('.myintro input').keyup();
 		});
+
 
 
 		</script>
@@ -162,7 +171,7 @@
 		}
 		/*가입 2--------------------------------------------------------------------------------------------------------------------*/
 		.layer_2{
-			/* display:none; */
+			 /* display:none; */ 
 		}
 		.container_2{
 			position:relative; margin-top:97px; padding-bottom:65px; border-bottom:3px solid #00A6DE;
@@ -234,7 +243,7 @@
 		}
 		/*가입 2-2세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_3{
-			/* display:none; */ position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:960px; margin-bottom:0px;
+			 /* display:none; */  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:960px; margin-bottom:0px;
 		}
 		.midcontents_3{
 			width:660px; margin:0 auto; padding-top:65px;
@@ -346,7 +355,7 @@
 		}
 		/*가입 2-3세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_4{
-			/* display:none; */ position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:1010px; margin-bottom:0px;
+			 /* display:none; */  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:1010px; margin-bottom:0px;
 		}
 		.midcontents_4{
 			width:660px; margin:0 auto; padding-top:65px;
@@ -363,7 +372,55 @@
 		.defaultImg{
 			display:block; width:110px; height:110px; border-radius:60px; margin:0 auto;
 		}
-		
+		.nickname{
+			display:inline-block;width:80%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+		}
+		.nickname input{
+			width:90%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+		}
+		.inputCnt{
+		 font-size:14px; color:#828180; font-family:'돋움'; vertical-align:middle; float:right;
+		}
+		.n_doublebutton{
+			width:75px; height:31px; background-color:#C9C9C9; color:#FFFFFF; font-size:14px; border:none; cursor:pointer;
+			border-radius: 0px 0px 0px 0px;
+		}
+		.c4_nickname_warning{
+			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
+		}
+		.myintro{
+			display:inline-block;width:80%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+		}
+		.myintro input{
+			width:90%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+		}
+		.intro_inputCnt{
+		 font-size:14px; color:#828180; font-family:'돋움'; vertical-align:middle; float:right;
+		}
+		.c4_buttons{
+			position:relative; width:100%; margin-top:10px;
+		}
+		.c4_button_1{
+			width:140px; height:45px; background-color:#A5A5A5; color:#FFFFFF; font-size:16px; border:none; cursor:pointer;
+			border-radius: 0px 0px 0px 0px; float:left;
+		}	
+		.c4_button_2{
+			width:140px; height:45px; background-color:#00A1FF; color:#FFFFFF; font-size:16px; border:none; cursor:pointer;
+			border-radius: 0px 0px 0px 0px; float:right;
+		}
+		/*가입 2-4세부--------------------------------------------------------------------------------------------------------------------*/
+		.contents_5{
+			 /* display:none; */  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:728px; margin-bottom:0px;
+		}
+		.midcontents_5{
+			width:660px; margin:0 auto; padding-top:65px;
+		}
+		.c_midcontents_5{
+			position:relative; background-color:#FFFFFF;  width:100%; height:450px; margin:0 auto;
+		}
+		.c5_midcontents{
+			width:90%; margin:0 auto;
+		}
 		
 </style>
 </head>
@@ -375,7 +432,7 @@
  document.body.style.backgroundImage = 'url('+bgImg[ran]+')';
  document.body.style.backgroundAttachment="fixed";
 </script>
-<!-- 
+ <!--
 <div class="container">
 	<div class = "header">
 		<div class = "c_header">
@@ -418,7 +475,7 @@
 			</div>
 		</div>
 	</div>
-<!--
+<!-- 
 	<div class = "contents_2">
 		<div class = "midcontents_2">
 			<div class = "c_contents_2">
@@ -642,7 +699,7 @@
 		</div>
 	</div>
   -->
-  <!-- 
+  <!--
 	<div class = "contents_3">
 		<div class = "midcontents_3">
 			<div class = "c_contents_3">
@@ -760,6 +817,7 @@
 		</div>
 	</div>
 	 -->
+	<!--
 	<div class = "contents_4">
 		<div class = "midcontents_4">
 			<div class = "c_contents_4">
@@ -769,8 +827,54 @@
 				<div class = "c4_midcontents">
 					<div class = "c4_midtop">
 						<img src = "resources/images/joinImg/default_avatar.png" class="defaultImg" onerror="resources/images/joinImg/default_avatar.png">
-						<input type ='file' onchange="readURL(this);" style="background-image:url("resources/images/joinImg/camera.png");"/>
+						<div style = "position:absolute; height:27px; width:27px; background-image:url("resources/images/joinImg/camera.png");">
+						<input type ='file' onchange="readURL(this);" style="width:0px; height:20;filter:alpha(opacity=0);"/>
+						</div>
 					</div>
+					<h3 style = "margin-top:0px;margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">닉네임*&nbsp</h3>
+					------------------ 프로필사진 업로드 미완성 --------------------
+					<div class = "c4_line_1">
+						<span class = "nickname">
+							<input type = "text" name="nickname" maxlength="14" placeholder = "닉네임을 입력해 주세요 (최대 14자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임을 입력해 주세요 (최대 14자)'">
+							<span class="inputCnt">0</span>
+						</span> 
+						<span class = "n_double" style="margin-left:10px;">
+							<input type = "submit" value = "중복확인" class = "n_doublebutton">
+						</span>
+					</div>
+					<div class = "c4_nickname_warning">
+						이런, 늦어부렸어,사용중인 닉네임이라네요.. 부들부들
+					</div>
+					<h3 style = "margin-top:55px;margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">나의 한줄 소개*&nbsp</h3>
+					<div class = "c4_line_2">
+						<span class = "myintro">
+							<input type = "text" name="myintro" maxlength="17" placeholder = "자신을 표현해 보세요! (1~17자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '자신을 표현해 보세요! (1~17자)'">
+							<span class="intro_inputCnt">0</span>
+						</span> 
+					</div>
+				</div>
+			</div>
+			<div class = "c4_buttons">
+				<input type = "submit" value = "이전" class = "c4_button_1">
+				<input type = "submit" value = "완료" class = "c4_button_2">
+			</div>
+		</div>
+	</div>
+	-->
+		
+	<div class = "contents_5">
+		<div class = "midcontents_5">
+			<div class = "c_contents_5">
+				<img src = "resources/images/joinImg/join_4.png" width = 100% height = 115px style="padding-bottom:20px;">
+			</div>
+			<div class = "c_midcontents_5">
+				<div class = "c5_midcontents">
+					<div class = "c5_midtop">
+						<img src = "resources/images/joinImg/sign_complete.gif" class="join_gif" style="width:302px; height:198px; margin:0 auto; display:block; padding-top:10px; padding-bottom:10px;">
+					</div>
+					<p style="font-size:20px; color:#707070; font-weight:bold; line-height:27px; text-align:center; font-family:'돋움'; margin:0;">
+					가입이 완료되었습니다.<br>더 즐겁게 피키캐스트를 이용하실 수 있습니다.</p>
+					
 				</div>
 			</div>
 		</div>
