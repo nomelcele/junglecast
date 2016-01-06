@@ -206,7 +206,7 @@ function readURL(input) {
 
 </script>
 </head>
-<jsp:include page="./header.jsp"></jsp:include>
+<jsp:include page="./topLeft/header.jsp"></jsp:include>
 <body>
 <section id="writeArticle_wrapper">
 <div id="wa_body_cover">

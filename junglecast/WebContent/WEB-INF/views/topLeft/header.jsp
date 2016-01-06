@@ -63,7 +63,7 @@
 .search_recommend>div{color:#939598; font-size:16px; font-weight: bold; height:25px; line-height:25px; margin:10px 0 0 10px;}
 .search_recommend ul li a{color:#939598; font-size: 14px; display:block; }
 
-.menu_option_wrapper{width:120px; height:100px; position:fixed; z-index:1000; display:none;}
+.menu_option_wrapper{width:120px; height:100px; position:fixed; z-index:650; display:none;}
 .menu_arrow{width:100%; height:14px;}
 .menu_arrow img{width:auto; height:100%; float:right;}
 .logout_menu{float:left; width:100%; height:22px; line-height:22px;background:white; padding:5px; text-align: center; font-size: 14px; 
