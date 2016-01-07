@@ -198,6 +198,11 @@ em{font-style: normal;}
 	
 	#verticalShare{text-align:center; margin:0; height:auto; right:0; z-index:10; top:53%;}
 	.mobileNone{visibility:hidden;}
+	
+	.replyWrite a{top:auto; padding:2px; bottom:2px; font-size:11px; right:14px;}
+	.rereplyList .replyWrite a{top:0; right:0; padding:7px 4px; font-size:11px;}
+	.replyTextBox{margin-right:0;}
+	.charNumBox{text-align:left;}
 }
 /*///////////////////////////////////////////////*/
 

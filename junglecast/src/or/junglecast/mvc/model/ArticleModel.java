@@ -46,15 +46,6 @@ public class ArticleModel {
 		// 게시물 좋아요
 		adao.likeArticle(article_id);
 		Integer article_like = adao.articleContent(article_id).getArticle_like(); // 게시물 좋아요 수 
-		
-//		StringBuffer sb = new StringBuffer();
-//		sb.append("<a class='likeBtn'><span class='invisible'>like</span><em>")
-//		.append(article_like).append("</em></a>");
-//		sb.append("<a href='http://www.facebook.com/sharer/sharer.php?u=")
-//		.append(currentUrl).append("' class='fbBtn' target='_blank'><span class='invisible'>fb</span></a>");
-//		sb.append("<a href='https://twitter.com/intent/tweet?text=TEXT&url=")
-//		.append(currentUrl).append("'class='twBtn' target='_blank'><span class='invisible'>tw</span></a>"); 
-//		sb.append("<a class='linkBtn'><span class='invisible'>link</span></a>");
 
 		PrintWriter pw = response.getWriter();
 		pw.write(article_like.toString());
@@ -63,9 +54,22 @@ public class ArticleModel {
 	}
 	
 	@RequestMapping(value="shareArticle")
-	public void shareArticle(int article_id){
+	public void shareArticle(int article_id, HttpServletResponse response) throws IOException{
 		// 게시물 sns 공유
 		adao.shareArticle(article_id);
+		Integer article_share = adao.articleContent(article_id).getArticle_share(); // 게시물 공유 수 
+
+		PrintWriter pw = response.getWriter();
+		pw.write(article_share.toString());
+		pw.flush();
+		pw.close();
+	}
+	
+	@RequestMapping(value="replyList")
+	public String replyList(int article_id, Model model){
+		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // 베스트 댓글 목록
+		model.addAttribute("replyList", adao.replyList(article_id)); // 댓글 목록
+		return "detail/replyList";
 	}
 	
 	@RequestMapping(value="writeReply")
@@ -75,16 +79,15 @@ public class ArticleModel {
 //		revo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
 		adao.writeReply(revo); // 댓글 작성
 		adao.updateReply(article_id); // 댓글 갯수 증가
-		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // 베스트 댓글 목록
-		model.addAttribute("replyList", adao.replyList(article_id)); // 댓글 목록
-		return "detail/replyList";
+		return "redirect:replyList?article_id="+revo.getArticle_id();
 	}
 	
 	@RequestMapping(value="likeReply")
-	public String likeReply(int reply_id){
+	public String likeReply(ReplyVO revo){
 		// 댓글 좋아요
-		adao.likeReply(reply_id);
-		return "";
+		System.out.println("글 번호: "+revo.getArticle_id());
+		adao.likeReply(revo.getReply_id());
+		return "redirect:replyList?article_id="+revo.getArticle_id();
 	}
 	
 	@RequestMapping(value="rereplyList")

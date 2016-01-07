@@ -46,6 +46,10 @@ $(function(){
 			url: "shareArticle",
 			data: {
 				article_id: $("#article_id").val()
+			},
+			dataType: "text",
+			success: function(jdata){
+				$(".articleShareNum").html(jdata);
 			}
 		});		
 	});
@@ -57,6 +61,10 @@ $(function(){
 			url: "shareArticle",
 			data: {
 				article_id: $("#article_id").val()
+			},
+			dataType: "text",
+			success: function(jdata){
+				$(".articleShareNum").html(jdata);
 			}
 		});		
 	});
@@ -111,13 +119,14 @@ $(function(){
 	
 });
 
-function likeReply(reply_id){
+function likeReply(reply_id, article_id){
 	// 댓글 좋아요
 	$.ajax({
 		type: "POST",
 		url: "likeReply",
 		data: {
-			reply_id: reply_id
+			reply_id: reply_id,
+			article_id: article_id
 		}, 
 		success: function(result){
 			$("#replyList").html(result);
@@ -147,7 +156,6 @@ function rereplyList(reply_id,type){
 
 function writeRereply(reply_id){
 	// 답글 작성
-	alert($("#rereply_text"+reply_id).val());
 	$.ajax({
 		type: "POST",
 		url: "writeRereply",

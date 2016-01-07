@@ -20,7 +20,7 @@
 				     	  <li><span class="articleHits">조회수</span><em>${articleContent.article_view}</em></li>
 				     	  <li><span class="articleLikes">좋아요</span><em class="articleLikeNumRight">${articleContent.article_like}</em></li>
 				     	  <li><span class="articleReplies">댓글</span><em>${articleContent.article_reply}</em></li>
-				     	  <li><span class="articleShares">공유</span><em>${articleContent.article_share}</em></li>
+				     	  <li><span class="articleShares">공유</span><em class="articleShareNum">${articleContent.article_share}</em></li>
 				      </ul>
 			      </div>
 	     	  <!-- 페이스북 좋아요 -->
@@ -43,7 +43,7 @@
 	        		<li><span class="articleHits"><em>${articleContent.article_view}</em></span></li>
 	        		<li><span class="articleLikes"><em class="articleLikeNumRight">${articleContent.article_like}</em></span></li>
 	        		<li><span class="articleReplies"><em>${articleContent.article_reply}</em></span></li>
-	        		<li><span class="articleShares"><em>${articleContent.article_share}</em></span></li>
+	        		<li><span class="articleShares"><em class="articleShareNum">${articleContent.article_share}</em></span></li>
 	        	</ul>
 	        </div>
 	        
@@ -65,16 +65,16 @@
   	        <!-- sns 공유 버튼 -->
 	        <div id="articleShare">
 	        	<a class="likeBtn"><span class="invisible">like</span><em id="articleLikeNum">${articleContent.article_like}</em></a>
-	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
-	        	<a href="https://twitter.com/intent/tweet?text=${articleContent.article_title}&url=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}%26type=link" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=${articleContent.article_title}&url=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}%26type=link" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn"><span class="invisible">link</span></a>
 	        </div>
 	        
 	        <!-- 좌측 공유 버튼 -->
 	        <div id="verticalShare">
 	        	<a class="likeBtn verticalBtn mobileNone"><span class="invisible">like</span></a>
-	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
-	        	<a href="https://twitter.com/intent/tweet?text=${articleContent.article_title}&url=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}%26type=link" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=${articleContent.article_title}&url=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}%26type=link" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn verticalBtn mobileNone"><span class="invisible">link</span></a>
 	        	<a class="topBtn verticalBtn"><em>TOP</em></a>
 	        </div>
@@ -121,7 +121,7 @@
 						       			<span class="replyDate">${bestReplyList.reply_date}</span>
 						       		</div>
 						       		<div class="replySubDetail">
-					       				<a class="likeReplyBtn" href="javascript:likeReply(${bestReplyList.reply_id});">좋아요 ${bestReplyList.reply_like}개</a>
+					       				<a class="likeReplyBtn" href="javascript:likeReply(${bestReplyList.reply_id},${bestReplyList.article_id});">좋아요 ${bestReplyList.reply_like}개</a>
 					       				<a class="rereplyBtn" href="javascript:rereplyList(${bestReplyList.reply_id},'best');">답글 ${bestReplyList.rereply_count}개</a>
 					       			</div>			       			
 					       	</div>
@@ -143,7 +143,7 @@
 						       			<span class="replyDate">${replyList.reply_date}</span>
 						       		</div>
 						       		<div class="replySubDetail">
-					       				<a class="likeReplyBtn" href="javascript:likeReply(${replyList.reply_id});">좋아요 ${replyList.reply_like}개</a>
+					       				<a class="likeReplyBtn" href="javascript:likeReply(${replyList.reply_id},${replyList.article_id});">좋아요 ${replyList.reply_like}개</a>
 					       				<a class="rereplyBtn" href="javascript:rereplyList(${replyList.reply_id},'normal');">답글 ${replyList.rereply_count}개</a>
 					       			</div>			       			
 					       	</div>
@@ -167,7 +167,7 @@
 	    			<div id="linkArea">
 			     		<a id="linkCloseBtn">×</a>
 			     		<p>아래의 URL을 복사(Ctrl+C)하여 원하는 곳에 붙여넣기(Ctrl+V)하세요.</p>
-			     		<input id="articleLink" type="text" value="http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail">
+			     		<input id="articleLink" type="text" value="http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link">
 	    			</div>
 	    		</div>
 			</div>
