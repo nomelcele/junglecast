@@ -29,5 +29,10 @@ public class MainModel {
 		mav.addObject("result", dao.selectThisCategory(Integer.parseInt(category_id)));
 		return mav;
 	}
+	
+	@RequestMapping("editInfo")
+	public String editInfo(){
+		return "editInfo";
+	}
 
 }

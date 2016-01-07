@@ -64,6 +64,11 @@ $(function(){
 			}
     	})
     });
+    
+    $("#goto_profile").click(function(){
+    	// 개인 정보 수정
+    	location="editInfo";
+    });
 });
 
 //메뉴 아이콘 클릭했을 때 left_area show/hide 함수

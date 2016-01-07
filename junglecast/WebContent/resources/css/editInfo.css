@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+ul {padding:0;}
+li{list-style-type: none;}
+em{font-style: normal;}
+.menuBox{background:#fff; border:1px solid #eaeaea; margin:20px 0; padding:0 10px;}
+.menuList li{padding:15px 10px;}
+
+@media only screen and (max-width:1279px) and (min-width:1024px){
+	.menuBox{display:none;}
+}
+
+@media only screen and (max-width:1023px) and (min-width:768px){
+	.menuBox{display:none;}
+}
+
+@media only screen and (max-width:767px){
+	.menuBox{display:none;}
+}
