@@ -1,7 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>        
-<script type="text/javascript" src="js/article.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//반응형 자바스크립트
+	$(window).resize(function(){
+		resizingEvent();
+	});
+	
+	//상단바 메뉴 아이콘 클릭시
+	$('#menu_icon').click(function(){
+		var clientWidth = document.body.clientWidth;
+		if(clientWidth<767){
+			//left_area 보여줄 함수 호출
+			menu_icon_clicked_left_area_showing();
+			$(document).click(function(e){
+				if(($('#main_body_cover').css("display") == "block") && (e.pageX>clientWidth*0.75)){
+					//left_area 숨길 함수 호출
+					menu_icon_clicked_left_area_hiding();
+				}
+			});
+		}
+	});
+	
+    //타블렛 화면일 때 메뉴 아이콘 클릭
+	$('#tablet_aside_menu_icon').click(function(){
+		//left_area 보여줄 함수 호출
+		menu_icon_clicked_left_area_showing()
+		
+		$(document).click(function(e){
+			if(($('#main_body_cover').css("display") == "block") && (e.pageX>220)){
+				//left_area 숨길 함수 호출
+				menu_icon_clicked_left_area_hiding();
+			}    
+		});
+	});
+
+    //스크롤 이벤트 캐치하는 함수
+	$(window).scroll(function(){
+		if($(window).scrollTop() == $(document).height()-$(window).height()){
+			loadMore();
+		}
+	});
+
+	//Top 버튼
+	$('#scroll_up').click(function(){
+		$("html,body").stop().animate({'scrollTop' :0}, 400);
+	});
+});
+</script>
+<body id="main_body">
+<div id="main_body_cover"></div>
+<jsp:include page="../topLeft/header.jsp"></jsp:include>
+<div id="content_area">
 	<div id="detail" class="modal">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
@@ -61,11 +120,9 @@
 	        	</div>
 	        </div>
 	        
-	        
   	        <!-- sns 공유 버튼 -->
 	        <div id="articleShare">
 	        	<a class="likeBtn"><span class="invisible">like</span><em id="articleLikeNum">${articleContent.article_like}</em></a>
-<!-- 	        	<a class="saveBtn"><span class="invisible">share</span><em>0</em></a> -->
 	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
 	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn"><span class="invisible">link</span></a>
@@ -74,7 +131,6 @@
 	        <!-- 좌측 공유 버튼 -->
 	        <div id="verticalShare">
 	        	<a class="likeBtn verticalBtn mobileNone"><span class="invisible">like</span></a>
-<!-- 	        	<a class="saveBtn verticalBtn mobileNone"><span class="invisible">share</span></a> -->
 	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
 	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn verticalBtn mobileNone"><span class="invisible">link</span></a>
@@ -89,14 +145,6 @@
 		        	<p class="articleText">${articlePicture.pic_text}</p>
 		        </div> 
 		        </c:forEach>
-<!-- 		        <p>Some text in the modal.</p> -->
-<!-- 		        <p> -->
-<!-- 		        	<img src="http://cdnb.pikicast.com/500/2015/12/19/500_22895045_1450501030.jpg"> -->
-<!-- 		        	Some text in the modal. Some text in the modal.  -->
-<!-- 		        	Some text in the modal. Some text in the modal. -->
-<!-- 		        </p>  -->
-<!-- 		        <p>Some text in the modal. Some text in the modal.  -->
-<!-- 		        Some text in the modal. Some text in the modal.</p>  -->
 	       </div>
 	       
 	      <!-- 댓글 작성 -->
@@ -162,70 +210,6 @@
 			       		</div>
 		       		</li>
 		       	</c:forEach>		       	
-<!-- 	       		<li> -->
-<!-- 		       		<div class="replyContentBox"> -->
-<!-- 		       			<div class="replyImgBox"> -->
-<!-- 	   				       	<img src="resources/memberImg/gildong.jpg"> -->
-<!-- 	   				    </div> -->
-<!-- 				       	<div class="replyDetail"> -->
-<!-- 				       			<span class="writerName">홍길동</span> -->
-<!-- 				       			<div class="replyTextArea"> -->
-<!-- 					       			<span class="replyText">댓글 내용입니다.</span> -->
-<!-- 					       			<span class="replyDate">2015.12.30. 10:46</span> -->
-<!-- 					       		</div> -->
-<!-- 					       		<div class="replySubDetail"> -->
-<!-- 				       				<a class="likeReplyBtn" href="javascript:likeReply(1);">좋아요 30개</a> -->
-<!-- 				       				<a class="rereplyBtn" href="javascript:rereplyList(1);">답글 23개</a> -->
-<!-- 				       			</div>			       			 -->
-<!-- 				       	</div> -->
-<!-- 				    </div> -->
-<!-- 		       			<div class="rereplyList" id="rereplyList1"> -->
-<!-- 		       				<ul> -->
-<!-- 		       					<li> -->
-<!-- 		       						<div class="rereplyBox"> -->
-<!-- 		       							<div class="replyImgBox"> -->
-<!-- 			       					    	<img src="resources/memberImg/gildong.jpg"> -->
-<!-- 			       						</div> -->
-<!-- 			       						<div class="replyDetail"> -->
-<!-- 			       							<span class="writerName">홍길동</span> -->
-<!-- 			       							<div class="replyTextArea"> -->
-<!-- 				       							<p class="replyText">답글 내용입니다.</p> -->
-<!-- 				       							<span class="replyDate">2015.12.30. 11:31</span> -->
-<!-- 			       							</div> -->
-<!-- 			       						</div> -->
-<!-- 		       						</div> -->
-<!-- 		       					</li> -->
-<!-- 		       					<li> -->
-<!-- 									<div class="rereplyBox"> -->
-<!-- 		       							<div class="replyImgBox"> -->
-<!-- 			       					    	<img src="resources/memberImg/gildong.jpg"> -->
-<!-- 			       						</div> -->
-<!-- 			       						<div class="replyDetail"> -->
-<!-- 			       							<span class="writerName">홍길동</span> -->
-<!-- 			       							<div class="replyTextArea"> -->
-<!-- 				       							<p class="replyText">답글 내용입니다.</p> -->
-<!-- 				       							<span class="replyDate">2015.12.30. 11:31</span> -->
-<!-- 			       							</div> -->
-<!-- 			       						</div> -->
-<!-- 		       						</div> -->
-<!-- 		       					</li>		       					 -->
-<!-- 		       				</ul>	 -->
-<!-- 		       				<div class="replyWriteBox"> -->
-<!-- 		       					<div class="replyWrite"> -->
-<!-- 		       						<div class="imgBox"> -->
-<!-- 		       					    	<img src="resources/memberImg/gildong.jpg"> -->
-<!-- 			       					</div> -->
-<!-- 			       					<div class="replyTextBox"> -->
-<!-- 			       						<div class="replyInput"> -->
-<!-- 			       							<input type="text" placeholder="내용을 입력해 주세요."> -->
-<!-- 			       						</div> -->
-<!-- 			       					</div> -->
-<!-- 			       					<a>답글 등록</a> -->
-<!-- 			       				</div> -->
-<!-- 		       				</div>	       			 -->
-<!-- 		       		</div> -->
-<!-- 	       		</li> -->
-	       		
 	       	</ul>
 	       </div>
 	       
@@ -249,3 +233,6 @@
 	</div>
 	</div>
 	
+</div>
+</body>
+</html>

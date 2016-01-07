@@ -1,4 +1,23 @@
 $(function(){
+	$(window).scroll(function(){
+		if(matchMedia("only screen and (min-width:1280px)").matches){
+	//		$("#articleInfo").css("margin-top","-60px");
+			if($(window).scrollTop()>60){
+				$("#articleInfo").css("margin-top","-60px");
+			} else {
+				$("#articleInfo").css("margin-top","0");
+			}
+		} else {
+			$("#articleInfo").css("margin-top","0px");
+		}
+		// 스크롤 시 좌측 공유 영역 보이기/숨기기
+		if($(window).scrollTop()>300){ // 225
+			$("#verticalShare").css("display","block");
+		} else {
+			$("#verticalShare").css("display","none");
+		}
+	});
+	
 	$(".closebtn").click(function(){
 		// 모달 닫을 때
 		$("#articles_area").css("position","relative");
@@ -13,9 +32,9 @@ $(function(){
 				article_id: $("#article_id").val(),
 				currentUrl: window.location.href
 			},
-			dataType: "html",
+			dataType: "text",
 			success: function(jdata){
-				$("#articleShare").html(jdata);
+				$("#articleLikeNum").html(jdata);
 			}
 		});		
 	});
@@ -78,25 +97,6 @@ $(function(){
 		// 스크롤 맨 위로 이동
 		$("html, body").stop().animate({scrollTop:0}, '500', 'swing', function() { 
 		});
-	});
-	
-	$(window).scroll(function(){
-		if(matchMedia("only screen and (min-width:1280px)").matches){
-//			$("#articleInfo").css("margin-top","-60px");
-			if($(window).scrollTop()>60){
-				$("#articleInfo").css("margin-top","-60px");
-			} else {
-				$("#articleInfo").css("margin-top","0");
-			}
-		} else {
-			$("#articleInfo").css("margin-top","0px");
-		}
-		// 스크롤 시 좌측 공유 영역 보이기/숨기기
-		if($(window).scrollTop()>300){ // 225
-			$("#verticalShare").css("display","block");
-		} else {
-			$("#verticalShare").css("display","none");
-		}
 	});
 	
 	$("#reply_text").keyup(function(){
