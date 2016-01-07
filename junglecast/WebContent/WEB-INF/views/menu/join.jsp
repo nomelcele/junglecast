@@ -326,7 +326,7 @@
 		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
 		    	}	
 		    });
-		    $('.month input').focusout(function(){
+		    $('.month select').focusout(function(){
 		    	dt=new Date();
 		    	var m_num = Number($(this).val());
 		    	var y_num = Number($('.year input').val());
@@ -343,10 +343,10 @@
 		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
 		    	}	
 		    });
-		    $('.day input').focusout(function(){
+		    $('.day select').focusout(function(){
 		    	dt=new Date();
 		    	var d_num = Number($(this).val());
-		    	var m_num = Number($('.month input').val());
+		    	var m_num = Number($('.month select').val());
 		    	var y_num = Number($('.year input').val());
 		    	var year = Number(dt.getFullYear());
 		    	var month = Number(dt.getMonth());
