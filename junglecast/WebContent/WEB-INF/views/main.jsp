@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="resources/css/leftMenu.css"/>
+<link href="resources/css/article.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 #main_body{background:#f1f1f2; margin:0 auto; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
 	#content_area{position: relative; margin : 0 auto; height:100%; width:auto; max-width:1280px;}
@@ -180,7 +181,8 @@ function cardClickEvent() {
 			type: "POST",
 			url: "articleDetail",
 			data: {
-				article_id: articleNum
+				article_id: articleNum,
+				type: 'modal'
 			},
 			success: function(result){
 				$("#modalBox").html(result);

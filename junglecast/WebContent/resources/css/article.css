@@ -7,6 +7,7 @@
 @keyframes example {from {top:-100px;opacity: 0;} to {top:0px;opacity:1;}}
 ul {padding:0;}
 li{list-style-type: none;}
+em{font-style: normal;}
 /*///////////////////////////////////////////////*/
  
  
@@ -19,7 +20,7 @@ li{list-style-type: none;}
 /* The modal box */
 .modal-dialog {display: table-cell; vertical-align: middle;}
 /* The modal's content */
-.modal-dialog .modal-content {margin: auto; background-color: #f3f3f3; position: relative; padding: 0; outline: 0; border: 1px #777 solid; text-align: justify; width:985px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:10px; 
+.modal-dialog .modal-content {margin: auto; background-color: #fff; position: relative; padding: 0; outline: 0; border: 1px #777 solid; text-align: justify; width:985px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); border-radius:10px; 
   /* Add animation */
   -webkit-animation-name: example; /* Chrome, Safari, Opera */ -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */ animation-name: example; animation-duration: 0.5s; }
 .modal-dialog .link-content{width:35%;}

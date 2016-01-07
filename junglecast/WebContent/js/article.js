@@ -29,12 +29,12 @@ $(function(){
 			type: "POST",
 			url: "likeArticle",
 			data: {
-				article_id: $("#article_id").val(),
-				currentUrl: window.location.href
+				article_id: $("#article_id").val()
 			},
 			dataType: "text",
 			success: function(jdata){
 				$("#articleLikeNum").html(jdata);
+				$(".articleLikeNumRight").html(jdata);
 			}
 		});		
 	});
@@ -65,7 +65,6 @@ $(function(){
 		// 링크 복사
 		$("#copyLink").css('display','table');
 		$("#main_body").css("overflow","hidden");
-		$("#articleLink").attr("value",window.location.href);
 	});
 	
 	$("#linkCloseBtn").click(function(){

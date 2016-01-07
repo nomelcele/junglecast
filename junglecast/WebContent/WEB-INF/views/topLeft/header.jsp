@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="resources/css/article.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 #headerBody{float:left; margin : 0; font-family: Helvetica, 'Dotum', Arial, sans-serif; width:100%; height:auto;}
 	#wrapper{float:left; width : 100%; line-height:50px; background : #00a1ff; position : fixed; z-index:500;}

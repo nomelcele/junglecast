@@ -24,7 +24,7 @@ public class ArticleModel {
 	private ArticleDao adao;
 	
 	@RequestMapping(value="articleDetail")
-	public String articleDetail(int article_id, Model model){
+	public String articleDetail(int article_id, String type, Model model){
 		// 게시물 불러오기
 		adao.updateView(article_id); // 조회수 증가
 		ArticleVO arvo = adao.articleContent(article_id);
@@ -34,11 +34,15 @@ public class ArticleModel {
 		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // 베스트 댓글 목록
 		model.addAttribute("replyList", adao.replyList(article_id)); // 댓글 목록
 		
-		return "detail/articleDetail";
+		if(type.equals("modal")){
+			return "detail/articleDetail";
+		} else {
+			return "detail/articleDetail2";
+		}
 	}
 
 	@RequestMapping(value="likeArticle")
-	public void likeArticle(int article_id, String currentUrl, HttpServletResponse response) throws IOException{
+	public void likeArticle(int article_id, HttpServletResponse response) throws IOException{
 		// 게시물 좋아요
 		adao.likeArticle(article_id);
 		Integer article_like = adao.articleContent(article_id).getArticle_like(); // 게시물 좋아요 수 

@@ -8,10 +8,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" type="text/css" href="resources/css/leftMenu.css"/>
+<link href="resources/css/article.css" rel="stylesheet" type="text/css"/>
 <script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/article.js"></script>
+<script src="js/leftMenu.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	//반응형 자바스크립트
 	$(window).resize(function(){
 		resizingEvent();
 	});
@@ -55,20 +58,53 @@ $(document).ready(function(){
 	$('#scroll_up').click(function(){
 		$("html,body").stop().animate({'scrollTop' :0}, 400);
 	});
+	
+	
 });
+
+//반응형 - 화면크기 바뀔때마다 호출되는 함수
+function resizingEvent(){
+// 	left_area_positioning();
+};
+function left_area_positioning(){
+	if(matchMedia("only screen and (min-width:1280px)").matches){ //대형화면
+		$('#left_area').css("display", "block");
+	}else if (matchMedia("only screen and (min-width:1024px) and (max-width:1279px)").matches) {//일반 PC 모니터 크기
+		if($('.body_cover').css("display")=="block"){
+			$('.body_cover').css("display", "none");
+			$('#left_area').css("display", "none");
+		}else{
+			$('#left_area').css("display", "block");
+		}
+		
+	} else if(matchMedia("only screen and (min-width:768px) and (max-width:1023px)").matches){//태블릿 화면
+		if($('.body_cover').css("display")=="block"){
+			$('#left_area').css("display", "block");
+		}else{
+			$('#left_area').css("display", "none");
+		}
+	}else if(matchMedia("only screen and (max-width:767px)").matches){ //모바일 화면
+		if($('.body_cover').css("display")=="block"){
+			$('#left_area').css("display", "block");
+		}else{
+			$('#left_area').css("display", "none");
+		}
+		
+	}
+}
 </script>
 <body id="main_body">
 <div id="main_body_cover"></div>
 <jsp:include page="../topLeft/header.jsp"></jsp:include>
 <div id="content_area">
+<jsp:include page="../topLeft/leftMenu.jsp"></jsp:include>
 	<div id="detail" class="modal">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
-	    <input type="hidden" id="article_id">
+	    <input type="hidden" id="article_id" value="${articleContent.article_id}">
 	    <!-- 우측 메뉴 (S) -->
 	     <div class="rightMenu">
 	     	<div id="articleInfo">
-		     		<a href="#" class="closebtn">×</a>
 		     		<div id="editorInfo">
 			     	  <img class="editorImg" src="resources/memberImg/${editorInfo.m_pic}">
 			     	  <h4>${editorInfo.m_nickname}</h4>
@@ -76,10 +112,10 @@ $(document).ready(function(){
 		     	  	</div>
 		     	  	<div id="articleStats">
 			     	  <ul>
-				     	  <li><span class="articleHits">조회수</span>${articleContent.article_view}</li>
-				     	  <li><span class="articleLikes">좋아요</span>${articleContent.article_like}</li>
-				     	  <li><span class="articleReplies">댓글</span>${articleContent.article_reply}</li>
-				     	  <li><span class="articleShares">공유</span>${articleContent.article_share}</li>
+				     	  <li><span class="articleHits">조회수</span><em>${articleContent.article_view}</em></li>
+				     	  <li><span class="articleLikes">좋아요</span><em class="articleLikeNumRight">${articleContent.article_like}</em></li>
+				     	  <li><span class="articleReplies">댓글</span><em>${articleContent.article_reply}</em></li>
+				     	  <li><span class="articleShares">공유</span><em>${articleContent.article_share}</em></li>
 				      </ul>
 			      </div>
 	     	  <!-- 페이스북 좋아요 -->
@@ -99,16 +135,15 @@ $(document).ready(function(){
 	        <!-- 콘텐츠 통계(모바일) -->
 	        <div id="mobileArticleInfo">
 	        	<ul>
-	        		<li><span class="articleHits">${articleContent.article_view}</span></li>
-	        		<li><span class="articleLikes">${articleContent.article_like}</span></li>
-	        		<li><span class="articleReplies">${articleContent.article_reply}</span></li>
-	        		<li><span class="articleShares">${articleContent.article_share}</span></li>
+	        		<li><span class="articleHits"><em>${articleContent.article_view}</em></span></li>
+	        		<li><span class="articleLikes"><em class="articleLikeNumRight">${articleContent.article_like}</em></span></li>
+	        		<li><span class="articleReplies"><em>${articleContent.article_reply}</em></span></li>
+	        		<li><span class="articleShares"><em>${articleContent.article_share}</em></span></li>
 	        	</ul>
 	        </div>
 	        
 	        <!-- 작성자 프로필(모바일) -->
 	        <div id="mobileEditorInfo">
-	        	<a href="#" class="closebtn mobileCloseBtn">x</a>
 	        	<div id="editorProfile">
 	        		<div id="editorImgBox">
 	        			<img class="editorImg" src="resources/memberImg/${editorInfo.m_pic}">
@@ -123,16 +158,16 @@ $(document).ready(function(){
   	        <!-- sns 공유 버튼 -->
 	        <div id="articleShare">
 	        	<a class="likeBtn"><span class="invisible">like</span><em id="articleLikeNum">${articleContent.article_like}</em></a>
-	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
-	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=${articleContent.article_title}&url=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn"><span class="invisible">link</span></a>
 	        </div>
 	        
 	        <!-- 좌측 공유 버튼 -->
 	        <div id="verticalShare">
 	        	<a class="likeBtn verticalBtn mobileNone"><span class="invisible">like</span></a>
-	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
-	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=${articleContent.article_title}&url=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn verticalBtn mobileNone"><span class="invisible">link</span></a>
 	        	<a class="topBtn verticalBtn"><em>TOP</em></a>
 	        </div>
@@ -225,7 +260,7 @@ $(document).ready(function(){
 	    			<div id="linkArea">
 			     		<a id="linkCloseBtn">×</a>
 			     		<p>아래의 URL을 복사(Ctrl+C)하여 원하는 곳에 붙여넣기(Ctrl+V)하세요.</p>
-			     		<input id="articleLink" type="text">
+			     		<input id="articleLink" type="text" value="http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail">
 	    			</div>
 	    		</div>
 			</div>
@@ -235,4 +270,33 @@ $(document).ready(function(){
 	
 </div>
 </body>
+<style>
+#main_body{background:#f1f1f2; margin:0 auto; font-family: Helvetica, 'Dotum', Arial, sans-serif;}
+	#content_area{position: relative; margin : 0 auto; height:100%; width:auto; max-width:1280px;}
+	#left_area{display:none;}
+	
+	.modal{background-color:transparent; margin-top:20px; z-index:100;}
+	.modal .link{background-color:rgba(0, 0, 0, 0.4);}
+	
+@media only screen and (min-width:1024px) and (max-width:1279px){
+	#header{margin-left:0px;}
+	#left_area{display:none;}
+	
+	#content_area{position: none; margin : 0 0; width:100%; max-width: none;}
+	
+	.modal{margin-top:50px;}
+}
+	
+@media only screen and (min-width:768px) and (max-width:1023px){
+	#content_area{position: none; margin : 0 0; width:100%; max-width: none;}
+	
+	.modal{margin-top:50px;}
+}
+
+@media only screen and (max-width:767px){
+	#content_area{position: none; margin : 0 0; width:100%; max-width: none;}
+	
+	.modal{margin-top:50px;}
+}
+</style>
 </html>

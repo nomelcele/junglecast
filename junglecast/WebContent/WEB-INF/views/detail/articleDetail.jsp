@@ -17,10 +17,10 @@
 		     	  	</div>
 		     	  	<div id="articleStats">
 			     	  <ul>
-				     	  <li><span class="articleHits">조회수</span>${articleContent.article_view}</li>
-				     	  <li><span class="articleLikes">좋아요</span>${articleContent.article_like}</li>
-				     	  <li><span class="articleReplies">댓글</span>${articleContent.article_reply}</li>
-				     	  <li><span class="articleShares">공유</span>${articleContent.article_share}</li>
+				     	  <li><span class="articleHits">조회수</span><em>${articleContent.article_view}</em></li>
+				     	  <li><span class="articleLikes">좋아요</span><em class="articleLikeNumRight">${articleContent.article_like}</em></li>
+				     	  <li><span class="articleReplies">댓글</span><em>${articleContent.article_reply}</em></li>
+				     	  <li><span class="articleShares">공유</span><em>${articleContent.article_share}</em></li>
 				      </ul>
 			      </div>
 	     	  <!-- 페이스북 좋아요 -->
@@ -40,10 +40,10 @@
 	        <!-- 콘텐츠 통계(모바일) -->
 	        <div id="mobileArticleInfo">
 	        	<ul>
-	        		<li><span class="articleHits">${articleContent.article_view}</span></li>
-	        		<li><span class="articleLikes">${articleContent.article_like}</span></li>
-	        		<li><span class="articleReplies">${articleContent.article_reply}</span></li>
-	        		<li><span class="articleShares">${articleContent.article_share}</span></li>
+	        		<li><span class="articleHits"><em>${articleContent.article_view}</em></span></li>
+	        		<li><span class="articleLikes"><em class="articleLikeNumRight">${articleContent.article_like}</em></span></li>
+	        		<li><span class="articleReplies"><em>${articleContent.article_reply}</em></span></li>
+	        		<li><span class="articleShares"><em>${articleContent.article_share}</em></span></li>
 	        	</ul>
 	        </div>
 	        
@@ -65,18 +65,16 @@
   	        <!-- sns 공유 버튼 -->
 	        <div id="articleShare">
 	        	<a class="likeBtn"><span class="invisible">like</span><em id="articleLikeNum">${articleContent.article_like}</em></a>
-<!-- 	        	<a class="saveBtn"><span class="invisible">share</span><em>0</em></a> -->
-	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
-	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="fbBtn" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=${articleContent.article_title}&url=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="twBtn" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn"><span class="invisible">link</span></a>
 	        </div>
 	        
 	        <!-- 좌측 공유 버튼 -->
 	        <div id="verticalShare">
 	        	<a class="likeBtn verticalBtn mobileNone"><span class="invisible">like</span></a>
-<!-- 	        	<a class="saveBtn verticalBtn mobileNone"><span class="invisible">share</span></a> -->
-	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/main#detail" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
-	        	<a href="https://twitter.com/intent/tweet?text=TEXT&url=http://localhost/junglecast/main#detail" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
+	        	<a href="http://www.facebook.com/sharer/sharer.php?u=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="fbBtn verticalBtn mobileNone" target="_blank"><span class="invisible">fb</span></a>
+	        	<a href="https://twitter.com/intent/tweet?text=${articleContent.article_title}&url=http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail" class="twBtn verticalBtn mobileNone" target="_blank"><span class="invisible">tw</span></a>
 	        	<a class="linkBtn verticalBtn mobileNone"><span class="invisible">link</span></a>
 	        	<a class="topBtn verticalBtn"><em>TOP</em></a>
 	        </div>
@@ -89,14 +87,6 @@
 		        	<p class="articleText">${articlePicture.pic_text}</p>
 		        </div> 
 		        </c:forEach>
-<!-- 		        <p>Some text in the modal.</p> -->
-<!-- 		        <p> -->
-<!-- 		        	<img src="http://cdnb.pikicast.com/500/2015/12/19/500_22895045_1450501030.jpg"> -->
-<!-- 		        	Some text in the modal. Some text in the modal.  -->
-<!-- 		        	Some text in the modal. Some text in the modal. -->
-<!-- 		        </p>  -->
-<!-- 		        <p>Some text in the modal. Some text in the modal.  -->
-<!-- 		        Some text in the modal. Some text in the modal.</p>  -->
 	       </div>
 	       
 	      <!-- 댓글 작성 -->
@@ -162,70 +152,6 @@
 			       		</div>
 		       		</li>
 		       	</c:forEach>		       	
-<!-- 	       		<li> -->
-<!-- 		       		<div class="replyContentBox"> -->
-<!-- 		       			<div class="replyImgBox"> -->
-<!-- 	   				       	<img src="resources/memberImg/gildong.jpg"> -->
-<!-- 	   				    </div> -->
-<!-- 				       	<div class="replyDetail"> -->
-<!-- 				       			<span class="writerName">홍길동</span> -->
-<!-- 				       			<div class="replyTextArea"> -->
-<!-- 					       			<span class="replyText">댓글 내용입니다.</span> -->
-<!-- 					       			<span class="replyDate">2015.12.30. 10:46</span> -->
-<!-- 					       		</div> -->
-<!-- 					       		<div class="replySubDetail"> -->
-<!-- 				       				<a class="likeReplyBtn" href="javascript:likeReply(1);">좋아요 30개</a> -->
-<!-- 				       				<a class="rereplyBtn" href="javascript:rereplyList(1);">답글 23개</a> -->
-<!-- 				       			</div>			       			 -->
-<!-- 				       	</div> -->
-<!-- 				    </div> -->
-<!-- 		       			<div class="rereplyList" id="rereplyList1"> -->
-<!-- 		       				<ul> -->
-<!-- 		       					<li> -->
-<!-- 		       						<div class="rereplyBox"> -->
-<!-- 		       							<div class="replyImgBox"> -->
-<!-- 			       					    	<img src="resources/memberImg/gildong.jpg"> -->
-<!-- 			       						</div> -->
-<!-- 			       						<div class="replyDetail"> -->
-<!-- 			       							<span class="writerName">홍길동</span> -->
-<!-- 			       							<div class="replyTextArea"> -->
-<!-- 				       							<p class="replyText">답글 내용입니다.</p> -->
-<!-- 				       							<span class="replyDate">2015.12.30. 11:31</span> -->
-<!-- 			       							</div> -->
-<!-- 			       						</div> -->
-<!-- 		       						</div> -->
-<!-- 		       					</li> -->
-<!-- 		       					<li> -->
-<!-- 									<div class="rereplyBox"> -->
-<!-- 		       							<div class="replyImgBox"> -->
-<!-- 			       					    	<img src="resources/memberImg/gildong.jpg"> -->
-<!-- 			       						</div> -->
-<!-- 			       						<div class="replyDetail"> -->
-<!-- 			       							<span class="writerName">홍길동</span> -->
-<!-- 			       							<div class="replyTextArea"> -->
-<!-- 				       							<p class="replyText">답글 내용입니다.</p> -->
-<!-- 				       							<span class="replyDate">2015.12.30. 11:31</span> -->
-<!-- 			       							</div> -->
-<!-- 			       						</div> -->
-<!-- 		       						</div> -->
-<!-- 		       					</li>		       					 -->
-<!-- 		       				</ul>	 -->
-<!-- 		       				<div class="replyWriteBox"> -->
-<!-- 		       					<div class="replyWrite"> -->
-<!-- 		       						<div class="imgBox"> -->
-<!-- 		       					    	<img src="resources/memberImg/gildong.jpg"> -->
-<!-- 			       					</div> -->
-<!-- 			       					<div class="replyTextBox"> -->
-<!-- 			       						<div class="replyInput"> -->
-<!-- 			       							<input type="text" placeholder="내용을 입력해 주세요."> -->
-<!-- 			       						</div> -->
-<!-- 			       					</div> -->
-<!-- 			       					<a>답글 등록</a> -->
-<!-- 			       				</div> -->
-<!-- 		       				</div>	       			 -->
-<!-- 		       		</div> -->
-<!-- 	       		</li> -->
-	       		
 	       	</ul>
 	       </div>
 	       
@@ -241,7 +167,7 @@
 	    			<div id="linkArea">
 			     		<a id="linkCloseBtn">×</a>
 			     		<p>아래의 URL을 복사(Ctrl+C)하여 원하는 곳에 붙여넣기(Ctrl+V)하세요.</p>
-			     		<input id="articleLink" type="text">
+			     		<input id="articleLink" type="text" value="http://localhost/junglecast/articleDetail?article_id=${articleContent.article_id}&type=link#detail">
 	    			</div>
 	    		</div>
 			</div>
