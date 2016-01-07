@@ -29,16 +29,18 @@
 
 /*검색 & 메뉴 관련*/	
 .search_option_wrapper{width:348px; z-index:580; position:fixed; background:white; display:none; border:1px solid #e7e7e8;}
-.search_whichpart{width:100%; height: 32px; border-bottom: 1px solid #e7e7e8; color:#808285; padding:10px; font-size: 14px; cursor:pointer;}
-.search_which_option{margin-left:10px;border:1px solid #bbbdc0; display:inline-block; border-radius:20px; padding:5px;}
-.search_which_option:HOVER{background:#00a1ff; color:white;}
+.search_whichpart{width:100%; height: 40px; border-bottom: 1px solid #e7e7e8; color:#808285; font-size: 14px;}
+.search_whichpart>div{width:80%; height:80%; margin:8px 0 0 10px;}
+.search_which_option{margin-left:10px;border:1px solid #bbbdc0; display:inline-block; border-radius:20px; padding:5px; cursor:pointer;}
+.search_which_option:HOVER{background:#00a1ff; color:white; border:1px solid #00a1ff;}
+.selected{background:#00a1ff; color:white; border:1px solid #00a1ff;}
 .search_recommend{width:100%; }
 .search_recommend>div{color:#939598; font-size:16px; font-weight: bold; height:25px; line-height:25px; margin:10px 0 0 10px;}
 .search_recommend ul{margin:0 0 14px 0;}
 .search_recommend ul li {height:30px; line-height:30px; width:100%;}
 .search_recommend ul li a{color:#939598; font-size: 14px; display:block; font-size:14px; padding:7px 24px;} 
 
-.menu_option_wrapper{width:120px; height:100px; position:fixed; z-index:650; display:none;}
+.menu_option_wrapper{width:120px; height:auto; position:fixed; z-index:650; display:none;}
 .menu_arrow{width:100%; height:14px;}
 .menu_arrow img{width:auto; height:100%; float:right;}
 .logout_menu{float:left; width:100%; height:22px; line-height:22px;background:white; padding:5px; text-align: center; font-size: 14px; 
@@ -89,27 +91,40 @@
 		
 		//검색 input 클릭
 		$('#search_input').click(function(){
-			showSearchOptionDIV();
+			if($('.search_option_wrapper').css("display") == "none"){
+				showSearchOptionDIV();
+			}
 		});
 		
 		//검색 아이콘 클릭
 		$('#search_btn').click(function(){
+			var search_key = $('#search_input').val();
+			var search_section = $('.selected').text();
+			if(search_section == '이야기') search_section = 'story';
+			else if(search_section == '사용자') search_section = 'user';
+			
 			if(matchMedia("only screen and (min-width:768px)").matches){
-				if($('#search_input').val().length < 1){
+				if(search_key.length < 1){
 					showSearchOptionDIV();
 				}else{
-					location.href="search";
+					location.href="search?section="+search_section+"&key="+search_key;
 				}
 			}else if(matchMedia("only screen and (max-width:767px)").matches){
-				location.href="search";
+				location.href="searchMobile";
 			}
+		});
+		
+		//검색 section고름
+		$('.search_which_option').click(function(){
+			$('.search_which_option').removeClass('selected');
+			$(this).addClass('selected');
 		});
 		
 		//헤더의 메뉴 클릭
 		$('#menu_icon').click(function(){	
 			if(matchMedia("only screen and (min-width:1280px)").matches){ //대형화면
 				var menuPos = $('#menu_icon').offset();
-				$('.menu_option_wrapper').css({display:"block", top:menuPos.top+30+'px', left:menuPos.left-100+'px'});
+				$('.menu_option_wrapper').css({display:"block", top:40.5+'px', left:menuPos.left-100+'px'});
 				$('.search_option_wrapper').css("display", "none");
 			}
 		});
@@ -127,13 +142,14 @@
 		
 		$(document).click(function(e){
 			var pos = $('.search_option_wrapper').offset();
+			var menuPos = $('.logout_menu').offset();
 			if(matchMedia("only screen and (min-width:1280px)").matches){
 				if(($('.search_option_wrapper').css("display") == "block") && (
 						(e.pageX<pos.left) || (e.pageX>pos.left+348)|| (e.pageY>pos.top+256))){
 					$('.search_option_wrapper').css("display", "none");
 				}
 				else 	if(($('.menu_option_wrapper').css("display") == "block") && (
-						(e.pageX<pos.left) || (e.pageX>pos.left+348)|| (e.pageY>pos.top+256))){
+						(e.pageX<menuPos.left) || (e.pageX>menuPos.left+130)|| (e.pageY>90))){
 					$('.menu_option_wrapper').css("display", "none");
 				}
 			}
@@ -147,12 +163,14 @@
 	});
 	
 function showSearchOptionDIV(){
+	$('.search_which_option').removeClass('selected').eq(0).addClass('selected');
+	
 	$('.menu_option_wrapper').css("display","none");
 	var pos = $('#search_input').offset();
 	if(matchMedia("only screen and (min-width:1280px)").matches){
-		$('.search_option_wrapper').css({display:"block", top:pos.top+28+'px', left:pos.left-1+'px'});
+		$('.search_option_wrapper').css({display:"block", top:38+'px', left:pos.left-1+'px'});
 	}else if (matchMedia("only screen and (min-width:768px) and (max-width:1279px)").matches) {//일반 PC 모니터 크기 + 태블릿화면
-		$('.search_option_wrapper').css({display:"block", top:pos.top+40+'px', left:pos.left-94+'px'});
+		$('.search_option_wrapper').css({display:"block", top:50+'px', left:pos.left-94+'px'});
 	}else if(matchMedia("only screen and (max-width:767px)").matches){ //작은모바일 화면
 		$('.search_option_wrapper').css("display","none");
 	}
@@ -182,9 +200,11 @@ function showSearchOptionDIV(){
 	</div>
 	<div class="search_option_wrapper"><!-- document 로딩시 숨김 -->
 		<div class="search_whichpart">
-			<span>검색 : </span>
-			<span class="search_which_option">이야기</span>
-			<span class="search_which_option">사용자</span>
+			<div>
+				<span>검색 : </span>
+				<span class="search_which_option">이야기</span>
+				<span class="search_which_option">사용자</span>
+			</div>
 		</div>
 		<div class="search_recommend">
 			<div>추천 검색어</div>
