@@ -168,7 +168,7 @@
 		    	}
 		    });
 		    $('.password input').focusout(function(){
-		    	$(this).css("color","#C8C8C8");
+		    	$(this).css("color","#58595B");
 		    	if(this.value.length>=4){
 		    		$('.password').css("border-bottom", "2px solid #00A6DE");
 		    		$('.password img').attr('src','resources/images/joinImg/choice_2.png');
@@ -177,13 +177,29 @@
 		    		jQuery('.pw_warning3').hide();
 		    	}
 		    	else if(this.value.length>=1){
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
 		    		$('.password').css("border-bottom", "2px solid red");
 		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
 		    		jQuery('.pw_warning1').show();
 		    	}
-		    	else{
-		    		$('.password').css("border-bottom", "2px solid #C8C8C8");
+		    	else if(this.value.length<1&&$('.passwordcorrect input').val().length<1){
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    		$('.password').css("border-bottom", "2px solid #E9E9E9");
 		    		$('.password img').attr('src','resources/images/joinImg/choice_1.png');
+		    	}
+		    	else{
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    		$('.password').css("border-bottom", "2px solid #E9E9E9");
+		    		$('.password img').attr('src','resources/images/joinImg/choice_1.png');
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #C8C8C8");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
+		    		$('.passwordcorrect input').val("");
 		    	}
 		    	
 		    });
@@ -201,7 +217,7 @@
 		    	}
 		    });
 		    $('.passwordcorrect input').focusout(function(){
-		    	$(this).css("color","#C8C8C8");
+		    	$(this).css("color","#58595B");
 		    	if(this.value==$('.password input').val()&&this.value.length>=4){
 		    		$('.passwordcorrect').css("border-bottom", "2px solid #00A6DE");
 		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_2.png');
@@ -209,14 +225,70 @@
 		    		jQuery('.pw_warning2').hide();
 		    		jQuery('.pw_warning3').hide();
 		    	}
-		    	else if(this.value!=$('.password input').val()&&this.value.length>0){
+		    	else if(this.value==$('.password input').val()&&this.value.length<4&&this.value.length>0){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #E9E9E9");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
+		    		$('.password').css("border-bottom", "2px solid red");
+		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    		jQuery('.pw_warning3').show();
+		    		$(this).val("");
+		    		$('.password input').focus();		
+		    	}
+		    	else if(this.value!=$('.password input').val()&&this.value.length>=4&&$('.password input').val().length>=4){
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
 		    		$('.passwordcorrect').css("border-bottom", "2px solid red");
 		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/passwordwarn.png');
 		    		jQuery('.pw_warning2').show();
 		    	}
- 		    	else if($('.password input').val().length<4&&$('.password input').val().length>0){
- 		    		$('.password').css("border-bottom", "2px solid #C8C8C8");
-		    		$('.password img').attr('src','resources/images/joinImg/choice_1.png');
+		    	else if(this.value!=$('.password input').val()&&this.value.length>=4&&$('.password input').val().length<4){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #E9E9E9");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
+		    		$('.password').css("border-bottom", "2px solid red");
+		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    		jQuery('.pw_warning3').show();
+		    		$(this).val("");
+		    		$('.password input').focus();		    		
+		    	}
+		    	else if(this.value!=$('.password input').val()&&this.value.length<4&&$('.password input').val().length>=4&&this.value.length>0){
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    		$('.passwordcorrect').css("border-bottom", "2px solid red");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning2').show();
+		    	}
+		    	else if(this.value!=$('.password input').val()&&this.value.length<4&&$('.password input').val().length<4&&this.value.length>0&&$('.password input').val().length>0){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #E9E9E9");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
+		    		$('.password').css("border-bottom", "2px solid red");
+		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    		jQuery('.pw_warning3').show();
+		    		$(this).val("");
+		    		$('.password input').focus();	
+		    	}
+		    	else{
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #E9E9E9");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
+		    	} 
+		    	/* else if(this.value!=$('.password input').val()&&this.value.length>0){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid red");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning2').show();
+		    	}
+ 		    	else if($('.password input').val().length<4){
+ 		    		$('.passwordcorrect').css("border-bottom", "2px solid #C8C8C8");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
 		    		$('.password').css("border-bottom", "2px solid red");
 		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
 		    		jQuery('.pw_warning1').hide();
@@ -227,10 +299,70 @@
 		    		$('.password input').focus();
 		    	} 
 		    	else{
-		    		$('.password').css("border-bottom", "2px solid #C8C8C8");
-		    		$('.password img').attr('src','resources/images/joinImg/choice_1.png');
-		    	}
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #C8C8C8");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
+		    	} */
 		    });
+		    showbirthtext = function (){
+		    	if($('.birth_text').css("display")=='none'){
+		    		$('.birth_text').css("display", "block");
+		    	}
+		    	else{
+		    		$('.birth_text').css("display", "none");
+		    	}
+	        }
+		    $('.year input').focusin(function(){
+		    	$(this).css("color","#828180");
+		    	$('.year').css("border-bottom", "2px solid #C8C8C8");
+		    });
+		    $('.year input').focusout(function(){
+		    	var y_num = Number($(this).val());
+		    	$(this).css("color","#58595B");
+		    	if(y_num<1900||y_num>2016){
+		    		$('.year').css("border-bottom", "2px solid red");
+		    		jQuery('.year_warning1').show();
+		    	}
+		    	else{
+		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
+		    	}	
+		    });
+		    $('.month input').focusout(function(){
+		    	dt=new Date();
+		    	var m_num = Number($(this).val());
+		    	var y_num = Number($('.year input').val());
+		    	var year = Number(dt.getFullYear());
+		    	var month = Number(dt.getMonth());
+		    	var day=Number(dt.getDate());
+		    	if(y_num>year||y_num<1900||(y_num<=year&&m_num>month)){
+		    		jQuery('.year_warning1').hide();
+		    		$('.year').css("border-bottom", "2px solid red");
+		    		jQuery('.year_warning1').show();
+		    	}
+		    	else{
+		    		jQuery('.year_warning1').hide();
+		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
+		    	}	
+		    });
+		    $('.day input').focusout(function(){
+		    	dt=new Date();
+		    	var d_num = Number($(this).val());
+		    	var m_num = Number($('.month input').val());
+		    	var y_num = Number($('.year input').val());
+		    	var year = Number(dt.getFullYear());
+		    	var month = Number(dt.getMonth());
+		    	var day=Number(dt.getDate());
+		    	if(y_num>year||y_num<1900||(y_num<=year&&m_num>month)||(y_num<=year&&m_num<month&&d_num>date)){
+		    		jQuery('.year_warning1').hide();
+		    		$('.year').css("border-bottom", "2px solid red");
+		    		jQuery('.year_warning1').show();
+		    	}
+		    	else{
+		    		jQuery('.year_warning1').hide();
+		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
+		    	}	
+		    });
+		    
+
 
 		});
 
@@ -443,25 +575,25 @@
 			diplay:block; height:12px;margin-top:10px; font-size:12px; color:red; font-family:'돋움';
 		}
 		.year{
-			display:inline-block; width:25%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+			display:inline-block; width:25%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #E9E9E9; 
 		}
 		.year input{
 			width:87%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle; text-align:right;
 		}
 		.month{
-			display:inline-block; width:23%; padding-top:5px; padding-bottom:5px; border-bottom: 2px solid #C4C5C4; margin-left:10px;
+			display:inline-block; width:23%; padding-top:5px; padding-bottom:5px; border-bottom: 2px solid #E9E9E9; margin-left:10px;
 		}
 		.month select{
 			width:100%; border:none;  font-size:12px; background-color: transparent; font-family:'돋움체'; vertical-align:middle; text-align:right;
 		}
 		.day{
-			display:inline-block; width:23%; padding-top:5px; padding-bottom:5px; border-bottom: 2px solid #C4C5C4; margin-left:10px;
+			display:inline-block; width:23%; padding-top:5px; padding-bottom:5px; border-bottom: 2px solid #E9E9E9; margin-left:10px;
 		}
 		.day select{
 			width:100%; border:none;  font-size:12px; background-color: transparent; font-family:'돋움체'; vertical-align:middle; text-align:right;
 		}
 		.c3_year_warning{
-			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
+			display:block; height:12px; margin-top:10px; font-size:12px; color:red; font-family:'돋움';
 		}
 		.c3_buttons{
 			position:relative; width:100%; margin-top:10px;
@@ -907,11 +1039,16 @@
 							<p class="pw_warning3" style="display:none;">너무 급하신 거 아니에요?!비밀번호 부터 입력하셔야 해요.</p>
 						</div>
 					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">생년월일*&nbsp
-					<a href="" style="font-size:12px; color:#00A1FF; font-weight:normal;text-decoration:none; letter-spacing:-1px;"><em style="font-style:normal; text-decoration:underline;">생년월일,</em> 왜 입력하는 거죠?</a></h3>
+					<a href="javascript:showbirthtext()" style="font-size:12px; color:#00A1FF; font-weight:normal;text-decoration:none; letter-spacing:-1px;"><em style="font-style:normal; text-decoration:underline;">생년월일,</em> 왜 입력하는 거죠?</a></h3>
+					<div class="birth_text" style="display:none; position:absolute; width:266px; height:80px; padding-top:15px; padding-bottom:15px; padding-right:10px; padding-left:10px; background-image:URL('resources/images/joinImg/box.png'); margin-top:-140px;background-position-x: 0px; background-repeat-x: no-repeat; background-repeat-y: no-repeat;">
+						<h2 style="color:#FFFFFF;font-size:16px;font-weight:bold;font-family:'돋움'; margin-top:0px;">생년월일 수집 방침</h2>
+						<p style="color: #FFFFFF; font-size: 12px; letter-spacing: -1px; margin-top: 10px; line-height: 16px;">생일을 입력하면 회원님의 나이에 맞는<br>피키캐스트의 콘텐츠를 더 즐겁게 이용할 수 있습니다.</p>
+						<a href='javascript:showbirthtext()' style="display:inline-block; width:12px; height:12px; position:absolute;top:10px;right:10px; color:#58595B;text-decoration:none;"></a>
+					</div>
 						<span class="c3_line_3">
 							<span class = "year">
 								<input type = "text" name="year" class="input_year" maxlength="4" placeholder = "출생" onfocus="this.placeholder = ''" onblur="this.placeholder = '출생'">
-								<span style = "font-size:12px; font-family:'돋움'; ">년</span>
+				  				<span style = "font-size:12px; font-family:'돋움'; ">년</span>
 							</span>
 							<span class="month">
 								<select name='month_sel'>
@@ -968,7 +1105,7 @@
 							</span>
 						</span>
 						<div class = "c3_year_warning">
-							슈우우웅, 미래에서오신건가요?!!!
+							<p class="year_warning1" style="display:none;">슈우우웅, 미래에서오신건가요?!!!</p>
 						</div>
 					<h3 style = "margin-top:20px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">성별*&nbsp</h3>
 						
