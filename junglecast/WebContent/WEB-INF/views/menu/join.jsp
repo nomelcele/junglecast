@@ -46,16 +46,99 @@
 				jQuery('.darkwindow').hide();
 				jQuery('.layer_2').show();
 			});
+			
+			
 			$('.c3_button_1').on('click',function(){
 				jQuery('.contents_3').hide();
 				jQuery('.contents_2').show();
 				$('html,body').scrollTop(0);
 			});
 			$('.c3_button_2').on('click',function(){
-				jQuery('.contents_3').hide();
-				jQuery('.contents_4').show();
-				$('html,body').scrollTop(0);
+				var email = $('.id input').val()+'@'+$('.adress input').val();
+	    		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; 
+				if($('.id input').val()==""||$('.adress input').val()==""){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1').show();
+				}
+				else if($('.password input').val()==""){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1_1').show();
+				}
+				else if($('.passwordcorrect input').val()==""){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1_2').show();
+				}
+				else if($('.year input').val()==""){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1_3').show();
+				}
+				else if($('.month select option:selected').val()=="0"){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1_4').show();
+				}
+				else if($('.day select option:selected').val()=="0"){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1_5').show();
+				}
+				else if($(":input:radio[name=radios]:checked").val()!="male"&&$(":input:radio[name=radios]:checked").val()!="female"){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1_6').show();
+				}
+				else if(!regex.test(email)){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_2').show();
+					jQuery('.c3_alert_2-1 p').hide();
+					jQuery('.c3_alert_2_line1').show();
+				}
+				else if($('.pw_warning2').attr("display")!="none"){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_2').show();
+					jQuery('.c3_alert_2-1 p').hide();
+					jQuery('.c3_alert_2_line1_1').show();
+				}
+				else{
+					jQuery('.contents_3').hide();
+					jQuery('.contents_4').show();
+					$('html,body').scrollTop(0);
+				}
 			});
+			$('.c3_alert_1_line2').on('click',function(){
+				jQuery('.c3_alert_1').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();
+				
+			});
+			$('.c3_alert_2_line2').on('click',function(){
+				jQuery('.c3_alert_2').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();
+				
+			});
+			
+			
 			$('.c4_button_1').on('click',function(){
 				jQuery('.contents_4').hide();
 				jQuery('.contents_3').show();
@@ -142,9 +225,22 @@
 		    });
 		    $('.id input').focusout(function(){
 		    	$(this).css("color","#C8C8C8");
-		    	$('.id').css("border-bottom", "2px solid #E9E9E9");
-		    	if(this.value.equals("")){
-		    		
+		    	
+		    	if($('.adress input').val()!=""){
+		    		var email = $(this).val()+'@'+$('.adress input').val();
+		    		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;  
+		    		if(regex.test(email)){
+		    			$('.id_warning2').hide();
+		    			$('.id').css("border-bottom", "2px solid #E9E9E9");
+		    		}
+		    		else{
+		    			$('.id').css("border-bottom", "2px solid red");
+		    			$('.id_warning2').show();
+		    		}
+		    	}
+		    	else{
+		    		$('.id_warning2').hide();
+	    			$('.id').css("border-bottom", "2px solid #E9E9E9");
 		    	}
 		    });
 		    $('.adress input').focusin(function(){
@@ -153,7 +249,25 @@
 		    });
 		    $('.adress input').focusout(function(){
 		    	$(this).css("color","#C8C8C8");
-		    	$('.adress').css("border-bottom", "2px solid #E9E9E9");
+		    	if($('.id input').val()!=""){
+		    		var email = $('.id input').val()+'@'+$(this).val();
+		    		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;  
+		    		if(regex.test(email)){
+		    			$('.id_warning2').hide();
+		    			$('.id').css("border-bottom", "2px solid #E9E9E9");
+		    			$('.adress').css("border-bottom", "2px solid #E9E9E9");
+		    		}
+		    		else{
+		    			$('.id').css("border-bottom", "2px solid red");
+		    			$('.adress').css("border-bottom", "2px solid #E9E9E9");
+		    			$('.id_warning2').show();
+		    		}
+		    	}
+		    	else{
+		    		$('.id_warning2').hide();
+		    		$('.id').css("border-bottom", "2px solid #E9E9E9");
+	    			$('.adress').css("border-bottom", "2px solid #E9E9E9");
+		    	}
 		    });
 		    $('.password input').focusin(function(){
 		    	$(this).css("color","#828180");
@@ -316,24 +430,38 @@
 		    	$('.year').css("border-bottom", "2px solid #C8C8C8");
 		    });
 		    $('.year input').focusout(function(){
+		    	dt=new Date();
+		    	if($(this).val()==""){
+		    		jQuery('.year_warning1').hide();
+		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
+		    	}
+		    	else{
+		    	var year = Number(dt.getFullYear());
 		    	var y_num = Number($(this).val());
 		    	$(this).css("color","#58595B");
-		    	if(y_num<1900||y_num>2016){
+		    	if((y_num<1900||y_num>year)){
 		    		$('.year').css("border-bottom", "2px solid red");
 		    		jQuery('.year_warning1').show();
 		    	}
 		    	else{
+		    		jQuery('.year_warning1').hide();
 		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
-		    	}	
+		    	}
+		    	}
 		    });
 		    $('.month select').focusout(function(){
 		    	dt=new Date();
-		    	var m_num = Number($(this).val());
+		    	if($('.year input').val()==""){
+		    		jQuery('.year_warning1').hide();
+		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
+		    	}
+		    	else{
+		    	var m_num = Number($('.month select option:selected').val());
 		    	var y_num = Number($('.year input').val());
 		    	var year = Number(dt.getFullYear());
 		    	var month = Number(dt.getMonth());
 		    	var day=Number(dt.getDate());
-		    	if(y_num>year||y_num<1900||(y_num<=year&&m_num>month)){
+ 		    	if(y_num>year||y_num<1900||((y_num==year)&&(m_num>month))){
 		    		jQuery('.year_warning1').hide();
 		    		$('.year').css("border-bottom", "2px solid red");
 		    		jQuery('.year_warning1').show();
@@ -342,16 +470,22 @@
 		    		jQuery('.year_warning1').hide();
 		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
 		    	}	
+		    	}
 		    });
 		    $('.day select').focusout(function(){
 		    	dt=new Date();
-		    	var d_num = Number($(this).val());
-		    	var m_num = Number($('.month select').val());
+		    	if($('.year input').val()==""){
+		    		jQuery('.year_warning1').hide();
+		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
+		    	}
+		    	else{
+		    	var d_num = Number($('.day select option:selected').val());
+		    	var m_num = Number($('.month select option:selected').val());
 		    	var y_num = Number($('.year input').val());
 		    	var year = Number(dt.getFullYear());
 		    	var month = Number(dt.getMonth());
 		    	var day=Number(dt.getDate());
-		    	if(y_num>year||y_num<1900||(y_num<=year&&m_num>month)||(y_num<=year&&m_num<month&&d_num>date)){
+		    	if(y_num>year||y_num<1900||((y_num==year)&&(m_num>month))||(y_num==year&&m_num==month&&d_num>date)){
 		    		jQuery('.year_warning1').hide();
 		    		$('.year').css("border-bottom", "2px solid red");
 		    		jQuery('.year_warning1').show();
@@ -359,7 +493,8 @@
 		    	else{
 		    		jQuery('.year_warning1').hide();
 		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
-		    	}	
+		    	}
+		    	}
 		    });
 		    
 
@@ -557,7 +692,7 @@
 			border-radius: 0px 0px 0px 0px;
 		}
 		.c3_warning{
-			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
+			diplay:block; height:12px; margin-top:10px; font-size:12px; color:red; font-family:'돋움';
 		}
 		.password{
 			display:inline-block; width:100%; padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #E9E9E9; 
@@ -632,6 +767,40 @@
    			background-image: none;
     		background-color:#00A1FF;
     		color:white;
+		}
+		.c3_alert_1{
+			display:none; top: 50%; left: 50%; margin-top: -61px; margin-left: -152px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;
+    		background: #FFFFFF; padding: 22px 0 0 0; 
+		}
+		.c3_alert_1-1{
+			background: #FFFFFF;
+		}
+		.c3_alert_1-1 p{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px; font-family: '돋움'; font-size: 12px;
+		}
+/* 		.c3_alert_1_line1{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px;
+		} */
+		.c3_alert_1_line2{
+			display: block;font-size: 14px; background-color: #00A1FF; color: #FFFFFF; padding: 10px 0; font-weight: bold; text-align: center; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; text-decoration: none;
+			width:100%; height:45px; border:none; cursor:pointer;
+		}
+		.c3_alert_2{
+			display:none; top: 50%; left: 50%; margin-top: -71px; margin-left: -150px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;
+    		background: #FFFFFF; padding: 22px 0 0 0; 
+		}
+		.c3_alert_2-1{
+			background: #FFFFFF;
+		}
+		.c3_alert_2-1 p{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px; font-family: '돋움'; font-size: 12px;
+		}
+/* 		.c3_alert_2_line1{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px; font-family: '돋움'; font-size: 12px;
+		} */
+		.c3_alert_2_line2{
+			display: block;font-size: 14px; background-color: #00A1FF; color: #FFFFFF; padding: 10px 0; font-weight: bold; text-align: center; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; text-decoration: none;
+			width:100%; height:45px; border:none; cursor:pointer;
 		}
 		/*가입 2-3세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_4{
@@ -1020,7 +1189,8 @@
 							 
 						</span>
 						<div class = "c3_warning">
-							<p>이메일은(는) 필수 입력 항목입니다.</p>
+							<p class="id_warning1" style="display:none;">이메일은(는) 필수 입력 항목입니다.</p>
+							<p class="id_warning2" style="display:none;">이메일을 잘못 입력하신 것 같아요.. 한 번 더 확인해주세요!</p>
 						</div>
 					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">비밀번호*&nbsp</h3>
 						<span class= "c3_line_2">
@@ -1119,6 +1289,32 @@
 				<input type = "submit" value = "이전" class = "c3_button_1">
 				<input type = "submit" value = "다음" class = "c3_button_2">
 			</div>
+		</div>
+	</div>
+	<div class="darkwindow"></div>
+	<div class="c3_alert_1">
+		<div class="c3_alert_1-1">
+			<p class="c3_alert_1_line1" style="display = none;"><em style="color: #00a6de; font-style: normal;">이메일</em>은 필수 입력 항목입니다.</p>
+			<p class="c3_alert_1_line1_1" style="display = none;"><em style="color: #00a6de; font-style: normal;">비밀번호</em>는 필수 입력 항목입니다.</p>
+			<p class="c3_alert_1_line1_2" style="display = none;"><em style="color: #00a6de; font-style: normal;">비밀번호 확인</em>은 필수 입력 항목입니다.</p>
+			<p class="c3_alert_1_line1_3" style="display = none;"><em style="color: #00a6de; font-style: normal;">출생년</em>은 필수 입력 항목입니다.</p>
+			<p class="c3_alert_1_line1_4" style="display = none;"><em style="color: #00a6de; font-style: normal;">출생월</em>은 필수 입력 항목입니다.</p>
+			<p class="c3_alert_1_line1_5" style="display = none;"><em style="color: #00a6de; font-style: normal;">출생일</em>은 필수 입력 항목입니다.</p>
+			<p class="c3_alert_1_line1_6" style="display = none;"><em style="color: #00a6de; font-style: normal;">성별</em>은 필수 입력 항목입니다.</p>
+			<p class="c3_alert_1_line1_7" style="display = none;">슈우우웅, 미래에서오신건가요?!!!</p>
+			<p class="c3_alert_1_line1_7" style="display = none;">이미 가입된 이메일입니다.</p>
+		</div>
+		<div class = "c3_alert_1-2">
+			<input type = "submit" value="확인" class="c3_alert_1_line2">
+		</div>
+	</div>
+	<div class="c3_alert_2">
+		<div class="c3_alert_2-1">
+			<p class="c3_alert_2_line1" style="display = none;"><em style="color: #00a6de; font-style: normal;">이메일</em>을 잘못 입력하신 것 같아요..<br>한 번 더 확인해주세요!</p>
+			<p class="c3_alert_2_line1_1" style="display = none;">어느 부분이 다른거죠!?<br>비밀번호가 일치하지 않아요ㅠ</p>
+		</div>
+		<div class = "c3_alert_2-2">
+			<input type = "submit" value="확인" class="c3_alert_2_line2">
 		</div>
 	</div>
 <!------------------------------- 가입 2-2END---------------------------------------------->
