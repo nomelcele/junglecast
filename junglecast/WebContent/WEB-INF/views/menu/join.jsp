@@ -14,13 +14,37 @@
 				jQuery('.layer_2').show();
 			});
 			$('.button_1').on('click',function(){
+				
 				jQuery('.layer_2').hide();
 				jQuery('.container').show();
+				
 			});
 			$('.button_2').on('click',function(){
+				if(($('.checkImg').attr('src')=='resources/images/joinImg/choice_2.png')&&($('.checkImg_2').attr('src')=='resources/images/joinImg/choice_2.png')){
 				jQuery('.contents_2').hide();
 				jQuery('.contents_3').show();
 				$('html,body').scrollTop(0);
+				}
+				else{
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					if($('.checkImg').attr('src')=='resources/images/joinImg/choice_1.png'){
+						jQuery('.c2_alert_1').show();						
+					}
+					else{
+						jQuery('.c2_alert_2').show();		
+					}
+				}
+			});
+			$('.c2_alert_1_line2').on('click',function(){
+				jQuery('.c2_alert_1').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();
+			});
+			$('.c2_alert_2_line2').on('click',function(){
+				jQuery('.c2_alert_2').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();
 			});
 			$('.c3_button_1').on('click',function(){
 				jQuery('.contents_3').hide();
@@ -44,10 +68,6 @@
 			});
 			
 			$('.checkImg').on('click',function(){
-/* 				if((this).attr('src')!=('.checkImg').attr('src')){
-					$('.checkImg').attr('src','resources/images/joinImg/choice_1.png');
-					$(this).attr('src','resources/images/joinImg/choice_2.png');
-				} */
 				if($('.checkImg').attr('src')=='resources/images/joinImg/choice_1.png'){
 					$('.checkImg').attr('src','resources/images/joinImg/choice_1.png');
 					$(this).attr('src','resources/images/joinImg/choice_2.png');
@@ -115,6 +135,103 @@
 		          $('.intro_inputCnt').html(content.length + '/17');
 		      });
 		      $('.myintro input').keyup();
+		      
+		    $('.id input').focusin(function(){
+		    	$(this).css("color","#828180");
+		    	$('.id').css("border-bottom", "2px solid #C8C8C8");
+		    });
+		    $('.id input').focusout(function(){
+		    	$(this).css("color","#C8C8C8");
+		    	$('.id').css("border-bottom", "2px solid #E9E9E9");
+		    	if(this.value.equals("")){
+		    		
+		    	}
+		    });
+		    $('.adress input').focusin(function(){
+		    	$(this).css("color","#828180");
+		    	$('.adress').css("border-bottom", "2px solid #C8C8C8");
+		    });
+		    $('.adress input').focusout(function(){
+		    	$(this).css("color","#C8C8C8");
+		    	$('.adress').css("border-bottom", "2px solid #E9E9E9");
+		    });
+		    $('.password input').focusin(function(){
+		    	$(this).css("color","#828180");
+		    	if($('.password img').attr('src')=='resources/images/joinImg/choice_1.png'){
+		    		$('.password').css("border-bottom", "2px solid #C8C8C8");
+		    	}
+		    	else if($('.password img').attr('src')=='resources/images/joinImg/choice_2.png'){
+		    		$('.password').css("border-bottom", "2px solid #00A6DE");
+		    	}
+		    	else{
+		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    	}
+		    });
+		    $('.password input').focusout(function(){
+		    	$(this).css("color","#C8C8C8");
+		    	if(this.value.length>=4){
+		    		$('.password').css("border-bottom", "2px solid #00A6DE");
+		    		$('.password img').attr('src','resources/images/joinImg/choice_2.png');
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    	}
+		    	else if(this.value.length>=1){
+		    		$('.password').css("border-bottom", "2px solid red");
+		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning1').show();
+		    	}
+		    	else{
+		    		$('.password').css("border-bottom", "2px solid #C8C8C8");
+		    		$('.password img').attr('src','resources/images/joinImg/choice_1.png');
+		    	}
+		    	
+		    });
+		    
+		    $('.passwordcorrect input').focusin(function(){
+		    	$(this).css("color","#828180");
+		    	if($('.passwordcorrect img').attr('src')=='resources/images/joinImg/choice_1.png'){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #C8C8C8");
+		    	}
+		    	else if($('.passwordcorrect img').attr('src')=='resources/images/joinImg/choice_2.png'){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #00A6DE");
+		    	}
+		    	else{
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    	}
+		    });
+		    $('.passwordcorrect input').focusout(function(){
+		    	$(this).css("color","#C8C8C8");
+		    	if(this.value==$('.password input').val()&&this.value.length>=4){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #00A6DE");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_2.png');
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    	}
+		    	else if(this.value!=$('.password input').val()&&this.value.length>0){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid red");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning2').show();
+		    	}
+ 		    	else if($('.password input').val().length<4&&$('.password input').val().length>0){
+ 		    		$('.password').css("border-bottom", "2px solid #C8C8C8");
+		    		$('.password img').attr('src','resources/images/joinImg/choice_1.png');
+		    		$('.password').css("border-bottom", "2px solid red");
+		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    		jQuery('.pw_warning3').show();
+		    		$(this).val("");
+		    		$('.password input').focus();
+		    	} 
+		    	else{
+		    		$('.password').css("border-bottom", "2px solid #C8C8C8");
+		    		$('.password img').attr('src','resources/images/joinImg/choice_1.png');
+		    	}
+		    });
+
 		});
 
 
@@ -171,7 +288,7 @@
 		}
 		/*가입 2--------------------------------------------------------------------------------------------------------------------*/
 		.layer_2{
-			 /* display:none; */ 
+			display:none; 
 		}
 		.container_2{
 			position:relative; margin-top:97px; padding-bottom:65px; border-bottom:3px solid #00A6DE;
@@ -241,9 +358,40 @@
 			width:140px; height:45px; background-color:#00A1FF; color:#FFFFFF; font-size:16px; border:none; cursor:pointer;
 			border-radius: 0px 0px 0px 0px; float:right;
 		}
+		.darkwindow{
+			display:none; position: fixed; z-index: 100; left: 0px; top: 0px;width: 100%;height: 100%;background-color: rgba( 0, 0, 0, 0.6 ); height:100%; margin-bottom:0px;
+		}
+		.c2_alert_1{
+			display:none; top: 50%; left: 50%; margin-top: -71px; margin-left: -150px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;
+    		background: #FFFFFF; padding: 22px 0 0 0; 
+		}
+		.c2_alert_1-1{
+			background: #FFFFFF;
+		}
+		.c2_alert_1_line1{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px;
+		}
+		.c2_alert_1_line2{
+			display: block;font-size: 14px; background-color: #00A1FF; color: #FFFFFF; padding: 10px 0; font-weight: bold; text-align: center; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; text-decoration: none;
+			width:100%; height:45px; border:none; cursor:pointer;
+		}
+		.c2_alert_2{
+			display:none; top: 50%; left: 50%; margin-top: -71px; margin-left: -150px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;
+    		background: #FFFFFF; padding: 22px 0 0 0; 
+		}
+		.c2_alert_2-1{
+			background: #FFFFFF;
+		}
+		.c2_alert_2_line1{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px;
+		}
+		.c2_alert_2_line2{
+			display: block;font-size: 14px; background-color: #00A1FF; color: #FFFFFF; padding: 10px 0; font-weight: bold; text-align: center; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; text-decoration: none;
+			width:100%; height:45px; border:none; cursor:pointer;
+		}
 		/*가입 2-2세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_3{
-			 /* display:none; */  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:960px; margin-bottom:0px;
+			 display:none;  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:960px; margin-bottom:0px;
 		}
 		.midcontents_3{
 			width:660px; margin:0 auto; padding-top:65px;
@@ -261,16 +409,16 @@
 			margin:0; padding:0; border:0;
 		}
 		.id{
-			display:inline-block;width:40%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+			display:inline-block;width:40%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #E9E9E9; 
 		}
 		.id input{
-			width:100%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+			width:100%; border:none;  font-size:14px; color:#C8C8C8; background-color: transparent; font-family:'돋움'; vertical-align:middle;
 		}
 		.adress{
-			display:inline-block;width:40%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+			display:inline-block;width:40%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #E9E9E9; 
 		}
 		.adress input{
-			width:100%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+			width:100%; border:none;  font-size:14px; color:#C8C8C8; background-color: transparent; font-family:'돋움'; vertical-align:middle;
 		}
 		.doublebutton{
 			width:75px; height:31px; background-color:#C9C9C9; color:#FFFFFF; font-size:14px; border:none; cursor:pointer;
@@ -280,19 +428,19 @@
 			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
 		}
 		.password{
-			display:inline-block; width:100%; padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #C4C5C4; 
+			display:inline-block; width:100%; padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #E9E9E9; 
 		}
 		.password input{
-			width:53%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle; float:right;
+			width:53%; border:none;  font-size:14px; color:#C8C8C8; background-color: transparent; font-family:'돋움'; vertical-align:middle; float:right;
 		}
 		.passwordcorrect{
-			display:inline-block; width:100%; margin-top:3px;padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #C4C5C4; 
+			display:inline-block; width:100%; margin-top:3px;padding-top:7px; padding-bottom:7px; border-bottom: 2px solid #E9E9E9; 
 		}
 		.passwordcorrect input{
-			width:53%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+			width:53%; border:none;  font-size:14px; color:#C8C8C8; background-color: transparent; font-family:'돋움'; vertical-align:middle;
 		}
 		.c3_pw_warning{
-			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
+			diplay:block; height:12px;margin-top:10px; font-size:12px; color:red; font-family:'돋움';
 		}
 		.year{
 			display:inline-block; width:25%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
@@ -355,7 +503,7 @@
 		}
 		/*가입 2-3세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_4{
-			 /* display:none; */  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:1010px; margin-bottom:0px;
+			 display:none;  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:1010px; margin-bottom:0px;
 		}
 		.midcontents_4{
 			width:660px; margin:0 auto; padding-top:65px;
@@ -410,7 +558,7 @@
 		}
 		/*가입 2-4세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_5{
-			 /* display:none; */  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:728px; margin-bottom:0px;
+			 display:none;  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:728px; margin-bottom:0px;
 		}
 		.midcontents_5{
 			width:660px; margin:0 auto; padding-top:65px;
@@ -432,7 +580,7 @@
  document.body.style.backgroundImage = 'url('+bgImg[ran]+')';
  document.body.style.backgroundAttachment="fixed";
 </script>
- <!--
+<!------------------------------- 가입 1 ---------------------------------------------->
 <div class="container">
 	<div class = "header">
 		<div class = "c_header">
@@ -464,7 +612,8 @@
 		</div>
 	</div>
 </div>
- -->
+<!------------------------------- 가입 1 END---------------------------------------------->
+<!------------------------------- 가입 2-1~4---------------------------------------------->
 <div class = "layer_2">
 	<div class = "container_2">
 		<div class = "header_2">
@@ -475,7 +624,7 @@
 			</div>
 		</div>
 	</div>
-<!-- 
+<!------------------------------- 가입 2-1---------------------------------------------->
 	<div class = "contents_2">
 		<div class = "midcontents_2">
 			<div class = "c_contents_2">
@@ -698,8 +847,25 @@
 			</div>
 		</div>
 	</div>
-  -->
-  <!--
+	<div class="darkwindow"></div>
+	<div class="c2_alert_1">
+		<div class="c2_alert_1-1">
+			<p class="c2_alert_1_line1" style="font-family: '돋움'; font-size: 12px;"><em style="color: #00a6de; font-style: normal;">서비스 이용약관</em>에 대한 동의는<br>필수 항목입니다.</p>
+		</div>
+		<div class = "c2_alert_1-2">
+			<input type = "submit" value="확인" class="c2_alert_1_line2">
+		</div>
+	</div>
+	<div class="c2_alert_2">
+		<div class="c2_alert_2-1">
+			<p class="c2_alert_2_line1" style="font-family: '돋움'; font-size: 12px;"><em style="color: #00a6de; font-style: normal;">개인정보 수집</em> 및 <em style="color: #00a6de; font-style: normal;">이용목적</em>에 대한 동의는<br>필수 항목입니다.</p>
+		</div>
+		<div class = "c2_alert_2-2">
+			<input type = "submit" value="확인" class="c2_alert_2_line2">
+		</div>
+	</div>
+<!------------------------------- 가입 2-1END---------------------------------------------->
+<!------------------------------- 가입 2-2---------------------------------------------->
 	<div class = "contents_3">
 		<div class = "midcontents_3">
 			<div class = "c_contents_3">
@@ -712,7 +878,7 @@
 							<span class = "id">
 								<input type = "text" name="id" placeholder = "이메일을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력해주세요.'">
 							</span> 
-							<span style = "font-family:'돋움'; font-size:16px; color:#828180; vertical-align:bottom; margin-left:4px; margin-right:4px;">@</span>
+							<span style = "font-family:'돋움'; font-size:16px; color:#C8C8C8; vertical-align:bottom; margin-left:4px; margin-right:4px;">@</span>
 							<span class = "adress">
 								<input type = "text" name="adress">
 							</span>
@@ -722,7 +888,7 @@
 							 
 						</span>
 						<div class = "c3_warning">
-							이메일은(는) 필수 입력 항목입니다.
+							<p>이메일은(는) 필수 입력 항목입니다.</p>
 						</div>
 					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">비밀번호*&nbsp</h3>
 						<span class= "c3_line_2">
@@ -736,7 +902,9 @@
 							</span>
 						</span>
 						<div class = "c3_pw_warning">
-							조금만 더 써주세요!비밀번호는 4자리이상 입력해야 하거든요.
+							<p class="pw_warning1" style="display:none;">조금만 더 써주세요!비밀번호는 4자리이상 입력해야 하거든요.</p>
+							<p class="pw_warning2" style="display:none;">어느 부분이 다른거죠!?비밀번호가 일치하지 않아요ᅲ</p>
+							<p class="pw_warning3" style="display:none;">너무 급하신 거 아니에요?!비밀번호 부터 입력하셔야 해요.</p>
 						</div>
 					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">생년월일*&nbsp
 					<a href="" style="font-size:12px; color:#00A1FF; font-weight:normal;text-decoration:none; letter-spacing:-1px;"><em style="font-style:normal; text-decoration:underline;">생년월일,</em> 왜 입력하는 거죠?</a></h3>
@@ -816,8 +984,8 @@
 			</div>
 		</div>
 	</div>
-	 -->
-	<!--
+<!------------------------------- 가입 2-2END---------------------------------------------->
+<!------------------------------- 가입 2-3---------------------------------------------->
 	<div class = "contents_4">
 		<div class = "midcontents_4">
 			<div class = "c_contents_4">
@@ -860,8 +1028,8 @@
 			</div>
 		</div>
 	</div>
-	-->
-		
+<!------------------------------- 가입 2-3 END---------------------------------------------->
+<!------------------------------- 가입 2-4---------------------------------------------->
 	<div class = "contents_5">
 		<div class = "midcontents_5">
 			<div class = "c_contents_5">
@@ -879,7 +1047,8 @@
 			</div>
 		</div>
 	</div>
+<!------------------------------- 가입 2-4 END--------------------------------------------->
 </div>
-
+<!------------------------------- 가입 2-1~4END--------------------------------------------->
 </body>
 </html>
