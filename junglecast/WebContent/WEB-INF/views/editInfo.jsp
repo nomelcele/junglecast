@@ -29,7 +29,9 @@ ul{padding:0;}
 	
 }
 </style>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script src="js/leftMenu.js"></script>
+<script src="js/editInfo.js"></script>
 <script>
 $(document).ready(function(){
 	//반응형 자바스크립트
@@ -91,7 +93,7 @@ function left_area_positioning(){
 					</li>
 				</ul>			
 			</div>
-			<div class="editBox profileBox">
+			<div id="profileBox" class="editBox profileBox">
 				<h1>프로필</h1>
 				<div class="profileImgBox">
 					<div>
@@ -139,7 +141,7 @@ function left_area_positioning(){
 					</div>
 				</div>
 			</div>
-			<div class="editBox accountInfoBox">
+			<div id="accountBox" class="editBox accountInfoBox">
 				<h1>계정정보</h1>
 				<div class="accountInfoTxtBox">
 					<div class="profileSubBox">
@@ -174,7 +176,7 @@ function left_area_positioning(){
 					<a class="deleteAccount">계정 삭제</a>
 				</div>
 			</div>
-			<div class="editBox pwdBox">
+			<div id="pwdBox" class="editBox pwdBox">
 				<h1>비밀번호 변경</h1>
 				<div class="">
 					<div class="profileSubBox">

@@ -3,12 +3,15 @@ ul{padding:0;}
 li{list-style-type: none;}
 em{font-style: normal;}
 .menuBox{background:#fff; border:1px solid #eaeaea; margin:20px 0; padding:0 10px;}
-.menuList li{padding:15px 10px; color:#8E8E8E;}
-.menuList li a{padding-left:30px; font-size:14px; padding:2px 0 2px 30px;}
-.profileBtn{background:url(../images/editIcons/profileImg2.png) no-repeat 0;}
-.profileBtn span{color:#00a6de;}
+.menuList li{margin:15px; padding:5px 0; color:#8E8E8E;}
+.menuList li a{font-size:14px; padding:5px 0 5px 30px; display:block;}
+.menuList li a:hover, a.hovered{color:#00a6de; border-bottom:2px solid #00a6de;}
+.profileBtn{background:url(../images/editIcons/profileImg1.png) no-repeat 0;}
+.profileBtn:hover, .profileBtn.hovered{background:url(../images/editIcons/profileImg2.png) no-repeat 0;}
 .accountBtn{background:url(../images/editIcons/accountImg1.png) no-repeat 0;}
+.accountBtn:hover, .accountBtn.hovered{background:url(../images/editIcons/accountImg2.png) no-repeat 0;}
 .pwdBtn{background:url(../images/editIcons/pwdImg1.png) no-repeat 0;}
+.pwdBtn:hover, .pwdBtn.hovered{background:url(../images/editIcons/pwdImg2.png) no-repeat 0;}
 
 .editInfoTabletMenu{text-align:center; display:none;}
 .editInfoTabletMenu ul{margin:0;}
