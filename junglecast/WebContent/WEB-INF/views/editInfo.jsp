@@ -90,7 +90,7 @@ function left_area_positioning(){
 						<h1>닉네임</h1>
 						<div class="profileNameInputBox">
 							<span class="profileNameInput">
-								<input type="text">
+								<input type="text" maxlength="14">
 								<span class="profileTxtNum">0/14</span>
 							</span>
 						</div>
@@ -100,7 +100,7 @@ function left_area_positioning(){
 						<h1>나의 한 줄 소개</h1>
 						<div class="profileIntroInputBox">
 							<span class="profileNameInput">
-								<input type="text">
+								<input type="text" maxlength="17">
 								<span class="profileTxtNum">0/17</span>
 							</span>
 						</div>
@@ -109,17 +109,80 @@ function left_area_positioning(){
 						<h1>웹 사이트</h1>
 						<div class="profileWebInputBox">
 							<span class="profileNameInput">
+								<span class="profileHttp">http://</span>
 								<input type="text">
 							</span>
+							<span class="profileNameInput">
+								<span class="profileHttp">http://</span>
+								<input type="text">
+							</span>
+							<span class="profileNameInput">
+								<span class="profileHttp">http://</span>
+								<input type="text">
+							</span>														
+							<a class="addWebArea"><span class="addWebBtn"></span></a>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="editBox accountInfoBox">
 				<h1>계정정보</h1>
+				<div class="accountInfoTxtBox">
+					<div class="profileSubBox">
+						<h1>이메일</h1>
+						<input type="text">
+					</div>
+					<div class="profileSubBox">
+						<h1>생년월일</h1>
+						<div>
+							<select disabled>
+								<option selected>1993년</option>	
+							</select>
+							<select disabled>
+								<option selected>01월</option>
+							</select>
+							<select disabled>
+								<option selected>01일</option>
+							</select>
+						</div>
+						<span class="warningTxt">생년월일은 가입 후엔 변경할 수 없습니다.</span>
+					</div>
+					<div class="profileSubBox">
+						<h1>성별</h1>
+						<div>
+							<select disabled>
+								<option>남성</option>
+								<option selected>여성</option>
+							</select>
+						</div>
+						<span class="warningTxt">성별은 가입 후엔 변경할 수 없습니다.</span>
+					</div>
+					<a class="deleteAccount">계정 삭제</a>
+				</div>
 			</div>
 			<div class="editBox pwdBox">
 				<h1>비밀번호 변경</h1>
+				<div class="">
+					<div class="profileSubBox">
+						<h1>현재 비밀번호 입력</h1>
+						<input type="text" placeholder="현재 비밀번호">
+					</div>
+					<div class="profileSubBox">
+						<h1>새로운 비밀번호 입력</h1>
+						<input type="text" placeholder="새로운 비밀번호">
+					</div>
+					<div class="profileSubBox">
+						<h1>새로운 비밀번호 재입력</h1>
+						<input type="text" placeholder="새로운 비밀번호 재입력">
+					</div>
+					<a class="editBtn editPwdBtn">비밀번호 변경</a>				
+				</div>
+			</div>
+			<div class="editBox editSaveBox">
+				<div class="editSaveSubBox">
+					<a class="editBtn editCancelBtn">취소</a>
+					<a class="editBtn editSaveBtn">저장</a>
+				</div>
 			</div>
 		</section>
 	</div>

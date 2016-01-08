@@ -1,29 +1,42 @@
 @CHARSET "UTF-8";
-ul {padding:0;}
+ul{padding:0;}
 li{list-style-type: none;}
 em{font-style: normal;}
 .menuBox{background:#fff; border:1px solid #eaeaea; margin:20px 0; padding:0 10px;}
 .menuList li{padding:15px 10px; color:#8E8E8E;}
 
-.editBox{background:#fff; border:1px solid #eaeaea; padding:0 20px;}
+.editBox{background:#fff; border:1px solid #eaeaea; padding:0 20px; padding:10px 20px;}
 .editBox h1{color:#8E8E8E; font-size:20px; margin-bottom:35px;}
 
-.profileBox{margin:20px 0; padding:10px 20px; height:400px;}
+.profileBox{margin:20px 0; padding:10px 20px; height:500px;}
+.profileSubBox h1{font-size:17px; margin:8px 0;}
 .profileImgBox{float:left; padding-left:20px; width:12%;}
 .profileImgBox img{width:50px; height:50px;}
 .editImgBtn{background:url(../images/editIcons/editImgBtn.png) no-repeat 0; width:20px; height:20px; display:inline-block; position:relative; right:13px;}
 .profileTxtBox{float:left; border-left:1px solid #eaeaea; padding-left:20px; width:83%;}
-.profileTxtBox h1{font-size:17px; margin:8px 0;}
 .profileSubBox{margin-bottom:30px;}
 .profileNameInputBox{margin-bottom:7px;}
 .profileNameInput{width:65%; display:inline-block; border:1px solid #D4D4D4;}
 .profileTxtNum{color:#00a6de; font-size:12px; float:right; padding:4px;}
 .profileTxtBox input[type=text]{width:92%; padding:4px; color:#8E8E8E; border:none;}
 .warningTxt{color:red; font-size:12px;}
+.profileWebInputBox .profileNameInput{margin-bottom:7px;}
+.profileWebInputBox input[type=text]{width:80%;}
+.profileHttp{display:inline-block; background-color:#aeaeae; color:#fff; padding:5px; font-size:13px;}
+.addWebArea{display:inline-block; border:1px solid #EAEAEA; text-align:center; margin-top:10px; width:65%;}
+.addWebBtn{background:url(../images/editIcons/addWebBtn.png) no-repeat 0; display:inline-block; width:30px; height:30px;}
 
-.accountInfoBox{margin:10px 0;}
+.accountInfoBox{margin:10px 0; height:400px;}
+.deleteAccount{color:#00a6de; border-bottom:1px solid #00a6de; font-size:12px;}
 
-.pwdBox{margin:10px 0;}
+.pwdBox{margin:10px 0; height:400px;}
+.editBtn{font-size:13px; padding:6px 20px; border:1px solid #8e8e8e; border-radius:4px;}
+.editPwdBtn{background:linear-gradient(#11bef1, #029be0); color:#fff;}
+
+.editSaveBox{background:#F6F6F6; position:fixed; width:948px; height:30px; bottom:0.5px; text-align:right;}
+.editSaveSubBox{margin:5px 0;}
+.editCancelBtn{background:linear-gradient(#f0f0f1, #e0e0e2);}
+.editSaveBtn{background:linear-gradient(#11bef1, #029be0); color:#fff;}
 
 @media only screen and (max-width:1279px) and (min-width:1024px){
 	.menuBox{display:none;}
