@@ -6,11 +6,20 @@ em{font-style: normal;}
 .menuList li{padding:15px 10px; color:#8E8E8E;}
 
 .editBox{background:#fff; border:1px solid #eaeaea; padding:0 20px;}
-.editBox h1{color:#8E8E8E; font-size:20px;}
+.editBox h1{color:#8E8E8E; font-size:20px; margin-bottom:35px;}
 
-.profileBox{margin:20px 0; padding:10px 20px;}
-.profileImgBox{}
+.profileBox{margin:20px 0; padding:10px 20px; height:400px;}
+.profileImgBox{float:left; padding-left:20px; width:12%;}
 .profileImgBox img{width:50px; height:50px;}
+.editImgBtn{background:url(../images/editIcons/editImgBtn.png) no-repeat 0; width:20px; height:20px; display:inline-block; position:relative; right:13px;}
+.profileTxtBox{float:left; border-left:1px solid #eaeaea; padding-left:20px; width:83%;}
+.profileTxtBox h1{font-size:17px; margin:8px 0;}
+.profileSubBox{margin-bottom:30px;}
+.profileNameInputBox{margin-bottom:7px;}
+.profileNameInput{width:65%; display:inline-block; border:1px solid #D4D4D4;}
+.profileTxtNum{color:#00a6de; font-size:12px; float:right; padding:4px;}
+.profileTxtBox input[type=text]{width:92%; padding:4px; color:#8E8E8E; border:none;}
+.warningTxt{color:red; font-size:12px;}
 
 .accountInfoBox{margin:10px 0;}
 

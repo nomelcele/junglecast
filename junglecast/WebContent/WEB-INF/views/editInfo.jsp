@@ -82,6 +82,36 @@ function left_area_positioning(){
 				<div class="profileImgBox">
 					<div>
 						<img src="resources/memberImg/gildong.jpg">
+						<a class="editImgBtn"></a>
+					</div>
+				</div>
+				<div class="profileTxtBox">
+					<div class="profileSubBox profileNameBox">
+						<h1>닉네임</h1>
+						<div class="profileNameInputBox">
+							<span class="profileNameInput">
+								<input type="text">
+								<span class="profileTxtNum">0/14</span>
+							</span>
+						</div>
+						<span class="warningTxt">홍보성 / 선정적인 닉네임은 타인에게 불쾌감을 줄 수 있으므로 삭제될 수 있습니다.</span>
+					</div>
+					<div class="profileSubBox profileIntroBox">
+						<h1>나의 한 줄 소개</h1>
+						<div class="profileIntroInputBox">
+							<span class="profileNameInput">
+								<input type="text">
+								<span class="profileTxtNum">0/17</span>
+							</span>
+						</div>
+					</div>
+					<div class="profileSubBox profileWebBox">
+						<h1>웹 사이트</h1>
+						<div class="profileWebInputBox">
+							<span class="profileNameInput">
+								<input type="text">
+							</span>
+						</div>
 					</div>
 				</div>
 			</div>
