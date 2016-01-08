@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="resources/css/leftMenu.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/header.css"/>
 <link href="resources/css/article.css" rel="stylesheet" type="text/css"/>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/leftMenu.js"></script>
