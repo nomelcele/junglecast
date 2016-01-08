@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 		<script>
 		$(function(){
+			
 			$('.emailbutton_1').on('click',function(){
 				jQuery('.container').hide();
 				jQuery('.layer_2').show();
@@ -55,7 +56,14 @@
 			});
 			$('.c3_button_2').on('click',function(){
 				var email = $('.id input').val()+'@'+$('.adress input').val();
-	    		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/; 
+	    		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		    	dt=new Date();
+		    	var d_num = Number($('.day select option:selected').val());
+		    	var m_num = Number($('.month select option:selected').val());
+		    	var y_num = Number($('.year input').val());
+		    	var year = Number(dt.getFullYear());
+		    	var month = Number(dt.getMonth());
+		    	var day=Number(dt.getDate());
 				if($('.id input').val()==""||$('.adress input').val()==""){
 					$('.layer_2').css("overflow","hidden");
 					jQuery('.darkwindow').show();
@@ -112,12 +120,19 @@
 					jQuery('.c3_alert_2-1 p').hide();
 					jQuery('.c3_alert_2_line1').show();
 				}
-				else if($('.pw_warning2').attr("display")!="none"){
+				else if($('.password input').val()!=$('.passwordcorrect input').val()){
 					$('.layer_2').css("overflow","hidden");
 					jQuery('.darkwindow').show();
 					jQuery('.c3_alert_2').show();
 					jQuery('.c3_alert_2-1 p').hide();
 					jQuery('.c3_alert_2_line1_1').show();
+				}
+				else if(y_num>year||y_num<1900||((y_num==year)&&(m_num>month))||(y_num==year&&m_num==month&&d_num>date)){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1_7').show();
 				}
 				else{
 					jQuery('.contents_3').hide();
@@ -143,11 +158,37 @@
 				jQuery('.contents_4').hide();
 				jQuery('.contents_3').show();
 				$('html,body').scrollTop(0);
+				$('.password input').val("");
+				$('.passwordcorrect input').val("");
+	    		$('.password').css("border-bottom", "2px solid #E9E9E9");
+	    		$('.password img').attr('src','resources/images/joinImg/choice_1.png');
+	    		$('.passwordcorrect').css("border-bottom", "2px solid #E9E9E9");
+	    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
 			});
 			$('.c4_button_2').on('click',function(){
-				jQuery('.contents_4').hide();
-				jQuery('.contents_5').show();
-				$('html,body').scrollTop(0);
+				if($('.nickname input').val()==""){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c4_alert_1').show();
+				}
+				else{
+					jQuery('.contents_4').hide();
+					jQuery('.contents_5').show();
+					$('html,body').scrollTop(0);
+				}
+			});
+			$('.c4_alert_1_line2').on('click',function(){
+				jQuery('.c4_alert_1').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();
+				jQuery('.nickname_warning1').show();
+				
+			});
+			$('.c4_alert_2_line2').on('click',function(){
+				jQuery('.c4_alert_2').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();
+				
 			});
 			
 			$('.checkImg').on('click',function(){
@@ -286,6 +327,10 @@
 		    	if(this.value.length>=4){
 		    		$('.password').css("border-bottom", "2px solid #00A6DE");
 		    		$('.password img').attr('src','resources/images/joinImg/choice_2.png');
+		    		if($('.passwordcorrect input').val()==this.value){
+		    			$('.passwordcorrect').css("border-bottom", "2px solid #00A6DE");
+			    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_2.png');
+		    		}
 		    		jQuery('.pw_warning1').hide();
 		    		jQuery('.pw_warning2').hide();
 		    		jQuery('.pw_warning3').hide();
@@ -380,6 +425,18 @@
 		    		jQuery('.pw_warning2').show();
 		    	}
 		    	else if(this.value!=$('.password input').val()&&this.value.length<4&&$('.password input').val().length<4&&this.value.length>0&&$('.password input').val().length>0){
+		    		$('.passwordcorrect').css("border-bottom", "2px solid #E9E9E9");
+		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
+		    		$('.password').css("border-bottom", "2px solid red");
+		    		$('.password img').attr('src','resources/images/joinImg/passwordwarn.png');
+		    		jQuery('.pw_warning1').hide();
+		    		jQuery('.pw_warning2').hide();
+		    		jQuery('.pw_warning3').hide();
+		    		jQuery('.pw_warning3').show();
+		    		$(this).val("");
+		    		$('.password input').focus();	
+		    	}
+		    	else if($('.password input').val()==""&&$(this).val().length>0){
 		    		$('.passwordcorrect').css("border-bottom", "2px solid #E9E9E9");
 		    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
 		    		$('.password').css("border-bottom", "2px solid red");
@@ -495,6 +552,23 @@
 		    		$('.year').css("border-bottom", "2px solid #E9E9E9");
 		    	}
 		    	}
+		    });
+		    $('.nickname input').focusin(function(){
+		    	$(this).css("color","#828180");
+		    	$('.nickname').css("border-bottom", "2px solid #C8C8C8");
+		    });
+		    $('.nickname input').focusout(function(){
+		    	$(this).css("color","#C8C8C8");
+		    	
+		    });
+		    $('.myintro input').focusin(function(){
+		    	$(this).css("color","#828180");
+		    	$('.myintro').css("border-bottom", "2px solid #C8C8C8");
+		    });
+		    $('.myintro input').focusout(function(){
+		    	$(this).css("color","#C8C8C8");
+		    	$('.myintro').css("border-bottom", "2px solid #E9E9E9");
+		    	
 		    });
 		    
 
@@ -822,10 +896,10 @@
 			display:block; width:110px; height:110px; border-radius:60px; margin:0 auto;
 		}
 		.nickname{
-			display:inline-block;width:80%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+			display:inline-block;width:80%; padding-top:4px; padding-bottom:4px; border-bottom:2px solid #E9E9E9; 
 		}
 		.nickname input{
-			width:90%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+			width:90%; border:none;  font-size:14px; color::#C8C8C8; background-color: transparent; font-family:'돋움'; vertical-align:middle;
 		}
 		.inputCnt{
 		 font-size:14px; color:#828180; font-family:'돋움'; vertical-align:middle; float:right;
@@ -835,13 +909,13 @@
 			border-radius: 0px 0px 0px 0px;
 		}
 		.c4_nickname_warning{
-			margin-top:10px; font-size:12px; color:red; font-family:'돋움';
+			display:block; height:12px; margin-top:10px; font-size:12px; color:red; font-family:'돋움';
 		}
 		.myintro{
-			display:inline-block;width:80%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #C4C5C4; 
+			display:inline-block;width:80%; padding-top:4px; padding-bottom:4px; border-bottom: 2px solid #E9E9E9; 
 		}
 		.myintro input{
-			width:90%; border:none;  font-size:14px; color:#828180; background-color: transparent; font-family:'돋움'; vertical-align:middle;
+			width:90%; border:none;  font-size:14px; color:#C8C8C8; background-color: transparent; font-family:'돋움'; vertical-align:middle;
 		}
 		.intro_inputCnt{
 		 font-size:14px; color:#828180; font-family:'돋움'; vertical-align:middle; float:right;
@@ -856,6 +930,34 @@
 		.c4_button_2{
 			width:140px; height:45px; background-color:#00A1FF; color:#FFFFFF; font-size:16px; border:none; cursor:pointer;
 			border-radius: 0px 0px 0px 0px; float:right;
+		}
+		.c4_alert_1{
+			display:none; top: 50%; left: 50%; margin-top: -61px; margin-left: -152px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;
+    		background: #FFFFFF; padding: 22px 0 0 0; 
+		}
+		.c4_alert_1-1{
+			background: #FFFFFF;
+		}
+		.c4_alert_1-1 p{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px; font-family: '돋움'; font-size: 12px;
+		}
+		.c4_alert_1_line2{
+			display: block;font-size: 14px; background-color: #00A1FF; color: #FFFFFF; padding: 10px 0; font-weight: bold; text-align: center; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; text-decoration: none;
+			width:100%; height:45px; border:none; cursor:pointer;
+		}
+		.c4_alert_2{
+			display:none; top: 50%; left: 50%; margin-top: -71px; margin-left: -150px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;
+    		background: #FFFFFF; padding: 22px 0 0 0; 
+		}
+		.c4_alert_2-1{
+			background: #FFFFFF;
+		}
+		.c4_alert_2-1 p{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px; font-family: '돋움'; font-size: 12px;
+		}
+		.c3_alert_2_line2{
+			display: block;font-size: 14px; background-color: #00A1FF; color: #FFFFFF; padding: 10px 0; font-weight: bold; text-align: center; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; text-decoration: none;
+			width:100%; height:45px; border:none; cursor:pointer;
 		}
 		/*가입 2-4세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_5{
@@ -1302,7 +1404,7 @@
 			<p class="c3_alert_1_line1_5" style="display = none;"><em style="color: #00a6de; font-style: normal;">출생일</em>은 필수 입력 항목입니다.</p>
 			<p class="c3_alert_1_line1_6" style="display = none;"><em style="color: #00a6de; font-style: normal;">성별</em>은 필수 입력 항목입니다.</p>
 			<p class="c3_alert_1_line1_7" style="display = none;">슈우우웅, 미래에서오신건가요?!!!</p>
-			<p class="c3_alert_1_line1_7" style="display = none;">이미 가입된 이메일입니다.</p>
+			<p class="c3_alert_1_line1_8" style="display = none;">이미 가입된 이메일입니다.</p>
 		</div>
 		<div class = "c3_alert_1-2">
 			<input type = "submit" value="확인" class="c3_alert_1_line2">
@@ -1344,7 +1446,8 @@
 						</span>
 					</div>
 					<div class = "c4_nickname_warning">
-						이런, 늦어부렸어,사용중인 닉네임이라네요.. 부들부들
+						<p class="nickname_warning1" style="display:none;">닉네임은 필수 입력 항목입니다.</p>
+						<p class="nickname_warning2" style="display:none;">이런, 늦어부렸어,사용중인 닉네임이라네요.. 부들부들</p>
 					</div>
 					<h3 style = "margin-top:55px;margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">나의 한줄 소개*&nbsp</h3>
 					<div class = "c4_line_2">
@@ -1359,6 +1462,23 @@
 				<input type = "submit" value = "이전" class = "c4_button_1">
 				<input type = "submit" value = "완료" class = "c4_button_2">
 			</div>
+		</div>
+	</div>
+	<div class="darkwindow"></div>
+	<div class="c4_alert_1">
+		<div class="c4_alert_1-1">
+			<p class="c4_alert_1_line1" style="display = none;"><em style="color: #00a6de; font-style: normal;">닉네임</em>을 잘못 입력하신 것 같아요..<br>한 번 더 확인해주세요!</p>
+		</div>
+		<div class = "c4_alert_1-2">
+			<input type = "submit" value="확인" class="c4_alert_1_line2">
+		</div>
+	</div>
+	<div class="c4_alert_2">
+		<div class="c4_alert_2-1">
+			<p class="c4_alert_2_line1" style="display = none;">이런, 늦어부렸어,<br>사용중인 <em style="color: #00a6de; font-style: normal;">닉네임</em>이라네요.. 부들부들</p>
+		</div>
+		<div class = "c4_alert_2-2">
+			<input type = "submit" value="확인" class="c4_alert_2_line2">
 		</div>
 	</div>
 <!------------------------------- 가입 2-3 END---------------------------------------------->
