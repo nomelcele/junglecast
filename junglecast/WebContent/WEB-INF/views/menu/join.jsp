@@ -181,6 +181,7 @@
 					//$('.id').val('asdf');
 					//$('.year').val(year+'-'+month+'-'+day);
 					$("form[name ='sendForm']").submit();
+					$("form[name ='sendProfile']").submit();
 					jQuery('.contents_4').hide();
 					jQuery('.contents_5').show();
 					$('html,body').scrollTop(0);
@@ -1446,6 +1447,7 @@
 			<div class = "c_contents_4">
 				<img src = "resources/images/joinImg/join_3.png" width = 100% height = 115px style="padding-bottom:20px;">
 			</div>
+			<form name="sendProfile" method="post" action="InsertProfileInfo">
 			<div class = "c_midcontents_4">
 				<div class = "c4_midcontents">
 					<div class = "c4_midtop">
@@ -1458,7 +1460,7 @@
 					------------------ 프로필사진 업로드 미완성 --------------------
 					<div class = "c4_line_1">
 						<span class = "nickname">
-							<input type = "text" name="nickname" maxlength="14" placeholder = "닉네임을 입력해 주세요 (최대 14자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임을 입력해 주세요 (최대 14자)'">
+							<input type = "text" name="m_nickname" maxlength="14" placeholder = "닉네임을 입력해 주세요 (최대 14자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임을 입력해 주세요 (최대 14자)'">
 							<span class="inputCnt">0</span>
 						</span> 
 						<span class = "n_double" style="margin-left:10px;">
@@ -1472,12 +1474,13 @@
 					<h3 style = "margin-top:55px;margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">나의 한줄 소개*&nbsp</h3>
 					<div class = "c4_line_2">
 						<span class = "myintro">
-							<input type = "text" name="myintro" maxlength="17" placeholder = "자신을 표현해 보세요! (1~17자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '자신을 표현해 보세요! (1~17자)'">
+							<input type = "text" name="m_introduce" maxlength="17" placeholder = "자신을 표현해 보세요! (1~17자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '자신을 표현해 보세요! (1~17자)'">
 							<span class="intro_inputCnt">0</span>
 						</span> 
 					</div>
 				</div>
 			</div>
+			</form>
 			<div class = "c4_buttons">
 				<input type = "submit" value = "이전" class = "c4_button_1">
 				<input type = "submit" value = "완료" class = "c4_button_2">
