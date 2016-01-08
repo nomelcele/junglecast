@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="resources/css/leftMenu.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/main.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/header.css"/>
 <style>
 ul{padding:0;}
 
@@ -77,6 +78,19 @@ function left_area_positioning(){
 	<div id="content_area">
 		<jsp:include page="editInfoMenu.jsp"></jsp:include>
 		<section id="articles_area">
+			<div class="editBox editInfoTabletMenu">
+				<ul class="menuList">
+					<li>
+						<a class="profileBtn"><span>프로필</span></a>
+					</li>
+					<li>
+						<a class="accountBtn"><span>계정정보</span></a>
+					</li>
+					<li>
+						<a class="pwdBtn"><span>비밀번호</span></a>
+					</li>
+				</ul>			
+			</div>
 			<div class="editBox profileBox">
 				<h1>프로필</h1>
 				<div class="profileImgBox">
@@ -134,7 +148,7 @@ function left_area_positioning(){
 					</div>
 					<div class="profileSubBox">
 						<h1>생년월일</h1>
-						<div>
+						<div class="accountSubBox accountBirthday">
 							<select disabled>
 								<option selected>1993년</option>	
 							</select>
@@ -149,7 +163,7 @@ function left_area_positioning(){
 					</div>
 					<div class="profileSubBox">
 						<h1>성별</h1>
-						<div>
+						<div class="accountSubBox accountGender">
 							<select disabled>
 								<option>남성</option>
 								<option selected>여성</option>

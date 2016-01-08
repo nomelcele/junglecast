@@ -10,6 +10,7 @@
 </head>
 <link rel="stylesheet" type="text/css" href="resources/css/leftMenu.css"/>
 <link href="resources/css/article.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/header.css"/>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/article.js"></script>
 <script src="js/leftMenu.js"></script>

@@ -11,9 +11,15 @@
 	<aside id="left_area">
 		<div class="menuBox">
 			<ul class="menuList">
-				<li><span>프로필</span></li>
-				<li><span>계정정보</span></li>
-				<li><span>비밀번호</span></li>
+				<li>
+					<a class="profileBtn"><span>프로필</span></a>
+				</li>
+				<li>
+					<a class="accountBtn"><span>계정정보</span></a>
+				</li>
+				<li>
+					<a class="pwdBtn"><span>비밀번호</span></a>
+				</li>
 			</ul>
 		</div>
 <!-- 			<div class="hidden"> -->

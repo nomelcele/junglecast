@@ -4,6 +4,14 @@ li{list-style-type: none;}
 em{font-style: normal;}
 .menuBox{background:#fff; border:1px solid #eaeaea; margin:20px 0; padding:0 10px;}
 .menuList li{padding:15px 10px; color:#8E8E8E;}
+.menuList li a{padding-left:30px; font-size:14px; padding:2px 0 2px 30px;}
+.profileBtn{background:url(../images/editIcons/profileImg2.png) no-repeat 0;}
+.profileBtn span{color:#00a6de;}
+.accountBtn{background:url(../images/editIcons/accountImg1.png) no-repeat 0;}
+.pwdBtn{background:url(../images/editIcons/pwdImg1.png) no-repeat 0;}
+
+.editInfoTabletMenu{text-align:center; display:none;}
+.editInfoTabletMenu ul{margin:0;}
 
 .editBox{background:#fff; border:1px solid #eaeaea; padding:0 20px; padding:10px 20px;}
 .editBox h1{color:#8E8E8E; font-size:20px; margin-bottom:35px;}
@@ -27,6 +35,7 @@ em{font-style: normal;}
 .addWebBtn{background:url(../images/editIcons/addWebBtn.png) no-repeat 0; display:inline-block; width:30px; height:30px;}
 
 .accountInfoBox{margin:10px 0; height:400px;}
+.accountSubBox{margin-bottom:8px;}
 .deleteAccount{color:#00a6de; border-bottom:1px solid #00a6de; font-size:12px;}
 
 .pwdBox{margin:10px 0; height:400px;}
@@ -40,6 +49,9 @@ em{font-style: normal;}
 
 @media only screen and (max-width:1279px) and (min-width:1024px){
 	.menuBox{display:none;}
+	
+	.editInfoTabletMenu{display:block;}
+	.menuList li{display:inline-block;}
 }
 
 @media only screen and (max-width:1023px) and (min-width:768px){
