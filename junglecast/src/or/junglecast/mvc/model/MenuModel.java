@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import or.junglecast.mvc.dao.JoinDao;
 import or.junglecast.vo.AccountVO;
-import or.junglecast.vo.ReplyVO;
+import or.junglecast.vo.ProfileVO;
 
 @Controller
 public class MenuModel {
@@ -34,7 +34,7 @@ public class MenuModel {
 	
 	@RequestMapping(value="InsertJoinInfo")
 	public String InsertJoinInfo(AccountVO acvo, Model model){
-		// 댓글 작성
+		// 회원가입
 		//int m_id= acvo.getM_id();
 		System.out.println("asdfasfdas");
 		System.out.println(acvo.getM_id());
@@ -45,6 +45,13 @@ public class MenuModel {
 		System.out.println(acvo.getM_joindate());
 		
 		jdao.InsertJoinInfo(acvo);
+		return "/menu/join";
+	}
+	
+	@RequestMapping(value="InsertProfileInfo")
+	public String InsertProfileInfo(ProfileVO pfvo, Model model){
+		// 프로필입력
+		jdao.InsertProfileInfo(pfvo);
 		return "/menu/join";
 	}
 }
