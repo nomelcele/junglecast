@@ -84,6 +84,9 @@
 	#search_list_container{background: none; width:94%; border:none; padding:0 10px 0 10px; float:left; margin:196px 0 0 50px;}
 		.scroll_area_container{border:1px solid #e6e7e8; background:#fff; width:98%;}
 		.aContent_img_area{width:170px;}
+		.aContent_title_area{width:50%;}
+		.aContent_popularity{width:18%;}
+		.aContent_popularity ul{width:80%; padding:0 0 0 14px;}
 }
 
 @media only screen and (max-width:767px){
@@ -142,7 +145,28 @@ $(document).ready(function(){
 		$('.body_cover').css("display", "none");
 	});
 
+	getSearchedContents($('.search_input_container input').val());
 });
+
+getSearchedContents(key){
+	if(key.length>0){
+		$.ajax({
+			type: "POST",
+			url: "searchKey",
+			data: {
+				key: key
+			},
+			success: function(result){
+				$("#modalBox").html(result);
+				$("#article_id").attr("value",articleNum);
+				location.href="#detail";
+				if(matchMedia("only screen and (min-width:1280px)").matches){
+					$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
+				}
+			}
+		});
+	}
+}
 </script>
 </head>
 <jsp:include page="./topLeft/header.jsp"></jsp:include>

@@ -27,8 +27,8 @@
 .selected{background:#00a1ff; color:white; border:1px solid #00a1ff;}
 .search_recommend{width:100%; }
 .search_recommend>div{color:#939598; font-size:16px; font-weight: bold; height:25px; line-height:25px; margin:10px 0 0 10px;}
-.search_recommend ul{margin:0 0 14px 0;}
-.search_recommend ul li {height:30px; line-height:30px; width:100%;}
+.search_recommend ul{margin:0 0 14px 0; padding:0; }
+.search_recommend ul li {height:30px; line-height:30px; width:100%; list-style-type: none;}
 .search_recommend ul li a{color:#939598; font-size: 14px; display:block; font-size:14px; padding:7px 24px;} 
 
 .menu_option_wrapper{width:120px; height:auto; position:fixed; z-index:650; display:none;}

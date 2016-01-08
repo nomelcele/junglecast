@@ -7,6 +7,7 @@
 <meta name="viewport" content="width=device-width, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="resources/css/header.css"/>
 <style type="text/css">
 textarea, input, select{font-family: 'Dotum', Arial, sans-serif; border:none; font-size:14px;}
 #wa_body_cover{background:rgba(18,18,18,0.8); margin:0,0; z-index:600; display:none;width:100%; height:100%; position:fixed;}
