@@ -180,7 +180,7 @@
 					$('#m_pw').attr('value',pw);
 					//$('.id').val('asdf');
 					//$('.year').val(year+'-'+month+'-'+day);
-					$("form[name ='sendForm']").submit();
+					//$("form[name ='sendForm']").submit();
 					$("form[name ='sendProfile']").submit();
 					jQuery('.contents_4').hide();
 					jQuery('.contents_5').show();
@@ -1451,9 +1451,9 @@
 			<div class = "c_midcontents_4">
 				<div class = "c4_midcontents">
 					<div class = "c4_midtop">
-						<img src = "resources/images/joinImg/default_avatar.png" class="defaultImg" onerror="resources/images/joinImg/default_avatar.png">
+						<img src = "resources/images/joinImg/default_avatar.png"  value = "resources/images/joinImg/default_avatar.png" class="defaultImg" onerror="resources/images/joinImg/default_avatar.png">
 						<div style = "position:absolute; height:27px; width:27px; background-image:url("resources/images/joinImg/camera.png");">
-						<input type ='file' onchange="readURL(this);" style="width:0px; height:20;filter:alpha(opacity=0);"/>
+						<input type ='file' name = "m_pic" onchange="readURL(this);" style="width:0px; height:20;filter:alpha(opacity=0);"/>
 						</div>
 					</div>
 					<h3 style = "margin-top:0px;margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">닉네임*&nbsp</h3>
