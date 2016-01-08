@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="resources/css/leftMenu.css"/>
+<link rel="stylesheet" type="text/css" href="resources/css/main.css"/>
 <style>
 ul{padding:0;}
 
@@ -75,6 +76,22 @@ function left_area_positioning(){
 	<jsp:include page="topLeft/header.jsp"></jsp:include>
 	<div id="content_area">
 		<jsp:include page="editInfoMenu.jsp"></jsp:include>
+		<section id="articles_area">
+			<div class="editBox profileBox">
+				<h1>프로필</h1>
+				<div class="profileImgBox">
+					<div>
+						<img src="resources/memberImg/gildong.jpg">
+					</div>
+				</div>
+			</div>
+			<div class="editBox accountInfoBox">
+				<h1>계정정보</h1>
+			</div>
+			<div class="editBox pwdBox">
+				<h1>비밀번호 변경</h1>
+			</div>
+		</section>
 	</div>
 </body>
 </html>

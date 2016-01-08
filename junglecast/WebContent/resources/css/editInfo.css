@@ -3,7 +3,18 @@ ul {padding:0;}
 li{list-style-type: none;}
 em{font-style: normal;}
 .menuBox{background:#fff; border:1px solid #eaeaea; margin:20px 0; padding:0 10px;}
-.menuList li{padding:15px 10px;}
+.menuList li{padding:15px 10px; color:#8E8E8E;}
+
+.editBox{background:#fff; border:1px solid #eaeaea; padding:0 20px;}
+.editBox h1{color:#8E8E8E; font-size:20px;}
+
+.profileBox{margin:20px 0; padding:10px 20px;}
+.profileImgBox{}
+.profileImgBox img{width:50px; height:50px;}
+
+.accountInfoBox{margin:10px 0;}
+
+.pwdBox{margin:10px 0;}
 
 @media only screen and (max-width:1279px) and (min-width:1024px){
 	.menuBox{display:none;}
