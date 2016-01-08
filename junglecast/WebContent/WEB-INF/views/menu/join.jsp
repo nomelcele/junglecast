@@ -106,7 +106,7 @@
 					jQuery('.c3_alert_1-1 p').hide();
 					jQuery('.c3_alert_1_line1_5').show();
 				}
-				else if($(":input:radio[name=radios]:checked").val()!="male"&&$(":input:radio[name=radios]:checked").val()!="female"){
+				else if($(":input:radio[name=m_gender]:checked").val()!="male"&&$(":input:radio[name=m_gender]:checked").val()!="female"){
 					$('.layer_2').css("overflow","hidden");
 					jQuery('.darkwindow').show();
 					jQuery('.c3_alert_1').show();
@@ -172,6 +172,15 @@
 					jQuery('.c4_alert_1').show();
 				}
 				else{
+					var mail = $('.id input').val()+'@'+$('.adress input').val();
+					var birth = $('.year input').val()+'-'+$('.month select option:selected').val()+'-'+$('.day select option:selected').val();
+					var pw = $('.passwordcorrect input').val()
+					$('#m_mail').attr('value',mail);
+					$('#m_birth').attr('value',birth);
+					$('#m_pw').attr('value',pw);
+					//$('.id').val('asdf');
+					//$('.year').val(year+'-'+month+'-'+day);
+					$("form[name ='sendForm']").submit();
 					jQuery('.contents_4').hide();
 					jQuery('.contents_5').show();
 					$('html,body').scrollTop(0);
@@ -1269,17 +1278,20 @@
 	</div>
 <!------------------------------- 가입 2-1END---------------------------------------------->
 <!------------------------------- 가입 2-2---------------------------------------------->
+	
 	<div class = "contents_3">
+	<!-- <form name="sendForm" method="post"> -->
 		<div class = "midcontents_3">
 			<div class = "c_contents_3">
 				<img src = "resources/images/joinImg/join_2.png" width = 100% height = 115px style="padding-bottom:20px;">
 			</div>
+			<form name="sendForm" method="post" action="InsertJoinInfo">
 			<div class = "c_midcontents_3">
 				<div class = "c3_midcontents">
 					<h3 style = "margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">이메일*&nbsp</h3>
 						<span class = "c3_line_1">
 							<span class = "id">
-								<input type = "text" name="id" placeholder = "이메일을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력해주세요.'">
+								<input type = "text" name="mail" placeholder = "이메일을 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력해주세요.'">
 							</span> 
 							<span style = "font-family:'돋움'; font-size:16px; color:#C8C8C8; vertical-align:bottom; margin-left:4px; margin-right:4px;">@</span>
 							<span class = "adress">
@@ -1301,7 +1313,7 @@
 								<img src = "resources/images/joinImg/choice_1.png" class = "pwImg_1" style = "width:20px; height:20px; vertical-align:middle; float:right">
 							</span>
 							<span class = "passwordcorrect">
-								<input type = "password" name="pw_c" placeholder = "비밀번호를 한번 더 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 한번 더 입력해주세요.'" style="float:left">
+								<input type = "password" name="pw_correct" placeholder = "비밀번호를 한번 더 입력해주세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 한번 더 입력해주세요.'" style="float:left">
 								<img src = "resources/images/joinImg/choice_1.png" class = "pwImg_2" style = "width:20px; height:20px; vertical-align:middle; float:right">
 							</span>
 						</span>
@@ -1324,16 +1336,16 @@
 							</span>
 							<span class="month">
 								<select name='month_sel'>
-									<option value="0" selected="selected">출생월</option>	
-									<option value="1">01월</option>
-									<option value="2">02월</option>
-									<option value="3">03월</option>
-									<option value="4">04월</option>
-									<option value="5">05월</option>
-									<option value="6">06월</option>
-									<option value="7">07월</option>
-									<option value="8">08월</option>
-									<option value="9">09월</option>
+									<option value="00" selected="selected">출생월</option>	
+									<option value="01">01월</option>
+									<option value="02">02월</option>
+									<option value="03">03월</option>
+									<option value="04">04월</option>
+									<option value="05">05월</option>
+									<option value="06">06월</option>
+									<option value="07">07월</option>
+									<option value="08">08월</option>
+									<option value="09">09월</option>
 									<option value="10">10월</option>
 									<option value="11">11월</option>
 									<option value="12">12월</option>
@@ -1341,16 +1353,16 @@
 							</span>
 							<span class="day">
 								<select name='day_sel'>
-									<option value="0" selected="selected">출생일</option>	
-									<option value="1">01일</option>
-									<option value="2">02일</option>
-									<option value="3">03일</option>
-									<option value="4">04일</option>
-									<option value="5">05일</option>
-									<option value="6">06일</option>
-									<option value="7">07일</option>
-									<option value="8">08일</option>
-									<option value="9">09일</option>
+									<option value="00" selected="selected">출생일</option>	
+									<option value="01">01일</option>
+									<option value="02">02일</option>
+									<option value="03">03일</option>
+									<option value="04">04일</option>
+									<option value="05">05일</option>
+									<option value="06">06일</option>
+									<option value="07">07일</option>
+									<option value="08">08일</option>
+									<option value="09">09일</option>
 									<option value="10">10일</option>
 									<option value="11">11일</option>
 									<option value="12">12일</option>
@@ -1381,18 +1393,24 @@
 						</div>
 					<h3 style = "margin-top:20px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">성별*&nbsp</h3>
 						
-						<input type="radio" id="radio1" name="radios" value="male">
+						<input type="radio" id="radio1" name="m_gender" value="male">
   							<label for="radio1">남자</label>
-						<input type="radio" id="radio2" name="radios"value="female">
+						<input type="radio" id="radio2" name="m_gender"value="female">
    							<label for="radio2">여자</label>
 				</div>
 			</div>
+			<input type="hidden" id="m_mail" name="m_mail">
+			<input type="hidden" id="m_pw" name="m_pw">
+			<input type="hidden" id="m_birth" name="m_birth">
+			</form>
 			<div class = "c3_buttons">
 				<input type = "submit" value = "이전" class = "c3_button_1">
 				<input type = "submit" value = "다음" class = "c3_button_2">
 			</div>
 		</div>
 	</div>
+	
+	<!--  </form> -->
 	<div class="darkwindow"></div>
 	<div class="c3_alert_1">
 		<div class="c3_alert_1-1">
@@ -1418,7 +1436,9 @@
 		<div class = "c3_alert_2-2">
 			<input type = "submit" value="확인" class="c3_alert_2_line2">
 		</div>
+		
 	</div>
+	
 <!------------------------------- 가입 2-2END---------------------------------------------->
 <!------------------------------- 가입 2-3---------------------------------------------->
 	<div class = "contents_4">
