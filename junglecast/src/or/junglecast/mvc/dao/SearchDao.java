@@ -1,5 +1,6 @@
 package or.junglecast.mvc.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import or.junglecast.vo.SearchVO;
@@ -18,8 +19,8 @@ public class SearchDao {
 		sqlSession.insert("search.insertSearchKey", search_txt);
 	}
 
-	public List<SearchVO> searchContentByKey(String key) {
-		return sqlSession.selectList("search.searchContentByKey", key);
+	public List<SearchVO> searchContentByKey(HashMap<String, List<String>> map) {
+		return sqlSession.selectList("search.searchContentByKey", map);
 	}
 	
 }

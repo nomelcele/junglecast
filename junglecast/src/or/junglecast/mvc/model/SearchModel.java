@@ -3,6 +3,10 @@ package or.junglecast.mvc.model;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -10,9 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import or.junglecast.mvc.dao.MainDao;
 import or.junglecast.mvc.dao.SearchDao;
+import or.junglecast.vo.SearchVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +33,7 @@ public class SearchModel {
 	@RequestMapping("search")
 	public ModelAndView search(@RequestParam("section") String section, @RequestParam("key") String key, HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException{
-		ModelAndView mav = new ModelAndView("search");
+		ModelAndView mav = new ModelAndView("search/search");
 		 
 		//cookie - 새로고침 시 db에 계속 검색어 업데이트 되는 것을 막음
 		Cookie[] cookies = request.getCookies();
@@ -69,17 +75,30 @@ public class SearchModel {
 	
 	@RequestMapping("searchMobile")
 	public ModelAndView searchMobile(){
-		ModelAndView mav = new ModelAndView("search");
+		ModelAndView mav = new ModelAndView("search/search");
 		
 		return mav;
 	}
 	
 	@RequestMapping("searchKey")
-	public ModelAndView searchKey(@RequestParam("key") String key){
-		ModelAndView mav = new ModelAndView("jsonView");
-		mav.addObject("contents", sDao.searchContentByKey(key));
-		return mav;
+	public String searchKey(@RequestParam("key") String key, Model model){
+		String[] splitKey =  key.split(" ");
+		List<String> keys = new ArrayList<>();
+		for (int i=0; i<splitKey.length; i++){
+			System.out.println("검색어 : " + splitKey[i]);
+			keys.add("%"+splitKey[i]+"%");
+		}
+		HashMap<String, List<String>> map = new HashMap<>();
+		map.put("key", keys);
+		
+		List<SearchVO> list = sDao.searchContentByKey(map);
+		model.addAttribute("contents", list);
+		
+		for(int i=0; i<list.size(); i++){
+			System.out.println(list.get(i).getArticle_title());
+		}
+		
+		return "search/searchedContents";
 		
 	}
-	
 }

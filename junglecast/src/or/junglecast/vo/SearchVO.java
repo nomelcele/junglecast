@@ -4,13 +4,20 @@ public class SearchVO {
 	
 	private int article_id, m_id, article_view, article_like, 
 	article_share, article_reply, pic_id;
-	private String article_title, article_subtitle, article_date, m_nickname, m_pic;
+	private String article_title, article_subtitle, article_date, pic_url, m_nickname, m_pic;
 	
 	public int getArticle_id() {
 		return article_id;
 	}
 	public void setArticle_id(int article_id) {
 		this.article_id = article_id;
+	}
+	
+	public String getPic_url() {
+		return pic_url;
+	}
+	public void setPic_url(String pic_url) {
+		this.pic_url = pic_url;
 	}
 	public int getM_id() {
 		return m_id;

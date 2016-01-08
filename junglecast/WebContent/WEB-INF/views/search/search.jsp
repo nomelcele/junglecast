@@ -46,10 +46,10 @@
 	.aContent_popularity{width:20%; height: 100%; float:right; padding:0 0 0 14px; border-left:1px solid #e6e7e8;}
 		.aContent_popularity ul{margin:0; width:80%; float:left;}
 		.aContent_popularity div{width:100%; height:30px; line-height:30px; color:#bbbdc0; font-weight: bold; padding-right:10px; font-size:16px; text-align: right;}
-		.aContent_view{background:url("resources/images/detailIcons/articleHits.png") no-repeat 0 2px;}
-		.aContent_like{background:url("resources/images/detailIcons/articleLikes.png") no-repeat 0 2px;}
-		.aContent_reply{background:url("resources/images/detailIcons/articleReplies.png") no-repeat 0 2px;}
-		.aContent_share{background:url("resources/images/detailIcons/articleShares.png") no-repeat 0 0;}
+		.aContent_view{background:url("resources/images/detailIcons/articleHits.png") no-repeat 0 10px;}
+		.aContent_like{background:url("resources/images/detailIcons/articleLikes.png") no-repeat 0 10px;}
+		.aContent_reply{background:url("resources/images/detailIcons/articleReplies.png") no-repeat 0 10px;}
+		.aContent_share{background:url("resources/images/detailIcons/articleShares.png") no-repeat 0 5px;}
 	
 #search_recommend_area{width:282px; float:right; height:280px; background:#fff; margin:10px 0 0 996px; position:fixed; overflow:hidden;}
 .recommend_title{padding:14px 0 0 20px; width:100%; height:30px; line-height:30px; color:#939597; font-size:16px; font-weight: bold;}
@@ -148,32 +148,58 @@ $(document).ready(function(){
 	getSearchedContents($('.search_input_container input').val());
 });
 
-getSearchedContents(key){
+$(window).load(function(){
+	
+});
+
+function getSearchedContents(key){
 	if(key.length>0){
 		$.ajax({
-			type: "POST",
 			url: "searchKey",
-			data: {
-				key: key
-			},
-			success: function(result){
-				$("#modalBox").html(result);
-				$("#article_id").attr("value",articleNum);
-				location.href="#detail";
-				if(matchMedia("only screen and (min-width:1280px)").matches){
-					$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
-				}
+			type: "POST",
+			data: {key: key},
+			success: function(data){
+				$('.scroll_area_container').html(data);
 			}
 		});
 	}
 }
+function viewSearchedLists(article_id, m_id, article_title, article_subtitle, article_view, article_like, article_share, article_reply,
+		pic_id, category_id, pic_url, article_date, m_nickname, m_pic ){
+	var aContent = '<li>';
+	aContent += '		<span class="aContent_img_area">';
+	aContent += '			<span><img src="resources/articleContents/'+pic_url+'"></span>';
+	aContent += '		</span>';
+	aContent += '		<div class="aContent_title_area">';
+	aContent += '			<div class="writer_info">';
+	aContent += '				<span class="writer_profile"><img src="resources/memberImg/'+m_pic+'"></span>';
+	aContent += '				<span class="writer_nickname">'+m_nickname+'</span>	';
+	aContent += '			</div>';
+	aContent += '			<div class="aContent_info">	';
+	aContent += '				<div class="aContent_title">'+article_title+'</div>';
+	aContent += '				<div class="aContent_subtitle">'+article_subtitle+'</div>';
+	aContent += '			</div>';
+	aContent += '			<div class="aContent_date">'+article_date+'</div>';
+	aContent += '		</div>';
+	aContent += '		<div class="aContent_popularity">';
+	aContent += '			<ul>';	
+	aContent += '				<li><div class="aContent_view">'+article_view+'</div></li>';
+	aContent += '				<li><div class="aContent_like">'+article_like+'</div></li>';
+	aContent += '				<li><div class="aContent_reply">'+article_reply+'</div></li>';
+	aContent += '				<li><div class="aContent_share">'+article_share+'</div></li>';
+	aContent += '			</ul>';	
+	aContent += '		</div>';		
+	aContent += '</li>	';		
+	return aContent;
+}
+
 </script>
 </head>
-<jsp:include page="./topLeft/header.jsp"></jsp:include>
+<jsp:include page="../topLeft/header.jsp"></jsp:include>
 <body style="background: #f1f1f2">
 <div class="body_cover"></div>
 <div id="search_total_wrapper">
-	<jsp:include page="./topLeft/leftMenu.jsp"></jsp:include>
+	<jsp:include page="../topLeft/leftMenu.jsp"></jsp:include>
 	<div id="search_info_list_container">
 		<div id="search_info_container">
 			<div class="search_input_container">
@@ -197,33 +223,6 @@ getSearchedContents(key){
 		</div>
 		<div id="search_list_container">
 			<div class="scroll_area_container">
-				<ul>
-					<li><!-- 콘텐츠하나 -->
-						<span class="aContent_img_area"><!-- 이미지 영역 -->
-							<span><img src="resources/images/main/testpic3.jpg"></span><!-- 이미지 틀 -->
-						</span>
-						<div class="aContent_title_area"><!-- 제목 간단내용 영역 -->
-							<div class="writer_info"><!-- 작성자정보 -->
-								<span class="writer_profile"><img src="resources/images/main/kangdongwon.jpg"></span><!-- 프사 -->
-								<span class="writer_nickname">내닉넴</span><!-- 닉넴 -->
-							</div>
-							<div class="aContent_info"><!-- 제목과 설명 -->
-								<div class="aContent_title">제목</div>
-								<div class="aContent_subtitle">설명</div>
-							</div>
-							<div class="aContent_date">2016-01-07</div>
-						</div>
-						<div class="aContent_popularity"><!-- 좋아요 공유 등 부가 정보 -->
-							<ul>
-								<li><div class="aContent_view">뷰</div></li>
-								<li><div class="aContent_like">좋아요</div></li>
-								<li><div class="aContent_reply">댓글</div></li>
-								<li><div class="aContent_share">공유</div></li>
-							</ul>
-						</div>
-					</li>
-				</ul>
-
 			</div>
 		</div>
 	</div>

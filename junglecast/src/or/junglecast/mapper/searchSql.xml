@@ -7,6 +7,19 @@
 	<insert id="insertSearchKey" parameterType="String">
 		INSERT INTO SEARCH VALUES(search_id_seq.nextval, #{search_txt}, sysdate)
 	</insert>
-  </mapper>
+	
+	<select id="searchContentByKey" parameterType = "java.util.Map" resultType="svo">
+		SELECT a.article_id, a.m_id, a.article_title, a.article_subtitle, a.article_view, a.article_like, a.article_share, a.article_reply,
+			a.pic_id, a.category_id, p.pic_url, a.article_date, m.m_nickname, m.m_pic 
+			FROM ARTICLE a JOIN PROFILE m ON a.m_id=m.m_id JOIN PICTURE p ON a.pic_id=p.pic_id
+			WHERE
+			<foreach collection="key" item="item" separator="OR">
+      			a.article_title LIKE #{item} OR a.article_subtitle LIKE #{item}
+     		</foreach>
+     		ORDER BY a.article_id DESC
+
+	</select>
+  </mapper> 
+	
 
   
