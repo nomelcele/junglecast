@@ -178,19 +178,19 @@ function left_area_positioning(){
 					<div class="profileSubBox">
 						<h1>현재 비밀번호 입력</h1>
 						<span class="profileNameInput">
-							<input type="text" placeholder="현재 비밀번호">
+							<input type="text" id="currentPwd" placeholder="현재 비밀번호">
 						</span>
 					</div>
 					<div class="profileSubBox">
 						<h1>새로운 비밀번호 입력</h1>
 						<span class="profileNameInput">
-							<input type="text" placeholder="새로운 비밀번호">
+							<input type="text" id="newPwd" placeholder="새로운 비밀번호">
 						</span>
 					</div>
 					<div class="profileSubBox">
 						<h1>새로운 비밀번호 재입력</h1>
 						<span class="profileNameInput">
-							<input type="text" placeholder="새로운 비밀번호 재입력">
+							<input type="text" id="newPwd2" name="m_pw" placeholder="새로운 비밀번호 재입력">
 						</span>
 					</div>
 					<a class="editBtn editPwdBtn">비밀번호 변경</a>				

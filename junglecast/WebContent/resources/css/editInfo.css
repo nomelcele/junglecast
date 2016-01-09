@@ -14,7 +14,7 @@ em{font-style: normal;}
 .pwdBtn{background:url(../images/editIcons/pwdImg1.png) no-repeat 0;}
 .pwdBtn:hover, .pwdBtn.hovered{background:url(../images/editIcons/pwdImg2.png) no-repeat 0;}
 
-.editInfoTabletMenu{text-align:center; display:none;}
+.editInfoTabletMenu{text-align:center; display:none; position:fixed;}
 .editInfoTabletMenu ul{margin:0;}
 
 .editBox{background:#fff; border:1px solid #eaeaea; padding:0 20px; padding:10px 20px;}
@@ -58,14 +58,24 @@ em{font-style: normal;}
 .editSaveBtn{background:linear-gradient(#11bef1, #029be0); color:#fff;}
 
 @media only screen and (max-width:1279px) and (min-width:1024px){
-	.menuBox{display:none;}
+	#header{margin-left:0;}
 	
-	.editInfoTabletMenu{display:block;}
+	#content_area{width:100%;}
+	
+	#left_area{display:none;}
+	.menuBox{display:none;}
+	.editInfoTabletMenu{display:block; width:100%; padding:0;}
 	.menuList li{display:inline-block;}
+	
+	#articles_area{margin:50px 0;}
+	
+	.editSaveBox{width:96%;}
+	
 }
 
 @media only screen and (max-width:1023px) and (min-width:768px){
 	.menuBox{display:none;}
+	.editInfoTabletMenu{display:block; width:95%; padding:0;}
 }
 
 @media only screen and (max-width:767px){

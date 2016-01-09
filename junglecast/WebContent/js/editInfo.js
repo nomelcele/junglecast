@@ -1,6 +1,8 @@
 var webBtnNum = 1;
 
 $(function(){
+	$(".profileBtn").addClass("hovered");
+	
 	$(".profileBtn").click(function(){
 		// 메뉴에서 프로필 클릭
 		$(".accountBtn").removeClass("hovered");
@@ -27,7 +29,7 @@ $(function(){
 		$(".accountBtn").removeClass("hovered");
 		$(this).addClass("hovered");
 		$("html, body").animate({
-			scrollTop: $("#pwdBox").offset().top
+			scrollTop: $("#pwdBox").offset().top-65
 		},500);
 	});
 	
