@@ -34,7 +34,7 @@ public class MenuModel {
 	}
 	
 	@RequestMapping(value="InsertJoinInfo", method = RequestMethod.POST)
-	public String InsertJoinInfo(AccountVO acvo, Model model){
+	public ModelAndView InsertJoinInfo(AccountVO acvo){
 		// 회원가입
 		//int m_id= acvo.getM_id();
 		System.out.println("asdfasfdas");
@@ -44,15 +44,22 @@ public class MenuModel {
 		System.out.println(acvo.getM_gender());
 		System.out.println(acvo.getM_birth());
 		System.out.println(acvo.getM_joindate());
-		
-		jdao.InsertJoinInfo(acvo);
-		return "/menu/join";
+		ModelAndView mav = new ModelAndView("jsonView");
+		int insertedJoininfo = jdao.InsertJoinInfo(acvo);
+		mav.addObject("m_id", insertedJoininfo);
+		return mav;
 	}
 	
 	@RequestMapping(value="InsertProfileInfo", method = RequestMethod.POST)
-	public String InsertProfileInfo(ProfileVO prvo, Model model){
+	public ModelAndView InsertProfileInfo(ProfileVO prvo){
 		// 프로필입력
-		jdao.InsertProfileInfo(prvo);
-		return "/menu/join";
+		System.out.println(prvo.getM_id());
+		System.out.println(prvo.getM_nickname());
+		System.out.println(prvo.getM_introduce());
+		System.out.println(prvo.getM_pic());
+		ModelAndView mav = new ModelAndView("jsonView");
+		int insertedProfileinfo = jdao.InsertProfileInfo(prvo);
+		mav.addObject("profile_id", insertedProfileinfo);
+		return mav;
 	}
 }
