@@ -1,3 +1,5 @@
+var webBtnNum = 1;
+
 $(function(){
 	$(".profileBtn").click(function(){
 		// 메뉴에서 프로필 클릭
@@ -46,5 +48,37 @@ $(function(){
 			$("#profileImgPreview").attr("src",blobURL);
 		}
 	});
+	
+	$("#m_nickname").keyup(function(){
+		// 닉네임 입력 시 글자수 표시
+		$("#currentNameNum").html($(this).val().length);
+	});
+	
+	$("#m_introduce").keyup(function(){
+		// 자기 소개 입력 시 글자수 표시
+		$("#currentIntroNum").html($(this).val().length);
+	});
+	
+	$(".addWebArea").click(function(){
+		// 웹 사이트 추가 버튼 클릭
+		if(webBtnNum == 1){
+			$("#profileWebInput").append("<span><span class='profileNameInput'>"
+					+"<span class='profileHttp'>http://</span>"
+					+"<input type='text' id='m_web2' name='m_web2'></span><a class='removeWebBtn' onclick='removeWeb(this)'></a></span>");
+			webBtnNum++;
+		} else if(webBtnNum == 2) {
+			$("#profileWebInput").append("<span><span class='profileNameInput'>"
+					+"<span class='profileHttp'>http://</span>"
+					+"<input type='text' id='m_web3' name='m_web3'></span><a class='removeWebBtn' onclick='removeWeb(this)'></a></span>");
+			webBtnNum++;
+		} else if(webBtnNum == 3){
+			alert("생성할 수 있는 피드는 3개가 최대입니다.");
+		}
+	});
 });
 
+
+function removeWeb(obj){
+	$(obj).parent().remove();
+	webBtnNum--;
+}

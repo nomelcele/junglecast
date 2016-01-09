@@ -106,8 +106,8 @@ function left_area_positioning(){
 						<h1>닉네임</h1>
 						<div class="profileNameInputBox">
 							<span class="profileNameInput">
-								<input type="text" maxlength="14">
-								<span class="profileTxtNum">0/14</span>
+								<input type="text" id="m_nickname" name="m_nickname" maxlength="14">
+								<span class="profileTxtNum"><em id="currentNameNum">0</em>/14</span>
 							</span>
 						</div>
 						<span class="warningTxt">홍보성 / 선정적인 닉네임은 타인에게 불쾌감을 줄 수 있으므로 삭제될 수 있습니다.</span>
@@ -116,26 +116,20 @@ function left_area_positioning(){
 						<h1>나의 한 줄 소개</h1>
 						<div class="profileIntroInputBox">
 							<span class="profileNameInput">
-								<input type="text" maxlength="17">
-								<span class="profileTxtNum">0/17</span>
+								<input type="text" id="m_introduce" name="m_introduce" maxlength="17">
+								<span class="profileTxtNum"><em id="currentIntroNum">0</em>/17</span>
 							</span>
 						</div>
 					</div>
 					<div class="profileSubBox profileWebBox">
 						<h1>웹 사이트</h1>
 						<div class="profileWebInputBox">
-							<span class="profileNameInput">
-								<span class="profileHttp">http://</span>
-								<input type="text">
-							</span>
-							<span class="profileNameInput">
-								<span class="profileHttp">http://</span>
-								<input type="text">
-							</span>
-							<span class="profileNameInput">
-								<span class="profileHttp">http://</span>
-								<input type="text">
-							</span>														
+							<div id="profileWebInput">
+								<span class="profileNameInput" id="profileWeb1">
+									<span class="profileHttp">http://</span>
+									<input type="text" id="m_web1" name="m_web1">
+								</span>
+							</div>
 							<a class="addWebArea"><span class="addWebBtn"></span></a>
 						</div>
 					</div>
@@ -146,7 +140,9 @@ function left_area_positioning(){
 				<div class="accountInfoTxtBox">
 					<div class="profileSubBox">
 						<h1>이메일</h1>
-						<input type="text">
+						<span class="profileNameInput">
+							<input type="text" value="junglecast@gmail.com" readonly>
+						</span>
 					</div>
 					<div class="profileSubBox">
 						<h1>생년월일</h1>
@@ -181,15 +177,21 @@ function left_area_positioning(){
 				<div class="">
 					<div class="profileSubBox">
 						<h1>현재 비밀번호 입력</h1>
-						<input type="text" placeholder="현재 비밀번호">
+						<span class="profileNameInput">
+							<input type="text" placeholder="현재 비밀번호">
+						</span>
 					</div>
 					<div class="profileSubBox">
 						<h1>새로운 비밀번호 입력</h1>
-						<input type="text" placeholder="새로운 비밀번호">
+						<span class="profileNameInput">
+							<input type="text" placeholder="새로운 비밀번호">
+						</span>
 					</div>
 					<div class="profileSubBox">
 						<h1>새로운 비밀번호 재입력</h1>
-						<input type="text" placeholder="새로운 비밀번호 재입력">
+						<span class="profileNameInput">
+							<input type="text" placeholder="새로운 비밀번호 재입력">
+						</span>
 					</div>
 					<a class="editBtn editPwdBtn">비밀번호 변경</a>				
 				</div>
