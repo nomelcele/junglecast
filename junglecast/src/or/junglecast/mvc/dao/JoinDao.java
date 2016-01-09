@@ -15,13 +15,15 @@ public class JoinDao {
 	@Autowired
 	private SqlSessionTemplate st;
 	
-	public void InsertJoinInfo(AccountVO acvo){
+	public int InsertJoinInfo(AccountVO acvo){
 		// 회원가입 정보삽입
 		st.insert("join.InsertJoinInfo", acvo);
+		return st.selectOne("join.select_m_id");
 	}
-	public void InsertProfileInfo(ProfileVO prvo){
+	public int InsertProfileInfo(ProfileVO prvo){
 		// 프로필 정보삽입
 		st.insert("join.InsertProfileInfo", prvo);
+		return st.selectOne("join.select_profile_id");
 	}
 	
 }
