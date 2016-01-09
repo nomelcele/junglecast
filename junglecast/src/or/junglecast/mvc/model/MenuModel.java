@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -32,7 +33,7 @@ public class MenuModel {
 		return new ModelAndView("/menu/join");
 	}
 	
-	@RequestMapping(value="InsertJoinInfo")
+	@RequestMapping(value="InsertJoinInfo", method = RequestMethod.POST)
 	public String InsertJoinInfo(AccountVO acvo, Model model){
 		// 회원가입
 		//int m_id= acvo.getM_id();
@@ -48,7 +49,7 @@ public class MenuModel {
 		return "/menu/join";
 	}
 	
-	@RequestMapping(value="InsertProfileInfo")
+	@RequestMapping(value="InsertProfileInfo", method = RequestMethod.POST)
 	public String InsertProfileInfo(ProfileVO prvo, Model model){
 		// 프로필입력
 		jdao.InsertProfileInfo(prvo);
