@@ -97,8 +97,8 @@ function left_area_positioning(){
 				<h1>프로필</h1>
 				<div class="profileImgBox">
 					<div>
-						<img src="resources/memberImg/gildong.jpg">
-						<a class="editImgBtn"></a>
+						<img id="profileImgPreview" src="resources/memberImg/gildong.jpg">
+						<a class="editImgBtn"><input type="file" id="m_pic" name="m_pic"></a>
 					</div>
 				</div>
 				<div class="profileTxtBox">

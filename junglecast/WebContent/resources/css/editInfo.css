@@ -22,8 +22,9 @@ em{font-style: normal;}
 .profileBox{margin:20px 0; padding:10px 20px; height:500px;}
 .profileSubBox h1{font-size:17px; margin:8px 0;}
 .profileImgBox{float:left; padding-left:20px; width:12%;}
-.profileImgBox img{width:50px; height:50px;}
+.profileImgBox img{width:80px; height:80px;}
 .editImgBtn{background:url(../images/editIcons/editImgBtn.png) no-repeat 0; width:20px; height:20px; display:inline-block; position:relative; right:13px;}
+.editImgBtn input[type=file]{opacity:0; width:20px; height:20px;}
 .profileTxtBox{float:left; border-left:1px solid #eaeaea; padding-left:20px; width:83%;}
 .profileSubBox{margin-bottom:30px;}
 .profileNameInputBox{margin-bottom:7px;}
