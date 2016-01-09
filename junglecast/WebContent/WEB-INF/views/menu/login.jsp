@@ -69,7 +69,7 @@
 			border-radius: 0px 0px 0px 0px;
 		}
 		#warning{
-			width: 336px; height:25px; margin-top:7px; spanning-bottom:7px; border-bottom:1px solid #C4C5C4;
+			display:block; width: 336px; height:25px; margin-top:7px; spanning-bottom:7px; border-bottom:1px solid #C4C5C4;
 		}
 		#fblogin input{
 			width:336px; height:50px; background-color:#556D9C; color:#FFFFFF; font-size:16px; border:none; cursor:pointer;
@@ -125,7 +125,7 @@
 				<input type = "submit" value = "로그인">
 			</div>
 			<div id = "warning">
-				<span style = "font-size:10pt; color:red;">가나다라마바사</span>
+				<p id="warning1" style="display = none; font-size:10pt; color:red;">올바른 이메일 형식이 아닙니다.</p>
 			</div>
 			<div id = "fblogin">
 				<input type = "submit" value = "페이스북 로그인">
