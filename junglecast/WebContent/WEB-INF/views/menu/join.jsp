@@ -165,6 +165,7 @@
 	    		$('.passwordcorrect').css("border-bottom", "2px solid #E9E9E9");
 	    		$('.passwordcorrect img').attr('src','resources/images/joinImg/choice_1.png');
 			});
+			
 			$('.c4_button_2').on('click',function(){
 				if($('.nickname input').val()==""){
 					$('.layer_2').css("overflow","hidden");
@@ -180,11 +181,38 @@
 					$('#m_pw').attr('value',pw);
 					//$('.id').val('asdf');
 					//$('.year').val(year+'-'+month+'-'+day);
-					//$("form[name ='sendForm']").submit();
+					/* $("form[name ='sendForm']").submit();
 					$("form[name ='sendProfile']").submit();
 					jQuery('.contents_4').hide();
 					jQuery('.contents_5').show();
-					$('html,body').scrollTop(0);
+					$('html,body').scrollTop(0); */
+					//var form = new FormData($('#insertJoinInfo')[0]);
+					$.ajax({/******************************************************/
+						url: "InsertJoinInfo",
+						data: new FormData(form[name ='sendForm']),
+						dataType: 'JSON',
+						async: false,
+						processData: false,
+						contentType: false,
+						type: 'POST',
+						success: function (data) {
+							var form2 = new FormData($('#insertProfileInfo')[0]);
+							$.ajax({/*************************************************/
+								url: "InsertProfileInfo",
+								data: form2,
+								dataType: 'JSON',
+								async: false,
+								processData: false,
+								contentType: false,
+								type: 'POST',
+								success: function(data2) {
+									jQuery('.contents_4').hide();
+									jQuery('.contents_5').show();
+									$('html,body').scrollTop(0);
+								}
+							});
+						}
+					});
 				}
 			});
 			$('.c4_alert_1_line2').on('click',function(){
@@ -1286,7 +1314,7 @@
 			<div class = "c_contents_3">
 				<img src = "resources/images/joinImg/join_2.png" width = 100% height = 115px style="padding-bottom:20px;">
 			</div>
-			<form name="sendForm" method="post" action="InsertJoinInfo">
+			<form name="sendForm" method="post" action="" id = "InsertJoinInfo" >
 			<div class = "c_midcontents_3">
 				<div class = "c3_midcontents">
 					<h3 style = "margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">이메일*&nbsp</h3>
@@ -1447,13 +1475,13 @@
 			<div class = "c_contents_4">
 				<img src = "resources/images/joinImg/join_3.png" width = 100% height = 115px style="padding-bottom:20px;">
 			</div>
-			<form name="sendProfile" method="post" action="InsertProfileInfo">
+			<form name="sendProfile" method="post" action="" id = "InsertProfileInfo" >
 			<div class = "c_midcontents_4">
 				<div class = "c4_midcontents">
 					<div class = "c4_midtop">
-						<img src = "resources/images/joinImg/default_avatar.png"  value = "resources/images/joinImg/default_avatar.png" class="defaultImg" onerror="resources/images/joinImg/default_avatar.png">
-						<div style = "position:absolute; height:27px; width:27px; background-image:url("resources/images/joinImg/camera.png");">
-						<input type ='file' name = "m_pic" onchange="readURL(this);" style="width:0px; height:20;filter:alpha(opacity=0);"/>
+						<img src = "resources/images/joinImg/default_avatar.png" class="defaultImg">
+                  		<div style = "position:absolute; height:27px; width:27px; background-image:url(resources/images/joinImg/camera.png);">
+                     	<input type ='file' name = "m_pic"  style="width:0px; height:20;filter:alpha(opacity=0);"/>
 						</div>
 					</div>
 					<h3 style = "margin-top:0px;margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">닉네임*&nbsp</h3>
