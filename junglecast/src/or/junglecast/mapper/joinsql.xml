@@ -8,7 +8,7 @@
 		INSERT INTO ACCOUNT VALUES(M_ID_SEQ.NEXTVAL, #{m_mail}, #{m_gender}, #{m_pw}, #{m_birth}, null, SYSDATE)
 	</insert>
 	<insert id="InsertProfileInfo" parameterType="prvo">
-		INSERT INTO PROFILE VALUES(PROFILE_ID_SEQ.NEXTVAL, #{m_id}, #{m_nickname}, #{m_pic, jdbcType=VARCHAR}, #{m_introduce}, null, null, null)
+		INSERT INTO PROFILE VALUES(PROFILE_ID_SEQ.NEXTVAL, 21, #{m_nickname}, #{m_pic}, #{m_introduce}, null, null, null)
 	</insert>
 	
   </mapper>

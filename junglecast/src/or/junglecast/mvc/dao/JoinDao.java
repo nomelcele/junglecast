@@ -19,9 +19,9 @@ public class JoinDao {
 		// 회원가입 정보삽입
 		st.insert("join.InsertJoinInfo", acvo);
 	}
-	public void InsertProfileInfo(ProfileVO pfvo){
+	public void InsertProfileInfo(ProfileVO prvo){
 		// 프로필 정보삽입
-		st.insert("join.InsertProfileInfo", pfvo);
+		st.insert("join.InsertProfileInfo", prvo);
 	}
 	
 }

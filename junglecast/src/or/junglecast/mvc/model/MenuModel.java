@@ -49,9 +49,9 @@ public class MenuModel {
 	}
 	
 	@RequestMapping(value="InsertProfileInfo")
-	public String InsertProfileInfo(ProfileVO pfvo, Model model){
+	public String InsertProfileInfo(ProfileVO prvo, Model model){
 		// 프로필입력
-		jdao.InsertProfileInfo(pfvo);
+		jdao.InsertProfileInfo(prvo);
 		return "/menu/join";
 	}
 }
