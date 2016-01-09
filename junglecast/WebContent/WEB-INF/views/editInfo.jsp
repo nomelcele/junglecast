@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>        
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -97,7 +98,8 @@ function left_area_positioning(){
 				<h1>프로필</h1>
 				<div class="profileImgBox">
 					<div>
-						<img id="profileImgPreview" src="resources/memberImg/gildong.jpg">
+<!-- 						<img id="profileImgPreview" src="resources/memberImg/gildong.jpg"> -->
+						<img id="profileImgPreview" src="resources/memberImg/${myProfile.m_pic}">
 						<a class="editImgBtn"><input type="file" id="m_pic" name="m_pic"></a>
 					</div>
 				</div>
@@ -106,7 +108,8 @@ function left_area_positioning(){
 						<h1>닉네임</h1>
 						<div class="profileNameInputBox">
 							<span class="profileNameInput">
-								<input type="text" id="m_nickname" name="m_nickname" maxlength="14">
+<!-- 								<input type="text" id="m_nickname" name="m_nickname" maxlength="14"> -->
+								<input type="text" id="m_nickname" name="m_nickname" maxlength="14" value="${myProfile.m_nickname}">
 								<span class="profileTxtNum"><em id="currentNameNum">0</em>/14</span>
 							</span>
 						</div>
@@ -116,7 +119,8 @@ function left_area_positioning(){
 						<h1>나의 한 줄 소개</h1>
 						<div class="profileIntroInputBox">
 							<span class="profileNameInput">
-								<input type="text" id="m_introduce" name="m_introduce" maxlength="17">
+<!-- 								<input type="text" id="m_introduce" name="m_introduce" maxlength="17"> -->
+								<input type="text" id="m_introduce" name="m_introduce" maxlength="17" value="${myProfile.m_introduce}">
 								<span class="profileTxtNum"><em id="currentIntroNum">0</em>/17</span>
 							</span>
 						</div>
@@ -125,10 +129,31 @@ function left_area_positioning(){
 						<h1>웹 사이트</h1>
 						<div class="profileWebInputBox">
 							<div id="profileWebInput">
-								<span class="profileNameInput" id="profileWeb1">
-									<span class="profileHttp">http://</span>
-									<input type="text" id="m_web1" name="m_web1">
+								<span>
+									<span class="profileNameInput" id="profileWeb1">
+										<span class="profileHttp">http://</span>
+<!-- 										<input type="text" id="m_web1" name="m_web1"> -->
+										<input type="text" id="m_web1" name="m_web1" value="${myProfile.m_web1}">
+									</span>
 								</span>
+								<c:if test="${myProfile.m_web2 ne null}">
+									<span>
+										<span class="profileNameInput">
+											<span class="profileHttp">http://</span>
+											<input type="text" id="m_web2" name="m_web2" value="${myProfile.m_web2}">
+										</span>
+										<a class="removeWebBtn" onclick="removeWeb(this)"></a>
+									</span>
+								</c:if>
+								<c:if test="${myProfile.m_web3 ne null}">
+									<span>
+										<span class="profileNameInput">
+											<span class="profileHttp">http://</span>
+											<input type="text" id="m_web3" name="m_web3" value="${myProfile.m_web3}">
+										</span>
+										<a class="removeWebBtn" onclick="removeWeb(this)"></a>
+									</span>
+								</c:if>
 							</div>
 							<a class="addWebArea"><span class="addWebBtn"></span></a>
 						</div>
@@ -141,20 +166,21 @@ function left_area_positioning(){
 					<div class="profileSubBox">
 						<h1>이메일</h1>
 						<span class="profileNameInput">
-							<input type="text" value="junglecast@gmail.com" readonly>
+<!-- 							<input type="text" value="junglecast@gmail.com" readonly> -->
+							<input type="text" value="${myAccount.m_mail}" readonly>
 						</span>
 					</div>
 					<div class="profileSubBox">
 						<h1>생년월일</h1>
 						<div class="accountSubBox accountBirthday">
 							<select disabled>
-								<option selected>1993년</option>	
+								<option selected>${birthYear}년</option>	
 							</select>
 							<select disabled>
-								<option selected>01월</option>
+								<option selected>${birthMonth}월</option>
 							</select>
 							<select disabled>
-								<option selected>01일</option>
+								<option selected>${birthDay}일</option>
 							</select>
 						</div>
 						<span class="warningTxt">생년월일은 가입 후엔 변경할 수 없습니다.</span>
@@ -162,9 +188,10 @@ function left_area_positioning(){
 					<div class="profileSubBox">
 						<h1>성별</h1>
 						<div class="accountSubBox accountGender">
-							<select disabled>
-								<option>남성</option>
-								<option selected>여성</option>
+							<input type="hidden" id="userGender" value="${myAccount.m_gender}">
+							<select id="m_gender" disabled>
+								<option value="m">남성</option>
+								<option value="f">여성</option>
 							</select>
 						</div>
 						<span class="warningTxt">성별은 가입 후엔 변경할 수 없습니다.</span>
@@ -174,7 +201,8 @@ function left_area_positioning(){
 			</div>
 			<div id="pwdBox" class="editBox pwdBox">
 				<h1>비밀번호 변경</h1>
-				<div class="">
+				<div>
+					<input type="hidden" id="userPwd" value="${myAccount.m_pw}">
 					<div class="profileSubBox">
 						<h1>현재 비밀번호 입력</h1>
 						<span class="profileNameInput">

@@ -30,9 +30,4 @@ public class MainModel {
 		return mav;
 	}
 	
-	@RequestMapping("editInfo")
-	public String editInfo(){
-		return "editInfo";
-	}
-
 }

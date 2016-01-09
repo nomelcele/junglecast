@@ -2,6 +2,17 @@ var webBtnNum = 1;
 
 $(function(){
 	$(".profileBtn").addClass("hovered");
+	$("#currentNameNum").html($("#m_nickname").val().length); // 닉네임 글자수
+	$("#currentIntroNum").html($("#m_introduce").val().length); // 자기 소개 글자수
+	
+	if($("#m_web2").val() != null){
+		webBtnNum++;
+	} 
+	if($("#m_web3").val() != null){
+		webBtnNum++;
+	}
+	
+	$("#m_gender").val($("#userGender").val()); // 성별 
 	
 	$(".profileBtn").click(function(){
 		// 메뉴에서 프로필 클릭

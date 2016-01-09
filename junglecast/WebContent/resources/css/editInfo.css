@@ -65,7 +65,7 @@ em{font-style: normal;}
 	#left_area{display:none;}
 	.menuBox{display:none;}
 	.editInfoTabletMenu{display:block; width:100%; padding:0;}
-	.menuList li{display:inline-block;}
+	.editInfoTabletMenu li{display:inline-block;}
 	
 	#articles_area{margin:50px 0;}
 	
@@ -76,6 +76,9 @@ em{font-style: normal;}
 @media only screen and (max-width:1023px) and (min-width:768px){
 	.menuBox{display:none;}
 	.editInfoTabletMenu{display:block; width:95%; padding:0;}
+	.editInfoTabletMenu li{display:inline-block;}
+	
+	.editSaveBox{width:91%;}
 }
 
 @media only screen and (max-width:767px){
