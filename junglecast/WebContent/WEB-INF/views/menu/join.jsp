@@ -175,10 +175,12 @@
 				else{
 					var mail = $('.id input').val()+'@'+$('.adress input').val();
 					var birth = $('.year input').val()+'-'+$('.month select option:selected').val()+'-'+$('.day select option:selected').val();
-					var pw = $('.passwordcorrect input').val()
+					var pw = $('.passwordcorrect input').val();
+					//var pic = $('.pic').val();
 					$('#m_mail').attr('value',mail);
 					$('#m_birth').attr('value',birth);
 					$('#m_pw').attr('value',pw);
+					//$('#m_pic').attr('value',pic);
 					//$('.id').val('asdf');
 					//$('.year').val(year+'-'+month+'-'+day);
 					/* $("form[name ='sendForm']").submit();
@@ -186,24 +188,25 @@
 					jQuery('.contents_4').hide();
 					jQuery('.contents_5').show();
 					$('html,body').scrollTop(0); */
+					//$("form[name=form1]").serialize();
 					//var form = new FormData($('#insertJoinInfo')[0]);
-					$.ajax({/******************************************************/
+					var form = $("form[name=sendForm]").serialize();
+					 $.ajax({/******************************************************/
 						url: "InsertJoinInfo",
-						data: new FormData(form[name ='sendForm']),
+						data: form,
 						dataType: 'JSON',
 						async: false,
-						processData: false,
-						contentType: false,
 						type: 'POST',
 						success: function (data) {
-							var form2 = new FormData($('#insertProfileInfo')[0]);
+							$('#m_id').val(data.m_id);
+							var form2 = $("form[name=sendProfile]").serialize();
 							$.ajax({/*************************************************/
 								url: "InsertProfileInfo",
 								data: form2,
 								dataType: 'JSON',
 								async: false,
-								processData: false,
-								contentType: false,
+								//processData: false,
+								//contentType: false,
 								type: 'POST',
 								success: function(data2) {
 									jQuery('.contents_4').hide();
@@ -213,6 +216,24 @@
 							});
 						}
 					});
+					/* var form2 = $("form[name=sendProfile]").serialize();
+					$.ajax({/*************************************************/
+						/* url: "InsertProfileInfo",
+						data: form2,
+						dataType: 'JSON',
+						async: false,
+						//processData: false,
+						//contentType: false,
+						type: 'POST',
+						success: function(data2) {
+							//jQuery('.contents_4').hide();
+							//jQuery('.contents_5').show();
+							//$('html,body').scrollTop(0);
+						}
+					}); */
+					/*jQuery('.contents_4').hide();
+					jQuery('.contents_5').show();
+					$('html,body').scrollTop(0); */
 				}
 			});
 			$('.c4_alert_1_line2').on('click',function(){
@@ -1481,7 +1502,8 @@
 					<div class = "c4_midtop">
 						<img src = "resources/images/joinImg/default_avatar.png" class="defaultImg">
                   		<div style = "position:absolute; height:27px; width:27px; background-image:url(resources/images/joinImg/camera.png);">
-                     	<input type ='file' name = "m_pic"  style="width:0px; height:20;filter:alpha(opacity=0);"/>
+                     	<!--<input type ='file' name = "m_pic" style="width:0px; height:20;filter:alpha(opacity=0);"/>-->
+                     	<input type="hidden" id="m_pic" name="m_pic" value = "asadfasd">
 						</div>
 					</div>
 					<h3 style = "margin-top:0px;margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">닉네임*&nbsp</h3>
@@ -1508,6 +1530,7 @@
 					</div>
 				</div>
 			</div>
+			<input type="hidden" id="m_id" name="m_id" value="">
 			</form>
 			<div class = "c4_buttons">
 				<input type = "submit" value = "이전" class = "c4_button_1">
