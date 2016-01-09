@@ -3,6 +3,7 @@ package or.junglecast.mvc.dao;
 import java.util.List;
 
 import or.junglecast.vo.ArticleVO;
+import or.junglecast.vo.BestArticleVO;
 import or.junglecast.vo.CategoryVO;
 import or.junglecast.vo.MainArticleVO;
 import or.junglecast.vo.RecommendVO;
@@ -27,6 +28,10 @@ public class MainDao {
 	
 	public List<ArticleVO> selectThisCategory(int category_id){
 		return sqlSession.selectList("main.thisCategoryList", category_id);
+	}
+
+	public List<BestArticleVO> selectBestArticles() {
+		return sqlSession.selectList("main.bestArticles");
 	}
 
 }

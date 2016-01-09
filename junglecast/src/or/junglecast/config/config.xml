@@ -14,6 +14,7 @@
   		<typeAlias type="or.junglecast.vo.MainArticleVO" alias="mavo"/>
   		<typeAlias type="or.junglecast.vo.SearchVO" alias="svo"/>
   		<typeAlias type="or.junglecast.vo.RecommendVO" alias="rcvo"/>
+  		<typeAlias type="or.junglecast.vo.BestArticleVO" alias="bavo"/>
   	</typeAliases>
   </configuration>
   

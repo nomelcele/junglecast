@@ -17,6 +17,7 @@ public class MainModel {
 	@RequestMapping("main")
 	public ModelAndView gotoMain(){
 		ModelAndView mav = new ModelAndView("main");
+		mav.addObject("bestArticles", dao.selectBestArticles());
 		mav.addObject("categories", dao.selectCategoryLists());
 		mav.addObject("contents", dao.selectArticleLists());
 		return mav;

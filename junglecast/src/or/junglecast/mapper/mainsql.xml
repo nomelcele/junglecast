@@ -24,6 +24,15 @@
 			)alias
 		WHERE ROWNUM <![CDATA[<=]]> 20
 	</select>
+	
+	<select id="bestArticles" resultType="bavo">
+		SELECT TRUNC(sysdate, 'DDD') AS recommend_Date, alias.*
+			FROM(
+				SELECT article_title, article_id, (article_view + article_like + article_reply + article_share) AS count FROM article
+					WHERE pic_id IS NOT NULL AND TRUNC(article_date, 'DDD') BETWEEN TRUNC(sysdate-1) AND TRUNC(sysdate, 'DDD')
+			)alias 
+		WHERE ROWNUM <![CDATA[<=]]>15
+	</select>
   </mapper>
 
   

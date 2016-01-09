@@ -3,7 +3,7 @@ package or.junglecast.vo;
 public class RecommendVO {
 	private String search_txt;
 	private int count;
-	
+
 	public String getSearch_txt() {
 		return search_txt;
 	}

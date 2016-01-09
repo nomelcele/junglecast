@@ -23,6 +23,11 @@ $(document).ready(function(){
 	
 	aCardSizingEvent();
 
+	//베스트 게시물 기준일(오늘)
+    var date = new Date();
+    var bestArticle_Date =  date.getFullYear() + "." +  date.getMonth()+1 + "." + date.getDate();
+    $('#rank_time').text(bestArticle_Date);
+	
 	//이미지 슬라이더
 	$('#demo2').skdslider({
 		'delay' : 3000,
@@ -53,7 +58,7 @@ $(document).ready(function(){
             step((index) % count);
         });
     }
-
+    
     //스크롤 이벤트 캐치하는 함수
 	$(window).scroll(function(){
 		if($(window).scrollTop() == $(document).height()-$(window).height()){
@@ -69,28 +74,32 @@ $(document).ready(function(){
 	
 	//콘텐츠 카드 클릭
 	$('html body').on('click', '.aCard', function(){
-		alert("clicked");
 		// 게시물 보기
 		var articleNum = $(this).find('input').val(); // 게시물 번호
-		$.ajax({
-			type: "POST",
-			url: "articleDetail",
-			data: {
-				article_id: articleNum,
-				type: 'modal'
-			},
-			success: function(result){
-				$("#modalBox").html(result);
-				$("#article_id").attr("value",articleNum);
-				location.href="#detail";
-				if(matchMedia("only screen and (min-width:1280px)").matches){
-					$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
-				}
-			}
-		});
+		alert(articleNum);
+		clickedContent(articleNum);
 	});
 	
 });
+
+function clickedContent(articleNum){
+	$.ajax({
+		type: "POST",
+		url: "articleDetail",
+		data: {
+			article_id: articleNum,
+			type: 'modal'
+		},
+		success: function(result){
+			$("#modalBox").html(result);
+			$("#article_id").attr("value",articleNum);
+			location.href="#detail";
+			if(matchMedia("only screen and (min-width:1280px)").matches){
+				$("#articles_area").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
+			}
+		}
+	});
+}
 
 //반응형 - 화면크기 바뀔때마다 호출되는 함수
 function resizingEvent(){
@@ -173,7 +182,7 @@ function loadMore(){
 		<div id="rank_article_area">
 			<div id="rank_top">
 				<span id="rank_text">BEST</span>
-				<span id="rank_time">2015.12.30.12:00</span>
+				<span id="rank_time"></span>
 			</div>
 			<div id="rank_content">
 	            <dl id="rank-list">
@@ -181,21 +190,11 @@ function loadMore(){
 	                <dd>
 	                    <ol>
 	                    	<li class="empty"><a href="#"></a></li>
-	                        <li><span class="rank_num">1</span><a href="#">aaa</a></li>
-	                        <li><span class="rank_num">2</span><a href="#">bbb</a></li>
-	                        <li><span class="rank_num">3</span><a href="#">ccc</a></li>
-	                        <li><span class="rank_num">4</span><a href="#">ddd</a></li>
-	                        <li><span class="rank_num">5</span><a href="#">eee</a></li>
-	                        <li><span class="rank_num">6</span><a href="#">fff</a></li>
-	                        <li><span class="rank_num">7</span><a href="#"> ggg</a></li>
-	                        <li><span class="rank_num">8</span><a href="#">hhh</a></li>
-	                        <li><span class="rank_num">9</span><a href="#">iii</a></li>
-	                        <li><span class="rank_num">10</span><a href="#">jjj</a></li>
-	                        <li><span class="rank_num">11</span><a href="#">kkk</a></li>
-	                        <li><span class="rank_num">12</span><a href="#">lll</a></li>
-	                        <li><span class="rank_num">13</span><a href="#">mmm</a></li>
-	                        <li><span class="rank_num">14</span><a href="#">nnn</a></li>
-	                        <li><span class="rank_num">15</span><a href="#">ooo</a></li>
+	                    	<c:set var="cnt" value="1"/>
+	                    	<c:forEach var="aRow" items="${bestArticles }" >
+	                    		<li><span class="rank_num">${cnt }</span><a onclick="clickedContent(${aRow.article_id})">${aRow.article_title }</a></li>
+	                    		<c:set var="cnt" value="${cnt+1 }"/>
+	                    	</c:forEach>
 	                    </ol>
 	                </dd>
 	            </dl>

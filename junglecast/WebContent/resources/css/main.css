@@ -11,7 +11,7 @@
 			#rank_time{color:#a5a4a4; font-size:12px; float:right;}
 		#rank_content{margin: 4px 0 0 10px;padding: 0 6px 6px 6px; font-size:12px; }
 			#rank-list a {color:#a5a4a4;}
-			#rank-list a:hover {text-decoration: underline;}
+			#rank-list a:hover {text-decoration: underline; cursor:pointer;}
 			#rank-list {overflow: hidden; width: 160px;height: 240px;margin: 0;}
 			#rank-list dt {display: none;}
 			#rank-list dd {position: relative;margin: 0;}
