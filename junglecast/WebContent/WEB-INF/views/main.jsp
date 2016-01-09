@@ -67,13 +67,9 @@ $(document).ready(function(){
 		$("html,body").stop().animate({'scrollTop' :0}, 400);
 	});
 	
-	//콘텐츠 카드 클릭 버튼
-	cardClickEvent();
-
-});
-//콘텐츠 카드 클릭 함수
-function cardClickEvent() {
-	$('.aCard').click(function(){
+	//콘텐츠 카드 클릭
+	$('html body').on('click', '.aCard', function(){
+		alert("clicked");
 		// 게시물 보기
 		var articleNum = $(this).find('input').val(); // 게시물 번호
 		$.ajax({
@@ -92,8 +88,9 @@ function cardClickEvent() {
 				}
 			}
 		});
-	});	
-}
+	});
+	
+});
 
 //반응형 - 화면크기 바뀔때마다 호출되는 함수
 function resizingEvent(){

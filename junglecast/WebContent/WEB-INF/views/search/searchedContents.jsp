@@ -3,8 +3,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 			<ul>
 				<c:forEach var="aContent" items="${contents}">
-					<li>
+					<li class="contents_li">
 						<span class="aContent_img_area"><!-- 이미지 영역 -->
+						<input type="hidden" value="${aContent.article_id }">
 							<span><img src="resources/articleContents/${aContent.pic_url}"></span><!-- 이미지 틀 -->
 						</span>
 						<div class="aContent_title_area"><!-- 제목 간단내용 영역 -->

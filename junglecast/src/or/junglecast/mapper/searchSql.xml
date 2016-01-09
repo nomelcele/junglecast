@@ -17,7 +17,17 @@
       			a.article_title LIKE #{item} OR a.article_subtitle LIKE #{item}
      		</foreach>
      		ORDER BY a.article_id DESC
-
+	</select>
+	<select id="searchUserByKey" parameterType = "java.util.Map" resultType="prvo">
+		SELECT profile_id, m_id, m_nickname, m_pic, m_introduce FROM PROFILE WHERE
+			<foreach collection="key" item="item" separator="OR">
+      			m_nickname LIKE #{item} OR m_introduce LIKE #{item}
+     		</foreach>
+	</select>
+	<select id="recommendSearchKey" resultType="rcvo">
+		SELECT alias.*
+	 		FROM(SELECT search_txt, count(search_txt) AS count FROM search GROUP BY search_txt ORDER BY 2 DESC)alias
+	 		WHERE ROWNUM <![CDATA[<=]]>6
 	</select>
   </mapper> 
 	

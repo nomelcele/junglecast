@@ -3,6 +3,8 @@ package or.junglecast.mvc.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import or.junglecast.vo.ProfileVO;
+import or.junglecast.vo.RecommendVO;
 import or.junglecast.vo.SearchVO;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -21,6 +23,14 @@ public class SearchDao {
 
 	public List<SearchVO> searchContentByKey(HashMap<String, List<String>> map) {
 		return sqlSession.selectList("search.searchContentByKey", map);
+	}
+
+	public List<ProfileVO> searchUserByKey(HashMap<String, List<String>> map) {
+		return sqlSession.selectList("search.searchUserByKey", map);
+	}
+
+	public List<RecommendVO> recommendSearchKey() {
+		return sqlSession.selectList("search.recommendSearchKey");
 	}
 	
 }

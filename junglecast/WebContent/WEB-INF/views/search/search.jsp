@@ -11,6 +11,7 @@
 <script src="js/leftMenu.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/leftMenu.css"/>
 <link rel="stylesheet" type="text/css" href="resources/css/header.css"/>
+<link href="resources/css/article.css" rel="stylesheet" type="text/css"/>
 <style type="text/css">
 #search_total_wrapper{position : relative; margin : 50px auto 0; height:100%; width:100%; max-width:1280px; background: #f1f1f2;}
 #search_info_list_container{position:relative; margin:0 auto; width:986px; height:100%; float:left;}
@@ -25,12 +26,23 @@
 .section_selected{color: #00a5dd; border-bottom : 3px solid #00a5dd}
 
 #search_list_container{position:relative; margin:196px 0 0 10px; background: #fff; width:946px; height:100%;
-				border:1px solid #e6e7e8; padding:10px; display:block; overflow:hidden;}
+				border:1px solid #e6e7e8; padding:10px; display:block; overflow:hidden; display:none;}
 #search_list_container li{list-style-type: none;}
 .scroll_area_container{width:100%; height:100%;}
-.scroll_area_container>ul{border-bottom:1px solid #cdcdcd; padding:0 14px;}
-.scroll_area_container>ul>li{height:130px; overflow:hidden; padding:25px 15px 15px 0; }
-	.aContent_img_area{height:100%; width:20%; float:left;}
+.scroll_area_container>ul{padding:0 14px;}
+
+/*사용자로 검색했을 때*/
+.user_li{height:100px;  padding:0; margin:0; width:33%; border-bottom:1px solid #d1d2d4; display:inline-block;}
+.aUerContainer{width:100%; height:100%; float:left;}
+	.aUserInner{width:100%; height:100%; padding:0.2%; float:left;}
+		.aUserImg{width: 85px; height:85px; float:left; overflow:hidden;}
+		.aUserImg img{width: 100%; height:auto;}
+		.aUserName{float:left; width:50%; height:20px; line-height:20px; margin-left:10px; color:#28a7df; font-size:16px;}
+		.aUserIntroduce{float:left; width:50%; height:16px; line-height:16px; font-size:14px; margin:5px 0;margin-left:10px;}
+
+/*이야기로 검색했을 때*/
+.contents_li{height:130px; overflow:hidden; padding:25px 15px 15px 0; }
+	.aContent_img_area{height:100%; width:20%; float:left; cursor:pointer;}
 		.aContent_img_area span{height: 130px; width:90%; float:left; overflow:hidden;}
 		.aContent_img_area span img{width:100%; height:auto;}
 	.aContent_title_area{height:100%; width:55%; float:left;}
@@ -50,12 +62,14 @@
 		.aContent_like{background:url("resources/images/detailIcons/articleLikes.png") no-repeat 0 10px;}
 		.aContent_reply{background:url("resources/images/detailIcons/articleReplies.png") no-repeat 0 10px;}
 		.aContent_share{background:url("resources/images/detailIcons/articleShares.png") no-repeat 0 5px;}
-	
+
+/*추천검색어*/
 #search_recommend_area{width:282px; float:right; height:280px; background:#fff; margin:10px 0 0 996px; position:fixed; overflow:hidden;}
 .recommend_title{padding:14px 0 0 20px; width:100%; height:30px; line-height:30px; color:#939597; font-size:16px; font-weight: bold;}
 .recommend_keyword{margin-top:14px; width:100%; height:auto;}
-.recommend_keyword_inner div{height:30px; line-height:30px; color:#9c9da0; font-size:12px; width:100%; padding:0 0 0 20px; cursor:pointer;}
-.recommend_keyword_inner div:HOVER{color:white; background:#00a6de;}
+.recommend_keyword_inner div{height:30px; line-height:30px; width:100%; padding:0 0 0 20px; cursor:pointer;}
+.recommend_keyword_inner div:HOVER{background:#00a6de;}
+.recommend_keyword_inner a{text-decoration: none; color:#9c9da0; font-size:12px;}
 
 /*반응형 css*/
 @media only screen and (min-width:1280px){
@@ -77,6 +91,7 @@
 
 @media only screen and (min-width:768px) and (max-width:1023px){
 #header{margin-left: 50px;}
+.user_li{width:49.6%;}
 #search_recommend_area{display:none;}
 	#search_total_wrapper{margin:50px auto; float:left;}
 	#search_info_list_container{width:100%; float:none;}
@@ -90,7 +105,13 @@
 }
 
 @media only screen and (max-width:767px){
-#search_recommend_area{width:100%; float:left; height:auto;margin:60px 0; position:relative; background:none; display:none;}
+.user_li{width:100%;}
+.aUserImg{width: 75px; height:75px;}
+.aUserImg img{border-radius:5px;}
+.aUserName{font-size:14px;}
+.aUserIntroduce{font-size:12px;}
+
+#search_recommend_area{width:100%; float:left; height:auto;margin:85px 0; position:relative; background:none; display:none;}
 .recommend_title{padding:14px 0 0 14px; width:100%; height:24px; line-height:24px; font-size:14px; color:#404041; margin-top:14px;}
 .recommend_keyword{height:100%; margin-top:0;}
 .recommend_keyword_inner{width:97%; height:100%; margin:0 auto;}
@@ -126,17 +147,27 @@
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
-	if(matchMedia("only screen and (min-width:1024px) and (max-width:1279px)").matches){
+/* 	if(matchMedia("only screen and (min-width:1024px) and (max-width:1279px)").matches){
 		$('#header').css("margin-left", "10px");
+	} */
+	
+	if($('#mobile').val() == 'mobile'){
+		$('#search_recommend_area').css("display", "block");
 	}
-
+	
+	//이야기 탭 클릭
 	$('#section_story').click(function(){
 		$('#section_story').addClass('section_selected');
 		$('#section_user').removeClass('section_selected');
+		$('.storyORuser').val("story");
+		 getSearchedContents($('.search_input_container input').val(), "story");
 	});
+	//사용자 탭 클릭
 	$('#section_user').click(function(){
 		$('#section_story').removeClass('section_selected');
 		$('#section_user').addClass('section_selected');
+		$('.storyORuser').val("user");
+		getSearchedContents($('.search_input_container input').val(), "user");
 	});
 
 	//좌측 메뉴 열린채로 화면 resize시 메뉴닫음
@@ -145,71 +176,87 @@ $(document).ready(function(){
 		$('.body_cover').css("display", "none");
 	});
 
-	getSearchedContents($('.search_input_container input').val());
-});
-
-$(window).load(function(){
+	$('.search_blue_btn').click(function(){
+		getSearchedContents($('.search_input_container input').val(), $('.storyORuser').val());
+	});
+	
+	$('.recommend_keyword_inner div').hover(function(){
+		$(this).find('a').css("color", "white");
+	}, function(){
+		$(this).find('a').css("color", "#9c9da0");
+	});
+	
+	//페이지 로드 후 검색한 내용으로 다시 db 접근하여 데이터 받아옴
+	var storyORuser =  $('.storyORuser').val();
+	getSearchedContents($('.search_input_container input').val(), storyORuser);
+	
+	//콘텐츠 카드 클릭
+	$('html body').on('click', '.aContent_img_area', function(){
+		// 게시물 보기
+		var articleNum = $(this).find('input').val(); // 게시물 번호
+		$.ajax({
+			type: "POST",
+			url: "articleDetail",
+			data: {
+				article_id: articleNum,
+				type: 'modal'
+			},
+			success: function(result){
+				$("#modalBox").html(result);
+				$("#article_id").attr("value",articleNum);
+				location.href="#detail";
+				if(matchMedia("only screen and (min-width:1280px)").matches){
+					$("#search_total_wrapper").css("position","fixed"); // 스크롤 시 뒷배경 움직이지 않게
+				}
+			}
+		});
+	});
 	
 });
 
-function getSearchedContents(key){
+function getSearchedContents(key, section){
 	if(key.length>0){
+		//모바일 화면일 때 검색하면 추천검색어 div 없앰
+		if(matchMedia("only screen and (max-width:767px)").matches){
+			$('#search_recommend_area').css("display", "none");
+		}
 		$.ajax({
 			url: "searchKey",
 			type: "POST",
-			data: {key: key},
+			data: {key: key, section: section},
 			success: function(data){
+				$('#search_list_container').css("display", "block");
 				$('.scroll_area_container').html(data);
 			}
 		});
 	}
 }
-function viewSearchedLists(article_id, m_id, article_title, article_subtitle, article_view, article_like, article_share, article_reply,
-		pic_id, category_id, pic_url, article_date, m_nickname, m_pic ){
-	var aContent = '<li>';
-	aContent += '		<span class="aContent_img_area">';
-	aContent += '			<span><img src="resources/articleContents/'+pic_url+'"></span>';
-	aContent += '		</span>';
-	aContent += '		<div class="aContent_title_area">';
-	aContent += '			<div class="writer_info">';
-	aContent += '				<span class="writer_profile"><img src="resources/memberImg/'+m_pic+'"></span>';
-	aContent += '				<span class="writer_nickname">'+m_nickname+'</span>	';
-	aContent += '			</div>';
-	aContent += '			<div class="aContent_info">	';
-	aContent += '				<div class="aContent_title">'+article_title+'</div>';
-	aContent += '				<div class="aContent_subtitle">'+article_subtitle+'</div>';
-	aContent += '			</div>';
-	aContent += '			<div class="aContent_date">'+article_date+'</div>';
-	aContent += '		</div>';
-	aContent += '		<div class="aContent_popularity">';
-	aContent += '			<ul>';	
-	aContent += '				<li><div class="aContent_view">'+article_view+'</div></li>';
-	aContent += '				<li><div class="aContent_like">'+article_like+'</div></li>';
-	aContent += '				<li><div class="aContent_reply">'+article_reply+'</div></li>';
-	aContent += '				<li><div class="aContent_share">'+article_share+'</div></li>';
-	aContent += '			</ul>';	
-	aContent += '		</div>';		
-	aContent += '</li>	';		
-	return aContent;
+
+function enterEvent(key){
+	getSearchedContents(key, $('.storyORuser').val());
 }
+
 
 </script>
 </head>
 <jsp:include page="../topLeft/header.jsp"></jsp:include>
 <body style="background: #f1f1f2">
+<div id="modalBox"></div>
 <div class="body_cover"></div>
 <div id="search_total_wrapper">
+	<input type="hidden" value="${mobile }" id="mobile">
 	<jsp:include page="../topLeft/leftMenu.jsp"></jsp:include>
 	<div id="search_info_list_container">
 		<div id="search_info_container">
 			<div class="search_input_container">
 				<div>
-					<input type="text" value="${key }">
+					<input type="text" value="${key }" onkeypress="if(event.keyCode==13){enterEvent(this.value);}">
 					<span class="search_blue_btn"></span>
 				</div>
 			</div>
 			<div class="search_section_container">
 				<div>
+					<input type="hidden" class="storyORuser" value="${section }">
 					<c:if test="${section=='story'}">
 						<div id="section_story" class="aSection section_selected">이야기</div>
 						<div id="section_user" class="aSection">사용자</div>
@@ -223,6 +270,7 @@ function viewSearchedLists(article_id, m_id, article_title, article_subtitle, ar
 		</div>
 		<div id="search_list_container">
 			<div class="scroll_area_container">
+
 			</div>
 		</div>
 	</div>
@@ -230,12 +278,9 @@ function viewSearchedLists(article_id, m_id, article_title, article_subtitle, ar
 		<div class="recommend_title">추천 검색어</div>
 		<div class="recommend_keyword">
 			<div class="recommend_keyword_inner">
-				<div>추천검색어1</div>
-				<div>추천검색어2</div>
-				<div>추천검색어3</div>
-				<div>추천검색어4</div>
-				<div>추천검색어5</div>
-				<div>추천검색어6</div>
+				<c:forEach var="aRow" items="${recommend }">
+					<div><a href="search?section=story&key=${aRow.search_txt }">${aRow.search_txt }</a></div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>

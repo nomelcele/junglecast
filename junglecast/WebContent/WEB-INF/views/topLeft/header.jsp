@@ -20,26 +20,25 @@
 		//검색 input 클릭
 		$('#search_input').click(function(){
 			if($('.search_option_wrapper').css("display") == "none"){
-				showSearchOptionDIV();
+				$.ajax({
+					type: "POST",
+					url: "recommendKey",
+					dataType: "JSON",
+					success: function(data){
+						var selections='';
+						$.each(data.recommend, function(index, entry){
+							selections += '<li><a href="search?section=story&key='+entry.search_txt+'">'+entry.search_txt+'</a></li>';
+						});
+						$('.search_recommend ul').append(selections);
+						showSearchOptionDIV();
+					}
+				});				
 			}
 		});
 		
 		//검색 아이콘 클릭
 		$('#search_btn').click(function(){
-			var search_key = $('#search_input').val();
-			var search_section = $('.selected').text();
-			if(search_section == '이야기') search_section = 'story';
-			else if(search_section == '사용자') search_section = 'user';
-			
-			if(matchMedia("only screen and (min-width:768px)").matches){
-				if(search_key.length < 1){
-					showSearchOptionDIV();
-				}else{
-					location.href="search?section="+search_section+"&key="+search_key;
-				}
-			}else if(matchMedia("only screen and (max-width:767px)").matches){
-				location.href="searchMobile";
-			}
+			goSearch();
 		});
 		
 		//검색 section고름
@@ -103,6 +102,23 @@ function showSearchOptionDIV(){
 		$('.search_option_wrapper').css("display","none");
 	}
 }
+function goSearch(){
+	var search_key = $('#search_input').val();
+	var search_section = $('.selected').text();
+	if(search_section == '이야기') search_section = 'story';
+	else if(search_section == '사용자') search_section = 'user';
+	
+	if(matchMedia("only screen and (min-width:768px)").matches){
+		if(search_key.length < 1){
+			showSearchOptionDIV();
+		}else{
+			location.href="search?section="+search_section+"&key="+search_key;
+		}
+	}else if(matchMedia("only screen and (max-width:767px)").matches){
+		location.href="searchMobile";
+	}
+}
+
 </script>
 <body id="headerBody">
 <header>
@@ -110,7 +126,7 @@ function showSearchOptionDIV(){
 		<div id="header">
 			<span id="logo"></span>
 			<span id="search">
-				<input id="search_input" type="text" placeholder="검색하기"/>
+				<input id="search_input" type="text" placeholder="검색하기"  onkeydown="if(event.keyCode==13){goSearch();}"/>
 				<span id="search_btn"></span>
 			</span>
 			<span id="profile_icons">
@@ -137,11 +153,7 @@ function showSearchOptionDIV(){
 		<div class="search_recommend">
 			<div>추천 검색어</div>
 			<ul>
-				<li><a>a</a></li>
-				<li><a>b</a></li>
-				<li><a>c</a></li>
-				<li><a>d</a></li>
-				<li><a>e</a></li>
+
 			</ul>
 		</div>
 	</div>

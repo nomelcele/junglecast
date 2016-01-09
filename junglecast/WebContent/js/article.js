@@ -21,6 +21,7 @@ $(function(){
 	$(".closebtn").click(function(){
 		// 모달 닫을 때
 		$("#articles_area").css("position","relative");
+		$('#search_total_wrapper').css("position", "relative");
 	});
 	
 	$(".likeBtn").click(function(){
