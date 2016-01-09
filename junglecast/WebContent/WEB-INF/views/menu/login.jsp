@@ -1,21 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<script type="text/javascript">
-
-/* function clearText(field)
- {
-   if(field.defaultValue==field.value)
-    field.value="";
-   else if (field.value == '') field.value = field.defaultValue;
- } */
-</script>
-
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+	<script>
+		$(function(){
+			
+			$('.l_button').on('click',function(){
+				var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+				if($('#id').val()==""){
+					jQuery('#warning1').hide();
+					jQuery('#warning2').hide();
+					jQuery('#warning2').show();
+				}
+				else if(regex.test($('#id').val())){
+					
+				}
+				else{
+					jQuery('.darkwindow').show();
+					jQuery('.error').show();
+					jQuery('#warning1').hide();
+					jQuery('#warning2').hide();
+					jQuery('#warning1').show();
+				}
+			
+				/* jQuery('.container').hide();
+				jQuery('.layer_2').show(); */
+			
+			});
+			$('.cancel').on('click',function(){
+				jQuery('.darkwindow').hide();
+				jQuery('.error').hide();				
+			});
+			$('.correct').on('click',function(){
+				jQuery('.darkwindow').hide();
+				jQuery('.error').hide();
+			});
+		});
+
+
+	</script>
 	<style>
 		::-webkit-input-placeholder {
    			color:#828180;
@@ -90,6 +117,19 @@
 		}
 		#join a {color:#00A1FF;}
 		#password a {color:#626262;}
+		.darkwindow{
+			display:none; position: fixed; z-index: 100; left: 0px; top: 0px;width: 100%;height: 100%;background-color: rgba( 0, 0, 0, 0.6 ); height:100%; margin-bottom:0px;
+		}
+		.error{
+			display:none;top:50%; left:50%; margin-top:-71px; margin-left:-150px; position:absolute; z-index:1001; border-radius:10px; background-color:#FFFFFF; padding-top:22px; margin-right:10px; width:300px;
+			font-family:'돋움'; font-size:12px; color:#58595B;
+		}
+		.cancel{
+			margin:0px; border:none;padding-top:10px; padding-bottom:10px; font-size:14px; display:inline-block; width:49%; background:#CFCFCF; border-bottom-left-radius:10px; text-align:center; font-weight: bold; color: #58595B; cursor:pointer; font-family: '돋움'
+		}
+		.correct{
+			margin:0px; border:none;padding-top:10px; padding-bottom:10px; font-size:14px; display:inline-block; width:49%; background:#00A6DE; border-bottom-right-radius:10px; text-align:center; font-weight: bold; color: #FFFFFF; cursor:pointer; font-family: '돋움'
+		}
 	</style>
 </head>
 <body>
@@ -122,10 +162,11 @@
 				<span style="font-size:15px; vertical-align:top;">이메일 저장</span></label>
 			</div>
 			<div id = "loginbotton">
-				<input type = "submit" value = "로그인">
+				<input type = "submit" value = "로그인" class="l_button">
 			</div>
 			<div id = "warning">
-				<p id="warning1" style="display = none; font-size:10pt; color:red;">올바른 이메일 형식이 아닙니다.</p>
+				<p id="warning1" style="display:none; font-size:10pt; color:red;">올바른 이메일 형식이 아닙니다.</p>
+				<p id="warning2" style="display:none; font-size:10pt; color:red;">이메일은 필수 입력 항목입니다.</p>
 			</div>
 			<div id = "fblogin">
 				<input type = "submit" value = "페이스북 로그인">
@@ -138,6 +179,16 @@
 				<div id = "password"><a href = "/junglecast/menu=password" target = "_self">비밀번호 찾기</a></div>
 			</div>
 		</div>
+	</div>
+</div>
+<div class="darkwindow"></div>
+<div class="error">
+	<div class="e_text" style="background:#FFFFFF; margin:0px; font-family:'돋움'; font-size:12px;">
+		<p style="padding-top:15px; padding-bottom:30px; font-weight:bold; text-align:center; line-height:20px; margin:0px; border:0px;">이메일 또는 비밀번호를 확인해주세요.</p>
+	</div>
+	<div class="buttons" style="text-align: left; background: #00a6de; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+		<input type = "submit" value="취소" class="cancel">
+		<input type = "submit" value="확인" class="correct">
 	</div>
 </div>
 </body>
