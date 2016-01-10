@@ -10,6 +10,14 @@
 	<select id="select_profile_id" resultType="int">
 		SELECT MAX(profile_id) FROM PROFILE 
 	</select>
+	
+	<select id="loginIdentify" resultType="String" parameterType="String" >
+		SELECT m_pw FROM ACCOUNT WHERE m_mail=#{m_mail}
+	</select>
+	<select id="doubleInfo" resultType="int" parameterType="String" >
+		SELECT m_id FROM ACCOUNT WHERE m_mail=#{m_mail}
+	</select>
+	
   	
 	<insert id="InsertJoinInfo" parameterType="acvo">
 		INSERT INTO ACCOUNT VALUES(M_ID_SEQ.NEXTVAL, #{m_mail}, #{m_gender}, #{m_pw}, #{m_birth}, null, SYSDATE)
