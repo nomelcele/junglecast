@@ -1,5 +1,8 @@
 package or.junglecast.mvc.model;
 
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,7 @@ public class MenuModel {
 	
 	@Autowired
 	private JoinDao jdao;
+	
 	
 	@RequestMapping("/menu=login")
 	public ModelAndView gotoLogin(){
@@ -60,6 +64,26 @@ public class MenuModel {
 		ModelAndView mav = new ModelAndView("jsonView");
 		int insertedProfileinfo = jdao.InsertProfileInfo(prvo);
 		mav.addObject("profile_id", insertedProfileinfo);
+		return mav;
+	}
+	
+	@RequestMapping(value = "LoginInfo")
+	public ModelAndView LoginInfo(String m_mail, String pw, HttpSession session){
+		ModelAndView mav = new ModelAndView("jsonView");
+		String selectedPw = jdao.LoginInfo(m_mail);
+		System.out.println(selectedPw);
+		mav.addObject("m_pw", selectedPw);
+		if(selectedPw==pw){
+			
+		}
+		return mav;
+	}
+	@RequestMapping(value = "DoubleInfo")
+	public ModelAndView DoubleInfo(String m_mail){
+		ModelAndView mav = new ModelAndView("jsonView");
+		int Isdouble = jdao.DoubleInfo(m_mail);
+		System.out.println(m_mail);
+		mav.addObject("m_id", Isdouble);
 		return mav;
 	}
 }
