@@ -51,9 +51,10 @@ public class EditModel {
 		// 프로필 수정
 //		prvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id());
 		
-		if(prvo.getM_picFile() != null){
-			MultipartFile m_picFile = prvo.getM_picFile(); // 이미지 파일
-			String fileName = m_picFile.getOriginalFilename(); // 파일 이름
+		MultipartFile m_picFile = prvo.getM_picFile(); // 이미지 파일
+		String fileName = m_picFile.getOriginalFilename(); // 파일 이름
+
+		if(!fileName.equals("")){
 			String realPath = session.getServletContext().getRealPath("/");
 			StringBuffer path = new StringBuffer();
 			path.append(realPath).append("resources/memberImg/").append(fileName);
