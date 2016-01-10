@@ -12,4 +12,20 @@
   	<update id="changePwd" parameterType="acvo">
   		update account set m_pw=#{m_pw} where m_id=#{m_id}
   	</update>
+  	<update id="editProfile" parameterType="prvo">
+  		update profile set m_nickname=#{m_nickname}, 
+		<if test="m_pic != null">
+			m_pic=#{m_pic},
+		</if>
+		<if test="m_web1 != null">
+			m_web1=#{m_web1},
+		</if>
+		<if test="m_web2 != null">
+			m_web2=#{m_web2},
+		</if>
+		<if test="m_web3 != null">
+			m_web3=#{m_web3},
+		</if>
+		m_introduce=#{m_introduce} where m_id=#{m_id}
+  	</update>
   </mapper>

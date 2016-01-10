@@ -1,9 +1,18 @@
 package or.junglecast.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProfileVO {
 	private int profile_id, m_id;
 	private String m_nickname, m_pic, m_introduce, m_web1, m_web2, m_web3;
+	private MultipartFile m_picFile;
 	
+	public MultipartFile getM_picFile() {
+		return m_picFile;
+	}
+	public void setM_picFile(MultipartFile m_picFile) {
+		this.m_picFile = m_picFile;
+	}
 	public int getProfile_id() {
 		return profile_id;
 	}

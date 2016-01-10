@@ -5,7 +5,7 @@ em{font-style: normal;}
 
 .menuBox{background:#fff; border:1px solid #eaeaea; margin:20px 0; padding:0 10px;}
 .menuList li{margin:15px; padding:5px 0; color:#8E8E8E;}
-.menuList li a{font-size:14px; padding:5px 0 5px 30px; display:block;}
+.menuList li a{font-size:14px; padding:5px 0 5px 30px; display:block; cursor:pointer;}
 .menuList li a:hover, a.hovered{color:#00a6de; border-bottom:2px solid #00a6de;}
 .profileBtn{background:url(../images/editIcons/profileImg1.png) no-repeat 0;}
 .profileBtn:hover, .profileBtn.hovered{background:url(../images/editIcons/profileImg2.png) no-repeat 0;}
@@ -36,27 +36,27 @@ em{font-style: normal;}
 .profileWebInputBox .profileNameInput{margin-bottom:7px;}
 .profileWebInputBox input[type=text]{width:80%;}
 .profileHttp{display:inline-block; background-color:#aeaeae; color:#fff; padding:5px; font-size:13px;}
-.removeWebBtn{background:url(../images/editIcons/removeWebBtn.png) no-repeat 0; display:inline-block; width:30px; height:30px; margin:-10px 5px;}
+.removeWebBtn{background:url(../images/editIcons/removeWebBtn.png) no-repeat 0; display:inline-block; width:30px; height:30px; margin:-10px 5px; cursor:pointer;}
 .addWebArea{display:inline-block; border:1px solid #EAEAEA; text-align:center; margin-top:10px; width:65%;}
-.addWebBtn{background:url(../images/editIcons/addWebBtn.png) no-repeat 0; display:inline-block; width:30px; height:30px;}
+.addWebBtn{background:url(../images/editIcons/addWebBtn.png) no-repeat 0; display:inline-block; width:30px; height:30px; cursor:pointer;}
 
 .accountInfoBox{margin:10px 0; height:400px;}
 .accountInfoTxtBox .profileNameInput{width:40%;}
 .accountInfoTxtBox input[type=text]{border:none; padding:4px; color:#8e8e8e; width:90%;}
 .accountSubBox{margin-bottom:8px;}
-.deleteAccount{color:#00a6de; border-bottom:1px solid #00a6de; font-size:12px;}
+.deleteAccount{color:#00a6de; border-bottom:1px solid #00a6de; font-size:12px; cursor:pointer;}
 
 .pwdBox{margin:10px 0; height:400px;}
 .pwdBox .profileNameInput{width:40%;}
 .pwdBox input[type=password]{border:none; padding:4px; color:#8e8e8e; width:90%;}
 .pwdBox input[type=password]:disabled{background-color:transparent;}
 .editBtn{font-size:13px; padding:6px 20px; border:1px solid #8e8e8e; border-radius:4px;}
-.editPwdBtn{background:linear-gradient(#11bef1, #029be0); color:#fff;}
+.editPwdBtn{background:linear-gradient(#11bef1, #029be0); color:#fff; cursor:pointer;}
 
 .editSaveBox{background:#F6F6F6; position:fixed; width:948px; height:30px; bottom:0.5px; text-align:right;}
 .editSaveSubBox{margin:5px 0;}
-.editCancelBtn{background:linear-gradient(#f0f0f1, #e0e0e2);}
-.editSaveBtn{background:linear-gradient(#11bef1, #029be0); color:#fff;}
+.editCancelBtn{background:linear-gradient(#f0f0f1, #e0e0e2); cursor:pointer;}
+.editSaveBtn{background:linear-gradient(#11bef1, #029be0); color:#fff; cursor:pointer;}
 
 @media only screen and (max-width:1279px) and (min-width:1024px){
 	#header{margin-left:0;}

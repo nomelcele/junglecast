@@ -23,6 +23,12 @@ public class EditDao {
 	}
 	
 	public void changePwd(AccountVO acvo){
+		// 비밀번호 변경
 		st.update("edit.changePwd", acvo);
+	}
+	
+	public void editProfile(ProfileVO prvo){
+		// 정보 변경
+		st.update("edit.editProfile", prvo);
 	}
 }

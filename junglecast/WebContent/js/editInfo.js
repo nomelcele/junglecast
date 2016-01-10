@@ -121,6 +121,11 @@ $(function(){
 			$("#changePwdForm").submit();
 		}
 	});
+	
+	$(".editSaveBtn").click(function(){
+		// 변경 내용 저장
+		$("#profileForm").submit();
+	});
 });
 
 

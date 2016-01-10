@@ -95,70 +95,68 @@ function left_area_positioning(){
 				</ul>			
 			</div>
 			<div id="profileBox" class="editBox profileBox">
-				<h1>프로필</h1>
-				<div class="profileImgBox">
-					<div>
-<!-- 						<img id="profileImgPreview" src="resources/memberImg/gildong.jpg"> -->
-						<img id="profileImgPreview" src="resources/memberImg/${myProfile.m_pic}">
-						<a class="editImgBtn"><input type="file" id="m_pic" name="m_pic"></a>
-					</div>
-				</div>
-				<div class="profileTxtBox">
-					<div class="profileSubBox profileNameBox">
-						<h1>닉네임</h1>
-						<div class="profileNameInputBox">
-							<span class="profileNameInput">
-<!-- 								<input type="text" id="m_nickname" name="m_nickname" maxlength="14"> -->
-								<input type="text" id="m_nickname" name="m_nickname" maxlength="14" value="${myProfile.m_nickname}">
-								<span class="profileTxtNum"><em id="currentNameNum">0</em>/14</span>
-							</span>
-						</div>
-						<span class="warningTxt">홍보성 / 선정적인 닉네임은 타인에게 불쾌감을 줄 수 있으므로 삭제될 수 있습니다.</span>
-					</div>
-					<div class="profileSubBox profileIntroBox">
-						<h1>나의 한 줄 소개</h1>
-						<div class="profileIntroInputBox">
-							<span class="profileNameInput">
-<!-- 								<input type="text" id="m_introduce" name="m_introduce" maxlength="17"> -->
-								<input type="text" id="m_introduce" name="m_introduce" maxlength="17" value="${myProfile.m_introduce}">
-								<span class="profileTxtNum"><em id="currentIntroNum">0</em>/17</span>
-							</span>
+				<form id="profileForm" action="editProfile" method="post" enctype="multipart/form-data">
+					<h1>프로필</h1>
+					<div class="profileImgBox">
+						<div>
+							<img id="profileImgPreview" src="resources/memberImg/${myProfile.m_pic}">
+							<a class="editImgBtn"><input type="file" id="m_pic" name="m_picFile"></a>
 						</div>
 					</div>
-					<div class="profileSubBox profileWebBox">
-						<h1>웹 사이트</h1>
-						<div class="profileWebInputBox">
-							<div id="profileWebInput">
-								<span>
-									<span class="profileNameInput" id="profileWeb1">
-										<span class="profileHttp">http://</span>
-<!-- 										<input type="text" id="m_web1" name="m_web1"> -->
-										<input type="text" id="m_web1" name="m_web1" value="${myProfile.m_web1}">
-									</span>
+					<div class="profileTxtBox">
+						<div class="profileSubBox profileNameBox">
+							<h1>닉네임</h1>
+							<div class="profileNameInputBox">
+								<span class="profileNameInput">
+									<input type="text" id="m_nickname" name="m_nickname" maxlength="14" value="${myProfile.m_nickname}">
+									<span class="profileTxtNum"><em id="currentNameNum">0</em>/14</span>
 								</span>
-								<c:if test="${myProfile.m_web2 ne null}">
-									<span>
-										<span class="profileNameInput">
-											<span class="profileHttp">http://</span>
-											<input type="text" id="m_web2" name="m_web2" value="${myProfile.m_web2}">
-										</span>
-										<a class="removeWebBtn" onclick="removeWeb(this)"></a>
-									</span>
-								</c:if>
-								<c:if test="${myProfile.m_web3 ne null}">
-									<span>
-										<span class="profileNameInput">
-											<span class="profileHttp">http://</span>
-											<input type="text" id="m_web3" name="m_web3" value="${myProfile.m_web3}">
-										</span>
-										<a class="removeWebBtn" onclick="removeWeb(this)"></a>
-									</span>
-								</c:if>
 							</div>
-							<a class="addWebArea"><span class="addWebBtn"></span></a>
+							<span class="warningTxt">홍보성 / 선정적인 닉네임은 타인에게 불쾌감을 줄 수 있으므로 삭제될 수 있습니다.</span>
+						</div>
+						<div class="profileSubBox profileIntroBox">
+							<h1>나의 한 줄 소개</h1>
+							<div class="profileIntroInputBox">
+								<span class="profileNameInput">
+									<input type="text" id="m_introduce" name="m_introduce" maxlength="17" value="${myProfile.m_introduce}">
+									<span class="profileTxtNum"><em id="currentIntroNum">0</em>/17</span>
+								</span>
+							</div>
+						</div>
+						<div class="profileSubBox profileWebBox">
+							<h1>웹 사이트</h1>
+							<div class="profileWebInputBox">
+								<div id="profileWebInput">
+									<span>
+										<span class="profileNameInput" id="profileWeb1">
+											<span class="profileHttp">http://</span>
+											<input type="text" id="m_web1" name="m_web1" value="${myProfile.m_web1}">
+										</span>
+									</span>
+									<c:if test="${myProfile.m_web2 ne null}">
+										<span>
+											<span class="profileNameInput">
+												<span class="profileHttp">http://</span>
+												<input type="text" id="m_web2" name="m_web2" value="${myProfile.m_web2}">
+											</span>
+											<a class="removeWebBtn" onclick="removeWeb(this)"></a>
+										</span>
+									</c:if>
+									<c:if test="${myProfile.m_web3 ne null}">
+										<span>
+											<span class="profileNameInput">
+												<span class="profileHttp">http://</span>
+												<input type="text" id="m_web3" name="m_web3" value="${myProfile.m_web3}">
+											</span>
+											<a class="removeWebBtn" onclick="removeWeb(this)"></a>
+										</span>
+									</c:if>
+								</div>
+								<a class="addWebArea"><span class="addWebBtn"></span></a>
+							</div>
 						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 			<div id="accountBox" class="editBox accountInfoBox">
 				<h1>계정정보</h1>
