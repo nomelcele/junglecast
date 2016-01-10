@@ -29,8 +29,14 @@ public class JoinDao {
 	public String LoginInfo(String m_mail) {
 		return st.selectOne("join.loginIdentify",m_mail);
 	}
-	public int DoubleInfo(String m_mail) {
+	public String DoubleInfo(String m_mail) {
 		return st.selectOne("join.doubleInfo",m_mail);
+	}
+	public String nicknameDoubleInfo(String m_nickname) {
+		return st.selectOne("join.nicknamedoubleInfo",m_nickname);
+	}
+	public String sendEmailAction (String m_mail){
+		return st.selectOne("join.sendpw",m_mail);
 	}
 
 }

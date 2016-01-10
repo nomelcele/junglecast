@@ -14,8 +14,14 @@
 	<select id="loginIdentify" resultType="String" parameterType="String" >
 		SELECT m_pw FROM ACCOUNT WHERE m_mail=#{m_mail}
 	</select>
-	<select id="doubleInfo" resultType="int" parameterType="String" >
-		SELECT m_id FROM ACCOUNT WHERE m_mail=#{m_mail}
+	<select id="doubleInfo" resultType="String" parameterType="String" >
+		SELECT count(m_id) FROM ACCOUNT WHERE m_mail=#{m_mail}
+	</select>
+	<select id="nicknamedoubleInfo" resultType="String" parameterType="String" >
+		SELECT count(m_id) FROM PROFILE WHERE m_nickname=#{m_nickname}
+	</select>
+	<select id="sendpw" resultType="String" parameterType="String" >
+		SELECT m_pw FROM ACCOUNT WHERE m_mail=#{m_mail}
 	</select>
 	
   	
