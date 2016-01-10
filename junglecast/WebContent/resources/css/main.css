@@ -12,18 +12,19 @@
 		#rank_content{margin: 4px 0 0 10px;padding: 0 6px 6px 6px; font-size:12px; }
 			#rank-list a {color:#a5a4a4;}
 			#rank-list a:hover {text-decoration: underline; cursor:pointer;}
-			#rank-list {overflow: hidden; width: 160px;height: 240px;margin: 0;}
+			#rank-list {overflow: hidden; width: 280px;height: 240px;margin: 0;}
 			#rank-list dt {display: none;}
 			#rank-list dd {position: relative;margin: 0;}
-			#rank-list ol {position: absolute; top: -30px; left: 0; margin: 0; padding: 0; list-style-type: none;}
-			#rank-list li {height: 30px;line-height: 30px;}
+			#rank-list ol {position: absolute; top: -30px; left: 0; margin: 0; padding: 0; list-style-type: none; width:100%;}
+			#rank-list li {height: 30px;line-height: 30px; width:100%; overflow:hidden;}
 			.rank_num{color:#00a1ff; font-size:15px; width:16px; display:inline-block; margin-right:16px; font-weight: bold; text-align: right;}
 		#contents_cards_area{width:100%; height:100%; float:left; }
-			.aCard{width:24%; height:230px; float:left; background:#fff; overflow:hidden; margin:4px 3px 4px 4px; border:1px solid #e6e7e8;}
+			.aCard{width:24%; height:230px; float:left; background:#fff; overflow:hidden; margin:4px 3px 4px 4px; border:1px solid #e6e7e8; cursor:pointer;}
 			.aCard_img_div{width:100%; height: 160px; overflow:hidden;}
 			.aCard_img{width:100%; height:auto; z-index: 20;}
 			.aCard_txt{width:90%; height: 66px; overflow: hidden; z-index: 50; color:#202021; font-size: 14px; padding:10px;}
-	#scroll_up{position:fixed; bottom:10px; width:50px; left:50%; margin-left:640px; height: 50px; display: block; background:rgba(18,18,18,0.8); text-align: center; line-height: 22px; color:white; font-size: 14px; cursor: pointer; z-index:500;}	
+	#scroll_up{position:fixed; bottom:10px; width:50px; left:50%; margin-left:640px; height: 50px; display: none; background:rgba(18,18,18,0.8); 
+			text-align: center; line-height: 22px; color:white; font-size: 14px; cursor: pointer; z-index:500;}	
 
 /*이미지 슬라이더 관련 css*/
 .skdslider{width:100%; position: relative; display: block; overflow:hidden; height: 100%;}
@@ -63,7 +64,7 @@
 	#rank_article_area{width:35%; float:right; margin:0px 0px;}
 		#rank_top{width:90%;}
 	#contents_cards_area{}
-		.aCard{width:24%; height: auto; margin:3px 0.3% 3px 0.3%;}
+		.aCard{width:24%; height: 210px; margin:3px 0.3% 3px 0.3%;}
 		.aCard_img_div{ height: 60%; }
 		.aCard_img{height:auto;}
 
@@ -79,7 +80,7 @@
 	#rank_article_area{width:35%; height:230px; float:right; margin:0px 0px; overflow:hidden;}
 		#rank_top{width:90%;}
 		
-		.aCard{width:32.4%; height:auto; margin:3px 0.2% 3px 0.2%;}
+		.aCard{width:32.4%; height:240px; margin:3px 0.2% 3px 0.2%;}
 		.aCard_img_div{ height: 65%;}
 		.aCard_img{height:auto;}
 #scroll_up{bottom:2px; left:auto; right:2px; margin-left:0; }
@@ -93,7 +94,7 @@
 	.skdslider ul.slides li img{width: 100%; height:100%; border:0;}
 	#rank_article_area{display:none;}
 
-		.aCard{width:48.5%; height:auto;margin:3px 0.3% 3px 0.3%;}
+		.aCard{width:48.5%; height:270px; margin:3px 0.3% 3px 0.3%;}
 		.aCard_img_div{ height: 65%; }
 		.aCard_img{height:auto;}
 		.aCard_txt{padding:5px;}

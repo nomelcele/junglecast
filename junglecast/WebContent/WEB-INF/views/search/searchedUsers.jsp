@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+			<input type="hidden" value="${key }" id="hidden_key">
 			<ul>
 				<c:forEach var="user" items="${users}">
-					<li class="user_li">
+					<li class="user_li list_num">
 						<div class="aUerContainer">
 							<div class="aUserInner">
 								<input type="hidden" value="${user.m_id}">

@@ -35,7 +35,6 @@ public class SearchModel {
 	public ModelAndView search(@RequestParam("section") String section, @RequestParam("key") String key, HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException{
 		ModelAndView mav = new ModelAndView("search/search");
-		System.out.println("section : " + section);
 		//cookie - 새로고침 시 db에 계속 검색어 업데이트 되는 것을 막음
 		Cookie[] cookies = request.getCookies();
 		Cookie viewCookie = null;
@@ -46,7 +45,7 @@ public class SearchModel {
 				System.out.println(ck.getName() + " : " + URLDecoder.decode((ck.getValue()), "UTF-8"));
 			}
 			for(int i = 0; i< cookies.length; i++){
-				if(cookies[i].getName().equals("KEY3")){ //Cookie의 name이 KEY와 일치하는 쿠키를 viewCookie에 넣어준다.
+				if(cookies[i].getName().equals("KEY")){ //Cookie의 name이 KEY와 일치하는 쿠키를 viewCookie에 넣어준다.
 					viewCookie = cookies[i];
 				}
 			}  
@@ -55,7 +54,7 @@ public class SearchModel {
 		String keyEncoded =  URLEncoder.encode("|"+key+"|","utf-8");
 		//Cookie없다면
 		if(viewCookie == null){
-			Cookie newCookie = new Cookie("KEY3", keyEncoded); //"KEY"는 name, "|"+key+"|" 는value
+			Cookie newCookie = new Cookie("KEY", keyEncoded); //"KEY"는 name, "|"+key+"|" 는value
 			newCookie.setMaxAge(300); //쿠키 유효시간 5분(60초*5)
 			newCookie.setPath("/"); //해당 경로에서 유효한 쿠키
 			response.addCookie(newCookie);
@@ -87,7 +86,8 @@ public class SearchModel {
 	}
 	
 	@RequestMapping("searchKey")
-	public String searchKey(@RequestParam("key") String key, @RequestParam("section") String section, Model model){
+	public String searchKey(@RequestParam("key") String key, @RequestParam("section") String section, 
+			@RequestParam("num") String num, Model model){
 		String[] splitKey =  key.split(" ");
 		List<String> keys = new ArrayList<>();
 		
@@ -95,18 +95,19 @@ public class SearchModel {
 			System.out.println("검색어 : " + splitKey[i]);
 			keys.add("%"+splitKey[i]+"%");
 		}
-		HashMap<String, List<String>> map = new HashMap<>();
+		HashMap<String, Object> map = new HashMap<>();
 		map.put("key", keys);
+		map.put("num", num);
 		
 		if(section.equals("story")){
-			System.out.println(section);
 			List<SearchVO> list = sDao.searchContentByKey(map);
 			model.addAttribute("contents", list);
+			model.addAttribute("key", key);
 			return "search/searchedContents";
 		}else{
-			System.out.println(section);
 			List<ProfileVO> list = sDao.searchUserByKey(map);
 			model.addAttribute("users", list);
+			model.addAttribute("key", key);
 			return "search/searchedUsers";
 		}	
 	}
@@ -117,4 +118,35 @@ public class SearchModel {
 		mav.addObject("recommend", sDao.recommendSearchKey());
 		return mav;
 	}
+	
+	@RequestMapping("searchLoadMore")
+	public ModelAndView searchLoadMore(@RequestParam("key") String key, @RequestParam("section") String section, 
+			@RequestParam("num") String num, Model model){
+		ModelAndView mav = new ModelAndView("jsonView");
+		String[] splitKey =  key.split(" ");
+		List<String> keys = new ArrayList<>();
+		
+		for (int i=0; i<splitKey.length; i++){
+			System.out.println("검색어 : " + splitKey[i]);
+			keys.add("%"+splitKey[i]+"%");
+		}
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("key", keys);
+		map.put("num", num);
+		
+		if(section.equals("story")){
+			List<SearchVO> list = sDao.searchContentByKey(map);
+			mav.addObject("cards", list);
+			for(int i=0; i<list.size(); i++){
+				System.out.println(list.get(i).getArticle_title());
+			}
+		}else{
+			List<ProfileVO> list = sDao.searchUserByKey(map);
+			mav.addObject("cards", list);
+			for(int i=0; i<list.size(); i++){
+				System.out.println(list.get(i).getM_nickname());
+			}
+		}	
+		return mav;
+	}	
 }

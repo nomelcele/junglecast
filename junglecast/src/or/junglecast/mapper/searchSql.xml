@@ -9,21 +9,32 @@
 	</insert>
 	
 	<select id="searchContentByKey" parameterType = "java.util.Map" resultType="svo">
-		SELECT a.article_id, a.m_id, a.article_title, a.article_subtitle, a.article_view, a.article_like, a.article_share, a.article_reply,
-			a.pic_id, a.category_id, p.pic_url, a.article_date, m.m_nickname, m.m_pic 
-			FROM ARTICLE a JOIN PROFILE m ON a.m_id=m.m_id JOIN PICTURE p ON a.pic_id=p.pic_id
-			WHERE
-			<foreach collection="key" item="item" separator="OR">
-      			a.article_title LIKE #{item} OR a.article_subtitle LIKE #{item}
-     		</foreach>
-     		ORDER BY a.article_id DESC
+		SELECT * FROM(
+			SELECT ROWNUM AS ROW_NUM, alias.*
+			FROM(
+				SELECT a.article_id, a.m_id, a.article_title, a.article_subtitle, a.article_view, a.article_like, a.article_share, a.article_reply,
+					a.pic_id, a.category_id, p.pic_url, a.article_date, m.m_nickname, m.m_pic 
+					FROM ARTICLE a JOIN PROFILE m ON a.m_id=m.m_id JOIN PICTURE p ON a.pic_id=p.pic_id
+					WHERE
+					<foreach collection="key" item="item" separator="OR">
+	      				a.article_title LIKE #{item} OR a.article_subtitle LIKE #{item} ORDER BY a.article_id DESC
+	     			</foreach>
+	     	)alias
+	     )WHERE ROW_NUM BETWEEN #{num}+1 and #{num}+20	
 	</select>
+	
 	<select id="searchUserByKey" parameterType = "java.util.Map" resultType="prvo">
-		SELECT profile_id, m_id, m_nickname, m_pic, m_introduce FROM PROFILE WHERE
-			<foreach collection="key" item="item" separator="OR">
-      			m_nickname LIKE #{item} OR m_introduce LIKE #{item}
-     		</foreach>
+		SELECT * FROM(
+			SELECT ROWNUM AS ROW_NUM, alias.*
+			FROM(
+				SELECT profile_id, m_id, m_nickname, m_pic, m_introduce FROM PROFILE WHERE
+					<foreach collection="key" item="item" separator="OR">
+		      			m_nickname LIKE #{item} OR m_introduce LIKE #{item}
+		     		</foreach>
+		    )alias
+	     )WHERE ROW_NUM BETWEEN #{num}+1 and #{num}+20	
 	</select>
+	
 	<select id="recommendSearchKey" resultType="rcvo">
 		SELECT alias.*
 	 		FROM(SELECT search_txt, count(search_txt) AS count FROM search 

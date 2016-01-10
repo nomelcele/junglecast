@@ -21,11 +21,11 @@ public class SearchDao {
 		sqlSession.insert("search.insertSearchKey", search_txt);
 	}
 
-	public List<SearchVO> searchContentByKey(HashMap<String, List<String>> map) {
+	public List<SearchVO> searchContentByKey(HashMap<String, Object> map) {
 		return sqlSession.selectList("search.searchContentByKey", map);
 	}
 
-	public List<ProfileVO> searchUserByKey(HashMap<String, List<String>> map) {
+	public List<ProfileVO> searchUserByKey(HashMap<String, Object> map) {
 		return sqlSession.selectList("search.searchUserByKey", map);
 	}
 

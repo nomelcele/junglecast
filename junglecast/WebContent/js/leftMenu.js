@@ -1,3 +1,4 @@
+
 $(function(){
 	//상단바 메뉴 아이콘 클릭시
 	$('#menu_icon').click(function(){
@@ -43,26 +44,10 @@ $(function(){
     	$('#left_menu_home a').css("color", "#404041"); //홈버튼 클릭해제
     	$('.aCategory').find('span').css("color", "#4b4b4b");
     	$(this).parent().find('span').css("color", "#00a6de");
+    	
     	var getCategoryId = $(this).parent().find('.leftmenu_category_id').val();
-    	$.ajax({
-			url: "selectThisCategory",
-			data: {categoryId : getCategoryId},
-			dataType: 'JSON',
-			type: 'POST',
-			async:false,
-			success: function (data) {
-				$('#contents_cards_area').empty();
-				var aCard='';
-				$.each(data.result, function(index, entry){
-					aCard += '<div class="aCard"><div class="aCard_img_div">';
-					aCard += '<img class="aCard_img" src="resources/articleContents/'+ entry.pic_url +'"></div>';
-					aCard += '<input type="hidden" value="'+ entry.article_id +'">';
-					aCard += '<div class="aCard_txt">'+entry.article_title+'</div></div>';
-				});
-				$('#contents_cards_area').append(aCard);
-				cardClickEvent(); //뒤늦게 받아온 콘텐츠 카드이므로 클릭 이벤트 다시 붙여줌
-			}
-    	})
+    	location.href="category?category_id="+getCategoryId;
+
     });
     
     $("#goto_profile").click(function(){
@@ -81,4 +66,19 @@ function menu_icon_clicked_left_area_hiding(){
 	$('.body_cover').css("display", "none");
 	$('#left_area').css("display", "none");
 	$('#articles_area').css("position", "relative");
+}
+
+function aCardSizingEvent(){
+	var aCard_width = $('.aCard').css("width");
+	var aCard_height= Number(aCard_width.replace(/[^\d]/g,""));
+	if(matchMedia("only screen and (min-width:1280px)").matches){ //대형화면
+	}else if (matchMedia("only screen and (min-width:768px) and (max-width:1279px)").matches) {//일반 PC 모니터 크기 + 태블릿화면
+		$('.aCard').css("height", aCard_height);
+	}else if(matchMedia("only screen and (min-width:371px) and (max-width:767px)").matches){ //큰 모바일 화면
+		$('.aCard').css("height", aCard_height*0.9);
+		$('.aCard_img_div').css("height", "65%");
+	}else if(matchMedia("only screen and (max-width:370px)").matches){ //작은모바일 화면
+		$('.aCard').css("height", aCard_height*1.2);
+		$('.aCard_img_div').css("height", "58%");	
+	}
 }

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+			<input type="hidden" value="${key }" id="hidden_key">
 			<ul>
 				<c:forEach var="aContent" items="${contents}">
-					<li class="contents_li">
+					<li class="contents_li list_num">
 						<span class="aContent_img_area"><!-- 이미지 영역 -->
 						<input type="hidden" value="${aContent.article_id }">
 							<span><img src="resources/articleContents/${aContent.pic_url}"></span><!-- 이미지 틀 -->

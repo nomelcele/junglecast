@@ -8,21 +8,23 @@
 		SELECT * FROM CATEGORY
 	</select>
 
-	<select id="articleList" resultType ="mavo">
-		SELECT ROWNUM, alias.*
-			FROM(
-				SELECT a.article_id, a.article_title, a.pic_id, a.category_id, p.pic_url FROM ARTICLE a, PICTURE p WHERE a.pic_id = p.pic_id ORDER BY article_id DESC
-			)alias
-		WHERE ROWNUM <![CDATA[<=]]> 20
+	<select id="articleList" resultType ="mavo" parameterType="int">
+		SELECT * FROM(
+			SELECT ROWNUM AS ROW_NUM, alias.*
+				FROM(
+					SELECT a.article_id, a.article_title, a.pic_id, a.category_id, p.pic_url FROM ARTICLE a, PICTURE p WHERE a.pic_id = p.pic_id ORDER BY article_id DESC
+				)alias
+		)WHERE ROW_NUM BETWEEN #{num}+1 and #{num}+20
 	</select>
 	
-	<select id="thisCategoryList" resultType ="mavo" parameterType="int">
-		SELECT ROWNUM, alias.*
+	<select id="thisCategoryList" resultType ="mavo" parameterType="java.util.Map">
+	SELECT * FROM(
+		SELECT ROWNUM AS ROW_NUM, alias.*
 			FROM(
 				SELECT a.article_id, a.article_title, a.pic_id, a.category_id, p.pic_url FROM ARTICLE a, PICTURE p 
 					WHERE a.pic_id = p.pic_id and a.category_id = #{category_id} ORDER BY article_id DESC
 			)alias
-		WHERE ROWNUM <![CDATA[<=]]> 20
+	)WHERE ROW_NUM BETWEEN #{num}+1 and #{num}+20
 	</select>
 	
 	<select id="bestArticles" resultType="bavo">
@@ -32,6 +34,10 @@
 					WHERE pic_id IS NOT NULL AND TRUNC(article_date, 'DDD') BETWEEN TRUNC(sysdate-1) AND TRUNC(sysdate, 'DDD')
 			)alias 
 		WHERE ROWNUM <![CDATA[<=]]>15
+	</select>
+	
+	<select id="selectCateName" resultType="cvo" parameterType="int">
+		SELECT * FROM CATEGORY WHERE category_id = #{category_id}
 	</select>
   </mapper>
 

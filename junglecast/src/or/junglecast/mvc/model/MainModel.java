@@ -1,10 +1,16 @@
 package or.junglecast.mvc.model;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import or.junglecast.mvc.dao.MainDao;
+import or.junglecast.vo.MainArticleVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,15 +25,42 @@ public class MainModel {
 		ModelAndView mav = new ModelAndView("main");
 		mav.addObject("bestArticles", dao.selectBestArticles());
 		mav.addObject("categories", dao.selectCategoryLists());
-		mav.addObject("contents", dao.selectArticleLists());
+		mav.addObject("contents", dao.selectArticleLists(0));
+		return mav;
+	}
+
+	
+	@RequestMapping(value = "MainLoadMore", method = RequestMethod.POST)
+	public ModelAndView mainLoadMore(@RequestParam("num") String num){
+		ModelAndView mav = new ModelAndView("jsonView");
+		System.out.println("num 뽑습니다." + Integer.parseInt(num));
+		List<MainArticleVO> list = dao.selectArticleLists(Integer.parseInt(num));
+		for(int i=0; i<list.size(); i++){
+			System.out.println(list.get(i).getArticle_title());
+		}
+		mav.addObject("cards", list);
+		return mav;
+	}
+	
+	@RequestMapping("category")
+	public ModelAndView categoryPage(@RequestParam("category_id") String cate_id){
+		ModelAndView mav = new ModelAndView("category");
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("category_id",  Integer.parseInt(cate_id));
+		map.put("num", 0);
+		mav.addObject("category_info", dao.selectCateName(Integer.parseInt(cate_id)));
+		mav.addObject("contents", dao.selectThisCategory(map)); 
+		mav.addObject("categories", dao.selectCategoryLists());
 		return mav;
 	}
 	
 	@RequestMapping("selectThisCategory")
-	public ModelAndView selectThisCategory(@RequestParam("categoryId") String category_id){
+	public ModelAndView selectThisCategory(@RequestParam("categoryId") String category_id, @RequestParam("num") String num){
 		ModelAndView mav = new ModelAndView("jsonView");
-		System.out.println("들어옴." + category_id);
-		mav.addObject("result", dao.selectThisCategory(Integer.parseInt(category_id)));
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("category_id", Integer.parseInt(category_id));
+		map.put("num", Integer.parseInt(num));
+		mav.addObject("result", dao.selectThisCategory(map));
 		return mav;
 	}
 	
