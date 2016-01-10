@@ -95,6 +95,8 @@ $(function(){
 			$("#currentPwdWarning").html("비밀번호가 틀렸습니다.");
 		} else {
 			$("#currentPwdWarning").html("");
+			$("#newPwd").attr("disabled",false);
+			$("#newPwd2").attr("disabled",false);
 		}
 	});
 	
@@ -109,7 +111,15 @@ $(function(){
 	
 	$(".editPwdBtn").click(function(){
 		// 비밀번호 변경
-		$("#changePwdForm").submit();
+		if($("#currentPwd").val() == "" || $("#currentPwdWarning").html() == "비밀번호가 틀렸습니다."){
+			alert("현재 비밀번호를 입력한 후, 새로운 비밀번호를 입력해 주세요.");
+		} else if($("#newPwd").val() == ""){
+			alert("새로운 비밀번호를 입력해 주세요.")
+		} else if($("#newPwd2").val() == "" || $("#newPwdWarning").html() == "비밀번호가 일치하지 않습니다."){
+			alert("새로운 비밀번호를 다시 입력해 주세요.");
+		} else {
+			$("#changePwdForm").submit();
+		}
 	});
 });
 

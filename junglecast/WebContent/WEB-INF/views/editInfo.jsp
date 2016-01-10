@@ -213,7 +213,7 @@ function left_area_positioning(){
 					<div class="profileSubBox">
 						<h1>새로운 비밀번호 입력</h1>
 						<span class="profileNameInput">
-							<input type="password" id="newPwd" placeholder="새로운 비밀번호">
+							<input type="password" id="newPwd" placeholder="새로운 비밀번호" disabled>
 						</span>
 						<span class="warningTxt" id="newPwdWarning"></span>
 					</div>
@@ -221,7 +221,7 @@ function left_area_positioning(){
 						<form id="changePwdForm" action="changePwd" method="post">
 							<h1>새로운 비밀번호 재입력</h1>
 							<span class="profileNameInput">
-								<input type="password" id="newPwd2" name="m_pw" placeholder="새로운 비밀번호 재입력">
+								<input type="password" id="newPwd2" name="m_pw" placeholder="새로운 비밀번호 재입력" disabled>
 							</span>
 						</form>
 					</div>
