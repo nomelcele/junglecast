@@ -1,5 +1,6 @@
 package or.junglecast.mvc.dao;
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -25,5 +26,11 @@ public class JoinDao {
 		st.insert("join.InsertProfileInfo", prvo);
 		return st.selectOne("join.select_profile_id");
 	}
-	
+	public String LoginInfo(String m_mail) {
+		return st.selectOne("join.loginIdentify",m_mail);
+	}
+	public int DoubleInfo(String m_mail) {
+		return st.selectOne("join.doubleInfo",m_mail);
+	}
+
 }
