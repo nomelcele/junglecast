@@ -40,4 +40,41 @@
 	</beans:bean>
 	<tx:annotation-driven transaction-manager="transactionManager"/> 
 	
+	
+	
+	<mvc:interceptors> 
+  		<mvc:interceptor>
+    		<mvc:mapping path="main" />
+    		<mvc:mapping path="selectThisCategory" />
+    		<mvc:mapping path="articleDetail" />
+    		<mvc:mapping path="likeArticle" />
+    		<mvc:mapping path="shareArticle" />
+    		<mvc:mapping path="replyList" />
+    		<mvc:mapping path="writeReply" />
+    		<mvc:mapping path="likeReply" />
+    		<mvc:mapping path="rereplyList" />
+    		<mvc:mapping path="writeRereply" />
+    		<mvc:mapping path="deleteReply" />
+    		<mvc:mapping path="deleteRereply" />
+    		<mvc:mapping path="editInfo" />
+    		<mvc:mapping path="changePwd" />
+    		<mvc:mapping path="editProfile" />
+    		<mvc:mapping path="search" />
+    		<mvc:mapping path="searchMobile" />
+    		<mvc:mapping path="searchKey" />
+    		<mvc:mapping path="recommendKey" />
+    		<mvc:mapping path="editInfo" />
+    		<mvc:mapping path="writeArticle" />
+    		<mvc:mapping path="insertArticle" />
+    		<mvc:mapping path="uploadImgs" />
+    		<mvc:mapping path="insertPicture" />
+    		<mvc:mapping path="updateArticlePicID" />
+    		
+    		<beans:bean class="or.junglecast.common.Commonsession"/>
+  		</mvc:interceptor>
+  	</mvc:interceptors>
+  	
+	
+	
 </beans:beans>
+

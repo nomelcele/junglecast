@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 	<script>
 		$(function(){
-			
+
 			$('.l_button').on('click',function(){
 				var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 				if($('#id').val()==""){
@@ -27,7 +27,7 @@
 						success : function(response) {								
 							if($('#pw').val()==response.m_pw)
 							{
-								loginsuccess();
+								location.href='main';
 							}
 							else
 							{
@@ -139,7 +139,7 @@
 		#join a {color:#00A1FF;}
 		#password a {color:#626262;}
 		.darkwindow{
-			display:none; position: fixed; z-index: 100; left: 0px; top: 0px;width: 100%;height: 100%;background-color: rgba( 0, 0, 0, 0.6 ); height:100%; margin-bottom:0px;
+			display:none; position: fixed; z-index: 100; left: 0px; top: 0px;width: 100%;height: 100%;background-color: rgba( 0, 0, 0, 0.5 ); height:100%; margin-bottom:0px;
 		}
 		.error{
 			display:none;top:50%; left:50%; margin-top:-71px; margin-left:-150px; position:absolute; z-index:1001; border-radius:10px; background-color:#FFFFFF; padding-top:22px; margin-right:10px; width:300px;

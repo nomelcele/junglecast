@@ -135,7 +135,7 @@
 					jQuery('.c3_alert_1_line1_7').show();
 				}
 				else if($('.id input').val()!=""&&$('.adress input').val()!=""){
-					$('#m_mail').attr('value',mail);
+					$('#m_mail').attr('value',email);
 					$.ajax({
 						url : "DoubleInfo",
 						type : "Post",
@@ -144,20 +144,21 @@
 						async : false,
 						dataType : "JSON",
 						success : function(response) {								
-							if(response.m_id)
-							{
-								$('.layer_2').css("overflow","hidden");
-								jQuery('.darkwindow').show();
-								jQuery('.c3_alert_1').show();
-								jQuery('.c3_alert_1-1 p').hide();
-								jQuery('c3_alert_1_line1_8').show();
-							}
-							else
+							if(response.m_id=='0')
 							{
 								jQuery('.contents_3').hide();
 								jQuery('.contents_4').show();
 								$('html,body').scrollTop(0);
-							}	
+							}
+							else
+							{
+								jQuery('.darkwindow').show();
+								jQuery('.c3_alert_1').show();
+								jQuery('.c3_alert_1-1 p').hide();
+								jQuery('.c3_alert_1_line1_8').show();
+								$('.id').css("border-bottom", "2px solid red");
+								jQuery('.id_warning3').show();
+							}
 						}
 					});
 				}
@@ -200,67 +201,60 @@
 					jQuery('.c4_alert_1').show();
 				}
 				else{
-					var mail = $('.id input').val()+'@'+$('.adress input').val();
-					var birth = $('.year input').val()+'-'+$('.month select option:selected').val()+'-'+$('.day select option:selected').val();
-					var pw = $('.passwordcorrect input').val();
-					//var pic = $('.pic').val();
-					$('#m_mail').attr('value',mail);
-					$('#m_birth').attr('value',birth);
-					$('#m_pw').attr('value',pw);
-					//$('#m_pic').attr('value',pic);
-					//$('.id').val('asdf');
-					//$('.year').val(year+'-'+month+'-'+day);
-					/* $("form[name ='sendForm']").submit();
-					$("form[name ='sendProfile']").submit();
-					jQuery('.contents_4').hide();
-					jQuery('.contents_5').show();
-					$('html,body').scrollTop(0); */
-					//$("form[name=form1]").serialize();
-					//var form = new FormData($('#insertJoinInfo')[0]);
-					var form = $("form[name=sendForm]").serialize();
-					 $.ajax({/******************************************************/
-						url: "InsertJoinInfo",
-						data: form,
-						dataType: 'JSON',
-						async: false,
-						type: 'POST',
-						success: function (data) {
-							$('#m_id').val(data.m_id);
-							var form2 = $("form[name=sendProfile]").serialize();
-							$.ajax({/*************************************************/
-								url: "InsertProfileInfo",
-								data: form2,
-								dataType: 'JSON',
-								async: false,
-								//processData: false,
-								//contentType: false,
-								type: 'POST',
-								success: function(data2) {
-									jQuery('.contents_4').hide();
-									jQuery('.contents_5').show();
-									$('html,body').scrollTop(0);
-								}
-							});
+					$.ajax({
+						url : "nicknameDoubleInfo",
+						type : "Post",
+						data : {m_nickname: $('.nickname input').val()},
+						cache : false,
+						async : false,
+						dataType : "JSON",
+						success : function(response) {								
+							if(response.m_id=='0')
+							{
+								var mail = $('.id input').val()+'@'+$('.adress input').val();
+								var birth = $('.year input').val()+'-'+$('.month select option:selected').val()+'-'+$('.day select option:selected').val();
+								var pw = $('.passwordcorrect input').val();
+								$('#m_mail').attr('value',mail);
+								$('#m_birth').attr('value',birth);
+								$('#m_pw').attr('value',pw);
+								var form = $("form[name=sendForm]").serialize();
+								 $.ajax({/******************************************************/
+									url: "InsertJoinInfo",
+									data: form,
+									dataType: 'JSON',
+									async: false,
+									type: 'POST',
+									success: function (data) {
+										$('#m_id').val(data.m_id);
+										var form2 = $("form[name=sendProfile]").serialize();
+										$.ajax({/*************************************************/
+											url: "InsertProfileInfo",
+											data: form2,
+											dataType: 'JSON',
+											async: false,
+											//processData: false,
+											//contentType: false,
+											type: 'POST',
+											success: function(data2) {
+												jQuery('.contents_4').hide();
+												jQuery('.contents_5').show();
+												$('html,body').scrollTop(0);
+											}
+										});
+									}
+								});
+							}
+							else
+							{
+								jQuery('.darkwindow').show();
+								jQuery('.c4_alert_2').show();;
+								jQuery('.nickname_warning1').hide();
+								jQuery('.nickname_warning2').hide();
+								jQuery('.nickname_warning2').show();
+							}
 						}
 					});
-					/* var form2 = $("form[name=sendProfile]").serialize();
-					$.ajax({/*************************************************/
-						/* url: "InsertProfileInfo",
-						data: form2,
-						dataType: 'JSON',
-						async: false,
-						//processData: false,
-						//contentType: false,
-						type: 'POST',
-						success: function(data2) {
-							//jQuery('.contents_4').hide();
-							//jQuery('.contents_5').show();
-							//$('html,body').scrollTop(0);
-						}
-					}); */
-					/*jQuery('.contents_4').hide();
-					jQuery('.contents_5').show();
-					$('html,body').scrollTop(0); */
+					
 				}
 			});
 			$('.c4_alert_1_line2').on('click',function(){
@@ -380,11 +374,16 @@
 		    		var email = $('.id input').val()+'@'+$(this).val();
 		    		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;  
 		    		if(regex.test(email)){
+		    			$('.id_warning1').hide();
 		    			$('.id_warning2').hide();
+		    			$('.id_warning3').hide();
 		    			$('.id').css("border-bottom", "2px solid #E9E9E9");
 		    			$('.adress').css("border-bottom", "2px solid #E9E9E9");
 		    		}
 		    		else{
+		    			$('.id_warning1').hide();
+		    			$('.id_warning2').hide();
+		    			$('.id_warning3').hide();
 		    			$('.id').css("border-bottom", "2px solid red");
 		    			$('.adress').css("border-bottom", "2px solid #E9E9E9");
 		    			$('.id_warning2').show();
@@ -645,6 +644,7 @@
 		    });
 		    $('.nickname input').focusout(function(){
 		    	$(this).css("color","#C8C8C8");
+		    	$('.nickname').css("border-bottom", "2px solid #E9E9E9");
 		    	
 		    });
 		    $('.myintro input').focusin(function(){
@@ -654,48 +654,132 @@
 		    $('.myintro input').focusout(function(){
 		    	$(this).css("color","#C8C8C8");
 		    	$('.myintro').css("border-bottom", "2px solid #E9E9E9");
-		    	
 		    });
 		    $('.doublebutton').on('click',function(){
-		    	var email = $('.id input').val()+'@'+$('.adress input').val();
-		    	$('#m_mail').attr('value',mail);
-				if($('.id input').val()==""||$('.adress input').val()==""){
+				var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+				var email = $('.id input').val()+'@'+$('.adress input').val();
+				if($('.id input').val()==""){
 					$('.layer_2').css("overflow","hidden");
 					jQuery('.darkwindow').show();
 					jQuery('.c3_alert_1').show();
 					jQuery('.c3_alert_1-1 p').hide();
 					jQuery('.c3_alert_1_line1').show();
+					$('.id').css("border-bottom", "2px solid red");
+					jQuery('.id_warning1').show();
+				}
+				else if($('.adress input').val()==""){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1').show();
+					$('.adress').css("border-bottom", "2px solid red");
+					jQuery('.id_warning1').show();
+				}
+				else if(!regex.test(email)){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_2').show();
+					jQuery('.c3_alert_2-1 p').hide();
+					jQuery('.c3_alert_2_line1').show();
+					$('.id').css("border-bottom", "2px solid red");
+					jQuery('.id_warning2').show();
 				}
 				else{
 					$.ajax({
 						url : "DoubleInfo",
 						type : "Post",
-						data : {m_mail: $('#m_mail').val()},
+						data : {m_mail: email},
 						cache : false,
 						async : false,
 						dataType : "JSON",
 						success : function(response) {								
-							if(response.m_id)
+							if(response.m_id=='0')
 							{
-								$('.layer_2').css("overflow","hidden");
 								jQuery('.darkwindow').show();
-								jQuery('.c3_alert_1').show();
-								jQuery('.c3_alert_1-1 p').hide();
-								jQuery('c3_alert_1_line1_8').show();
+								jQuery('.c3_alert_3').show();
 							}
 							else
 							{
-								jQuery('.contents_3').hide();
-								jQuery('.contents_4').show();
-								$('html,body').scrollTop(0);
-							}	
+								jQuery('.darkwindow').show();
+								jQuery('.c3_alert_1').show();
+								jQuery('.c3_alert_1-1 p').hide();
+								jQuery('.c3_alert_1_line1_8').show();
+								$('.id').css("border-bottom", "2px solid red");
+								jQuery('.id_warning3').show();
+							}
+						}
+					});
+				} 	
+			});
+			$('.c3_alert_3_line2_1').on('click',function(){
+				jQuery('.c3_alert_3').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();	
+			});
+			$('.c3_alert_3_line2_2').on('click',function(){
+				jQuery('.c3_alert_3').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();
+				
+			});
+			
+		    $('.n_doublebutton').on('click',function(){
+				if($('.nickname input').val()==""){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c4_alert_1').show();
+					jQuery('.nickname_warning1').hide();
+					jQuery('.nickname_warning2').hide();
+					jQuery('.nickname_warning1').show();
+				}
+				else{
+					$.ajax({
+						url : "nicknameDoubleInfo",
+						type : "Post",
+						data : {m_nickname: $('.nickname input').val()},
+						cache : false,
+						async : false,
+						dataType : "JSON",
+						success : function(response) {								
+							if(response.m_id=='0')
+							{
+								jQuery('.darkwindow').show();
+								jQuery('.c4_alert_3').show();
+							}
+							else
+							{
+								jQuery('.darkwindow').show();
+								jQuery('.c4_alert_2').show();;
+								jQuery('.nickname_warning1').hide();
+								jQuery('.nickname_warning2').hide();
+								jQuery('.nickname_warning2').show();
+							}
 						}
 					});
 				}
 			});
+			$('.c4_alert_3_line2_1').on('click',function(){
+				jQuery('.c4_alert_3').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();	
+			});
+			$('.c4_alert_3_line2_2').on('click',function(){
+				jQuery('.c4_alert_3').hide();
+				jQuery('.darkwindow').hide();
+				jQuery('.layer_2').show();
+				
+			});
+			
+			//$('#f_nickname').html($('.nickname input').val());
+			//$('#f_email').html($('#m_mail').val());
+			var nickname = $('.nickname input').val();
+			var e_mail = $('#m_mail').val();
+			$('.f_text').html("<em class = "+"f_em"+">"+nickname+"</em>님의 이메일은<br><em class = "+"f_em"+">"+e_mail+"</em>입니다.")
+			
+
+
 		    
-
-
 		});
 
 
@@ -999,6 +1083,26 @@
 			display: block;font-size: 14px; background-color: #00A1FF; color: #FFFFFF; padding: 10px 0; font-weight: bold; text-align: center; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; text-decoration: none;
 			width:100%; height:45px; border:none; cursor:pointer;
 		}
+		.c3_alert_3{
+			display:none; top: 50%; left: 50%; margin-top: -71px; margin-left: -150px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;
+    		background: #FFFFFF; padding: 22px 0 0 0; 
+		}
+		.c3_alert_3-1{
+			background: #FFFFFF; padding:0px; margin:0px;
+		}
+		.c3_alert_3-1 p{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px; font-family: '돋움'; font-size: 12px;
+		}
+		.c3_alert_3-2{
+			background-color: #00A6DE; padding:0px; text-align: left;border-bottom-left-radius: 10px;
+    		border-bottom-right-radius: 10px; margin:0px;
+		}
+		.c3_alert_3_line2_1{
+			margin:0px; border:none;padding-top:10px; padding-bottom:10px; font-size:14px; display:inline-block; width:49%; background:#CFCFCF; border-bottom-left-radius:10px; text-align:center; font-weight: bold; color: #58595B; cursor:pointer; font-family: '돋움'
+		}
+		.c3_alert_3_line2_2{
+			margin:0px; border:none;padding-top:10px; padding-bottom:10px; font-size:14px; display:inline-block; width:49%; background:#00A6DE; border-bottom-right-radius:10px; text-align:center; font-weight: bold; color: #FFFFFF; cursor:pointer; font-family: '돋움'
+		}
 		/*가입 2-3세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_4{
 			 display:none;  position:relative;background-color:#FFFFFF;background-color: rgba( 255, 255, 255, 0.9 ); height:1010px; margin-bottom:0px;
@@ -1078,9 +1182,29 @@
 		.c4_alert_2-1 p{
 			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px; font-family: '돋움'; font-size: 12px;
 		}
-		.c3_alert_2_line2{
+		.c4_alert_2_line2{
 			display: block;font-size: 14px; background-color: #00A1FF; color: #FFFFFF; padding: 10px 0; font-weight: bold; text-align: center; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; text-decoration: none;
 			width:100%; height:45px; border:none; cursor:pointer;
+		}
+		.c4_alert_3{
+			display:none; top: 50%; left: 50%; margin-top: -71px; margin-left: -150px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;
+    		background: #FFFFFF; padding: 22px 0 0 0; 
+		}
+		.c4_alert_3-1{
+			background: #FFFFFF; padding:0px; margin:0px;
+		}
+		.c4_alert_3-1 p{
+			padding: 15px 45px 30px; font-weight: bold; text-align: center; line-height: 20px; font-family: '돋움'; font-size: 12px;
+		}
+		.c4_alert_3-2{
+			background-color: #00A6DE; padding:0px; text-align: left;border-bottom-left-radius: 10px;
+    		border-bottom-right-radius: 10px; margin:0px;
+		}
+		.c4_alert_3_line2_1{
+			margin:0px; border:none;padding-top:10px; padding-bottom:10px; font-size:14px; display:inline-block; width:49%; background:#CFCFCF; border-bottom-left-radius:10px; text-align:center; font-weight: bold; color: #58595B; cursor:pointer; font-family: '돋움'
+		}
+		.c4_alert_3_line2_2{
+			margin:0px; border:none;padding-top:10px; padding-bottom:10px; font-size:14px; display:inline-block; width:49%; background:#00A6DE; border-bottom-right-radius:10px; text-align:center; font-weight: bold; color: #FFFFFF; cursor:pointer; font-family: '돋움'
 		}
 		/*가입 2-4세부--------------------------------------------------------------------------------------------------------------------*/
 		.contents_5{
@@ -1094,6 +1218,9 @@
 		}
 		.c5_midcontents{
 			width:90%; margin:0 auto;
+		}
+		.f_em{
+			color:#00A1FF; text-decoration:underline; font-style:italic;
 		}
 		
 </style>
@@ -1412,13 +1539,14 @@
 								<input type = "text" name="adress">
 							</span>
 							<span class = "double">
-								<input type = "submit" value = "중복확인" class = "doublebutton">
+								<input type = "button" value = "중복확인" class = "doublebutton">
 							</span>
 							 
 						</span>
 						<div class = "c3_warning">
 							<p class="id_warning1" style="display:none;">이메일은(는) 필수 입력 항목입니다.</p>
 							<p class="id_warning2" style="display:none;">이메일을 잘못 입력하신 것 같아요.. 한 번 더 확인해주세요!</p>
+							<p class="id_warning3" style="display:none;">앗! 이미 사용중인 이메일이네요,혹시 이전에 가입?</p>
 						</div>
 					<h3 style = "margin-top:15px;margin-bottom:10px; font-size:20px; font-weight:normal; font-family:'돋움'">비밀번호*&nbsp</h3>
 						<span class= "c3_line_2">
@@ -1549,8 +1677,16 @@
 		</div>
 		<div class = "c3_alert_2-2">
 			<input type = "submit" value="확인" class="c3_alert_2_line2">
+		</div>		
+	</div>
+	<div class="c3_alert_3">
+		<div class="c3_alert_3-1">
+			<p class="c3_alert_3_line1" style="display = none;">사용가능한 <em style="color: #00a6de; font-style: normal;">이메일</em>정보에요~<br>피키<em style="color: #00a6de; font-style: normal;">이메일</em>로 사용하시겠어요?</p>
 		</div>
-		
+		<div class = "c3_alert_3-2">
+			<input type = "submit" value="취소" class="c3_alert_3_line2_1">
+			<input type = "submit" value="확인" class="c3_alert_3_line2_2">
+		</div>		
 	</div>
 	
 <!------------------------------- 가입 2-2END---------------------------------------------->
@@ -1565,7 +1701,7 @@
 				<div class = "c4_midcontents">
 					<div class = "c4_midtop">
 						<img src = "resources/images/joinImg/default_avatar.png" class="defaultImg">
-                  		<div style = "position:absolute; height:27px; width:27px; background-image:url(resources/images/joinImg/camera.png);">
+                  		<div style = "position:absolute; height:27px; width:27px;">
                      	<!--<input type ='file' name = "m_pic" style="width:0px; height:20;filter:alpha(opacity=0);"/>-->
                      	<input type="hidden" id="m_pic" name="m_pic" value = "asadfasd">
 						</div>
@@ -1578,7 +1714,7 @@
 							<span class="inputCnt">0</span>
 						</span> 
 						<span class = "n_double" style="margin-left:10px;">
-							<input type = "submit" value = "중복확인" class = "n_doublebutton">
+							<input type = "button" value = "중복확인" class = "n_doublebutton">
 						</span>
 					</div>
 					<div class = "c4_nickname_warning">
@@ -1605,7 +1741,7 @@
 	<div class="darkwindow"></div>
 	<div class="c4_alert_1">
 		<div class="c4_alert_1-1">
-			<p class="c4_alert_1_line1" style="display = none;"><em style="color: #00a6de; font-style: normal;">닉네임</em>을 잘못 입력하신 것 같아요..<br>한 번 더 확인해주세요!</p>
+			<p class="c4_alert_1_line1" style="display = none;"><em style="color: #00a6de; font-style: normal;">닉네임</em>은 필수 입력 항목 입니다.</p>
 		</div>
 		<div class = "c4_alert_1-2">
 			<input type = "submit" value="확인" class="c4_alert_1_line2">
@@ -1618,6 +1754,15 @@
 		<div class = "c4_alert_2-2">
 			<input type = "submit" value="확인" class="c4_alert_2_line2">
 		</div>
+	</div>
+	<div class="c4_alert_3">
+		<div class="c4_alert_3-1">
+			<p class="c4_alert_3_line1" style="display = none;">사용가능한 <em style="color: #00a6de; font-style: normal;">닉네임</em>정보에요~<br>피키<em style="color: #00a6de; font-style: normal;">닉네임</em>로 사용하시겠어요?</p>
+		</div>
+		<div class = "c4_alert_3-2">
+			<input type = "submit" value="취소" class="c4_alert_3_line2_1">
+			<input type = "submit" value="확인" class="c4_alert_3_line2_2">
+		</div>		
 	</div>
 <!------------------------------- 가입 2-3 END---------------------------------------------->
 <!------------------------------- 가입 2-4---------------------------------------------->
@@ -1633,7 +1778,10 @@
 					</div>
 					<p style="font-size:20px; color:#707070; font-weight:bold; line-height:27px; text-align:center; font-family:'돋움'; margin:0;">
 					가입이 완료되었습니다.<br>더 즐겁게 피키캐스트를 이용하실 수 있습니다.</p>
-					
+					<p class="f_text" style="font-size:20px; color:#5D5D5D; line-height:20px; text-align:center; margin-top:20px; font-family:'돋움';">
+					<!--<em class = "f_em"style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>님의 이메일은<br><em class = "f_em" style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>입니다.  --></p>
+					<a href="/junglecast/main" style="display:block; color:#FFFFFF; background-color:#0090C0; width:360px; padding-top:14px; padding-bottom:13px; margin:35px auto 0; text-align:center; font-size:16px; text-decoration:none; font-family:'돋움';">
+					시작하기</a>
 				</div>
 			</div>
 		</div>

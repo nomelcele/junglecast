@@ -31,5 +31,28 @@
 	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
 		<property name="contentType" value="text/html;charset=UTF-8"/>
 	</bean>
+	
+	<bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="username" value="june19385@gmail.com" />
+        <property name="password" value="Missdpdl7" />
+       
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+               
+               
+            </props>
+        </property>
+       
+    </bean>
+    <bean id="email" class="or.junglecast.email.Email">
+    </bean>
+    <bean id="emailSender" class="or.junglecast.email.EmailSender">
+    </bean>
+	
 
 </beans>
