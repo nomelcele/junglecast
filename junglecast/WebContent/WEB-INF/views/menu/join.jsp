@@ -134,6 +134,33 @@
 					jQuery('.c3_alert_1-1 p').hide();
 					jQuery('.c3_alert_1_line1_7').show();
 				}
+				else if($('.id input').val()!=""&&$('.adress input').val()!=""){
+					$('#m_mail').attr('value',mail);
+					$.ajax({
+						url : "DoubleInfo",
+						type : "Post",
+						data : {m_mail: $('#m_mail').val()},
+						cache : false,
+						async : false,
+						dataType : "JSON",
+						success : function(response) {								
+							if(response.m_id)
+							{
+								$('.layer_2').css("overflow","hidden");
+								jQuery('.darkwindow').show();
+								jQuery('.c3_alert_1').show();
+								jQuery('.c3_alert_1-1 p').hide();
+								jQuery('c3_alert_1_line1_8').show();
+							}
+							else
+							{
+								jQuery('.contents_3').hide();
+								jQuery('.contents_4').show();
+								$('html,body').scrollTop(0);
+							}	
+						}
+					});
+				}
 				else{
 					jQuery('.contents_3').hide();
 					jQuery('.contents_4').show();
@@ -629,6 +656,43 @@
 		    	$('.myintro').css("border-bottom", "2px solid #E9E9E9");
 		    	
 		    });
+		    $('.doublebutton').on('click',function(){
+		    	var email = $('.id input').val()+'@'+$('.adress input').val();
+		    	$('#m_mail').attr('value',mail);
+				if($('.id input').val()==""||$('.adress input').val()==""){
+					$('.layer_2').css("overflow","hidden");
+					jQuery('.darkwindow').show();
+					jQuery('.c3_alert_1').show();
+					jQuery('.c3_alert_1-1 p').hide();
+					jQuery('.c3_alert_1_line1').show();
+				}
+				else{
+					$.ajax({
+						url : "DoubleInfo",
+						type : "Post",
+						data : {m_mail: $('#m_mail').val()},
+						cache : false,
+						async : false,
+						dataType : "JSON",
+						success : function(response) {								
+							if(response.m_id)
+							{
+								$('.layer_2').css("overflow","hidden");
+								jQuery('.darkwindow').show();
+								jQuery('.c3_alert_1').show();
+								jQuery('.c3_alert_1-1 p').hide();
+								jQuery('c3_alert_1_line1_8').show();
+							}
+							else
+							{
+								jQuery('.contents_3').hide();
+								jQuery('.contents_4').show();
+								$('html,body').scrollTop(0);
+							}	
+						}
+					});
+				}
+			});
 		    
 
 
@@ -759,7 +823,7 @@
 			border-radius: 0px 0px 0px 0px; float:right;
 		}
 		.darkwindow{
-			display:none; position: fixed; z-index: 100; left: 0px; top: 0px;width: 100%;height: 100%;background-color: rgba( 0, 0, 0, 0.6 ); height:100%; margin-bottom:0px;
+			display:none; position: fixed; z-index: 100; left: 0px; top: 0px;width: 100%;height: 100%;background-color: rgba( 0, 0, 0, 0.5 ); height:100%; margin-bottom:0px;
 		}
 		.c2_alert_1{
 			display:none; top: 50%; left: 50%; margin-top: -71px; margin-left: -150px; position: fixed; z-index: 1001;min-width: 300px; border-radius: 10px;

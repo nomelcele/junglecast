@@ -17,7 +17,28 @@
 					jQuery('#warning2').show();
 				}
 				else if(regex.test($('#id').val())){
-					
+					$.ajax({
+						url : "LoginInfo",
+						type : "Post",
+						data : {m_mail: $('#id').val(), pw: $('#pw').val()},
+						cache : false,
+						async : false,
+						dataType : "JSON",
+						success : function(response) {								
+							if($('#pw').val()==response.m_pw)
+							{
+								loginsuccess();
+							}
+							else
+							{
+								jQuery('.darkwindow').show();
+								jQuery('.error').show();
+								jQuery('#warning1').hide();
+								jQuery('#warning2').hide();
+							}	
+						}
+					});
+
 				}
 				else{
 					jQuery('.darkwindow').show();
@@ -151,10 +172,10 @@
 		<div id = "c_board">
 			<form action = "" method="post">
 				<div id = "b_id">
-					<input type = "text" name="id" placeholder = "이메일을 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'" id = "id"/>
+					<input type = "text" name="m_mail" placeholder = "이메일을 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '이메일을 입력하세요.'" id = "id"/>
 				</div>
 				<div id = "b_pw">	
-					<input type = "password" name="pw" placeholder = "비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요.'" id = "pw"/>
+					<input type = "password" name="m_pw" placeholder = "비밀번호를 입력하세요." onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호를 입력하세요.'" id = "pw"/>
 				</div>
 			</form>
 			<div id = "emailsave" style="line-height:16px;">
