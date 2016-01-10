@@ -28,4 +28,7 @@
 		</if>
 		m_introduce=#{m_introduce} where m_id=#{m_id}
   	</update>
+  	<delete id="deleteAccount" parameterType="int">
+  		delete from account where m_id=#{m_id}
+  	</delete>
   </mapper>

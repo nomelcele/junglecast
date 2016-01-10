@@ -164,7 +164,6 @@ function left_area_positioning(){
 					<div class="profileSubBox">
 						<h1>이메일</h1>
 						<span class="profileNameInput">
-<!-- 							<input type="text" value="junglecast@gmail.com" readonly> -->
 							<input type="text" value="${myAccount.m_mail}" readonly>
 						</span>
 					</div>
@@ -233,6 +232,27 @@ function left_area_positioning(){
 				</div>
 			</div>
 		</section>
+	</div>
+	<div id="copyLink" class="modal link">
+		<div class="modal-dialog">
+	    	<div class="modal-content link-content">
+	    		<div class="link-container">
+	    			<div id="linkArea">
+			     		<a id="linkCloseBtn">×</a>
+			     		<h2>비밀번호 확인</h2>
+			     		<div class="pwdInputBox">
+			     			<p>계정을 삭제하기 전<br/>비밀번호를 한 번 더 확인해 주세요.</p>
+			     			<div class="pwdInputSubBox">
+			     				<span class="pwdLabel">비밀번호</span>
+			     				<input type="password" id="deleteAccountPwd" placeholder="비밀번호를 입력하세요.">
+			     			</div>
+			     			<span class="warningTxt" id="deleteAccountWarning"></span>
+			     		</div>
+			     		<a class="deleteAccountBtn">계정 삭제</a>
+	    			</div>
+	    		</div>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

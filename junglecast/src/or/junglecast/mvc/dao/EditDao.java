@@ -31,4 +31,9 @@ public class EditDao {
 		// 정보 변경
 		st.update("edit.editProfile", prvo);
 	}
+	
+	public void deleteAccount(int m_id){
+		// 계정 삭제
+		st.delete("edit.deleteAccount", m_id);
+	}
 }

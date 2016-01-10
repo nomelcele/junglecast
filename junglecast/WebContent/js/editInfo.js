@@ -126,6 +126,32 @@ $(function(){
 		// 변경 내용 저장
 		$("#profileForm").submit();
 	});
+	
+	$(".deleteAccount").click(function(){
+		$("#copyLink").css('display','table');
+		$("#main_body").css("overflow","hidden");
+	});
+	
+	$("#deleteAccountPwd").keyup(function(){
+		if($(this).val() != $("#userPwd").val()){
+			// 현재 비밀번호를 잘못 입력했을 경우
+			$("#deleteAccountWarning").html("비밀번호가 틀렸습니다.");
+		} else {
+			$("#deleteAccountWarning").html("");
+		}
+	});
+	
+	$(".deleteAccountBtn").click(function(){
+		// 계정 삭제
+		if($("#deleteAccountWarning").html() == ("")){
+			location="deleteAccount";
+		}
+	});
+	
+	$("#linkCloseBtn").click(function(){
+		$("#copyLink").css('display','none');
+		$("#main_body").css("overflow","visible");
+	});
 });
 
 
