@@ -22,13 +22,12 @@
 
 function loadMore(){
 	$.ajax({
-		url: "selectThisCategory",
+		url: "loadMoreThisCategory",
 		data: {categoryId : $('#hidden_cate_id').val(), num:$('.aCard').length},
 		dataType: 'JSON',
 		type: 'POST',
 		async:false,
 		success: function (data) {
-			$('#contents_cards_area').empty();
 			var aCard='';
 			$.each(data.result, function(index, entry){
 				aCard += '<div class="aCard"><div class="aCard_img_div">';

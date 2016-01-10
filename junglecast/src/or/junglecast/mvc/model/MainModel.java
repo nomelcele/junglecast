@@ -54,10 +54,11 @@ public class MainModel {
 		return mav;
 	}
 	
-	@RequestMapping("selectThisCategory")
+	@RequestMapping("loadMoreThisCategory")
 	public ModelAndView selectThisCategory(@RequestParam("categoryId") String category_id, @RequestParam("num") String num){
 		ModelAndView mav = new ModelAndView("jsonView");
 		HashMap<String, Integer> map = new HashMap<>();
+		System.out.println("loadMoreThisCategory : " +category_id + "," + num);
 		map.put("category_id", Integer.parseInt(category_id));
 		map.put("num", Integer.parseInt(num));
 		mav.addObject("result", dao.selectThisCategory(map));

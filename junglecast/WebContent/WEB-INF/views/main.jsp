@@ -14,6 +14,75 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="js/leftMenu.js"></script>
 <script src="js/main.js"></script>
+<style type="text/css">
+#article_img_container{height:288px; width:630px; float: left; border:1px solid #e6e7e8; margin:8px 1px; cursor: pointer;}
+		#article_imgs{height: 288px; width: 100%; overflow: hidden; }
+		#rank_article_area{height:288px; width:346px; float:right; background: #fff; border:1px solid #e6e7e8; margin:8px 1px;}
+			#rank_top{height:30px; line-height:30px; width:310px; margin:4px auto; padding: 2px 8px 0 8px; border-bottom: 1px solid #00a1ff;}
+			#rank_text{color:#00a1ff; font-weight: bolder; font-size: 14px; float:left;}
+			#rank_time{color:#a5a4a4; font-size:12px; float:right;}
+		#rank_content{margin: 4px 0 0 10px;padding: 0 6px 6px 6px; font-size:12px; }
+			#rank-list a {color:#a5a4a4;}
+			#rank-list a:hover {text-decoration: underline; cursor:pointer;}
+			#rank-list {overflow: hidden; width: 280px;height: 240px;margin: 0;}
+			#rank-list dt {display: none;}
+			#rank-list dd {position: relative;margin: 0;}
+			#rank-list ol {position: absolute; top: -30px; left: 0; margin: 0; padding: 0; list-style-type: none; width:100%;}
+			#rank-list li {height: 30px;line-height: 30px; width:100%; overflow:hidden;}
+			.rank_num{color:#00a1ff; font-size:15px; width:16px; display:inline-block; margin-right:16px; font-weight: bold; text-align: right;}
+			
+/*이미지 슬라이더 관련 css*/
+.skdslider{width:100%; position: relative; display: block; overflow:hidden; height: 100%;}
+.skdslider:after {content: '';padding-top: 50%; display: block;}
+.skdslider ul.slides{ margin:0; padding:0; list-style-type:none;}
+.skdslider ul.slides li{display: none;}
+.skdslider ul.slides li img{width: 100%; height:288px; border:0;}
+.skdslider ul.slide-navs {bottom: 50px; left: 50%; position: absolute; list-style-type: none; margin: 0; padding: 0;}
+.skdslider ul.slide-navs li {
+    float: left; background: url("resources/images/main/imageSlider_icons/slide-bg.png") no-repeat scroll 0 0 transparent;
+	height:12px; width:12px; margin-right:4px; cursor:pointer;
+}
+.skdslider ul.slide-navs li.current-slide {
+  background: url("resources/images/main/imageSlider_icons/slide-bg-active.png") no-repeat scroll 0 0 transparent;
+}
+.skdslider .slide-desc {
+    background: url("resources/images/main/imageSlider_icons/slide_desc.png") repeat scroll 0 0 transparent;
+    left: 0; padding: 0 15px 0 15px; position: absolute; bottom: 15%; max-width: 85%; display:inline-block;
+}
+.skdslider a.prev{
+    background:url("resources/images/main/imageSlider_icons/left.png") no-repeat scroll 0 0 transparent;
+	width:35px; height:35px; display:block; cursor:pointer; position:absolute; top:50%; left:2%; margin-top:-17px;
+}
+.skdslider a.next{
+    background: url("resources/images/main/imageSlider_icons/right.png") no-repeat scroll 0 0 transparent;
+	width:35px; height:35px; display:block; cursor:pointer; position:absolute; top:50%; right:2%; margin-top:-17px;
+}
+/*이미지 슬라이더 관련 css 끝*/
+/*반응형 css*/ 
+@media only screen and (min-width:1024px) and (max-width:1279px){
+	#article_img_container{width:64.5%; margin:0px 0px; border: none;}
+	#article_imgs{height: 100%;}
+	.skdslider ul.slides li img{width: 100%; height:100%; border:0;}
+	#rank_article_area{width:35%; float:right; margin:0px 0px;}
+		#rank_top{width:90%;}
+}
+
+@media only screen and (min-width:768px) and (max-width:1023px){
+	#article_img_container{width:64.5%; height: 230px; margin:0px 0px; border: none;}
+	#article_imgs{height: 100%;}
+	.skdslider ul.slides li img{width: 100%; height:100%; border:0;}
+	#rank_article_area{width:35%; height:230px; float:right; margin:0px 0px; overflow:hidden;}
+		#rank_top{width:90%;}
+}
+
+@media only screen and (max-width:767px){
+	#article_img_container{width:100%; height:36%; margin:0px 0px; border: none;}
+	#article_imgs{height: 100%;}
+	.skdslider ul.slides li img{width: 100%; height:100%; border:0;}
+	#rank_article_area{display:none;}
+}
+
+</style>
 <script type="text/javascript">
 
 $(document).ready(function(){

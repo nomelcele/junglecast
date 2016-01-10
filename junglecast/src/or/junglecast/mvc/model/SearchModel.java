@@ -82,6 +82,7 @@ public class SearchModel {
 		ModelAndView mav = new ModelAndView("search/search");
 		mav.addObject("mobile", "mobile");
 		mav.addObject("section", "story");
+		mav.addObject("recommend", sDao.recommendSearchKey());
 		return mav;
 	}
 	
