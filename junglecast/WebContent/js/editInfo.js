@@ -88,6 +88,29 @@ $(function(){
 			alert("생성할 수 있는 피드는 3개가 최대입니다.");
 		}
 	});
+	
+	$("#currentPwd").keyup(function(){
+		if($(this).val() != $("#userPwd").val()){
+			// 현재 비밀번호를 잘못 입력했을 경우
+			$("#currentPwdWarning").html("비밀번호가 틀렸습니다.");
+		} else {
+			$("#currentPwdWarning").html("");
+		}
+	});
+	
+	$("#newPwd2").keyup(function(){
+		if($("#newPwd").val() != $(this).val()){
+			// 새로운 비밀번호 재입력이 일치하지 않는 경우
+			$("#newPwdWarning").html("비밀번호가 일치하지 않습니다.");
+		} else {
+			$("#newPwdWarning").html("");
+		}
+	});
+	
+	$(".editPwdBtn").click(function(){
+		// 비밀번호 변경
+		$("#changePwdForm").submit();
+	});
 });
 
 

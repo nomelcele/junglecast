@@ -13,10 +13,16 @@ public class EditDao {
 	private SqlSessionTemplate st;
 	
 	public AccountVO myAccount(int m_id){
+		// 로그인한 회원의 계정 정보
 		return st.selectOne("edit.myAccount", m_id);
 	}
 	
 	public ProfileVO myProfile(int m_id){
+		// 로그인한 회원의 프로필 정보
 		return st.selectOne("edit.myProfile", m_id);
+	}
+	
+	public void changePwd(AccountVO acvo){
+		st.update("edit.changePwd", acvo);
 	}
 }

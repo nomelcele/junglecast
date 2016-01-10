@@ -17,6 +17,7 @@ public class EditModel {
 	
 	@RequestMapping("editInfo")
 	public String editInfo(Model model){
+		// 개인 정보 수정 페이지 이동
 		int m_id = 1;
 //		int m_id = ((AccountVO)session.getAttribute("acvo")).getM_id(); // 로그인한 회원 번호
 		model.addAttribute("myAccount", edao.myAccount(m_id)); // 계정 정보
@@ -29,4 +30,14 @@ public class EditModel {
 		return "editInfo";
 	}
 
+	@RequestMapping("changePwd")
+	public String changePwd(String m_pw){
+		// 비밀번호 변경
+		AccountVO acvo = new AccountVO();
+//		acvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id());
+		acvo.setM_id(1);
+		acvo.setM_pw(m_pw);
+		edao.changePwd(acvo);
+		return "redirect:main";
+	}
 }

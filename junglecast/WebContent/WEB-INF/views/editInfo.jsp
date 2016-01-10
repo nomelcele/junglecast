@@ -206,27 +206,31 @@ function left_area_positioning(){
 					<div class="profileSubBox">
 						<h1>현재 비밀번호 입력</h1>
 						<span class="profileNameInput">
-							<input type="text" id="currentPwd" placeholder="현재 비밀번호">
+							<input type="password" id="currentPwd" placeholder="현재 비밀번호">
 						</span>
+						<span class="warningTxt" id="currentPwdWarning"></span>
 					</div>
 					<div class="profileSubBox">
 						<h1>새로운 비밀번호 입력</h1>
 						<span class="profileNameInput">
-							<input type="text" id="newPwd" placeholder="새로운 비밀번호">
+							<input type="password" id="newPwd" placeholder="새로운 비밀번호">
 						</span>
+						<span class="warningTxt" id="newPwdWarning"></span>
 					</div>
 					<div class="profileSubBox">
-						<h1>새로운 비밀번호 재입력</h1>
-						<span class="profileNameInput">
-							<input type="text" id="newPwd2" name="m_pw" placeholder="새로운 비밀번호 재입력">
-						</span>
+						<form id="changePwdForm" action="changePwd" method="post">
+							<h1>새로운 비밀번호 재입력</h1>
+							<span class="profileNameInput">
+								<input type="password" id="newPwd2" name="m_pw" placeholder="새로운 비밀번호 재입력">
+							</span>
+						</form>
 					</div>
 					<a class="editBtn editPwdBtn">비밀번호 변경</a>				
 				</div>
 			</div>
 			<div class="editBox editSaveBox">
 				<div class="editSaveSubBox">
-					<a class="editBtn editCancelBtn">취소</a>
+					<a class="editBtn editCancelBtn" onclick="location='main'">취소</a>
 					<a class="editBtn editSaveBtn">저장</a>
 				</div>
 			</div>
