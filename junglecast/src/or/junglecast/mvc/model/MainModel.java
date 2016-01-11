@@ -32,13 +32,9 @@ public class MainModel {
 			id=0;
 		}
 		System.out.println("id : " + id);
-		if(id > 0){
-			mav.addObject("m_id", id);
-			mav.addObject("userInfo", dao.selectUserInfo(id));
-			
-		}else{
-			mav.addObject("m_id", 0);	
-		}
+		mav.addObject("m_id", id);
+		mav.addObject("userInfo", dao.selectUserInfo(id));
+
 		mav.addObject("bestArticles", dao.selectBestArticles());
 		mav.addObject("categories", dao.selectCategoryLists());
 		mav.addObject("contents", dao.selectArticleLists(0));
@@ -58,11 +54,19 @@ public class MainModel {
 	}
 	
 	@RequestMapping("category")
-	public ModelAndView categoryPage(@RequestParam("category_id") String cate_id){
+	public ModelAndView categoryPage(@RequestParam("category_id") String cate_id, HttpSession session){
 		ModelAndView mav = new ModelAndView("category");
 		HashMap<String, Integer> map = new HashMap<>();
 		map.put("category_id",  Integer.parseInt(cate_id));
 		map.put("num", 0);
+		int id = 0;
+		try{
+			id = (int) session.getAttribute("id");
+		}catch(Exception e){
+			id=0;
+		}
+		mav.addObject("m_id", id);
+		mav.addObject("userInfo", dao.selectUserInfo(id));
 		mav.addObject("category_info", dao.selectCateName(Integer.parseInt(cate_id)));
 		mav.addObject("contents", dao.selectThisCategory(map)); 
 		mav.addObject("categories", dao.selectCategoryLists());

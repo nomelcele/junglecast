@@ -5,7 +5,7 @@
   <mapper namespace="wa">
 
 	<insert id="insertArticle" parameterType="arvo" >
-		INSERT INTO ARTICLE VALUES(ARTICLE_ID_SEQ.NEXTVAL, 1, #{article_title}, #{article_subtitle}, 0, 0, 0, 0, NULL, #{category_id}, sysdate)
+		INSERT INTO ARTICLE VALUES(ARTICLE_ID_SEQ.NEXTVAL, #{m_id}, #{article_title}, #{article_subtitle}, 0, 0, 0, 0, NULL, #{category_id}, sysdate)
 	</insert>
 	
 	<select id="selectLatestKey" resultType="int">

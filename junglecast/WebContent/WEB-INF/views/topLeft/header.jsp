@@ -61,6 +61,10 @@
 		$('.logout_menu').click(function(){
 			location.href="#";
 		});
+		//로그인 클릭
+		$('.login_menu').click(function(){
+			location.href="menu=login";
+		});
 		
 
 		$(window).resize(function(){
@@ -176,7 +180,14 @@ function goSearch(){
 	</div>
 	<div class="menu_option_wrapper">
 		<div class="menu_arrow"><img src="resources/images/topbarImg/arrow.png"></div>
-		<div class="logout_menu"><span>로그아웃</span></div>
+		 <c:choose> 
+			<c:when test="${m_id == 0 }">
+				<div class="login_menu"><span>로그인</span></div>
+			</c:when>
+			<c:otherwise>
+				<div class="logout_menu"><span>로그아웃</span></div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 
 </header>

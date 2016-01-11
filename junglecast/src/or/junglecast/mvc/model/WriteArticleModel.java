@@ -14,6 +14,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import or.junglecast.fileupload.FileUpload;
 import or.junglecast.mvc.dao.MainDao;
@@ -48,9 +49,15 @@ public class WriteArticleModel {
 	}
 
 	@RequestMapping(value = "insertArticle", method = RequestMethod.POST)
-	public ModelAndView insertArticle(ArticleVO aVo){
+	public ModelAndView insertArticle(ArticleVO aVo, HttpSession session){
 		ModelAndView mav = new ModelAndView("jsonView");
-		System.out.println(aVo.getArticle_title()+", " + aVo.getArticle_subtitle() + " , " + aVo.getCategory_id());
+		int id = 0;
+		try{
+			id = (int) session.getAttribute("id");
+		}catch(Exception e){
+			id=0;
+		}
+		aVo.setM_id(id);
 		int insertedArticle = waDao.insertArticle(aVo);
 		mav.addObject("article_id", insertedArticle);
 		return mav;
