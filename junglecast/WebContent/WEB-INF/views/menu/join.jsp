@@ -251,6 +251,7 @@
 								jQuery('.nickname_warning1').hide();
 								jQuery('.nickname_warning2').hide();
 								jQuery('.nickname_warning2').show();
+								$("#aaaa").html($("#bbbb").val());
 							}
 						}
 					});
@@ -773,9 +774,9 @@
 			
 			//$('#f_nickname').html($('.nickname input').val());
 			//$('#f_email').html($('#m_mail').val());
-			var nickname = $('.nickname input').val();
-			var e_mail = $('#m_mail').val();
-			$('.f_text').html("<em class = "+"f_em"+">"+nickname+"</em>님의 이메일은<br><em class = "+"f_em"+">"+e_mail+"</em>입니다.")
+			//var nickname = $('.nickname input').val();
+			//var e_mail = $('#m_mail').val();
+			//$('.f_text').html("<em class = "+"f_em"+">"+nickname+"</em>님의 이메일은<br><em class = "+"f_em"+">"+e_mail+"</em>입니다.")
 			
 
 
@@ -1786,7 +1787,7 @@
 					<p style="font-size:20px; color:#707070; font-weight:bold; line-height:27px; text-align:center; font-family:'돋움'; margin:0;">
 					가입이 완료되었습니다.<br>더 즐겁게 피키캐스트를 이용하실 수 있습니다.</p>
 					<p class="f_text" style="font-size:20px; color:#5D5D5D; line-height:20px; text-align:center; margin-top:20px; font-family:'돋움';">
-					<!--<em class = "f_em"style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>님의 이메일은<br><em class = "f_em" style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>입니다.  --></p>
+					<em class = "f_em"style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>님의 이메일은<br><em class = "f_em" style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>입니다.</p>
 					<a href="/junglecast/main" style="display:block; color:#FFFFFF; background-color:#0090C0; width:360px; padding-top:14px; padding-bottom:13px; margin:35px auto 0; text-align:center; font-size:16px; text-decoration:none; font-family:'돋움';">
 					시작하기</a>
 				</div>
