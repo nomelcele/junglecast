@@ -1117,7 +1117,13 @@
 			width:90%; margin:0 auto;
 		}
 		.c4_midtop{
-			height:120px; padding-top:94px; padding-bottom:55px;
+			height:120px; padding-top:94px; padding-bottom:55px;position: relative;
+		}
+		.imgbtn{
+			background:url(resources/images/joinImg/camera.png) no-repeat 0 -569px; display: block; width: 27px; height: 27px; position: absolute; top: 45px; left: 125px;
+		}
+		.imgbtn input[type=file]{
+			width:0px; height:20; opacity:0;
 		}
 		.defaultImg{
 			display:block; width:110px; height:110px; border-radius:60px; margin:0 auto;
@@ -1701,13 +1707,14 @@
 				<div class = "c4_midcontents">
 					<div class = "c4_midtop">
 						<img src = "resources/images/joinImg/default_avatar.png" class="defaultImg">
-                  		<div style = "position:absolute; height:27px; width:27px;">
-                     	<!--<input type ='file' name = "m_pic" style="width:0px; height:20;filter:alpha(opacity=0);"/>-->
+						<a class="imgbtn"><input type="file" id="m_pic" name="m_picFile"></a>
+                  		<!--<div style = "position:absolute; height:27px; width:27px;">
+                     	<input type ='file' name = "m_pic" style="width:0px; height:20;filter:alpha(opacity=0);"/>
+                     	
                      	<input type="hidden" id="m_pic" name="m_pic" value = "asadfasd">
-						</div>
+						</div>-->
 					</div>
 					<h3 style = "margin-top:0px;margin-bottom:8px; font-size:20px; font-weight:normal; font-family:'돋움'">닉네임*&nbsp</h3>
-					------------------ 프로필사진 업로드 미완성 --------------------
 					<div class = "c4_line_1">
 						<span class = "nickname">
 							<input type = "text" name="m_nickname" maxlength="14" placeholder = "닉네임을 입력해 주세요 (최대 14자)" onfocus="this.placeholder = ''" onblur="this.placeholder = '닉네임을 입력해 주세요 (최대 14자)'">
