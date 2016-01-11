@@ -93,7 +93,7 @@
 		       <div class="replyWriteBox">
 		       		<div class="replyWrite">
 		       			<div class="imgBox">
-				       		<img src="resources/memberImg/gildong.jpg">
+				       		<img src="resources/memberImg/${myProfile.m_pic}">
 					    </div>
 					    <div class="replyTextBox">
 					    	<div class="replyInput">

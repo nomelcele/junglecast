@@ -60,7 +60,6 @@
 		//로그아웃 클릭
 		$('.logout_menu').click(function(){
 			//location.href="logout";
-			
 			location.href="main";
 		});
 		//로그인 클릭

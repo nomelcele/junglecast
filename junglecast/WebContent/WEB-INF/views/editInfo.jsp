@@ -188,8 +188,8 @@ function left_area_positioning(){
 						<div class="accountSubBox accountGender">
 							<input type="hidden" id="userGender" value="${myAccount.m_gender}">
 							<select id="m_gender" disabled>
-								<option value="m">남성</option>
-								<option value="f">여성</option>
+								<option value="male">남성</option>
+								<option value="female">여성</option>
 							</select>
 						</div>
 						<span class="warningTxt">성별은 가입 후엔 변경할 수 없습니다.</span>

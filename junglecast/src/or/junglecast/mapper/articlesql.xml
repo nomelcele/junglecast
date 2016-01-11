@@ -34,14 +34,14 @@
   	where reply_id=#{reply_id} and rr.m_id=ac.m_id and ac.m_id=p.m_id order by rereply_date desc
   </select>
   <insert id="writeReply" parameterType="revo">
-  	insert into reply values(reply_id_seq.nextVal,2,#{article_id},0,#{reply_text},sysdate)
+  	insert into reply values(reply_id_seq.nextVal,#{m_id},#{article_id},0,#{reply_text},sysdate)
   </insert>
   <update id="updateReply" parameterType="int">
   	update article set article_reply=(select article_reply from article where article_id=#{article_id})+1 
   	where article_id=#{article_id}  
   </update>
   <insert id="writeRereply" parameterType="rrvo">
-  	insert into re_reply values(rereply_id_seq.nextVal,2,#{reply_id},#{rereply_text},sysdate)
+  	insert into re_reply values(rereply_id_seq.nextVal,#{m_id},#{reply_id},#{rereply_text},sysdate)
   </insert>
   <update id="likeReply" parameterType="int">
   	update reply set reply_like=(select reply_like from reply where reply_id=#{reply_id})+1 

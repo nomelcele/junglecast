@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import or.junglecast.mvc.dao.ArticleDao;
+import or.junglecast.mvc.dao.EditDao;
 import or.junglecast.vo.AccountVO;
 import or.junglecast.vo.ArticleVO;
 import or.junglecast.vo.Re_replyVO;
@@ -22,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ArticleModel {
 	@Autowired
 	private ArticleDao adao;
+	@Autowired
+	private EditDao edao;
 	
 	@RequestMapping(value="articleDetail")
-	public String articleDetail(int article_id, String type, Model model){
+	public String articleDetail(int article_id, String type, Model model, HttpSession session){
 		// 게시물 불러오기
 		adao.updateView(article_id); // 조회수 증가
 		ArticleVO arvo = adao.articleContent(article_id);
@@ -33,6 +36,7 @@ public class ArticleModel {
 		model.addAttribute("editorInfo", adao.editorInfo(arvo.getM_id())); // 작성자 프로필
 		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // 베스트 댓글 목록
 		model.addAttribute("replyList", adao.replyList(article_id)); // 댓글 목록
+		model.addAttribute("myProfile", edao.myProfile((int)session.getAttribute("id")));
 		
 		if(type.equals("modal")){
 			return "detail/articleDetail";
@@ -76,7 +80,8 @@ public class ArticleModel {
 	public String writeReply(ReplyVO revo, Model model, HttpSession session){
 		// 댓글 작성
 		int article_id = revo.getArticle_id();
-		revo.setM_id((Integer)(session.getAttribute("id"))); // 현재 접속한 사용자의 번호
+		System.out.println("댓글 작성자: "+(int)(session.getAttribute("id")));
+		revo.setM_id((int)(session.getAttribute("id"))); // 현재 접속한 사용자의 번호
 		adao.writeReply(revo); // 댓글 작성
 		adao.updateReply(article_id); // 댓글 갯수 증가
 		return "redirect:replyList?article_id="+revo.getArticle_id();
@@ -91,9 +96,10 @@ public class ArticleModel {
 	}
 	
 	@RequestMapping(value="rereplyList")
-	public String rereplyList(int reply_id, Model model){
+	public String rereplyList(int reply_id, Model model, HttpSession session){
 		// 답글 불러오기
 		model.addAttribute("rereplyList", adao.rereplyList(reply_id));
+		model.addAttribute("myProfile", edao.myProfile((int)session.getAttribute("id")));
 		model.addAttribute("reply_id", reply_id);
 		return "detail/rereplyList";
 	}
@@ -101,7 +107,8 @@ public class ArticleModel {
 	@RequestMapping(value="writeRereply")
 	public String writeRereply(Re_replyVO rrvo, HttpSession session){
 		// 답글 작성
-		rrvo.setM_id((Integer)(session.getAttribute("id"))); // 현재 접속한 사용자의 번호
+		System.out.println("답글 작성자: "+(int)(session.getAttribute("id")));
+		rrvo.setM_id((int)(session.getAttribute("id"))); // 현재 접속한 사용자의 번호
 		adao.writeRereply(rrvo);
 		return "redirect:rereplyList?reply_id="+rrvo.getReply_id();
 	}
