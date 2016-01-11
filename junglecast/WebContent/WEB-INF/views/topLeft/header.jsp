@@ -59,7 +59,9 @@
 		
 		//로그아웃 클릭
 		$('.logout_menu').click(function(){
-			location.href="#";
+			//location.href="logout";
+			<% session.invalidate();%>
+			location.href="main";
 		});
 		//로그인 클릭
 		$('.login_menu').click(function(){
