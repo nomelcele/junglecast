@@ -26,7 +26,6 @@ public class EditModel {
 	@RequestMapping("editInfo")
 	public String editInfo(HttpSession session, Model model){
 		// 개인 정보 수정 페이지 이동
-//		int m_id = 1; 
 		System.out.println("id: "+session.getAttribute("id"));
 		int m_id = (int)(session.getAttribute("id")); // 로그인한 회원 번호
 		model.addAttribute("m_id", m_id);//헤더에 필요한 정보
@@ -46,7 +45,6 @@ public class EditModel {
 		// 비밀번호 변경
 		AccountVO acvo = new AccountVO();
 		acvo.setM_id((int)(session.getAttribute("id")));
-		acvo.setM_id(1);
 		acvo.setM_pw(m_pw);
 		edao.changePwd(acvo);
 		return "redirect:main";
@@ -78,7 +76,6 @@ public class EditModel {
 			prvo.setM_pic(fileName);
 		}
 		
-		prvo.setM_id(1);
 		edao.editProfile(prvo);
 		return "redirect:main";
 	}
@@ -87,7 +84,7 @@ public class EditModel {
 	public String deleteAccount(HttpSession session){
 		// 계정 삭제
 		int m_id = (int)(session.getAttribute("id"));
-		edao.deleteAccount(1);
+		edao.deleteAccount(m_id);
 		return "redirect:main";
 	}
 	
