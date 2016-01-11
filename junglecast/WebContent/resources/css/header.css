@@ -10,7 +10,7 @@
 					   background-size : 100% auto; position:absolute;}
 	#profile_icons{position:relative; float:right; display:inline-block;}
 	#login_info{position:absolute; top:10px; right : 110px; height : 30px; width:240px; border-right: 1px solid #80d3ef; display:inline-block; }
-	#login_txt{color:white; font-size:12px;}
+	#login_txt{color:white; font-size:12px; margin-top:-10px; float:left;}
 	#profile_img{width: 30px; height: 30px; border-radius:15px; float:left;}
 	#login_nickname{color:white; float:left;width:120px; height:28px; line-height:28px; vertical-align: top; font-size: 13px; margin-left: 5px;}
 	#notice_bell{width:28px; height:30px; background:url("resources/images/topbarImg/bell_white.png") no-repeat 0 3px; 
