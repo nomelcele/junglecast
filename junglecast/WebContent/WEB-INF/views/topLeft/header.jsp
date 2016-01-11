@@ -130,7 +130,7 @@ function goSearch(){
 				<input id="search_input" type="text" placeholder="검색하기"  onkeydown="if(event.keyCode==13){goSearch();}"/>
 				<span id="search_btn"></span>
 			</span>
-			<c:choose> 
+  			<c:choose> 
 				<c:when test="${m_id == 0 }">
 					<span id="profile_icons">
 						<span id="login_info">
@@ -140,20 +140,20 @@ function goSearch(){
 							<span id="menu_icon"></span>
 						</span>
 					</span>
-				</c:when>
+ 				</c:when>
 				<c:otherwise>
 					<span id="profile_icons">
 						<span id="login_info">
-							<img src="resources/images/main/kangdongwon.jpg" alt="my profile" id="profile_img">
-							<span id="login_nickname">블라블라</span>
+							<img src="resources/memberImg/${userInfo.m_pic }" alt="my profile" id="profile_img">
+							<span id="login_nickname">${userInfo.m_nickname }</span>
 							<span id="notice_bell"></span>
+							<span id="write_icon"></span>
 						</span>
 						<span id="icons">
-							<span id="write_icon"></span>
 							<span id="menu_icon"></span>
 						</span>
 					</span>
-				</c:otherwise>
+ 				</c:otherwise>
 			</c:choose>
 			
 
