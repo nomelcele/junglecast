@@ -23,7 +23,7 @@
 	<select id="sendpw" resultType="acvo" parameterType="String" >
 		SELECT m_pw FROM ACCOUNT WHERE m_mail=#{m_mail}
 	</select>
-	
+
   	
 	<insert id="InsertJoinInfo" parameterType="acvo">
 		INSERT INTO ACCOUNT VALUES(M_ID_SEQ.NEXTVAL, #{m_mail}, #{m_gender}, #{m_pw}, #{m_birth}, null, SYSDATE)
