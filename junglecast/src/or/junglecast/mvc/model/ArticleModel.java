@@ -73,10 +73,10 @@ public class ArticleModel {
 	}
 	
 	@RequestMapping(value="writeReply")
-	public String writeReply(ReplyVO revo, Model model){
+	public String writeReply(ReplyVO revo, Model model, HttpSession session){
 		// 댓글 작성
 		int article_id = revo.getArticle_id();
-//		revo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
+		revo.setM_id((Integer)(session.getAttribute("id"))); // 현재 접속한 사용자의 번호
 		adao.writeReply(revo); // 댓글 작성
 		adao.updateReply(article_id); // 댓글 갯수 증가
 		return "redirect:replyList?article_id="+revo.getArticle_id();
@@ -99,9 +99,9 @@ public class ArticleModel {
 	}
 	
 	@RequestMapping(value="writeRereply")
-	public String writeRereply(Re_replyVO rrvo){
+	public String writeRereply(Re_replyVO rrvo, HttpSession session){
 		// 답글 작성
-//		rrvo.setM_id(((AccountVO)session.getAttribute("acvo")).getM_id()); // 현재 접속한 사용자의 번호
+		rrvo.setM_id((Integer)(session.getAttribute("id"))); // 현재 접속한 사용자의 번호
 		adao.writeRereply(rrvo);
 		return "redirect:rereplyList?reply_id="+rrvo.getReply_id();
 	}
