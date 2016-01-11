@@ -21,19 +21,7 @@
 		//검색 input 클릭
 		$('#search_input').click(function(){
 			if($('.search_option_wrapper').css("display") == "none"){
-				$.ajax({
-					type: "POST",
-					url: "recommendKey",
-					dataType: "JSON",
-					success: function(data){
-						var selections='';
-						$.each(data.recommend, function(index, entry){
-							selections += '<li><a href="search?section=story&key='+entry.search_txt+'">'+entry.search_txt+'</a></li>';
-						});
-						$('.search_recommend ul').append(selections);
-						showSearchOptionDIV();
-					}
-				});				
+				showSearchOptionDIV();
 			}
 		});
 		
@@ -96,6 +84,19 @@
 	});
 	
 function showSearchOptionDIV(){
+	$.ajax({
+		type: "POST",
+		url: "recommendKey",
+		dataType: "JSON",
+		success: function(data){
+			var selections='';
+			$.each(data.recommend, function(index, entry){
+				selections += '<li><a href="search?section=story&key='+entry.search_txt+'">'+entry.search_txt+'</a></li>';
+			});
+			$('.search_recommend ul').empty();
+			$('.search_recommend ul').append(selections);
+		}
+	});	
 	$('.search_which_option').removeClass('selected').eq(0).addClass('selected');
 	
 	$('.menu_option_wrapper').css("display","none");

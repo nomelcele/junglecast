@@ -35,7 +35,7 @@ textarea, input, select{font-family: 'Dotum', Arial, sans-serif; border:none; fo
 	#writingArea_wrapper{width:982px; height:800px; margin:0 auto; padding:10px 30px; position:relative; display:block; text-align: center; background:#fff;}
 		#title_wrapper{width:80%; margin: 30px auto 10px; height:150px;display:block;}
 			#category_select_div{width:180px; height:30px; line-height: 30px; float:left; border:1px solid #00a1ff;}
-				#category_select_div select{width:98%; height:96%; line-height:30px; color:#00a1ff; font-size:13px;}	
+				#category_select_div select{width:98%; height:25px; line-height:30px; color:#00a1ff; font-size:13px; margin-top:1px; float:left;}	
 				#category_select_div option{font-size:13px; color:#605f5f;}	
 			#title_input_div{width:60%; height:30px; line-height: 30px; margin-left:15px; float: left; border:1px solid #00a1ff;}
 				#title_input_div input{width:98%; height:90%;}
