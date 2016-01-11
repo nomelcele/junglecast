@@ -82,6 +82,7 @@ public class MenuModel {
 		ModelAndView mav = new ModelAndView("jsonView");
 		AccountVO selectedPw = jdao.LoginInfo(m_mail);
 		//System.out.println(selectedPw);
+		if(selectedPw!=null){
 		mav.addObject("m_pw", selectedPw.getM_pw());
 		mav.addObject("m_id", selectedPw.getM_id());
 		if(selectedPw.getM_pw().equals(pw)){
@@ -89,6 +90,11 @@ public class MenuModel {
 			session.setAttribute("pw", pw);
 		}
 		return mav;
+		}
+		else{
+			mav.addObject("m_pw","0");
+			return mav;
+		}
 	}
 	@RequestMapping(value = "DoubleInfo")
 	public ModelAndView DoubleInfo(String m_mail){
