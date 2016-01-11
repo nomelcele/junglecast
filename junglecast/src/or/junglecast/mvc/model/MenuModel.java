@@ -83,13 +83,13 @@ public class MenuModel {
 		AccountVO selectedPw = jdao.LoginInfo(m_mail);
 		//System.out.println(selectedPw);
 		if(selectedPw!=null){
-		mav.addObject("m_pw", selectedPw.getM_pw());
-		mav.addObject("m_id", selectedPw.getM_id());
-		if(selectedPw.getM_pw().equals(pw)){
-			session.setAttribute("id", selectedPw.getM_id());
-			session.setAttribute("pw", pw);
-		}
-		return mav;
+			mav.addObject("m_pw", selectedPw.getM_pw());
+			mav.addObject("m_id", selectedPw.getM_id());
+			if(selectedPw.getM_pw().equals(pw)){
+				session.setAttribute("id", selectedPw.getM_id());
+				session.setAttribute("pw", pw);
+			}
+			return mav;
 		}
 		else{
 			mav.addObject("m_pw","0");
@@ -116,7 +116,10 @@ public class MenuModel {
 	@RequestMapping("sendEmailAction")
     public ModelAndView sendEmailAction (String m_mail) throws Exception {
         ModelAndView mav = new ModelAndView("jsonView");
-        AccountVO selectedPw = jdao.LoginInfo(m_mail);
+        AccountVO selectedPw = new AccountVO();
+        selectedPw.setM_mail(m_mail);
+        
+        //AccountVO selectedPw = jdao.LoginInfo(m_mail);
         mav.addObject("m_pw", selectedPw.getM_pw());
         String id=m_mail;
         String pw=selectedPw.getM_pw();
@@ -126,7 +129,14 @@ public class MenuModel {
         email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
         emailSender.SendEmail(email);
         return mav;
-        
     }
+	
+	@RequestMapping("logout")
+	public ModelAndView logout(HttpSession session) throws Exception{
+		ModelAndView mav = new ModelAndView("redirect:main");
+		session.invalidate();
+		return mav;
+	}
+	
 
 }
