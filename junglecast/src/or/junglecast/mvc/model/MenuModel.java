@@ -84,7 +84,7 @@ public class MenuModel {
 		//System.out.println(selectedPw);
 		mav.addObject("m_pw", selectedPw.getM_pw());
 		mav.addObject("m_id", selectedPw.getM_id());
-		if(selectedPw.equals(pw)){
+		if(selectedPw.getM_pw().equals(pw)){
 			session.setAttribute("id", selectedPw.getM_id());
 			session.setAttribute("pw", pw);
 		}
