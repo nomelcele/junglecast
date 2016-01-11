@@ -26,7 +26,7 @@ public class JoinDao {
 		st.insert("join.InsertProfileInfo", prvo);
 		return st.selectOne("join.select_profile_id");
 	}
-	public String LoginInfo(String m_mail) {
+	public AccountVO LoginInfo(String m_mail) {
 		return st.selectOne("join.loginIdentify",m_mail);
 	}
 	public String DoubleInfo(String m_mail) {
@@ -35,7 +35,7 @@ public class JoinDao {
 	public String nicknameDoubleInfo(String m_nickname) {
 		return st.selectOne("join.nicknamedoubleInfo",m_nickname);
 	}
-	public String sendEmailAction (String m_mail){
+	public AccountVO sendEmailAction (String m_mail){
 		return st.selectOne("join.sendpw",m_mail);
 	}
 
