@@ -112,6 +112,7 @@ em{font-style: normal;}
 	
 	#articles_area{padding-top:60px;}
 	
+	#left_area{display:none;}
 	.profileImgBox{padding-right:20px;}
 	.profileImgSubBox{width:100px;}
 	.editImgBtn{left:70px; top:-13px;}
