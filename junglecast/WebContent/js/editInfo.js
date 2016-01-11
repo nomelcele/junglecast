@@ -75,14 +75,26 @@ $(function(){
 	$(".addWebArea").click(function(){
 		// 웹 사이트 추가 버튼 클릭
 		if(webBtnNum == 1){
-			$("#profileWebInput").append("<span><span class='profileNameInput'>"
-					+"<span class='profileHttp'>http://</span>"
-					+"<input type='text' id='m_web2' name='m_web2'></span><a class='removeWebBtn' onclick='removeWeb(this)'></a></span>");
+			if(matchMedia("only screen and (max-width:767px)").matches){
+				$("#profileWebInput").append("<span><span class='profileNameInput'>"
+						+"<span class='profileHttp'>http://</span>"
+						+"<input type='text' id='m_web2' name='m_web2'><a class='removeWebBtn' onclick='removeWeb(this)'></a></span></span>");
+			} else{
+				$("#profileWebInput").append("<span><span class='profileNameInput'>"
+						+"<span class='profileHttp'>http://</span>"
+						+"<input type='text' id='m_web2' name='m_web2'></span><a class='removeWebBtn' onclick='removeWeb(this)'></a></span>");
+			}
 			webBtnNum++;
 		} else if(webBtnNum == 2) {
-			$("#profileWebInput").append("<span><span class='profileNameInput'>"
-					+"<span class='profileHttp'>http://</span>"
-					+"<input type='text' id='m_web3' name='m_web3'></span><a class='removeWebBtn' onclick='removeWeb(this)'></a></span>");
+			if(matchMedia("only screen and (max-width:767px)").matches){
+				$("#profileWebInput").append("<span><span class='profileNameInput'>"
+						+"<span class='profileHttp'>http://</span>"
+						+"<input type='text' id='m_web3' name='m_web3'><a class='removeWebBtn' onclick='removeWeb(this)'></a></span></span>");	
+			} else{
+				$("#profileWebInput").append("<span><span class='profileNameInput'>"
+						+"<span class='profileHttp'>http://</span>"
+						+"<input type='text' id='m_web3' name='m_web3'></span><a class='removeWebBtn' onclick='removeWeb(this)'></a></span>");
+			}
 			webBtnNum++;
 		} else if(webBtnNum == 3){
 			alert("생성할 수 있는 피드는 3개가 최대입니다.");

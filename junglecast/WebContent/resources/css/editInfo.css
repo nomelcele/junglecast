@@ -14,7 +14,7 @@ em{font-style: normal;}
 .pwdBtn{background:url(../images/editIcons/pwdImg1.png) no-repeat 0;}
 .pwdBtn:hover, .pwdBtn.hovered{background:url(../images/editIcons/pwdImg2.png) no-repeat 0;}
 
-.editInfoTabletMenu{text-align:center; display:none; position:fixed;}
+.editInfoTabletMenu{text-align:center; display:none; position:fixed; z-index:300;}
 .editInfoTabletMenu ul{margin:0;}
 
 .editBox{background:#fff; border:1px solid #eaeaea; padding:0 20px; padding:10px 20px;}
@@ -24,7 +24,7 @@ em{font-style: normal;}
 .profileSubBox h1{font-size:17px; margin:8px 0;}
 .profileImgBox{float:left; padding-left:20px; width:12%;}
 .profileImgBox img{width:80px; height:80px;}
-.editImgBtn{background:url(../images/editIcons/editImgBtn.png) no-repeat 0; width:20px; height:20px; display:inline-block; position:relative; right:13px;}
+.editImgBtn{background:url(../images/editIcons/editImgBtn.png) no-repeat 0; width:20px; height:20px; display:inline-block; position:relative; right:13px; cursor:pointer;}
 .editImgBtn input[type=file]{opacity:0; width:20px; height:20px;}
 .profileTxtBox{float:left; border-left:1px solid #eaeaea; padding-left:20px; width:83%;}
 .profileSubBox{margin-bottom:30px;}
@@ -42,7 +42,7 @@ em{font-style: normal;}
 
 .accountInfoBox{margin:10px 0; height:400px;}
 .accountInfoTxtBox .profileNameInput{width:40%;}
-.accountInfoTxtBox input[type=text]{border:none; padding:4px; color:ㅊ; width:90%;}
+.accountInfoTxtBox input[type=text]{border:none; padding:4px; color:#8E8E8E; width:90%;}
 .accountSubBox{margin-bottom:8px;}
 .deleteAccount{color:#00a6de; border-bottom:1px solid #00a6de; font-size:12px; cursor:pointer;}
 
@@ -95,23 +95,66 @@ em{font-style: normal;}
 	
 	#left_area{display:none;}
 	.menuBox{display:none;}
-	.editInfoTabletMenu{display:block; width:100%; padding:0;}
+	.editInfoTabletMenu{display:block; width:100%; padding:0; top:50px;}
 	.editInfoTabletMenu li{display:inline-block;}
 	
-	#articles_area{margin:50px 0;}
+	#articles_area{margin:50px 0; padding-top:60px;}
 	
-	.editSaveBox{width:96%;}
+	.editSaveBox{width:97%;}
 	
+	.pwdInputBox{padding:5px 30px 25px 30px;}	
 }
 
 @media only screen and (max-width:1023px) and (min-width:768px){
 	.menuBox{display:none;}
-	.editInfoTabletMenu{display:block; width:95%; padding:0;}
+	.editInfoTabletMenu{display:block; width:100%; padding:0; top:50px;}
 	.editInfoTabletMenu li{display:inline-block;}
 	
+	#articles_area{padding-top:60px;}
+	
+	.profileImgBox{padding-right:20px;}
+	.profileImgSubBox{width:100px;}
+	.editImgBtn{left:70px; top:-13px;}
+	.profileTxtBox{width:77%;}
+	.profileTxtBox input[type=text]{width:87%;}
+	
 	.editSaveBox{width:91%;}
+	#linkArea h2{font-size:17px;}
+	.pwdInputBox{padding:5px 20px 25px 20px;}
+	#linkArea p{font-size:12px;}
+	.pwdLabel{font-size:12px;}
+	.pwdInputSubBox input[type=password]{width:68%; font-size:12px;}
 }
 
 @media only screen and (max-width:767px){
 	.menuBox{display:none;}
+	.editInfoTabletMenu{display:block; width:100%; padding:0; top:50px;}
+	.editInfoTabletMenu li{display:inline-block;}
+	.menuList li{margin:5px 11px;}
+	.menuList li a{font-size:12px;}
+	
+	.profileBox{margin-top:50px; margin-bottom:10px; height:560px;}
+	.editBox h1{font-size:17px; margin-bottom:25px;}
+	.profileImgBox{float:none; width:100%; text-align:center;}
+	.profileTxtBox{float:none; border-left:none; padding:0; width:100%;}
+	.profileTxtBox input[type=text]{width:84%;}
+	.profileSubBox{margin-top:20px;}
+	.profileSubBox h1{font-size:14px; margin-bottom:10px;}
+	.profileNameInput{width:100%;}
+	.profileWebInputBox .profileNameInput{width:100%;}
+	.profileWebInputBox .profileNameInput input[type=text]{width:87%;}
+	.removeWebBtn{background:url(../images/editIcons/trashcan.png) no-repeat 0; width:15px; height:15px; margin:3px 5px; background-size:15px; float:right;}
+	.addWebArea{width:100%;}
+	.addWebBtn{width:14px;}
+	
+	.accountInfoTxtBox .profileNameInput{width:100%;}
+	
+	.pwdBox .profileNameInput{width:100%;}
+	
+	.modal-dialog .link-content{width:80%;}
+	#linkArea h2{font-size:17px;}
+	.pwdInputBox{padding:5px 10px 25px 10px;}
+	#linkArea p{font-size:12px;}
+	.pwdLabel{font-size:12px; margin-right:2px;}
+	.pwdInputSubBox input[type=password]{width:64%; font-size:12px;}
 }

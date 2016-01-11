@@ -80,8 +80,7 @@ function left_area_positioning(){
 	<jsp:include page="topLeft/header.jsp"></jsp:include>
 	<div id="content_area">
 		<jsp:include page="editInfoMenu.jsp"></jsp:include>
-		<section id="articles_area">
-			<div class="editBox editInfoTabletMenu">
+		<div class="editBox editInfoTabletMenu">
 				<ul class="menuList">
 					<li>
 						<a class="profileBtn"><span>프로필</span></a>
@@ -94,11 +93,13 @@ function left_area_positioning(){
 					</li>
 				</ul>			
 			</div>
+			
+		<section id="articles_area">
 			<div id="profileBox" class="editBox profileBox">
 				<form id="profileForm" action="editProfile" method="post" enctype="multipart/form-data">
 					<h1>프로필</h1>
 					<div class="profileImgBox">
-						<div>
+						<div class="profileImgSubBox">
 							<img id="profileImgPreview" src="resources/memberImg/${myProfile.m_pic}">
 							<a class="editImgBtn"><input type="file" id="m_pic" name="m_picFile"></a>
 						</div>
