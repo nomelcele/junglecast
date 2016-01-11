@@ -58,7 +58,7 @@ public class MenuModel {
 		int insertedJoininfo = jdao.InsertJoinInfo(acvo);
 		mav.addObject("m_id", insertedJoininfo);
 		if(insertedJoininfo!=0){
-			session.setAttribute("id", acvo.getM_mail());
+			session.setAttribute("id", insertedJoininfo);
 			session.setAttribute("pw", acvo.getM_pw());
 		}
 		return mav;
@@ -80,11 +80,12 @@ public class MenuModel {
 	@RequestMapping(value = "LoginInfo")
 	public ModelAndView LoginInfo(String m_mail, String pw, HttpSession session){
 		ModelAndView mav = new ModelAndView("jsonView");
-		String selectedPw = jdao.LoginInfo(m_mail);
-		System.out.println(selectedPw);
-		mav.addObject("m_pw", selectedPw);
+		AccountVO selectedPw = jdao.LoginInfo(m_mail);
+		//System.out.println(selectedPw);
+		mav.addObject("m_pw", selectedPw.getM_pw());
+		mav.addObject("m_id", selectedPw.getM_id());
 		if(selectedPw.equals(pw)){
-			session.setAttribute("id", m_mail);
+			session.setAttribute("id", selectedPw.getM_id());
 			session.setAttribute("pw", pw);
 		}
 		return mav;
@@ -109,10 +110,10 @@ public class MenuModel {
 	@RequestMapping("sendEmailAction")
     public ModelAndView sendEmailAction (String m_mail) throws Exception {
         ModelAndView mav = new ModelAndView("jsonView");
-        String selectedPw = jdao.LoginInfo(m_mail);
-        mav.addObject("m_pw", selectedPw);
+        AccountVO selectedPw = jdao.LoginInfo(m_mail);
+        mav.addObject("m_pw", selectedPw.getM_pw());
         String id=m_mail;
-        String pw=selectedPw;
+        String pw=selectedPw.getM_pw();
         System.out.println(pw);
         email.setContent("비밀번호는 "+pw+" 입니다.");
         email.setReceiver(m_mail);
