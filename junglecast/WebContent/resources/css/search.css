@@ -27,7 +27,7 @@
 		.aUserIntroduce{float:left; width:50%; height:16px; line-height:16px; font-size:14px; margin:5px 0;margin-left:10px;}
 
 /*이야기로 검색했을 때*/
-.contents_li{height:130px; overflow:hidden; padding:25px 15px 15px 0; }
+.contents_li{height:130px; overflow:hidden; padding:25px 15px 15px 0; border-bottom:1px solid #d1d2d4;}
 	.aContent_img_area{height:100%; width:20%; float:left; cursor:pointer;}
 		.aContent_img_area span{height: 130px; width:90%; float:left; overflow:hidden;}
 		.aContent_img_area span img{width:100%; height:auto;}

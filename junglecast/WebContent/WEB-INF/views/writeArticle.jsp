@@ -9,57 +9,78 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="resources/css/header.css"/>
 <style type="text/css">
-textarea, input, select{font-family: 'Dotum', Arial, sans-serif; border:none; font-size:14px;}
+::-webkit-input-placeholder{color:#00a1ff; font-size:12px;}
+:-moz-placeholder{color:#aaaaaa; font-size:12px;}
+::-moz-placeholder{color:#aaaaaa; font-size:12px;}
+:-ms-input-placeholder{color:#aaaaaa; font-size:12px;}
+textarea, input, select{font-family: 'Dotum', Arial, sans-serif; border:none; font-size:14px; color:#605f5f;}
 #wa_body_cover{background:rgba(18,18,18,0.8); margin:0,0; z-index:600; display:none;width:100%; height:100%; position:fixed;}
 #middle_cover{width:80%; height:30%; margin: 200px auto;}
 #middle_cover span{width:100%; text-align: center; font-size : 16px; height:30px; line-height: 30px; color : #00a1ff;}
-#select_img{width:70%; margin:0 auto; height:80%; max-height:70%; padding:10px; position:absolute; left:13%;}
-	#select_img_txt{position:relative; float:left; width:100%; color:white; height:70px; padding:10px; text-align: center; background:#00a1ff; line-height:70px; fint-weight:bold;font-size:16px; border-bottom:1px solid #00a1ff;}
-	#select_img_imgsArea{position:relative; float:left; width:100%; min-height:200px; height:90%;background:white; float:left; overflow-y: scroll; overflow-x:hidden; padding: 0px 10px 10px 10px;}
+#select_img{width:65%; margin:0 auto; max-height:80%; padding:10px; position:absolute; left:13%;}
+	#select_img_txt{position:relative; float:left; width:100%; color:white; height:50px; padding:10px; text-align: center; background:#00a1ff; line-height:50px; font-weight:bold; font-size:16px; border-bottom:1px solid #00a1ff;}
+	#select_img_imgsArea{position:relative; float:left; width:100%; min-height:200px; max-height: 400px;background:white; float:left; overflow-y: scroll; overflow-x:hidden; padding: 0px 10px 10px 10px;}
 	.img_option{width:auto; height:150px;float:left; margin:10px 10px 0 5px; border:5px solid white; cursor:pointer;}
 	.img_option img{height:100%; width:auto;}
-	#select_btn{width:100%; height:52px; float:left;background:white; padding: 10px;}
-	#select_ok{width:120px; height:50px; line-height:50px; float:right; margin-right:20px; background:#00a1ff; color:white; cursor:pointer;}
+	#select_btn{position:relative;width:100.5%; height:45px; float:left;background:white; padding: 8px;}
+	#select_ok{width:110px; height:40px; line-height:40px; float:right; margin-right:20px; background:#00a1ff; color:white; cursor:pointer;}
 	#select_ok:HOVER{background:white; color:#00a1ff; border:1px solid #00a1ff;}
-#move_to_main{width:250px; height:110px; margin:0 auto;  padding:10px; position:absolute; left:30%; top : 10%; background:white; border:2px solid #00a1ff; border-radius:8px;}
-	#move_to_main_txt{width:100%; height:70px; line-height: 30px; float:left; position:relative; text-align: center;}
-	#move_ok_wrapper{width:100%; height:35px; float:left; position:relative;}
-	#move_ok{width:120px; height:30px; line-height: 30px; float:right; font-size:14px; color: white; cursor:pointer; background:#00a1ff;}
+#move_to_main{width:250px; height:100px; margin:0 auto;  padding:10px; position:absolute; left:35%; top : 10%; background:white; border:2px solid #00a1ff; border-radius:8px;}
+	#move_to_main_txt{width:100%; height:60px; line-height: 26px; float:left; position:relative; text-align: center; font-size:13px;}
+	#move_ok_wrapper{width:100%; height:30px; float:left; position:relative; margin-top:5px;}
+	#move_ok{width:110px; height:26px; line-height: 26px; float:right; font-size:13px; color: white; cursor:pointer; background:#00a1ff;}
 	#move_ok:HOVER{background:white; color:#00a1ff; border:1px solid #00a1ff;}
 .input_file{display: none;}
 	#writeArticle_wrapper{float:left; position: relative; display:block;margin : 50px auto 0; height:100%; width:100%; font-family: Helvetica, 'Dotum', Arial, sans-serif;text-align: center;}
-	#writingArea_wrapper{width:982px; height:800px; margin:0 auto; padding:30px; position:relative; display:block;background:#f1f1f2; text-align: center; }
+	#writingArea_wrapper{width:982px; height:800px; margin:0 auto; padding:10px 30px; position:relative; display:block; text-align: center; background:#fff;}
 		#title_wrapper{width:80%; margin: 30px auto 10px; height:150px;display:block;}
-			#category_select_div{width:180px; height:30px; line-height: 30px; float:left;}
-				#category_select_div select{width:100%; height:100%; line-height:30px;}		
-			#title_input_div{width:60%; height:30px; line-height: 30px; margin-left:15px; float: left;}
-				#title_input_div input{width:100%; height:90%;}
-			#subtitle_textarea_div{width:90%; height:100px; margin: 12px auto 0; float:left;}
-				#subtitle_textarea_div textarea{width:100%; height:100%;}
+			#category_select_div{width:180px; height:30px; line-height: 30px; float:left; border:1px solid #00a1ff;}
+				#category_select_div select{width:98%; height:96%; line-height:30px; color:#00a1ff; font-size:13px;}	
+				#category_select_div option{font-size:13px; color:#605f5f;}	
+			#title_input_div{width:60%; height:30px; line-height: 30px; margin-left:15px; float: left; border:1px solid #00a1ff;}
+				#title_input_div input{width:98%; height:90%;}
+			#subtitle_textarea_div{width:90%; height:100px; margin: 12px auto 0; float:left;border:1px solid #00a1ff;}
+				#subtitle_textarea_div textarea{width:98%; height:98%;}
 		#imgCard_wrapper{width:80%; height:180px; margin:0 auto; display:block;}
-		.an_imgCard_form{height:180px; width:90%; float:left; margin:0 auto; border:1px solid #00a1ff; margin:10px auto; overflow: hidden; background:white; display:block;}
+		.an_imgCard_form{height:180px; width:90%; float:left; border:1px solid #00a1ff; margin:10px auto 0; overflow: hidden; background:white; display:block;}
 			.add_img_btn{width:40px; height:40px; background:#00a1ff; margin:0; float:left; cursor: pointer; z-index:100; margin-left:-390px;}
 			.add_img_btn img{width:60%; height:60%; margin:7px 7px;}
-			.img_preview_div{width:390px; height:100%; float:left; margin:0; text-align: center; color:#888888; line-height:150px; overflow: hidden; z-index:10;}
+			.img_preview_div{width:390px; height:100%; float:left; margin:0; text-align: center; color:#888888; line-height:150px; overflow: hidden; z-index:10; font-size:12px; color:#00a1ff;}
 			.img_preview{width:auto; height:100%; display:none; margin:0 auto;}
 			.img_discription_div{width:310px; height:100%; float:right; margin-right:4px;border-left:1px solid #00a1ff; }
 			.img_discription_div textarea{width:100%; height:96%;}
 		#add_imgCard_btn{width:72%; height:40px; text-align:center; font-weight:bold; line-height:40px; color:white; float:left; margin:10px 10%; background: #00a1ff; cursor: pointer;}
 		#add_imgCard_btn:HOVER, #ok_btn:HOVER{color:#00a1ff; border:1px solid #00a1ff; background: white;}
 		#ok_btn{width:60px; height:40px; line-height:40px; text-align:center; background:#00a1ff; color:white; font-weight:bold; margin:10px 0; float:right; font-size:14px; cursor: pointer;}
+
+	.category_title{position:relative; width:99%; float:left; background:#fff; border-left:3px solid #11baf3; border-right:3px solid red; margin:8px 0 10px; overflow:hidden; height:30px; padding:5px;}
+	.category_txt{font-size:18px; padding: 4px 4px 4px 13px; float:left; color:#605f5f; font-weight:bold;}
 </style>
 <script src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	
+	//콘텐츠 카드 추가 버튼 클릭
 	$('#add_imgCard_btn').click(function(){
-		add_imgCard();
-		var imgCard_height = $('#imgCard_wrapper').css("height");
-		var imgCard_height_num = Number(imgCard_height.replace(/[^\d]/g,"")) +180;
-		var writingArea_wrapper_height=$('#writingArea_wrapper').css("height");
-		var writingArea_wrapper_height_num = Number(writingArea_wrapper_height.replace(/[^\d]/g,"")) +180;
-		$('#imgCard_wrapper').css("height", imgCard_height_num +'px');
-		$('#writingArea_wrapper').css("height", writingArea_wrapper_height_num +'px');
+		var boolVal = 1;
+		for(i=0; i<$('.input_file').length; i++){
+			var imgName = $("input[name=pic_url]")[i].files[0];
+			if(typeof imgName == 'undefined'){
+				boolVal = 0;
+			}
+		}
+		if(boolVal == 0){//이미지를 첨부하지 않은 카드가 있을 때
+			alert("이미지를 첨부하십시오.");
+		}else{
+			add_imgCard();
+			var imgCard_height = $('#imgCard_wrapper').css("height");
+			var imgCard_height_num = Number(imgCard_height.replace(/[^\d]/g,"")) +180;
+			var writingArea_wrapper_height=$('#writingArea_wrapper').css("height");
+			var writingArea_wrapper_height_num = Number(writingArea_wrapper_height.replace(/[^\d]/g,"")) +180;
+			$('#imgCard_wrapper').css("height", imgCard_height_num +'px');
+			$('#writingArea_wrapper').css("height", writingArea_wrapper_height_num +'px');
+		}
+		
 	});
 	$('#imgCard_wrapper').on('click', '.add_img_btn', function(e){
 		$(this).parent().find('.input_file').click();
@@ -101,9 +122,22 @@ $(document).ready(function(){
 	
 	//등록 버튼 클릭
 	$('#ok_btn').click(function(){ 
-		if($('select[name=category_id]').val() == "0"){
+		var boolVal = 1;
+		for(i=0; i<$('.input_file').length; i++){
+			var imgName = $("input[name=pic_url]")[i].files[0];
+			if(typeof imgName == 'undefined'){
+				boolVal = 0;
+			}
+		}
+		if(boolVal == 0){//이미지를 첨부하지 않은 카드가 있을 때
+			alert("모든 카드에 이미지를 첨부하십시오.");
+		}
+		else if($('select[name=category_id]').val() == "0"){
 			alert("카테고리를 지정하십시오.");
-		}else{
+		}else if($('#title_input_div').find('input').val().length<5){
+			alert("제목을 5자 이상 입력하십시오");
+		}
+		else{
 			$('#wa_body_cover').css("display", "block");
 			$('#select_img').css("display","none");
 			$('#move_to_main').css("display", "none");
@@ -138,7 +172,6 @@ $(document).ready(function(){
 							
 							$('.input_file').attr("type","hidden");
 							var imgs =data2.pic_names;
-							alert(imgs);
 							var imgArr = imgs.split('*');
 							var form2;
 							
@@ -183,7 +216,7 @@ $(document).ready(function(){
 var imgSeq = 1;
 function add_imgCard(){
 	var aCard = '    <form class="an_imgCard_form" id="form'+ ++imgSeq +'" method="post">';
-	aCard += '			  <div class="img_preview_div">이미지 미리보기...</div>';
+	aCard += '			  <div class="img_preview_div">이미지를 첨부해 주세요</div>';
 	aCard += '			  <div class="add_img_btn"><img src="resources/images/writeArticleIcons/camera_icon.png"/></div>';
 	aCard += '			  <input type="file" class="input_file" name="pic_url">';
 	aCard += '			  <input type="hidden" name="article_id" class="anImg_article_id">';
@@ -208,7 +241,7 @@ function readURL(input) {
 </script>
 </head>
 <jsp:include page="./topLeft/header.jsp"></jsp:include>
-<body>
+<body style="background:#f1f1f2;">
 <section id="writeArticle_wrapper">
 <div id="wa_body_cover">
 	<div id="middle_cover">
@@ -232,6 +265,9 @@ function readURL(input) {
 	</div>
 </div>
 	<div id="writingArea_wrapper">
+		<div class="category_title">
+			<span class="category_txt">멋진 이야기를 제공해 주세요 !</span>
+		</div>
 	<form action="" method="post" id="insertArticle">
 		<div id="title_wrapper">
 			<div id="category_select_div">
@@ -248,7 +284,7 @@ function readURL(input) {
 	</form>
 		<div id="imgCard_wrapper">
 			<form class="an_imgCard_form" id="form1" method="post">
-				<div class="img_preview_div">이미지 미리보기...</div>
+				<div class="img_preview_div">이미지를 첨부해 주세요</div>
 				<div class="add_img_btn"><img src="resources/images/writeArticleIcons/camera_icon.png"/></div>
 				<input type="file" class="input_file" name="pic_url">
 				<input type="hidden" name="article_id" class="anImg_article_id">
