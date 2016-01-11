@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import or.junglecast.mvc.dao.MainDao;
 import or.junglecast.vo.MainArticleVO;
 
@@ -21,8 +23,22 @@ public class MainModel {
 	private MainDao dao;
 	
 	@RequestMapping("main")
-	public ModelAndView gotoMain(){
+	public ModelAndView gotoMain(HttpSession session){
 		ModelAndView mav = new ModelAndView("main");
+		int id = 0;
+		try{
+			id = (int) session.getAttribute("id");
+		}catch(Exception e){
+			id=0;
+		}
+		System.out.println("id : " + id);
+		if(id > 0){
+			mav.addObject("m_id", id);
+			mav.addObject("userInfo", dao.selectUserInfo(id));
+			
+		}else{
+			mav.addObject("m_id", 0);	
+		}
 		mav.addObject("bestArticles", dao.selectBestArticles());
 		mav.addObject("categories", dao.selectCategoryLists());
 		mav.addObject("contents", dao.selectArticleLists(0));
@@ -33,7 +49,6 @@ public class MainModel {
 	@RequestMapping(value = "MainLoadMore", method = RequestMethod.POST)
 	public ModelAndView mainLoadMore(@RequestParam("num") String num){
 		ModelAndView mav = new ModelAndView("jsonView");
-		System.out.println("num 뽑습니다." + Integer.parseInt(num));
 		List<MainArticleVO> list = dao.selectArticleLists(Integer.parseInt(num));
 		for(int i=0; i<list.size(); i++){
 			System.out.println(list.get(i).getArticle_title());

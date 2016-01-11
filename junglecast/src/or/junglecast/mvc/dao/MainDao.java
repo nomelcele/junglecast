@@ -7,6 +7,7 @@ import or.junglecast.vo.ArticleVO;
 import or.junglecast.vo.BestArticleVO;
 import or.junglecast.vo.CategoryVO;
 import or.junglecast.vo.MainArticleVO;
+import or.junglecast.vo.ProfileVO;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,10 @@ public class MainDao {
 
 	public CategoryVO selectCateName(int category_id) {
 		return sqlSession.selectOne("main.selectCateName", category_id);
+	}
+
+	public ProfileVO selectUserInfo(int m_id) {
+		return sqlSession.selectOne("main.selectUserInfo", m_id);
 	}
 
 

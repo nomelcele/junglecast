@@ -11,28 +11,34 @@
 </head>
 <body>
 <aside id="left_area">
-		<input type="hidden" value=""> <!-- 로그인정보 들어오는곳 -->
-		<div id="logout_status">
-			<p class="login_txt">로그인 하세요 <br> 더욱 즐거워 집니다!</p>
-			<a class="goto_login" href="menu=login">로그인하기</a>
-			<div class="goto_join"><a href="menu=join">회원가입</a></div>
-		</div>
-<!--		<div id="profile_card">
- 			<img alt="goto my profile page" src="resources/images/main/icons/gear_icon.png" id="goto_profile">
-			<img alt="my profile" src="resources/images/main/kangdongwon.jpg" id="profile_card_img">
-			<div id="my_nickname">
-				내이름이다
-			</div>
-			<div id="my_introduce">
-				내소개다
-			</div>
-			<div id="go_write_page"><a href="writeArticle">포스팅하기</a></div>
-			<div id="mypage_icons">
-				<a id="go_mypage_storage"><img src="resources/images/main/icons/storagebox_icon.png"><span>보관함</span></a>
-				<a id="go_mypage_record"><img src="resources/images/main/icons/Clock_icon.png"><span>기록</span></a>
-				<a id="notice_bell_icon"><img src="resources/images/main/icons/bell_gray.png"><span>알림</span></a>
-			</div>
-		</div> -->
+		<c:choose> 
+			<c:when test="${m_id == 0 }">
+				<div id="logout_status">
+					<p class="login_txt">로그인 하세요 <br> 더욱 즐거워 집니다!</p>
+					<a class="goto_login" href="menu=login">로그인하기</a>
+					<div class="goto_join"><a href="menu=join">회원가입</a></div>
+				</div>
+			</c:when>
+			<c:otherwise>
+				<div id="profile_card">
+		 			<img alt="goto my profile page" src="resources/images/main/icons/gear_icon.png" id="goto_profile">
+					<img alt="my profile" src="resources/memberImg/${userInfo.m_pic }" id="profile_card_img">
+					<div id="my_nickname">
+						${userInfo.m_nickname }
+					</div>
+					<div id="my_introduce">
+						${userInfo.m_introduce }
+					</div>
+					<div id="go_write_page"><a href="writeArticle">포스팅하기</a></div>
+					<div id="mypage_icons">
+						<a id="go_mypage_storage"><img src="resources/images/main/icons/storagebox_icon.png"><span>보관함</span></a>
+						<a id="go_mypage_record"><img src="resources/images/main/icons/Clock_icon.png"><span>기록</span></a>
+						<a id="notice_bell_icon"><img src="resources/images/main/icons/bell_gray.png"><span>알림</span></a>
+					</div>
+				</div>
+			</c:otherwise>
+		</c:choose>
+
 		<div id="left_menu">
 			<div id="left_menu_inner">
 				<div id="left_menu_home"><a href="main">홈</a></div>
@@ -44,14 +50,16 @@
 						</c:forEach>
 					</ul>
 				</div>
-				</div>
+			</div>
 		</div>
 	</aside>
 	<aside id="tablet_left_area">
 		<div id="tablet_aside_menu_icon"><div></div></div>
 		<div id="tablet_aside_icons">
 			<ul>
-				<li><img id="aside_profile_icon" src="resources/images/main/kangdongwon.jpg"></li>
+				<c:if test="${m_id != 0 }">
+					<li><img id="aside_profile_icon" src="resources/memberImg/${userInfo.m_pic }"></li>
+				</c:if>
 				<li><span id="aside_storage_icon"></span></li>
 				<li><span id="aside_record_icon"></span></li>
 			</ul>

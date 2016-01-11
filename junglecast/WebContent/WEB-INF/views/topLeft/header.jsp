@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,17 +130,33 @@ function goSearch(){
 				<input id="search_input" type="text" placeholder="검색하기"  onkeydown="if(event.keyCode==13){goSearch();}"/>
 				<span id="search_btn"></span>
 			</span>
-			<span id="profile_icons">
-				<span id="login_info">
-					<img src="resources/images/main/kangdongwon.jpg" alt="my profile" id="profile_img">
-					<span id="login_nickname">블라블라</span>
-					<span id="notice_bell"></span>
-				</span>
-				<span id="icons">
-					<span id="write_icon"></span>
-					<span id="menu_icon"></span>
-				</span>
-			</span>
+			<c:choose> 
+				<c:when test="${m_id == 0 }">
+					<span id="profile_icons">
+						<span id="login_info">
+							<span id="login_txt">로그인 하세요. 더욱 즐거워집니다!</span>
+						</span>
+						<span id="icons">
+							<span id="menu_icon"></span>
+						</span>
+					</span>
+				</c:when>
+				<c:otherwise>
+					<span id="profile_icons">
+						<span id="login_info">
+							<img src="resources/images/main/kangdongwon.jpg" alt="my profile" id="profile_img">
+							<span id="login_nickname">블라블라</span>
+							<span id="notice_bell"></span>
+						</span>
+						<span id="icons">
+							<span id="write_icon"></span>
+							<span id="menu_icon"></span>
+						</span>
+					</span>
+				</c:otherwise>
+			</c:choose>
+			
+
 		</div>
 	</div>
 	<div class="search_option_wrapper"><!-- document 로딩시 숨김 -->

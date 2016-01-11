@@ -39,6 +39,10 @@
 	<select id="selectCateName" resultType="cvo" parameterType="int">
 		SELECT * FROM CATEGORY WHERE category_id = #{category_id}
 	</select>
+	
+	<select id="selectUserInfo" resultType="prvo" parameterType="int">
+		SELECT * FROM PROFILE WHERE m_id = #{m_id}
+	</select>
   </mapper>
 
   
