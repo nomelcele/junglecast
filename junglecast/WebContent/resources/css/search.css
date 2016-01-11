@@ -39,7 +39,7 @@
 			.writer_nickname{width:80%; height:30px; line-height:30px; margin-left:10px; float:left; font-size:14px; color:#00a6de;}
 		.aContent_info{height:70px; }
 			.aContent_title{height:33px; width:100%; float:left; margin-top : 10px; font-size:16px; line-height:16px;}
-			.aContent_subtitle{height:16px; width:100%; float:left; margin-top:5px; font-size:12px; line-height:16px;}
+			.aContent_subtitle{height:16px; width:100%; float:left; margin-top:5px; font-size:12px; line-height:16px; overflow:hidden;}
 		.aContent_date{height:14px; margin-top:5px; font-size:12px; color:#929497;}
 	.aContent_popularity{width:20%; height: 100%; float:right; padding:0 0 0 14px; border-left:1px solid #e6e7e8;}
 		.aContent_popularity ul{margin:0; width:80%; float:left;}
