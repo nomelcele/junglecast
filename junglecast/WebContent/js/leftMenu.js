@@ -1,5 +1,12 @@
 
 $(function(){
+	var loc = location.href;
+	if(loc.indexOf("main")>0){//메인페이지이면
+
+	}else{//메인페이지 외 search페이지, category 페이지 일 때
+		$('#left_menu_home a').css("color", "#404041");
+	}
+	
 	//상단바 메뉴 아이콘 클릭시
 	$('#menu_icon').click(function(){
 		var clientWidth = document.body.clientWidth;
@@ -33,15 +40,10 @@ $(function(){
     $('#go_write_page').click(function(){
     	location.href="writeArticle";
     });
-    
-    //좌측 메뉴 홈 눌렀을 때 css
-    $('#left_menu_home a').click(function(){
-    	$('#left_menu_home a').css("color", "#00a6de");
-    });;
+
     
     //카테고리 목록 눌렀을 때 해당 카테고리 콘텐츠 카드 새로 받아옴
     $('html body').on('click', '.aCategory span', function(){
-    	$('#left_menu_home a').css("color", "#404041"); //홈버튼 클릭해제
     	$('.aCategory').find('span').css("color", "#4b4b4b");
     	$(this).parent().find('span').css("color", "#00a6de");
     	

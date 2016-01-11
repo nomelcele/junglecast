@@ -42,8 +42,16 @@ public class WriteArticleModel {
 	private WriteArticleDao waDao;
 	
 	@RequestMapping("writeArticle")
-	public ModelAndView gotoMain(){
+	public ModelAndView gotoMain(HttpSession session){
 		ModelAndView mav = new ModelAndView("writeArticle");
+		int id = 0;
+		try{
+			id = (int)  session.getAttribute("id");
+		}catch(Exception e){
+			id=0;
+		}
+		mav.addObject("m_id", id);
+		mav.addObject("userInfo", mDao.selectUserInfo(id));
 		mav.addObject("categories", mDao.selectCategoryLists());
 		return mav;
 	}
@@ -115,6 +123,14 @@ public class WriteArticleModel {
 	@RequestMapping("writeArticle2")
 	public ModelAndView editorSubmit(HttpServletRequest request){
 		ModelAndView mav = new ModelAndView("writeArticle2");
+		int id = 0;
+		try{
+			id = (int)  request.getSession().getAttribute("id");
+		}catch(Exception e){
+			id=0;
+		}
+		mav.addObject("m_id", id);
+		mav.addObject("userInfo", mDao.selectUserInfo(id));
 		mav.addObject("categories", mDao.selectCategoryLists());
 		System.out.println("제목:"+request.getParameter("article_title"));
 		System.out.println("설명:"+request.getParameter("article_subtitle"));
@@ -217,6 +233,7 @@ public class WriteArticleModel {
 			 String today= formatter.format(new java.util.Date());
 			 realFileNm = today+UUID.randomUUID().toString() + filename.substring(filename.lastIndexOf("."));
 			 String rlFileNm = filePath + realFileNm;
+			 
 			 ///////////////// 서버에 파일쓰기 ///////////////// 
 			 InputStream is = request.getInputStream();
 			 OutputStream os=new FileOutputStream(rlFileNm);

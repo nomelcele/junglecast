@@ -40,7 +40,7 @@ textarea, input, select{font-family: 'Dotum', Arial, sans-serif; border:none; fo
 			#title_input_div{width:60%; height:30px; line-height: 30px; margin-left:15px; float: left; border:1px solid #00a1ff;}
 				#title_input_div input{width:98%; height:90%;}
 			#subtitle_textarea_div{width:90%; height:100px; margin: 12px auto 0; float:left;border:1px solid #00a1ff;}
-				#subtitle_textarea_div textarea{width:98%; height:98%;}
+				#subtitle_textarea_div textarea{width:98%; height:96%; resize:none;}
 		#imgCard_wrapper{width:80%; height:180px; margin:0 auto; display:block;}
 		.an_imgCard_form{height:180px; width:90%; float:left; border:1px solid #00a1ff; margin:10px auto 0; overflow: hidden; background:white; display:block;}
 			.add_img_btn{width:40px; height:40px; background:#00a1ff; margin:0; float:left; cursor: pointer; z-index:100; margin-left:-390px;}
@@ -48,7 +48,7 @@ textarea, input, select{font-family: 'Dotum', Arial, sans-serif; border:none; fo
 			.img_preview_div{width:390px; height:100%; float:left; margin:0; text-align: center; color:#888888; line-height:150px; overflow: hidden; z-index:10; font-size:12px; color:#00a1ff;}
 			.img_preview{width:auto; height:100%; display:none; margin:0 auto;}
 			.img_discription_div{width:310px; height:100%; float:right; margin-right:4px;border-left:1px solid #00a1ff; }
-			.img_discription_div textarea{width:100%; height:96%;}
+			.img_discription_div textarea{width:100%; height:96%; resize:none;}
 		#add_imgCard_btn{width:72%; height:40px; text-align:center; font-weight:bold; line-height:40px; color:white; float:left; margin:10px 10%; background: #00a1ff; cursor: pointer;}
 		#add_imgCard_btn:HOVER, #ok_btn:HOVER{color:#00a1ff; border:1px solid #00a1ff; background: white;}
 		#ok_btn{width:60px; height:40px; line-height:40px; text-align:center; background:#00a1ff; color:white; font-weight:bold; margin:10px 0; float:right; font-size:14px; cursor: pointer;}
@@ -266,7 +266,7 @@ function readURL(input) {
 </div>
 	<div id="writingArea_wrapper">
 		<div class="category_title">
-			<span class="category_txt">멋진 이야기를 제공해 주세요 !</span>
+			<span class="category_txt">멋진 이야기를 공유해 주세요 !</span>
 		</div>
 	<form action="" method="post" id="insertArticle">
 		<div id="title_wrapper">

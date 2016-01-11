@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpSession;
 
 import or.junglecast.mvc.dao.EditDao;
+import or.junglecast.mvc.dao.MainDao;
 import or.junglecast.vo.AccountVO;
 import or.junglecast.vo.ProfileVO;
 
@@ -19,12 +20,16 @@ import org.springframework.web.multipart.MultipartFile;
 public class EditModel {
 	@Autowired
 	private EditDao edao;
+	@Autowired
+	private MainDao mdao;
 	
 	@RequestMapping("editInfo")
 	public String editInfo(HttpSession session, Model model){
 		// 개인 정보 수정 페이지 이동
 //		int m_id = 1; 
 		int m_id = (Integer)(session.getAttribute("id")); // 로그인한 회원 번호
+		model.addAttribute("m_id", m_id);//헤더에 필요한 정보
+		model.addAttribute("userInfo", mdao.selectUserInfo(m_id));//헤더에 필요한 정보
 		model.addAttribute("myAccount", edao.myAccount(m_id)); // 계정 정보
 		model.addAttribute("myProfile", edao.myProfile(m_id)); // 프로필 정보
 		String m_birth = edao.myAccount(m_id).getM_birth(); // 생년월일

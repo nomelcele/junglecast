@@ -5,9 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="text/css">
-
-</style>
 </head>
 <body>
 <aside id="left_area">
@@ -46,7 +43,15 @@
 					<div id="categories">골라보기</div>
 					<ul>
 						<c:forEach var="aRow" items="${categories }">
-							<li class="aCategory"><input type="hidden" value="${aRow.category_id }" class="leftmenu_category_id"><span class="catogory_icon" style="background-image: url('resources/images/main/icons/${aRow.category_icon}'); background-size:100% 100%;"></span><span>${aRow.category_name }</span></li>
+							<li class="aCategory">
+								<input type="hidden" value="${aRow.category_id }" class="leftmenu_category_id">
+								<span class="catogory_icon" style="background-image: url('resources/images/main/icons/${aRow.category_icon}'); background-size:100% 100%;"></span>
+								<c:choose>
+									<c:when test="${aRow.category_id == category_info.category_id }"><span style="color:#00a6de;">${aRow.category_name }</span></c:when>
+									<c:otherwise><span style="color:#4b4b4b;">${aRow.category_name }</span></c:otherwise>
+								</c:choose>
+								
+							</li>
 						</c:forEach>
 					</ul>
 				</div>

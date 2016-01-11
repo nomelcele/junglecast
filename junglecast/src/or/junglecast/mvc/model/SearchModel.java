@@ -11,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import or.junglecast.mvc.dao.MainDao;
 import or.junglecast.mvc.dao.SearchDao;
@@ -35,6 +36,16 @@ public class SearchModel {
 	public ModelAndView search(@RequestParam("section") String section, @RequestParam("key") String key, HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException{
 		ModelAndView mav = new ModelAndView("search/search");
+
+		int id = 0;
+		try{
+			id = (int)  request.getSession().getAttribute("id");
+		}catch(Exception e){
+			id=0;
+		}
+		mav.addObject("m_id", id);
+		mav.addObject("userInfo", dao.selectUserInfo(id));
+		
 		//cookie - 새로고침 시 db에 계속 검색어 업데이트 되는 것을 막음
 		Cookie[] cookies = request.getCookies();
 		Cookie viewCookie = null;
@@ -78,8 +89,17 @@ public class SearchModel {
 	}
 	
 	@RequestMapping("searchMobile")
-	public ModelAndView searchMobile(){
+	public ModelAndView searchMobile(HttpSession session){
 		ModelAndView mav = new ModelAndView("search/search");
+		int id = 0;
+		try{
+			id = (int)  session.getAttribute("id");
+		}catch(Exception e){
+			id=0;
+		}
+		mav.addObject("m_id", id);
+		mav.addObject("userInfo", dao.selectUserInfo(id));
+		
 		mav.addObject("mobile", "mobile");
 		mav.addObject("section", "story");
 		mav.addObject("recommend", sDao.recommendSearchKey());

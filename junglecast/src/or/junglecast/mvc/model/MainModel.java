@@ -34,7 +34,6 @@ public class MainModel {
 		System.out.println("id : " + id);
 		mav.addObject("m_id", id);
 		mav.addObject("userInfo", dao.selectUserInfo(id));
-
 		mav.addObject("bestArticles", dao.selectBestArticles());
 		mav.addObject("categories", dao.selectCategoryLists());
 		mav.addObject("contents", dao.selectArticleLists(0));

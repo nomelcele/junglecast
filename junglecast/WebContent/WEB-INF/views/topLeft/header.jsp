@@ -60,7 +60,7 @@
 		//로그아웃 클릭
 		$('.logout_menu').click(function(){
 			//location.href="logout";
-			<% session.invalidate();%>
+			
 			location.href="main";
 		});
 		//로그인 클릭
@@ -76,7 +76,7 @@
 		
 		$(document).click(function(e){
 			var pos = $('.search_option_wrapper').offset();
-			var menuPos = $('.logout_menu').offset();
+			var menuPos = $('.menu_arrow').offset();
 			if(matchMedia("only screen and (min-width:1280px)").matches){
 				if(($('.search_option_wrapper').css("display") == "block") && (
 						(e.pageX<pos.left) || (e.pageX>pos.left+348)|| (e.pageY>pos.top+256))){
