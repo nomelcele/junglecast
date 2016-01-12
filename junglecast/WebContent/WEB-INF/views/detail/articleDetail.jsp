@@ -11,7 +11,14 @@
 	     	<div id="articleInfo">
 		     		<a href="#" class="closebtn">×</a>
 		     		<div id="editorInfo">
-			     	  <img class="editorImg" src="resources/memberImg/${editorInfo.m_pic}">
+		     			<c:choose>
+		     				<c:when test="${editorInfo.m_pic != null }">
+								<img class="editorImg" src="resources/memberImg/${editorInfo.m_pic}">
+		     				</c:when>
+		     				<c:otherwise>
+		     					<img src="resources/images/joinImg/default_avatar.png" class="editorImg">
+		     				</c:otherwise>
+		     			</c:choose>
 			     	  <h4>${editorInfo.m_nickname}</h4>
 			     	  <p class="editorIntro">${editorInfo.m_introduce}</p>
 		     	  	</div>
@@ -93,11 +100,25 @@
 		       <div class="replyWriteBox">
 		       		<div class="replyWrite">
 		       			<div class="imgBox">
-				       		<img src="resources/memberImg/${myProfile.m_pic}">
+		       				<c:choose>
+		       					<c:when test="${myProfile.m_pic != null }">
+		       						<img src="resources/memberImg/${myProfile.m_pic}">
+		       					</c:when>
+		       					<c:otherwise>
+		       						<img src="resources/images/joinImg/default_avatar.png">
+		       					</c:otherwise>
+		       				</c:choose>
 					    </div>
 					    <div class="replyTextBox">
 					    	<div class="replyInput">
-					    		<textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
+						    	<c:choose>
+			       					<c:when test="${m_id != null }">
+			       						<textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
+			       					</c:when>
+			       					<c:otherwise>
+			       						<textarea id="reply_text" placeholder="로그인이 필요합니다." class="non-login"></textarea>
+			       					</c:otherwise>
+			       				</c:choose>
 				       		</div>
 				       		<p class="charNumBox"><span id="currentCharNum">0</span>/160자</p>
 				       	</div>

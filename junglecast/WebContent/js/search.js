@@ -25,7 +25,9 @@ $(document).ready(function(){
 	});
 
 	$('.search_blue_btn').click(function(){
-		getSearchedContents($('.search_input_container input').val(), $('.storyORuser').val(), 0);
+		if($('.search_input_container input').val().length<1) alert("검색어를 입력하십시오.");
+		else location.href="search?section="+$('.storyORuser').val()+"&key="+$('.search_input_container input').val();
+		//getSearchedContents($('.search_input_container input').val(), $('.storyORuser').val(), 0);
 	});
 	
 	$('.recommend_keyword_inner div').hover(function(){

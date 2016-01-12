@@ -150,7 +150,14 @@ function goSearch(){
 				<c:otherwise>
 					<span id="profile_icons">
 						<span id="login_info">
-							<img src="resources/memberImg/${userInfo.m_pic }" alt="my profile" id="profile_img">
+							<c:choose>
+								<c:when test="${userInfo.m_pic==null}">
+									<img src="resources/images/joinImg/default_avatar.png"  id="profile_img">
+								</c:when>
+								<c:otherwise>
+									<img src="resources/memberImg/${userInfo.m_pic }" alt="my profile" id="profile_img">
+								</c:otherwise>
+							</c:choose>
 							<span id="login_nickname">${userInfo.m_nickname }</span>
 							<span id="notice_bell"></span>
 							<span id="write_icon"></span>

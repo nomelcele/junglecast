@@ -19,7 +19,14 @@
 			<c:otherwise>
 				<div id="profile_card">
 		 			<img alt="goto my profile page" src="resources/images/main/icons/gear_icon.png" id="goto_profile">
-					<img alt="my profile" src="resources/memberImg/${userInfo.m_pic }" id="profile_card_img">
+		 			<c:choose>
+						<c:when test="${userInfo.m_pic==null}">
+							<img src="resources/images/joinImg/default_avatar.png"  id="profile_card_img">
+						</c:when>
+						<c:otherwise>
+							<img src="resources/memberImg/${userInfo.m_pic }" alt="my profile" id="profile_card_img">
+						</c:otherwise>
+					</c:choose>
 					<div id="my_nickname">
 						${userInfo.m_nickname }
 					</div>
@@ -61,10 +68,15 @@
 	<aside id="tablet_left_area">
 		<div id="tablet_aside_menu_icon"><div></div></div>
 		<div id="tablet_aside_icons">
-			<ul>
-				<c:if test="${m_id != 0 }">
-					<li><img id="aside_profile_icon" src="resources/memberImg/${userInfo.m_pic }"></li>
-				</c:if>
+			<ul>		 			
+				<c:choose>
+					<c:when test="${userInfo.m_pic==null}">
+						<li><img id="aside_profile_icon" src="resources/images/joinImg/default_avatar.png"></li>
+					</c:when>
+					<c:otherwise>
+						<li><img id="aside_profile_icon" src="resources/memberImg/${userInfo.m_pic }"></li>
+					</c:otherwise>
+				</c:choose>
 				<li><span id="aside_storage_icon"></span></li>
 				<li><span id="aside_record_icon"></span></li>
 			</ul>
