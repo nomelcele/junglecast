@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import or.junglecast.mvc.dao.ArticleDao;
 import or.junglecast.mvc.dao.EditDao;
+import or.junglecast.mvc.dao.MainDao;
 import or.junglecast.vo.AccountVO;
 import or.junglecast.vo.ArticleVO;
 import or.junglecast.vo.Re_replyVO;
@@ -25,6 +26,8 @@ public class ArticleModel {
 	private ArticleDao adao;
 	@Autowired
 	private EditDao edao;
+	@Autowired
+	private MainDao mdao;
 	
 	@RequestMapping(value="articleDetail")
 	public String articleDetail(int article_id, String type, Model model, HttpSession session){
@@ -36,11 +39,16 @@ public class ArticleModel {
 		model.addAttribute("editorInfo", adao.editorInfo(arvo.getM_id())); // 작성자 프로필
 		model.addAttribute("bestReplyList", adao.bestReplyList(article_id)); // 베스트 댓글 목록
 		model.addAttribute("replyList", adao.replyList(article_id)); // 댓글 목록
-		model.addAttribute("myProfile", edao.myProfile((int)session.getAttribute("id")));
 		
+		int id = 0;
+		try{id = (int) session.getAttribute("id");
+		}catch(Exception e){id=0;}
+		model.addAttribute("myProfile", edao.myProfile(id));
 		if(type.equals("modal")){
 			return "detail/articleDetail";
 		} else {
+			model.addAttribute("m_id", id);
+			model.addAttribute("userInfo",mdao.selectUserInfo(id));
 			return "detail/articleDetail2";
 		}
 	}

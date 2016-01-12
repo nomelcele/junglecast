@@ -17,8 +17,9 @@
 					FROM ARTICLE a JOIN PROFILE m ON a.m_id=m.m_id JOIN PICTURE p ON a.pic_id=p.pic_id
 					WHERE
 					<foreach collection="key" item="item" separator="OR">
-	      				a.article_title LIKE #{item} OR a.article_subtitle LIKE #{item} ORDER BY a.article_id DESC
+	      				a.article_title LIKE #{item} OR a.article_subtitle LIKE #{item}
 	     			</foreach>
+	     			ORDER BY a.article_view DESC
 	     	)alias
 	     )WHERE ROW_NUM BETWEEN #{num}+1 and #{num}+20	
 	</select>

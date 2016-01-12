@@ -86,7 +86,9 @@ $(function(){
 		// 댓글 작성
 		if($("#reply_text").val().length > 160){
 			alert("댓글은 160자를 초과할 수 없습니다.");
-		} else {
+		}else if($(this).parent().find('textarea').attr('class') == 'non-login'){//로그인하지 않은 상태
+				alert("로그인 후에 사용할 수 있는 서비스 입니다.");
+		}else {
 			$.ajax({
 				type: "POST",
 				url: "writeReply",
