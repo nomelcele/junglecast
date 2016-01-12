@@ -11,7 +11,14 @@
 						</span>
 						<div class="aContent_title_area"><!-- 제목 간단내용 영역 -->
 							<div class="writer_info"><!-- 작성자정보 -->
-								<span class="writer_profile"><img src="resources/memberImg/${aContent.m_pic }"></span><!-- 프사 -->
+								<c:choose>
+									<c:when test="${aContent.m_pic == null }">
+										<span class="writer_profile"><img src="resources/images/joinImg/default_avatar.png"></span><!-- 프사 -->
+									</c:when>
+									<c:otherwise>
+										<span class="writer_profile"><img src="resources/memberImg/${aContent.m_pic }"></span><!-- 프사 -->
+									</c:otherwise>
+								</c:choose>
 								<span class="writer_nickname">${aContent.m_nickname }</span><!-- 닉넴 -->
 							</div>
 							<div class="aContent_info"><!-- 제목과 설명 -->

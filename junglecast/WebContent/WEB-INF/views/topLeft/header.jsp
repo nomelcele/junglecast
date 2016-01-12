@@ -168,8 +168,6 @@ function goSearch(){
 					</span>
  				</c:otherwise>
 			</c:choose>
-			
-
 		</div>
 	</div>
 	<div class="search_option_wrapper"><!-- document 로딩시 숨김 -->

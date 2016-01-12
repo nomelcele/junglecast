@@ -158,15 +158,9 @@ public class SearchModel {
 		if(section.equals("story")){
 			List<SearchVO> list = sDao.searchContentByKey(map);
 			mav.addObject("cards", list);
-			for(int i=0; i<list.size(); i++){
-				System.out.println(list.get(i).getArticle_title());
-			}
 		}else{
 			List<ProfileVO> list = sDao.searchUserByKey(map);
 			mav.addObject("cards", list);
-			for(int i=0; i<list.size(); i++){
-				System.out.println(list.get(i).getM_nickname());
-			}
 		}	
 		return mav;
 	}	
