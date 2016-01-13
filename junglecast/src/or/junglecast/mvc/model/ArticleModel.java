@@ -45,6 +45,7 @@ public class ArticleModel {
 		}catch(Exception e){id=0;}
 		model.addAttribute("myProfile", edao.myProfile(id));
 		if(type.equals("modal")){
+			model.addAttribute("m_id", id);
 			return "detail/articleDetail";
 		} else {
 			model.addAttribute("m_id", id);

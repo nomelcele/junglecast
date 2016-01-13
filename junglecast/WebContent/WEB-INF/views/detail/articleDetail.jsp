@@ -112,7 +112,7 @@
 					    <div class="replyTextBox">
 					    	<div class="replyInput">
 						    	<c:choose>
-			       					<c:when test="${m_id != null }">
+			       					<c:when test="${m_id != 0 }">
 			       						<textarea id="reply_text" placeholder="내용을 입력해 주세요."></textarea>
 			       					</c:when>
 			       					<c:otherwise>
