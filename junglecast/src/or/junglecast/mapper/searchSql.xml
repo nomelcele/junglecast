@@ -39,7 +39,7 @@
 	<select id="recommendSearchKey" resultType="rcvo">
 		SELECT alias.*
 	 		FROM(SELECT search_txt, count(search_txt) AS count FROM search 
-	 			WHERE TRUNC(search_date, 'DDD') BETWEEN TRUNC(sysdate-1) AND TRUNC(sysdate, 'DDD') 
+	 			WHERE TRUNC(search_date, 'DDD') BETWEEN TRUNC(sysdate-2) AND TRUNC(sysdate, 'DDD') 
 	 			GROUP BY search_txt ORDER BY 2 DESC)alias
 	 		WHERE ROWNUM <![CDATA[<=]]>6
 	</select>
