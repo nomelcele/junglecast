@@ -35,8 +35,11 @@ public class JoinDao {
 	public String nicknameDoubleInfo(String m_nickname) {
 		return st.selectOne("join.nicknamedoubleInfo",m_nickname);
 	}
-	public AccountVO sendEmailAction (String m_mail){
+/*	public AccountVO sendEmailAction (String m_mail){
 		return st.selectOne("join.sendpw",m_mail);
+	}*/
+	public void sendEmailAction (AccountVO acvo){
+		st.update("join.sendpw",acvo);
 	}
 
 }
