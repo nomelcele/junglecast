@@ -21,7 +21,7 @@
 		SELECT count(m_id) FROM PROFILE WHERE m_nickname=#{m_nickname}
 	</select>
 	<select id="sendpw" resultType="acvo" parameterType="String" >
-		SELECT m_pw FROM ACCOUNT WHERE m_mail=#{m_mail}
+		SELECT m_pw,m_mail FROM ACCOUNT WHERE m_mail=#{m_mail}
 	</select>
 
   	
