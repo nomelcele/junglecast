@@ -1,0 +1,52 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 수요일-1월-13-2016   
+--------------------------------------------------------
+REM INSERTING into JUNGLECAST.SEARCH
+SET DEFINE OFF;
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (43,'일본',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (44,'케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (45,'고양이',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (46,'루이비통',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (47,'순대',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (48,'비밀',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (49,'운세',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (50,'고양이',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (51,'순대',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (52,'마크 저커버그',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (53,'노하우',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (54,'선물',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (55,'음식',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (56,'롤케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (57,'노트북',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (58,'호텔',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (59,'치타',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (60,'비타민',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (61,'고양이',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (62,'정수정',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (63,'순대',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (64,'순대',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (65,'루이비통',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (66,'루이비통',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (67,'케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (68,'케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (69,'케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (41,'가습기',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (42,'식물',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (70,'케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (71,'노트북',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (72,'강아지',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (73,'케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (74,'케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (75,'노하우',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (76,'음식',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (77,'음식',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (78,'음식',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (79,'강아지',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (80,'어린이',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (81,'케이크',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (82,'아홉 살',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (83,'아홉, 살',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (84,'루이비통',to_date('16/01/11','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (101,'새끼 치타',to_date('16/01/13','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (102,'루이비통',to_date('16/01/13','RR/MM/DD'));
+Insert into JUNGLECAST.SEARCH (SEARCH_ID,SEARCH_TXT,SEARCH_DATE) values (103,'선물',to_date('16/01/13','RR/MM/DD'));
