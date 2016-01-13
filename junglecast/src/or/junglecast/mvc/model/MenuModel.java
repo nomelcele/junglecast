@@ -116,10 +116,10 @@ public class MenuModel {
 	@RequestMapping("sendEmailAction")
     public ModelAndView sendEmailAction (String m_mail) throws Exception {
         ModelAndView mav = new ModelAndView("jsonView");
-        AccountVO selectedPw = new AccountVO();
-        selectedPw.setM_mail(m_mail);
+        //AccountVO selectedPw = new AccountVO();
+        //selectedPw.setM_mail(m_mail);
         
-        //AccountVO selectedPw = jdao.LoginInfo(m_mail);
+        AccountVO selectedPw = jdao.sendEmailAction(m_mail);
         mav.addObject("m_pw", selectedPw.getM_pw());
         String id=m_mail;
         String pw=selectedPw.getM_pw();
