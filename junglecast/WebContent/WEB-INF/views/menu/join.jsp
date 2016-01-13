@@ -238,6 +238,8 @@
 											success: function(data2) {
 												jQuery('.contents_4').hide();
 												jQuery('.contents_5').show();
+												$('.f_em').text($('.nickname input').val());
+												$('.f2_em').text(mail);
 												$('html,body').scrollTop(0);
 											}
 										});
@@ -1787,7 +1789,7 @@
 					<p style="font-size:20px; color:#707070; font-weight:bold; line-height:27px; text-align:center; font-family:'돋움'; margin:0;">
 					가입이 완료되었습니다.<br>더 즐겁게 피키캐스트를 이용하실 수 있습니다.</p>
 					<p class="f_text" style="font-size:20px; color:#5D5D5D; line-height:20px; text-align:center; margin-top:20px; font-family:'돋움';">
-					<em class = "f_em"style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>님의 이메일은<br><em class = "f_em" style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>입니다.</p>
+					<em class = "f_em"style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>님의 이메일은<br><em class = "f2_em" style="color:#00A1FF; text-decoration:underline; font-style:italic;"></em>입니다.</p>
 					<a href="/junglecast/main" style="display:block; color:#FFFFFF; background-color:#0090C0; width:360px; padding-top:14px; padding-bottom:13px; margin:35px auto 0; text-align:center; font-size:16px; text-decoration:none; font-family:'돋움';">
 					시작하기</a>
 				</div>
